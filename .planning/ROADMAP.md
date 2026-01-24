@@ -25,11 +25,11 @@ Deliver an immersive portfolio site in four phases: establish the Remotion-power
   1. Visitor sees a full-screen Remotion animation on page load (no layout shift, no flash of unstyled content)
   2. Animation transitions smoothly into the main portfolio view without jarring cuts or reloads
   3. Site runs locally in dev mode with hot reload and builds to static output
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Project scaffold (Next.js 15 + Tailwind + Remotion)
+- [ ] 01-02-PLAN.md -- Remotion intro animation and transition to portfolio
 
 ### Phase 2: Project Portfolio
 **Goal**: Visitors can browse curated projects, filter by category, and dive into rich detail pages
@@ -85,7 +85,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Landing Experience | 0/TBD | Not started | - |
+| 1. Landing Experience | 0/2 | Planned | - |
 | 2. Project Portfolio | 0/TBD | Not started | - |
 | 3. About & Contact | 0/TBD | Not started | - |
 | 4. Polish & Performance | 0/TBD | Not started | - |
