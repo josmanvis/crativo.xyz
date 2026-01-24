@@ -5,33 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-01-24)
 
 **Core value:** Visitors should be immediately impressed by the presentation quality and understand the breadth and depth of creative technical work.
-**Current focus:** Phase 2 in progress. Plan 01 complete (grid + filter), Plan 02 next (detail pages).
+**Current focus:** Phase 2 complete. All project pages built with detail views. Ready for Phase 3 (Interactive Experiences) or Phase 4 (Polish & Deploy).
 
 ## Current Position
 
 Phase: 2 of 4 (Project Portfolio)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-01-24 -- Completed 02-01-PLAN.md (Project grid + category filter)
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-01-24 -- Completed 02-02-PLAN.md (Project detail pages)
 
-Progress: [█████░░░░░] 50%
+Progress: [██████████░░░░░░░░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 5min
-- Total execution time: 0.25 hours
+- Total plans completed: 4
+- Average duration: 4.5min
+- Total execution time: 0.3 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Landing Experience | 2/2 | 13min | 6.5min |
-| 2. Project Portfolio | 1/2 | 2min | 2min |
+| 2. Project Portfolio | 2/2 | 5min | 2.5min |
 
 **Recent Trend:**
-- Last 5 plans: 7min, 6min, 2min
+- Last 5 plans: 7min, 6min, 2min, 3min
 - Trend: accelerating
 
 *Updated after each plan completion*
@@ -57,6 +57,10 @@ Recent decisions affecting current work:
 - [02-01]: Category-specific gradient colors for visual identity (blue/purple/orange/green/red)
 - [02-01]: Data layer pattern: types in src/types/, static data in src/data/
 - [02-01]: Component composition: atomic card -> grid container -> page integration
+- [02-02]: Server component detail pages with async params (Next.js 16 pattern)
+- [02-02]: generateStaticParams for SSG of all project pages
+- [02-02]: Gradient placeholders for gallery (no image assets needed)
+- [02-02]: Plain text code snippets (no syntax highlighting library)
 
 ### Pending Todos
 
@@ -68,6 +72,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-01-24T20:15:47Z
-Stopped at: Completed 02-01-PLAN.md (Project grid + category filter)
+Last session: 2026-01-24T20:20:16Z
+Stopped at: Completed 02-02-PLAN.md (Project detail pages)
 Resume file: None
