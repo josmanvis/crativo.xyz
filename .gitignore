@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Added by pubsafe
+.trae
+.cursor
+.windsurf
+.claude
+.planning
+.agents
+.codex
+.gemini
+.opencode
