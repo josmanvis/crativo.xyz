@@ -41,11 +41,11 @@ Plans:
   3. Hovering a project card triggers a smooth animation/transition effect
   4. Clicking a project card navigates to a dedicated page showing hero image, description, tech stack, links, metrics, gallery, and code snippets
   5. Project pages use placeholder data that demonstrates the layout and interactions
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- Project data model, showcase grid with cards, and category filtering
+- [ ] 02-02-PLAN.md -- Individual project detail pages with all content sections
 
 ### Phase 3: About & Contact
 **Goal**: Visitors understand who built these projects and can easily get in touch
@@ -86,6 +86,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Landing Experience | 2/2 | Complete | 2026-01-24 |
-| 2. Project Portfolio | 0/TBD | Not started | - |
+| 2. Project Portfolio | 0/2 | Planned | - |
 | 3. About & Contact | 0/TBD | Not started | - |
 | 4. Polish & Performance | 0/TBD | Not started | - |
