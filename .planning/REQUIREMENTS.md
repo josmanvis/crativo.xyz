@@ -100,8 +100,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| LAND-01 | Phase 1 | Pending |
-| LAND-02 | Phase 1 | Pending |
+| LAND-01 | Phase 1 | Complete |
+| LAND-02 | Phase 1 | Complete |
 | SHOW-01 | Phase 2 | Pending |
 | SHOW-02 | Phase 2 | Pending |
 | SHOW-03 | Phase 2 | Pending |
