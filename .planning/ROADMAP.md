@@ -12,7 +12,7 @@ Deliver an immersive portfolio site in four phases: establish the Remotion-power
 
 - [x] **Phase 1: Landing Experience** - Remotion intro animation and project scaffold
 - [x] **Phase 2: Project Portfolio** - Showcase grid, filtering, and individual project pages
-- [ ] **Phase 3: About & Contact** - Bio, skills, timeline, and contact options
+- [x] **Phase 3: About & Contact** - Bio, skills, timeline, and contact options
 - [ ] **Phase 4: Polish & Performance** - Responsive design, animations, SEO, and optimization
 
 ## Phase Details
@@ -56,10 +56,11 @@ Plans:
   2. Contact section displays email and social links (GitHub, LinkedIn) that open correctly
   3. Contact form submits a message (or displays confirmation with placeholder integration)
   4. Calendar/scheduling link is present and functional for booking conversations
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [x] 03-01-PLAN.md -- About section with bio, skills grid, and timeline
+- [x] 03-02-PLAN.md -- Contact section with form, social links, and calendar
 
 ### Phase 4: Polish & Performance
 **Goal**: The site feels premium on every device -- fast, smooth, and discoverable by search engines
@@ -87,5 +88,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Landing Experience | 2/2 | Complete | 2026-01-24 |
 | 2. Project Portfolio | 2/2 | Complete | 2026-01-24 |
-| 3. About & Contact | 0/TBD | Not started | - |
+| 3. About & Contact | 2/2 | Complete | 2026-01-24 |
 | 4. Polish & Performance | 0/TBD | Not started | - |
