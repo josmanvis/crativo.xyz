@@ -7,6 +7,7 @@ const categoryGradients: Record<Project["category"], string> = {
   Experiments: "from-orange-500/30 to-yellow-500/20",
   Tools: "from-green-500/30 to-emerald-500/20",
   Games: "from-red-500/30 to-rose-500/20",
+  Kiosks: "from-indigo-500/30 to-violet-500/20",
 };
 
 interface ProjectCardProps {

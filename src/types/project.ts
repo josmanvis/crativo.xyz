@@ -14,7 +14,7 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  category: "Apps" | "Libraries" | "Experiments" | "Tools" | "Games";
+  category: "Apps" | "Libraries" | "Experiments" | "Tools" | "Games" | "Kiosks";
   techStack: string[];
   imageUrl: string;
   href: string;

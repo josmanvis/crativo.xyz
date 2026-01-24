@@ -2,81 +2,85 @@ import { AboutData } from '@/types/about';
 
 export const aboutData: AboutData = {
   bio: {
-    name: 'Creative Developer',
-    tagline: 'Building experiences that blend design, code, and motion',
+    name: 'Jose Viscasillas',
+    tagline: 'Senior Software Engineer specializing in React, video platforms, and innovation',
     description: [
-      "I'm a full-stack developer with a passion for creating immersive digital experiences. My work spans interactive web applications, creative coding experiments, and developer tools that make complex things simple.",
-      'With expertise in modern web technologies and a keen eye for design, I bridge the gap between technical implementation and user experience. Every project is an opportunity to push boundaries and explore new possibilities.',
-      "When I'm not coding, you'll find me experimenting with generative art, contributing to open source, or exploring the intersection of technology and creativity.",
+      "I'm a Senior Software Engineer at ON24, where I develop cutting-edge video conferencing solutions using React.js, SASS, OpenTok, and styled-components. I've built features including attendee lists, hand raise, pass-the-mic, virtual backgrounds, and custom user role systems that power video platforms for thousands of users.",
+      'With over a decade of experience spanning video platforms, innovation labs, and rapid application development, I specialize in creating scalable front-end solutions. I led teams at Retail Business Services (Ahold Delhaize) where I developed kiosk software, innovation portals, and authored several NPM packages including too-bored (virtual keyboard), gappa-comments (threaded comments), and ace (React bootstrapping CLI).',
+      "I'm passionate about building tools that empower developers and creating user experiences that blend technical excellence with thoughtful design. From React-Native mobile apps to enterprise web platforms, I bring ideas to life with clean code and modern best practices.",
     ],
   },
   skills: [
-    // Languages
-    { name: 'TypeScript', category: 'Languages', proficiency: 'expert' },
-    { name: 'JavaScript', category: 'Languages', proficiency: 'expert' },
-    { name: 'Python', category: 'Languages', proficiency: 'advanced' },
-    { name: 'Rust', category: 'Languages', proficiency: 'intermediate' },
+    // Languages & Core
+    { name: 'JavaScript (ES6)', category: 'Languages', proficiency: 'expert' },
+    { name: 'HTML5', category: 'Languages', proficiency: 'expert' },
+    { name: 'CSS3', category: 'Languages', proficiency: 'expert' },
+    { name: 'PHP5', category: 'Languages', proficiency: 'advanced' },
 
-    // Frontend
-    { name: 'React', category: 'Frontend', proficiency: 'expert' },
-    { name: 'Next.js', category: 'Frontend', proficiency: 'expert' },
-    { name: 'Tailwind CSS', category: 'Frontend', proficiency: 'expert' },
-    { name: 'Remotion', category: 'Frontend', proficiency: 'advanced' },
-    { name: 'Three.js', category: 'Frontend', proficiency: 'advanced' },
+    // Frontend Frameworks
+    { name: 'React.js', category: 'Frontend', proficiency: 'expert' },
+    { name: 'React Native', category: 'Frontend', proficiency: 'expert' },
+    { name: 'InfernoJS', category: 'Frontend', proficiency: 'advanced' },
+    { name: 'SASS', category: 'Frontend', proficiency: 'expert' },
+    { name: 'LESS', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Styled Components', category: 'Frontend', proficiency: 'expert' },
 
-    // Backend
+    // Backend & Data
+    { name: 'RESTful APIs', category: 'Backend', proficiency: 'expert' },
     { name: 'Node.js', category: 'Backend', proficiency: 'expert' },
-    { name: 'PostgreSQL', category: 'Backend', proficiency: 'advanced' },
-    { name: 'Redis', category: 'Backend', proficiency: 'advanced' },
-    { name: 'GraphQL', category: 'Backend', proficiency: 'advanced' },
+    { name: 'Express.js', category: 'Backend', proficiency: 'expert' },
+    { name: 'CouchDB', category: 'Backend', proficiency: 'advanced' },
 
     // Tools & Platforms
     { name: 'Git', category: 'Tools', proficiency: 'expert' },
-    { name: 'Docker', category: 'Tools', proficiency: 'advanced' },
-    { name: 'AWS', category: 'Tools', proficiency: 'advanced' },
-    { name: 'Vercel', category: 'Tools', proficiency: 'expert' },
+    { name: 'WordPress', category: 'Tools', proficiency: 'expert' },
+    { name: 'OpenTok', category: 'Tools', proficiency: 'advanced' },
+    { name: 'Project Management', category: 'Tools', proficiency: 'expert' },
 
-    // Creative
-    { name: 'Motion Design', category: 'Creative', proficiency: 'advanced' },
-    { name: 'UI/UX Design', category: 'Creative', proficiency: 'advanced' },
-    { name: 'Generative Art', category: 'Creative', proficiency: 'intermediate' },
+    // Design
+    { name: 'UI/UX Design', category: 'Design', proficiency: 'expert' },
+    { name: 'Sketch', category: 'Design', proficiency: 'advanced' },
+    { name: 'Adobe XD', category: 'Design', proficiency: 'advanced' },
+    { name: 'Photoshop', category: 'Design', proficiency: 'advanced' },
+    { name: 'Affinity Designer', category: 'Design', proficiency: 'advanced' },
+    { name: 'Affinity Photo', category: 'Design', proficiency: 'advanced' },
   ],
   timeline: [
     {
-      date: '2024',
-      title: 'Senior Full-Stack Developer',
-      description: 'Leading development of interactive web platforms and creative digital experiences',
+      date: '2021 - Present',
+      title: 'Senior Software Engineer at ON24',
+      description: 'Developed video conferencing platform features including attendee lists, hand raise, virtual backgrounds, and custom user role systems. Led iOS Safari support and provided technical integration support to 4 product teams.',
       type: 'career',
     },
     {
-      date: '2022',
-      title: 'Open Source Contributor',
-      description: 'Published multiple npm packages with 100k+ downloads, active contributor to React ecosystem',
+      date: '2018 - 2021',
+      title: 'Software Engineer III at Retail Business Services',
+      description: 'Led Innovation Lab teams in front-end development, rapid application development, and project management. Developed kiosk software for Stop & Shop and authored NPM packages including too-bored, gappa-comments, and ace CLI.',
+      type: 'career',
+    },
+    {
+      date: '2019',
+      title: 'NPM Package Author',
+      description: 'Published open-source tools: too-bored (React virtual keyboard), gappa-comments (threaded comment component), and ace (React app bootstrapping CLI)',
       type: 'achievement',
     },
     {
-      date: '2020',
-      title: 'Full-Stack Developer',
-      description: 'Built scalable applications using React, Node.js, and modern cloud infrastructure',
+      date: '2016 - 2017',
+      title: 'Front End Developer at Xceleration',
+      description: 'Built responsive layouts with React, Styled Components, and Redux. Developed custom leaderboards for Rodan + Fields programs and maintained company WordPress site.',
       type: 'career',
-    },
-    {
-      date: '2018',
-      title: 'Frontend Developer',
-      description: 'Specialized in creating responsive, accessible web interfaces with focus on performance',
-      type: 'career',
-    },
-    {
-      date: '2016',
-      title: 'Computer Science Degree',
-      description: 'Graduated with honors, focus on software engineering and human-computer interaction',
-      type: 'education',
     },
     {
       date: '2015',
-      title: 'First Web Application',
-      description: 'Built and launched first commercial web application, discovering passion for web development',
-      type: 'milestone',
+      title: 'Associates Degree in Business Marketing',
+      description: 'Graduated from Central Piedmont Community College with focus on business and retail',
+      type: 'education',
+    },
+    {
+      date: '2013 - 2014',
+      title: 'UX/UI Designer at Micosoftt/Elite',
+      description: 'Oversaw development of MiPortal online business operating system and built TicketCloud support ticket system',
+      type: 'career',
     },
   ],
 };

@@ -15,7 +15,7 @@ export default function SkillsGrid({ skills }: SkillsGridProps) {
   }, {} as Record<string, Skill[]>);
 
   // Define category order
-  const categoryOrder = ['Languages', 'Frontend', 'Backend', 'Tools', 'Creative'];
+  const categoryOrder = ['Languages', 'Frontend', 'Backend', 'Tools', 'Design'];
   const sortedCategories = categoryOrder.filter(cat => groupedSkills[cat]);
 
   return (

@@ -1,23 +1,23 @@
 import { ContactInfo } from '@/types/contact';
 
 export const contactInfo: ContactInfo = {
-  email: 'hello@crativo.xyz',
+  email: 'jose@crativo.xyz',
   socialLinks: [
     {
       platform: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://github.com/vivalavisca',
       icon: 'github',
     },
     {
-      platform: 'LinkedIn',
-      url: 'https://linkedin.com',
-      icon: 'linkedin',
+      platform: 'NPM',
+      url: 'https://www.npmjs.com/~vivalavisca',
+      icon: 'npm',
     },
     {
-      platform: 'X (Twitter)',
-      url: 'https://x.com',
-      icon: 'x',
+      platform: 'LinkedIn',
+      url: 'https://linkedin.com/in/joseviscasillas',
+      icon: 'linkedin',
     },
   ],
-  calendarUrl: 'https://calendly.com/placeholder',
+  calendarUrl: 'https://calendly.com/joseviscasillas',
 };
