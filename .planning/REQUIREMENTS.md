@@ -102,18 +102,18 @@
 |-------------|-------|--------|
 | LAND-01 | Phase 1 | Complete |
 | LAND-02 | Phase 1 | Complete |
-| SHOW-01 | Phase 2 | Pending |
-| SHOW-02 | Phase 2 | Pending |
-| SHOW-03 | Phase 2 | Pending |
-| SHOW-04 | Phase 2 | Pending |
-| SHOW-05 | Phase 2 | Pending |
-| PROJ-01 | Phase 2 | Pending |
-| PROJ-02 | Phase 2 | Pending |
-| PROJ-03 | Phase 2 | Pending |
-| PROJ-04 | Phase 2 | Pending |
-| PROJ-05 | Phase 2 | Pending |
-| PROJ-06 | Phase 2 | Pending |
-| PROJ-07 | Phase 2 | Pending |
+| SHOW-01 | Phase 2 | Complete |
+| SHOW-02 | Phase 2 | Complete |
+| SHOW-03 | Phase 2 | Complete |
+| SHOW-04 | Phase 2 | Complete |
+| SHOW-05 | Phase 2 | Complete |
+| PROJ-01 | Phase 2 | Complete |
+| PROJ-02 | Phase 2 | Complete |
+| PROJ-03 | Phase 2 | Complete |
+| PROJ-04 | Phase 2 | Complete |
+| PROJ-05 | Phase 2 | Complete |
+| PROJ-06 | Phase 2 | Complete |
+| PROJ-07 | Phase 2 | Complete |
 | ABUT-01 | Phase 3 | Pending |
 | ABUT-02 | Phase 3 | Pending |
 | ABUT-03 | Phase 3 | Pending |
@@ -137,4 +137,4 @@
 
 ---
 *Requirements defined: 2026-01-24*
-*Last updated: 2026-01-24 after roadmap creation*
+*Last updated: 2026-01-24 after Phase 2 completion*

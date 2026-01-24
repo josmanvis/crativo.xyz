@@ -11,7 +11,7 @@ Deliver an immersive portfolio site in four phases: establish the Remotion-power
 - Decimal phases (e.g., 2.1): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: Landing Experience** - Remotion intro animation and project scaffold
-- [ ] **Phase 2: Project Portfolio** - Showcase grid, filtering, and individual project pages
+- [x] **Phase 2: Project Portfolio** - Showcase grid, filtering, and individual project pages
 - [ ] **Phase 3: About & Contact** - Bio, skills, timeline, and contact options
 - [ ] **Phase 4: Polish & Performance** - Responsive design, animations, SEO, and optimization
 
@@ -44,8 +44,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Project data model, showcase grid with cards, and category filtering
-- [ ] 02-02-PLAN.md -- Individual project detail pages with all content sections
+- [x] 02-01-PLAN.md -- Project data model, showcase grid with cards, and category filtering
+- [x] 02-02-PLAN.md -- Individual project detail pages with all content sections
 
 ### Phase 3: About & Contact
 **Goal**: Visitors understand who built these projects and can easily get in touch
@@ -86,6 +86,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Landing Experience | 2/2 | Complete | 2026-01-24 |
-| 2. Project Portfolio | 0/2 | Planned | - |
+| 2. Project Portfolio | 2/2 | Complete | 2026-01-24 |
 | 3. About & Contact | 0/TBD | Not started | - |
 | 4. Polish & Performance | 0/TBD | Not started | - |
