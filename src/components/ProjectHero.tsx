@@ -3,11 +3,11 @@ import { Project } from "@/types/project";
 
 const categoryGradients: Record<Project["category"], string> = {
   Apps: "from-blue-500/40 to-cyan-500/30",
-  Libraries: "from-purple-500/40 to-pink-500/30",
+  Libraries: "from-teal-500/40 to-cyan-500/30",
   Experiments: "from-orange-500/40 to-yellow-500/30",
   Tools: "from-green-500/40 to-emerald-500/30",
   Games: "from-red-500/40 to-rose-500/30",
-  Kiosks: "from-indigo-500/40 to-violet-500/30",
+  Kiosks: "from-sky-500/40 to-blue-500/30",
 };
 
 interface ProjectHeroProps {

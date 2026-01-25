@@ -3,10 +3,10 @@ interface ProjectGalleryProps {
 }
 
 const gradientAngles = [
-  "from-blue-600/30 to-purple-600/20",
+  "from-blue-600/30 to-cyan-600/20",
   "from-emerald-600/30 to-cyan-600/20",
   "from-orange-600/30 to-pink-600/20",
-  "from-violet-600/30 to-indigo-600/20",
+  "from-teal-600/30 to-emerald-600/20",
 ];
 
 export default function ProjectGallery({ gallery }: ProjectGalleryProps) {

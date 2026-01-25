@@ -9,7 +9,7 @@ export const blogCategories: BlogCategory[] = [
   {
     slug: 'deep-dives',
     name: 'Deep Dives',
-    gradient: 'from-purple-500/30 to-pink-500/20',
+    gradient: 'from-teal-500/30 to-cyan-500/20',
   },
   {
     slug: 'tools',
@@ -24,7 +24,7 @@ export const blogCategories: BlogCategory[] = [
   {
     slug: 'thoughts',
     name: 'Thoughts',
-    gradient: 'from-indigo-500/30 to-violet-500/20',
+    gradient: 'from-sky-500/30 to-blue-500/20',
   },
 ];
 

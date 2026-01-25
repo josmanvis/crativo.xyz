@@ -6,7 +6,7 @@ interface TimelineProps {
 
 const typeColors = {
   education: 'from-blue-500 to-blue-600',
-  career: 'from-purple-500 to-purple-600',
+  career: 'from-blue-500 to-blue-600',
   achievement: 'from-pink-500 to-pink-600',
   milestone: 'from-orange-500 to-orange-600',
 };
