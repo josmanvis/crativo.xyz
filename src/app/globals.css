@@ -30,3 +30,86 @@ html, body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Mobile call splash animations */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-slower {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 1.5s ease-out infinite;
+}
+
+.animate-ping-slower {
+  animation: ping-slower 1.5s ease-out infinite 0.5s;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-fade-in-delayed {
+  animation: fade-in 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out 0.5s forwards;
+  opacity: 0;
+}

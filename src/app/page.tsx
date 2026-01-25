@@ -12,11 +12,29 @@ const RemotionIntro = dynamic(() => import("@/components/RemotionIntro"), {
   ssr: false,
 });
 
+const MobileCallSplash = dynamic(() => import("@/components/MobileCallSplash"), {
+  ssr: false,
+});
+
 export default function Home() {
   const { hasShownSplash, markSplashShown } = useSplash();
   const [showIntro, setShowIntro] = useState(!hasShownSplash);
   const [fadeOut, setFadeOut] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => {
+      // Check for mobile via width and touch capability
+      const mobile = window.innerWidth < 768 || 
+        ('ontouchstart' in window && window.innerWidth < 1024);
+      setIsMobile(mobile);
+    };
+    checkMobile();
+  }, []);
 
   // Lock scrolling when intro is visible
   useEffect(() => {
@@ -31,12 +49,18 @@ export default function Home() {
   }, [showIntro]);
 
   const handleAnimationEnd = useCallback(() => {
-    setFadeOut(true);
     markSplashShown();
-    setTimeout(() => {
+    if (isMobile) {
+      // Mobile call splash handles its own fade
       setShowIntro(false);
-    }, 800);
-  }, [markSplashShown]);
+    } else {
+      // Desktop Remotion needs manual fade
+      setFadeOut(true);
+      setTimeout(() => {
+        setShowIntro(false);
+      }, 800);
+    }
+  }, [markSplashShown, isMobile]);
 
   const filteredProjects = useMemo(
     () =>
@@ -48,7 +72,13 @@ export default function Home() {
 
   return (
     <>
-      {showIntro && (
+      {/* Mobile: iOS Call Screen */}
+      {showIntro && mounted && isMobile && (
+        <MobileCallSplash onEnded={handleAnimationEnd} />
+      )}
+
+      {/* Desktop: Remotion Intro */}
+      {showIntro && mounted && !isMobile && (
         <div
           className={`transition-opacity duration-700 ease-out ${
             fadeOut ? "opacity-0" : "opacity-100"
