@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
 import { SplashProvider } from "@/lib/SplashContext";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -76,6 +77,7 @@ export default function RootLayout({
           <div className="pt-16">
             {children}
           </div>
+          <ChatWidget />
         </SplashProvider>
       </body>
     </html>
