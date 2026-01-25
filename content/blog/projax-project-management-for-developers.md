@@ -9,8 +9,8 @@ tags:
   - VS Code
   - Monorepo
   - Developer Tools
-featured: true
 coverImage: /blog/projax.svg
+featured: true
 ---
 
 # Building Projax: A Developer's Project Dashboard

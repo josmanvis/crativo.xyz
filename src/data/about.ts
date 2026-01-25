@@ -1,6 +1,7 @@
 import { AboutData } from '@/types/about';
 
-export const aboutData: AboutData = {
+// HR Mode - The corporate speak that gets past the keyword scanners
+export const aboutDataHR: AboutData = {
   bio: {
     name: 'Jose Viscasillas',
     tagline: 'Senior Software Engineer specializing in React, video platforms, and innovation',
@@ -91,3 +92,99 @@ export const aboutData: AboutData = {
     },
   ],
 };
+
+// Normal People Mode - How I'd actually describe myself to a human
+export const aboutDataHuman: AboutData = {
+  bio: {
+    name: 'Jose Viscasillas',
+    tagline: 'I make software. Sometimes it even works.',
+    description: [
+      "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've mass the mistakes already. So you don't have to.",
+      "Currently I'm at ON24 making video conferencing not suck. Before that, I was at an Innovation Lab building kiosks that help people find tomatoes in grocery stores (real project, I swear). I've also published npm packages that actual humans use — 8,700+ downloads on one of them. Not viral, but not nothing either.",
+      "I build things because I genuinely love it. Not in a LinkedIn \"passionate about synergy\" way — I mean I'll spend my Saturday building a CLI tool because my Developer folder is chaos and I got annoyed. That's the vibe.",
+    ],
+  },
+  skills: [
+    // Languages & Core
+    { name: 'TypeScript', category: 'Languages', proficiency: 'expert' },
+    { name: 'JavaScript (ES6)', category: 'Languages', proficiency: 'expert' },
+    { name: 'HTML5', category: 'Languages', proficiency: 'expert' },
+    { name: 'CSS3', category: 'Languages', proficiency: 'expert' },
+    { name: 'PHP5', category: 'Languages', proficiency: 'advanced' },
+
+    // Frontend Frameworks
+    { name: 'React.js', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Next.js', category: 'Frontend', proficiency: 'expert' },
+    { name: 'React Native', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Tailwind CSS', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Remotion', category: 'Frontend', proficiency: 'advanced' },
+    { name: 'SASS', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Styled Components', category: 'Frontend', proficiency: 'expert' },
+
+    // Backend & Data
+    { name: 'RESTful APIs', category: 'Backend', proficiency: 'expert' },
+    { name: 'Node.js', category: 'Backend', proficiency: 'expert' },
+    { name: 'Express.js', category: 'Backend', proficiency: 'expert' },
+    { name: 'Ruby on Rails', category: 'Backend', proficiency: 'advanced' },
+    { name: 'CouchDB', category: 'Backend', proficiency: 'advanced' },
+    { name: 'SendGrid', category: 'Backend', proficiency: 'advanced' },
+
+    // Tools & Platforms
+    { name: 'Git', category: 'Tools', proficiency: 'expert' },
+    { name: 'Redux', category: 'Tools', proficiency: 'expert' },
+    { name: 'OpenTok', category: 'Tools', proficiency: 'advanced' },
+    { name: 'IBM Watson', category: 'Tools', proficiency: 'advanced' },
+    { name: 'Google Dialogflow', category: 'Tools', proficiency: 'advanced' },
+    { name: 'WordPress', category: 'Tools', proficiency: 'expert' },
+    { name: 'Project Management', category: 'Tools', proficiency: 'expert' },
+
+    // Design
+    { name: 'UI/UX Design', category: 'Design', proficiency: 'expert' },
+    { name: 'Sketch', category: 'Design', proficiency: 'advanced' },
+    { name: 'Adobe XD', category: 'Design', proficiency: 'advanced' },
+    { name: 'Photoshop', category: 'Design', proficiency: 'advanced' },
+    { name: 'Affinity Designer', category: 'Design', proficiency: 'advanced' },
+    { name: 'Affinity Photo', category: 'Design', proficiency: 'advanced' },
+  ],
+  timeline: [
+    {
+      date: '2021 - Present',
+      title: 'Senior Software Engineer at ON24',
+      description: 'Making video calls work. Hand raising, virtual backgrounds, the \"who\'s talking\" indicator — all the stuff you don\'t think about until it breaks. I also became the Safari Guy™ which is exactly as fun as it sounds.',
+      type: 'career',
+    },
+    {
+      date: '2018 - 2021',
+      title: 'Innovation Lab at Retail Business Services',
+      description: 'Built kiosks that help people find stuff in grocery stores. Voice AI that understands \"where are the red things for pasta\" and knows you mean tomatoes. Also trained co-ops, shipped npm packages, and learned that enterprise software is wild.',
+      type: 'career',
+    },
+    {
+      date: '2019',
+      title: 'Started Publishing npm Packages',
+      description: 'too-bored (virtual keyboard with fat-finger-friendly keys), gappa-comments (threaded comments that actually work), ace (stop copy-pasting boilerplate). 8,700+ downloads combined. Not famous, but not zero.',
+      type: 'achievement',
+    },
+    {
+      date: '2016 - 2017',
+      title: 'Front End Developer at Xceleration',
+      description: 'React, Redux, leaderboards for MLM companies. It was a job. I learned a lot about state management and the skincare industry.',
+      type: 'career',
+    },
+    {
+      date: '2015',
+      title: 'Associates Degree in Business Marketing',
+      description: 'Plot twist: I went to school for business. The coding thing happened on the side and then... became the main thing.',
+      type: 'education',
+    },
+    {
+      date: '2013 - 2014',
+      title: 'First Real Software Project',
+      description: 'Built an \"online operating system\" called MiPortal and a ticket system called TicketCloud. PHP5. jQuery. XML. No tests. No version control. I was 20 and fearless. We shipped it anyway.',
+      type: 'career',
+    },
+  ],
+};
+
+// Default export for backward compatibility
+export const aboutData = aboutDataHuman;

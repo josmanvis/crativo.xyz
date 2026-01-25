@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844">
+  <defs>
+    <linearGradient id="screenBg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e1e"/>
+      <stop offset="100%" style="stop-color:#121212"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Phone frame -->
+  <rect width="390" height="844" rx="50" fill="#0a0a0a"/>
+  <rect x="10" y="10" width="370" height="824" rx="42" fill="url(#screenBg2)"/>
+  
+  <!-- Dynamic Island -->
+  <rect x="130" y="20" width="130" height="35" rx="17" fill="#000"/>
+  
+  <!-- Video call mockup -->
+  <rect x="30" y="80" width="330" height="450" rx="16" fill="#000"/>
+  
+  <!-- Video grid -->
+  <rect x="40" y="90" width="150" height="105" rx="8" fill="#1a1a2e"/>
+  <circle cx="115" cy="130" r="25" fill="#3f3f46"/>
+  <ellipse cx="115" cy="175" rx="30" ry="18" fill="#3f3f46"/>
+  
+  <rect x="200" y="90" width="150" height="105" rx="8" fill="#1a1a2e"/>
+  <circle cx="275" cy="130" r="25" fill="#3f3f46"/>
+  <ellipse cx="275" cy="175" rx="30" ry="18" fill="#3f3f46"/>
+  
+  <rect x="40" y="205" width="150" height="105" rx="8" fill="#1a1a2e"/>
+  <circle cx="115" cy="245" r="25" fill="#3f3f46"/>
+  <ellipse cx="115" cy="290" rx="30" ry="18" fill="#3f3f46"/>
+  
+  <rect x="200" y="205" width="150" height="105" rx="8" fill="#1a1a2e"/>
+  <circle cx="275" cy="245" r="25" fill="#3f3f46"/>
+  <ellipse cx="275" cy="290" rx="30" ry="18" fill="#3f3f46"/>
+  
+  <!-- Screen share area -->
+  <rect x="40" y="320" width="310" height="150" rx="8" fill="#0f172a"/>
+  <text x="195" y="380" font-family="monospace" font-size="11" fill="#64748b" text-anchor="middle">Shared Screen</text>
+  <!-- Code on shared screen -->
+  <rect x="60" y="400" width="80" height="6" rx="1" fill="#3b82f6" opacity="0.5"/>
+  <rect x="60" y="412" width="120" height="6" rx="1" fill="#64748b" opacity="0.3"/>
+  <rect x="60" y="424" width="100" height="6" rx="1" fill="#64748b" opacity="0.3"/>
+  <rect x="60" y="436" width="140" height="6" rx="1" fill="#22c55e" opacity="0.4"/>
+  
+  <!-- FLOATNOTE ANNOTATIONS -->
+  <!-- Arrow pointing to something -->
+  <path d="M280 380 L320 350" stroke="#22c55e" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <polygon points="318,355 325,345 312,352" fill="#22c55e"/>
+  
+  <!-- Rectangle highlight -->
+  <rect x="55" y="395" width="130" height="55" rx="4" fill="none" stroke="#22c55e" stroke-width="3"/>
+  
+  <!-- Text callout -->
+  <rect x="200" y="400" width="120" height="35" rx="8" fill="#22c55e"/>
+  <text x="260" y="423" font-family="system-ui" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">This function! 👆</text>
+  
+  <!-- Call controls -->
+  <rect x="80" y="485" width="230" height="40" rx="20" fill="#1a1a1a"/>
+  <circle cx="130" cy="505" r="14" fill="#ef4444"/>
+  <circle cx="175" cy="505" r="14" fill="#333"/>
+  <circle cx="220" cy="505" r="14" fill="#333"/>
+  <circle cx="265" cy="505" r="14" fill="#22c55e"/>
+  
+  <!-- Feature callout -->
+  <rect x="30" y="560" width="330" height="120" rx="16" fill="#1a1a1a" stroke="#333"/>
+  <text x="195" y="600" font-family="system-ui" font-size="18" fill="#fff" text-anchor="middle" font-weight="600">Perfect for Code Reviews</text>
+  <text x="195" y="630" font-family="system-ui" font-size="14" fill="#64748b" text-anchor="middle">Point at exactly what you mean.</text>
+  <text x="195" y="655" font-family="system-ui" font-size="14" fill="#64748b" text-anchor="middle">No more "the thing below the other thing"</text>
+  
+  <!-- Stats -->
+  <g transform="translate(50, 710)">
+    <text x="0" y="0" font-family="system-ui" font-size="28" fill="#fff" font-weight="bold">475+</text>
+    <text x="0" y="25" font-family="system-ui" font-size="12" fill="#64748b">downloads</text>
+  </g>
+  <g transform="translate(170, 710)">
+    <text x="0" y="0" font-family="system-ui" font-size="28" fill="#fff" font-weight="bold">Free</text>
+    <text x="0" y="25" font-family="system-ui" font-size="12" fill="#64748b">& open source</text>
+  </g>
+  <g transform="translate(270, 710)">
+    <text x="0" y="0" font-family="system-ui" font-size="28" fill="#fff" font-weight="bold">macOS</text>
+    <text x="0" y="25" font-family="system-ui" font-size="12" fill="#64748b">native app</text>
+  </g>
+</svg>

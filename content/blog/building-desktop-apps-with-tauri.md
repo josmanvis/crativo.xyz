@@ -9,8 +9,8 @@ tags:
   - SolidJS
   - Desktop
   - macOS
-featured: true
 coverImage: /blog/tauri-solidjs.svg
+featured: true
 ---
 
 # Building Desktop Apps with Tauri and SolidJS

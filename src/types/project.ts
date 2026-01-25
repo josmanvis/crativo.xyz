@@ -10,6 +10,19 @@ export interface ProjectCodeSnippet {
   filename: string;
 }
 
+export interface ProjectFeature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export interface ProjectPreview {
+  type: 'screenshot' | 'video' | 'demo';
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -24,4 +37,6 @@ export interface Project {
   links: ProjectLink[];
   gallery: string[];
   codeSnippet: ProjectCodeSnippet;
+  features?: ProjectFeature[];
+  previews?: ProjectPreview[];
 }

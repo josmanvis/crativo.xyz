@@ -1,12 +1,12 @@
 <svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0c0a1d"/>
-      <stop offset="100%" style="stop-color:#1a0a2e"/>
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
     </linearGradient>
     <linearGradient id="stream" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ec4899"/>
-      <stop offset="100%" style="stop-color:#8b5cf6"/>
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
     </linearGradient>
     <filter id="blur7">
       <feGaussianBlur stdDeviation="20"/>
@@ -67,9 +67,9 @@
   <g stroke="url(#stream)" stroke-width="1" opacity="0.3">
     <path d="M100 100 Q50 200, 100 300" fill="none"/>
     <path d="M700 100 Q750 200, 700 300" fill="none"/>
-    <circle cx="100" cy="100" r="4" fill="#ec4899"/>
-    <circle cx="700" cy="100" r="4" fill="#8b5cf6"/>
-    <circle cx="100" cy="300" r="4" fill="#ec4899"/>
-    <circle cx="700" cy="300" r="4" fill="#8b5cf6"/>
+    <circle cx="100" cy="100" r="4" fill="#f97316"/>
+    <circle cx="700" cy="100" r="4" fill="#ea580c"/>
+    <circle cx="100" cy="300" r="4" fill="#f97316"/>
+    <circle cx="700" cy="300" r="4" fill="#ea580c"/>
   </g>
 </svg>

@@ -47,9 +47,13 @@ export default function Home() {
         {!showIntro && <DotGrid opacity={0.08} spacing={60} dotSize={1.5} />}
         
         {/* Header */}
-        <div className="text-center py-16">
-          <h1 className="text-4xl font-bold tracking-tight">crativo</h1>
-          <p className="text-gray-400 mt-2">Creative Software Portfolio</p>
+        <div className="text-center py-16 px-6">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-transparent">
+            Built different.
+          </h1>
+          <p className="text-gray-500 mt-4 text-lg max-w-md mx-auto">
+            Apps, tools, and libraries that solve real problems.
+          </p>
         </div>
 
         {/* Category Filter */}

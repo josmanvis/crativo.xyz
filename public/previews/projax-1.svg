@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0c0c"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Phone frame -->
+  <rect width="390" height="844" rx="50" fill="#0a0a0a"/>
+  <rect x="10" y="10" width="370" height="824" rx="42" fill="url(#termBg)"/>
+  
+  <!-- Dynamic Island -->
+  <rect x="130" y="20" width="130" height="35" rx="17" fill="#000"/>
+  
+  <!-- Terminal window -->
+  <rect x="20" y="70" width="350" height="500" rx="12" fill="#0f0f0f" stroke="#333" stroke-width="1"/>
+  
+  <!-- Terminal header -->
+  <rect x="20" y="70" width="350" height="32" rx="12" fill="#1a1a1a"/>
+  <rect x="20" y="90" width="350" height="12" fill="#1a1a1a"/>
+  <circle cx="42" cy="86" r="6" fill="#ff5f57"/>
+  <circle cx="62" cy="86" r="6" fill="#febc2e"/>
+  <circle cx="82" cy="86" r="6" fill="#28c840"/>
+  <text x="195" y="90" font-family="system-ui" font-size="11" fill="#666" text-anchor="middle">projax — ~/Developer</text>
+  
+  <!-- Command line -->
+  <text x="35" y="130" font-family="monospace" font-size="13" fill="#888">❯</text>
+  <text x="55" y="130" font-family="monospace" font-size="13" fill="#fff">projax list</text>
+  
+  <!-- Project list output -->
+  <g transform="translate(35, 155)">
+    <!-- Header -->
+    <text x="0" y="0" font-family="monospace" font-size="11" fill="#3b82f6">PROJECT</text>
+    <text x="140" y="0" font-family="monospace" font-size="11" fill="#3b82f6">STATUS</text>
+    <text x="220" y="0" font-family="monospace" font-size="11" fill="#3b82f6">PORT</text>
+    <text x="270" y="0" font-family="monospace" font-size="11" fill="#3b82f6">GIT</text>
+    
+    <!-- Divider -->
+    <line x1="0" y1="10" x2="310" y2="10" stroke="#333" stroke-width="1"/>
+    
+    <!-- Project rows -->
+    <g transform="translate(0, 30)">
+      <circle cx="-12" cy="-4" r="4" fill="#22c55e"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#fff">crativo.xyz</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#22c55e">Running</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#888">3000</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#22c55e">✓ clean</text>
+    </g>
+    
+    <g transform="translate(0, 55)">
+      <circle cx="-12" cy="-4" r="4" fill="#22c55e"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#fff">qortr</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#22c55e">Running</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#888">3001</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#f97316">3 dirty</text>
+    </g>
+    
+    <g transform="translate(0, 80)">
+      <circle cx="-12" cy="-4" r="4" fill="#64748b"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#888">floatnote</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#64748b">Stopped</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#64748b">—</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#22c55e">✓ clean</text>
+    </g>
+    
+    <g transform="translate(0, 105)">
+      <circle cx="-12" cy="-4" r="4" fill="#64748b"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#888">pubsafe</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#64748b">Stopped</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#64748b">—</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#22c55e">✓ clean</text>
+    </g>
+    
+    <g transform="translate(0, 130)">
+      <circle cx="-12" cy="-4" r="4" fill="#64748b"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#888">toolbench</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#64748b">Stopped</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#64748b">—</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#ef4444">47 dirty</text>
+    </g>
+    
+    <g transform="translate(0, 155)">
+      <circle cx="-12" cy="-4" r="4" fill="#22c55e"/>
+      <text x="0" y="0" font-family="monospace" font-size="12" fill="#fff">roombooking</text>
+      <text x="140" y="0" font-family="monospace" font-size="12" fill="#22c55e">Running</text>
+      <text x="220" y="0" font-family="monospace" font-size="12" fill="#888">3002</text>
+      <text x="270" y="0" font-family="monospace" font-size="12" fill="#22c55e">✓ clean</text>
+    </g>
+  </g>
+  
+  <!-- Summary line -->
+  <text x="35" y="375" font-family="monospace" font-size="11" fill="#64748b">6 projects • 3 running • 50 uncommitted files</text>
+  
+  <!-- New command -->
+  <text x="35" y="420" font-family="monospace" font-size="13" fill="#888">❯</text>
+  <text x="55" y="420" font-family="monospace" font-size="13" fill="#fff">projax run crativo.xyz</text>
+  
+  <text x="35" y="450" font-family="monospace" font-size="12" fill="#22c55e">✓ Started on port 3000</text>
+  <text x="35" y="475" font-family="monospace" font-size="12" fill="#64748b">  http://localhost:3000</text>
+  
+  <!-- Cursor -->
+  <text x="35" y="520" font-family="monospace" font-size="13" fill="#888">❯</text>
+  <rect x="55" y="508" width="8" height="16" fill="#3b82f6" opacity="0.8"/>
+  
+  <!-- App info -->
+  <text x="195" y="620" font-family="system-ui" font-size="36" fill="#fff" text-anchor="middle" font-weight="bold">PROJAX</text>
+  <text x="195" y="655" font-family="system-ui" font-size="16" fill="#64748b" text-anchor="middle">Command-line project dashboard</text>
+  
+  <!-- Stats -->
+  <g transform="translate(50, 700)">
+    <text x="0" y="0" font-family="system-ui" font-size="24" fill="#fff" font-weight="bold">8,700+</text>
+    <text x="0" y="22" font-family="system-ui" font-size="11" fill="#64748b">npm downloads</text>
+  </g>
+  <g transform="translate(160, 700)">
+    <text x="0" y="0" font-family="system-ui" font-size="24" fill="#fff" font-weight="bold">CLI</text>
+    <text x="0" y="22" font-family="system-ui" font-size="11" fill="#64748b">+ TUI + Desktop</text>
+  </g>
+  <g transform="translate(260, 700)">
+    <text x="0" y="0" font-family="system-ui" font-size="24" fill="#fff" font-weight="bold">0</text>
+    <text x="0" y="22" font-family="system-ui" font-size="11" fill="#64748b">port conflicts</text>
+  </g>
+  
+  <!-- Install command -->
+  <rect x="40" y="760" width="310" height="40" rx="8" fill="#1a1a1a" stroke="#333"/>
+  <text x="195" y="785" font-family="monospace" font-size="13" fill="#888" text-anchor="middle">npm install -g projax</text>
+</svg>
