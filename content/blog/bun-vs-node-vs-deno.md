@@ -2,7 +2,7 @@
 title: "Bun vs Node vs Deno: Picking Your JS Runtime"
 excerpt: Three runtimes, different philosophies. Here's how to choose.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-12
 tags:
   - JavaScript
   - Node.js

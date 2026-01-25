@@ -2,7 +2,7 @@
 title: "Signals: Why Every Framework Is Copying This Pattern"
 excerpt: From Solid to Angular to Svelte, signals are taking over. Here's why.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-15
 tags:
   - JavaScript
   - Reactivity

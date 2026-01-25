@@ -2,7 +2,7 @@
 title: Why I Stopped Using Create React App (And What I Use Instead)
 excerpt: CRA served us well for years. But it's 2025, and there are better options.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2024-12-20
 tags:
   - React
   - Vite

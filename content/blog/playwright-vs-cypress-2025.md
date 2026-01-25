@@ -2,7 +2,7 @@
 title: "Playwright vs Cypress: An Honest Comparison in 2025"
 excerpt: I've used both in production. Here's which one I reach for (and when).
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-18
 tags:
   - Testing
   - Playwright

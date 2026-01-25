@@ -2,7 +2,7 @@
 title: "Monorepos: When They Help, When They Hurt"
 excerpt: I've used monorepos and polyrepos. Here's how to know which is right for your team.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-07
 tags:
   - Architecture
   - DevOps

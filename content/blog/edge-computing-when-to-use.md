@@ -2,7 +2,7 @@
 title: "Edge Computing: Cutting Through the Hype"
 excerpt: The edge is real, but it's not magic. Here's when it actually helps.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-16
 tags:
   - Edge
   - Infrastructure

@@ -2,7 +2,7 @@
 title: TypeScript 5.x Features You're Sleeping On
 excerpt: The const type parameter alone changed how I write generics. Here's what else you're missing.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-08
 tags:
   - TypeScript
   - JavaScript

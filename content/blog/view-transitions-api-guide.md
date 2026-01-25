@@ -2,7 +2,7 @@
 title: The View Transitions API Changes Everything for SPAs
 excerpt: Native page transitions in the browser. No libraries. No hacks. Finally.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-11
 tags:
   - CSS
   - JavaScript

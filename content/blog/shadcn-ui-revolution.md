@@ -2,7 +2,7 @@
 title: "The shadcn/ui Approach: Why Copy-Paste Beats npm install"
 excerpt: shadcn/ui flipped the component library model. Here's why that matters.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-04
 tags:
   - React
   - UI

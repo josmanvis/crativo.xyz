@@ -1,6 +1,6 @@
 ---
 title: "Pre-Publish Security Scanning: How I Almost Leaked API Keys (and Built pubsafe)"
-date: "2025-01-25"
+publishedAt: 2024-07-10
 description: "The story of how I almost published an npm package with sensitive credentials, and the security scanning tool I built to prevent it from happening again."
 tags: ["security", "npm", "cli", "devtools", "secrets"]
 coverImage: /blog/pubsafe.svg

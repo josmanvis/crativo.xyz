@@ -2,7 +2,7 @@
 title: Why Every React Dev Should Learn a Little Rust
 excerpt: Not to write Rust professionally. To understand your tools—and become a better developer.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2024-12-28
 tags:
   - Rust
   - React

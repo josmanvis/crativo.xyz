@@ -2,7 +2,7 @@
 title: Why Your Bundle Is Still Huge (And How to Actually Fix It)
 excerpt: I shaved 400KB off a production bundle last month. Here's everything I learned.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-02
 tags:
   - Performance
   - JavaScript

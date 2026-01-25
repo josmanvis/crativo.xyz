@@ -2,7 +2,7 @@
 title: "Turbopack, SWC, Biome: The Rust Revolution in JS Tooling"
 excerpt: JavaScript tools written in Rust are 10-100x faster. Here's what's happening and why.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-20
 tags:
   - Rust
   - JavaScript

@@ -1,6 +1,6 @@
 ---
 title: "Building Beautiful Terminal UIs with Ink: React for the Command Line"
-date: "2025-01-25"
+publishedAt: 2024-03-20
 description: "A deep dive into building interactive terminal applications with Ink. From basic components to complex state management, learn to create CLI tools that feel like native apps."
 tags: ["cli", "terminal", "ink", "react", "tui", "developer-tools"]
 coverImage: /blog/terminal-ink.svg

@@ -1,6 +1,6 @@
 ---
 title: "Building a Search Engine with Bun: The angine Deep Dive"
-date: "2025-01-25"
+publishedAt: 2024-06-15
 description: "How I built a fast, lightweight search engine using Bun's native SQLite, full-text search, and modern indexing techniques. A deep dive into search architecture for side projects."
 tags: ["bun", "search", "sqlite", "full-text-search", "architecture"]
 coverImage: /blog/bun-search.svg

@@ -2,7 +2,7 @@
 title: "The AI Tools I Actually Pay For (And Why)"
 excerpt: No affiliate links, no sponsored content. Just the AI tools I've paid for with my own money after trying dozens of alternatives.
 category: deep-dives
-publishedAt: 2025-01-29
+publishedAt: 2025-01-19
 tags:
   - AI
   - Tools

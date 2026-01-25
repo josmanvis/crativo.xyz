@@ -2,7 +2,7 @@
 title: React Server Components Explained (For Real This Time)
 excerpt: RSC confused me for months. Here's the mental model that finally made it click.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-13
 tags:
   - React
   - RSC

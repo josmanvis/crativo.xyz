@@ -2,7 +2,7 @@
 title: "htmx: Is the Return to Simplicity Actually Simpler?"
 excerpt: I built the same app in htmx and React. Here's my honest take.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2024-12-30
 tags:
   - htmx
   - JavaScript

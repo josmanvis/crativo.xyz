@@ -2,7 +2,7 @@
 title: "CSS :has() - The Parent Selector We Waited 20 Years For"
 excerpt: CSS finally lets us select parents based on children. This changes everything.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-09
 tags:
   - CSS
   - Frontend

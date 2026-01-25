@@ -2,7 +2,7 @@
 title: "AI Agents Are Overhyped But I'm Building One Anyway"
 excerpt: Agent frameworks promise autonomous AI that solves complex problems. The reality? Fragile loops and hallucinated tool calls. But there's potential.
 category: deep-dives
-publishedAt: 2025-01-26
+publishedAt: 2025-01-22
 tags:
   - AI
   - Agents

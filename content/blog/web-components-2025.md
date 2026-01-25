@@ -2,7 +2,7 @@
 title: "Web Components in 2025: Finally Ready for Primetime?"
 excerpt: I've been skeptical of Web Components for years. Here's why I'm reconsidering.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-03
 tags:
   - Web Components
   - JavaScript

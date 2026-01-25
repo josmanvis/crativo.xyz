@@ -2,7 +2,7 @@
 title: "SSR vs SSG vs ISR: Choosing the Right Rendering Strategy"
 excerpt: Three acronyms, three mental models. Here's when to use each.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-06
 tags:
   - React
   - Next.js

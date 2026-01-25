@@ -2,7 +2,7 @@
 title: React 19 Features That Actually Matter (And Which Are Hype)
 excerpt: After months with React 19, here's what's real and what's marketing.
 category: deep-dives
-publishedAt: 2025-01-25
+publishedAt: 2025-01-21
 tags:
   - React
   - JavaScript
