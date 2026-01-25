@@ -1,6 +1,40 @@
+import { Metadata } from 'next';
 import { getAllPosts, categories } from '@/lib/blog';
 import BlogList from '@/components/blog/BlogList';
 import { DotGrid } from '@/components/DotGrid';
+
+export const metadata: Metadata = {
+  title: 'Blog | Jose Viscasillas - Software Engineering & Web Development',
+  description: 'Technical articles by Jose Viscasillas on React, TypeScript, AI, developer tools, and modern web development. 21 years of coding experience shared.',
+  keywords: [
+    'Jose Viscasillas',
+    'Jose Viscasillas blog',
+    'software engineering blog',
+    'web development',
+    'React tutorials',
+    'TypeScript',
+    'AI development',
+    'developer tools',
+  ],
+  authors: [{ name: 'Jose Viscasillas', url: 'https://crativo.xyz' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://crativo.xyz/blog',
+    siteName: 'crativo.xyz',
+    title: 'Blog | Jose Viscasillas',
+    description: 'Technical articles on React, TypeScript, AI, and developer tools by Jose Viscasillas.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@crativo',
+    creator: '@crativo',
+  },
+  alternates: {
+    canonical: 'https://crativo.xyz/blog',
+  },
+};
 
 export default function BlogPage() {
   const posts = getAllPosts();
