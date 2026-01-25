@@ -16,7 +16,8 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-syntax-highlighter": "^16.1.0",
-    "remotion": "^4.0.409"
+    "remotion": "^4.0.409",
+    "twilio": "^5.12.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

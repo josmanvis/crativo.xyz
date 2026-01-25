@@ -1,14 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ContactFormData } from '@/types/contact';
+import twilio from 'twilio';
+
+interface ContactFormData {
+  name?: string;
+  email: string;
+  subject?: string;
+  message: string;
+}
+
+const JOSE_PHONE = '+19105505068';
 
 export async function POST(request: NextRequest) {
   try {
     const data: ContactFormData = await request.json();
 
     // Validate required fields
-    if (!data.name || !data.email || !data.subject || !data.message) {
+    if (!data.email || !data.message) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'Email and message are required' },
         { status: 400 }
       );
     }
@@ -22,23 +31,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // For v1: Log to console (placeholder for email service integration)
-    console.log('Contact form submission:', {
-      name: data.name,
-      email: data.email,
-      subject: data.subject,
-      message: data.message,
-      timestamp: new Date().toISOString(),
+    // Send SMS via Twilio
+    const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const twilioPhone = process.env.TWILIO_PHONE_NUMBER;
+
+    if (!accountSid || !authToken || !twilioPhone) {
+      console.error('Twilio credentials not configured');
+      // Fall back to just logging if Twilio not configured
+      console.log('Contact form submission:', {
+        email: data.email,
+        message: data.message,
+        timestamp: new Date().toISOString(),
+      });
+      return NextResponse.json(
+        { message: 'Message received (SMS not configured)' },
+        { status: 200 }
+      );
+    }
+
+    const client = twilio(accountSid, authToken);
+
+    // Format the SMS message
+    const smsBody = `📬 crativo.xyz\n\nFrom: ${data.email}\n\n${data.message.slice(0, 1400)}`;
+
+    await client.messages.create({
+      body: smsBody,
+      from: twilioPhone,
+      to: JOSE_PHONE,
     });
 
-    // TODO: Integrate email service (Resend, SendGrid, etc.)
-    // Example with Resend:
-    // await resend.emails.send({
-    //   from: 'noreply@crativo.xyz',
-    //   to: 'hello@crativo.xyz',
-    //   subject: `Contact Form: ${data.subject}`,
-    //   text: `From: ${data.name} (${data.email})\n\n${data.message}`,
-    // });
+    console.log('SMS sent successfully to', JOSE_PHONE);
 
     return NextResponse.json(
       { message: 'Message sent successfully' },
