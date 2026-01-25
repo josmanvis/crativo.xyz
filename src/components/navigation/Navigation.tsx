@@ -6,8 +6,13 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="text-lg md:text-xl font-bold hover:text-neutral-300 transition-colors flex-shrink-0">
-            crativo
+          <Link href="/" className="group flex items-baseline hover:opacity-80 transition-opacity flex-shrink-0">
+            <span className="text-xl md:text-2xl font-bold italic text-white" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              crativo
+            </span>
+            <span className="text-xl md:text-2xl font-bold italic text-yellow-400" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+              .xyz
+            </span>
           </Link>
 
           {/* Navigation Links - Horizontal scroll on mobile */}
