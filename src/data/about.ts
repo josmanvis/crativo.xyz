@@ -96,7 +96,7 @@ export const aboutDataHR: AboutData = {
 // Normal People Mode - How I'd actually describe myself to a human
 export const aboutDataHuman: AboutData = {
   bio: {
-    name: 'Jose Einstein',
+    name: 'Jose Einstein Pants',
     tagline: '"I have 200+ unfinished projects and mass anxiety about all of them. But hey, at least I ship the ones that pay the bills."',
     description: [
       "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've made the mistakes already. So you don't have to.",
