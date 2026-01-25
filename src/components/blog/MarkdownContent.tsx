@@ -68,8 +68,9 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
     // Headings
     if (line.startsWith('### ')) {
       elements.push(
-        <h3 key={key++} className="text-xl font-bold text-white mt-6 mb-3">
-          {parseInline(line.slice(4))}
+        <h3 key={key++} className="group flex items-center gap-3 text-xl font-bold text-white mt-10 mb-4">
+          <span className="w-1 h-5 rounded-full bg-gradient-to-b from-teal-400 to-emerald-500 opacity-60 group-hover:opacity-100 transition-opacity" />
+          <span>{parseInline(line.slice(4))}</span>
         </h3>
       );
       i++;
@@ -77,8 +78,11 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
     }
     if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={key++} className="text-2xl font-bold text-white mt-8 mb-4">
-          {parseInline(line.slice(3))}
+        <h2 key={key++} className="group relative mt-14 mb-5">
+          <div className="absolute -left-4 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-emerald-400 via-teal-500 to-cyan-500 opacity-70 group-hover:opacity-100 transition-opacity" />
+          <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">
+            {parseInline(line.slice(3))}
+          </span>
         </h2>
       );
       i++;
@@ -86,8 +90,11 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
     }
     if (line.startsWith('# ')) {
       elements.push(
-        <h1 key={key++} className="text-3xl font-bold text-white mt-8 mb-4">
-          {parseInline(line.slice(2))}
+        <h1 key={key++} className="relative mt-12 mb-6">
+          <span className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
+            {parseInline(line.slice(2))}
+          </span>
+          <div className="mt-3 h-px w-24 bg-gradient-to-r from-emerald-500/50 to-transparent" />
         </h1>
       );
       i++;
