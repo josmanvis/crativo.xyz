@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import twilio from 'twilio';
-import { conversations } from '../send/route';
+import { conversations, blockedFingerprints } from '../send/route';
 
 const JOSE_PHONE = '+19105505068';
 
@@ -12,13 +12,54 @@ export async function POST(request: NextRequest) {
     const body = formData.get('Body') as string;
     const to = formData.get('To') as string;
 
-    console.log('Webhook received:', { from, to, body });
+    console.log('Webhook received:', { from, to, body: body?.slice(0, 50) });
 
     // Check if this is from Jose
     if (from === JOSE_PHONE) {
-      // Jose is replying to a visitor
-      // The format should be: "+1XXXXXXXXXX message" or just look for the most recent conversation
+      const trimmedBody = body.trim().toUpperCase();
       
+      // Handle BLOCK command
+      if (trimmedBody === 'BLOCK') {
+        // Find the most recent conversation and block it
+        const recentConversation = Array.from(conversations.entries())
+          .filter(([_, conv]) => conv.messages.length > 0 && !conv.blockedAt)
+          .sort((a, b) => {
+            const aLast = a[1].messages[a[1].messages.length - 1]?.timestamp || new Date(0);
+            const bLast = b[1].messages[b[1].messages.length - 1]?.timestamp || new Date(0);
+            return new Date(bLast).getTime() - new Date(aLast).getTime();
+          })[0];
+
+        if (recentConversation) {
+          const [phoneNumber, conv] = recentConversation;
+          conv.blockedAt = new Date();
+          
+          // Also block the fingerprint
+          if (conv.fingerprint && conv.fingerprint !== 'unknown') {
+            blockedFingerprints.add(conv.fingerprint);
+          }
+
+          // Send confirmation to Jose
+          const accountSid = process.env.TWILIO_ACCOUNT_SID;
+          const authToken = process.env.TWILIO_AUTH_TOKEN;
+          const twilioPhone = process.env.TWILIO_PHONE_NUMBER;
+
+          if (accountSid && authToken && twilioPhone) {
+            const client = twilio(accountSid, authToken);
+            await client.messages.create({
+              body: `✅ Blocked ${phoneNumber} [${conv.fingerprint?.slice(0, 8)}]`,
+              from: twilioPhone,
+              to: JOSE_PHONE,
+            });
+          }
+        }
+
+        return new NextResponse(
+          '<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+          { headers: { 'Content-Type': 'text/xml' } }
+        );
+      }
+
+      // Jose is replying to a visitor
       // Try to parse recipient phone from message (e.g., "9105551234 Hey thanks!")
       const phoneMatch = body.match(/^(\+?1?\d{10})\s+([\s\S]+)$/);
       
@@ -33,29 +74,37 @@ export async function POST(request: NextRequest) {
         targetPhone = phone;
         messageText = phoneMatch[2];
       } else {
-        // Find the most recent conversation
+        // Find the most recent active conversation
         const recentConversation = Array.from(conversations.entries())
-          .filter(([_, msgs]) => msgs.length > 0)
+          .filter(([_, conv]) => conv.messages.length > 0 && !conv.blockedAt)
           .sort((a, b) => {
-            const aLast = a[1][a[1].length - 1]?.timestamp || new Date(0);
-            const bLast = b[1][b[1].length - 1]?.timestamp || new Date(0);
+            const aLast = a[1].messages[a[1].messages.length - 1]?.timestamp || new Date(0);
+            const bLast = b[1].messages[b[1].messages.length - 1]?.timestamp || new Date(0);
             return new Date(bLast).getTime() - new Date(aLast).getTime();
           })[0];
 
         if (!recentConversation) {
-          return new NextResponse('No active conversation', { status: 200 });
+          return new NextResponse(
+            '<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+            { headers: { 'Content-Type': 'text/xml' } }
+          );
         }
 
         targetPhone = recentConversation[0];
         messageText = body;
       }
 
-      // Add Jose's reply to the conversation
-      if (!conversations.has(targetPhone)) {
-        conversations.set(targetPhone, []);
+      // Get conversation
+      const conv = conversations.get(targetPhone);
+      if (!conv || conv.blockedAt) {
+        return new NextResponse(
+          '<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+          { headers: { 'Content-Type': 'text/xml' } }
+        );
       }
 
-      conversations.get(targetPhone)!.push({
+      // Add Jose's reply to the conversation
+      conv.messages.push({
         id: Date.now().toString(),
         text: messageText,
         sender: 'jose',
@@ -83,12 +132,25 @@ export async function POST(request: NextRequest) {
       }
     } else {
       // This is from a visitor (incoming to the Twilio number)
-      // Add to conversation
-      if (!conversations.has(from)) {
-        conversations.set(from, []);
+      // Check if this number is blocked
+      const existingConv = conversations.get(from);
+      if (existingConv?.blockedAt) {
+        return new NextResponse(
+          '<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+          { headers: { 'Content-Type': 'text/xml' } }
+        );
       }
 
-      conversations.get(from)!.push({
+      // Add to conversation
+      if (!conversations.has(from)) {
+        conversations.set(from, {
+          messages: [],
+          fingerprint: 'sms-only',
+          phoneNumber: from,
+        });
+      }
+
+      conversations.get(from)!.messages.push({
         id: Date.now().toString(),
         text: body,
         sender: 'user',
@@ -104,7 +166,7 @@ export async function POST(request: NextRequest) {
         const client = twilio(accountSid, authToken);
         
         await client.messages.create({
-          body: `📱 crativo.xyz\nFrom: ${from}\n\n${body}`,
+          body: `📱 crativo.xyz [sms-only]\nFrom: ${from}\n\n${body}\n\n💡 Reply "BLOCK" to block`,
           from: twilioPhone,
           to: JOSE_PHONE,
         });
@@ -112,10 +174,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Return TwiML response (empty, no auto-reply)
-    const twiml = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>';
-    return new NextResponse(twiml, {
-      headers: { 'Content-Type': 'text/xml' },
-    });
+    return new NextResponse(
+      '<?xml version="1.0" encoding="UTF-8"?><Response></Response>',
+      { headers: { 'Content-Type': 'text/xml' } }
+    );
   } catch (error) {
     console.error('Webhook error:', error);
     return new NextResponse('Error', { status: 500 });

@@ -1,16 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import twilio from 'twilio';
 
-// In-memory store for conversations (in production, use a database)
-const conversations = new Map<string, Array<{ id: string; text: string; sender: 'user' | 'jose'; timestamp: Date }>>();
+// In-memory store (in production, use Redis/DB)
+interface MessageStore {
+  id: string;
+  text: string;
+  sender: 'user' | 'jose';
+  timestamp: Date;
+}
 
-export { conversations };
+interface ConversationData {
+  messages: MessageStore[];
+  fingerprint: string;
+  phoneNumber: string;
+  blockedAt?: Date;
+}
+
+const conversations = new Map<string, ConversationData>();
+const blockedFingerprints = new Set<string>();
+
+export { conversations, blockedFingerprints };
 
 const JOSE_PHONE = '+19105505068';
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, phoneNumber } = await request.json();
+    const { message, phoneNumber, fingerprint } = await request.json();
 
     if (!message || !phoneNumber) {
       return NextResponse.json(
@@ -19,19 +34,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Initialize conversation if needed
+    // Check if fingerprint is blocked
+    if (fingerprint && blockedFingerprints.has(fingerprint)) {
+      return NextResponse.json({ blocked: true });
+    }
+
+    // Initialize or get conversation
     if (!conversations.has(phoneNumber)) {
-      conversations.set(phoneNumber, []);
+      conversations.set(phoneNumber, {
+        messages: [],
+        fingerprint: fingerprint || 'unknown',
+        phoneNumber,
+      });
+    }
+
+    const conv = conversations.get(phoneNumber)!;
+    
+    // Update fingerprint if newer
+    if (fingerprint) {
+      conv.fingerprint = fingerprint;
+    }
+
+    // Check if this conversation is blocked
+    if (conv.blockedAt) {
+      return NextResponse.json({ blocked: true });
     }
 
     // Add message to conversation
-    const messageObj = {
+    const messageObj: MessageStore = {
       id: Date.now().toString(),
       text: message,
-      sender: 'user' as const,
+      sender: 'user',
       timestamp: new Date(),
     };
-    conversations.get(phoneNumber)!.push(messageObj);
+    conv.messages.push(messageObj);
 
     // Send SMS to Jose
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -48,8 +84,9 @@ export async function POST(request: NextRequest) {
 
     const client = twilio(accountSid, authToken);
 
-    // Format SMS to Jose with visitor info
-    const smsBody = `📱 crativo.xyz\nFrom: ${phoneNumber}\n\n${message.slice(0, 1400)}`;
+    // Format SMS to Jose with visitor info and fingerprint
+    const fpShort = fingerprint ? fingerprint.slice(0, 8) : '????????';
+    const smsBody = `📱 crativo.xyz [${fpShort}]\nFrom: ${phoneNumber}\n\n${message.slice(0, 1350)}\n\n💡 Reply "BLOCK" to block this visitor`;
 
     await client.messages.create({
       body: smsBody,

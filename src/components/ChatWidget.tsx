@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { generateFingerprint } from '@/lib/fingerprint';
 
 interface Message {
   id: string;
@@ -18,22 +19,33 @@ export default function ChatWidget() {
   const [isPhoneSet, setIsPhoneSet] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
+  const [fingerprint, setFingerprint] = useState<string | null>(null);
+  const [isBlocked, setIsBlocked] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Generate fingerprint on mount
+  useEffect(() => {
+    generateFingerprint().then(setFingerprint);
+  }, []);
 
   // Scroll to bottom when new messages arrive
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Poll for new messages
+  // Poll for new messages and check block status
   useEffect(() => {
-    if (!conversationId || !isOpen) return;
+    if (!conversationId || !isOpen || !fingerprint) return;
 
     const pollMessages = async () => {
       try {
-        const res = await fetch(`/api/chat/messages?conversationId=${conversationId}`);
+        const res = await fetch(`/api/chat/messages?conversationId=${conversationId}&fp=${fingerprint}`);
         if (res.ok) {
           const data = await res.json();
+          if (data.blocked) {
+            setIsBlocked(true);
+            return;
+          }
           setMessages(data.messages);
         }
       } catch (error) {
@@ -43,7 +55,7 @@ export default function ChatWidget() {
 
     const interval = setInterval(pollMessages, 3000);
     return () => clearInterval(interval);
-  }, [conversationId, isOpen]);
+  }, [conversationId, isOpen, fingerprint]);
 
   const formatPhoneNumber = (value: string) => {
     const numbers = value.replace(/\D/g, '');
@@ -63,7 +75,7 @@ export default function ChatWidget() {
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputText.trim() || isLoading) return;
+    if (!inputText.trim() || isLoading || isBlocked) return;
 
     const messageText = inputText.trim();
     setInputText('');
@@ -85,8 +97,16 @@ export default function ChatWidget() {
         body: JSON.stringify({
           message: messageText,
           phoneNumber: `+1${phoneNumber.replace(/\D/g, '')}`,
+          fingerprint,
         }),
       });
+
+      const data = await res.json();
+      
+      if (data.blocked) {
+        setIsBlocked(true);
+        return;
+      }
 
       if (!res.ok) {
         throw new Error('Failed to send message');
@@ -170,7 +190,18 @@ export default function ChatWidget() {
 
             {/* Messages area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
-              {!isPhoneSet ? (
+              {isBlocked ? (
+                /* Blocked message */
+                <div className="h-full flex flex-col items-center justify-center text-center p-4">
+                  <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
+                    <span className="text-3xl">🚫</span>
+                  </div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Chat unavailable</h4>
+                  <p className="text-sm text-zinc-400">
+                    This chat has been closed.
+                  </p>
+                </div>
+              ) : !isPhoneSet ? (
                 /* Phone number form */
                 <div className="h-full flex flex-col items-center justify-center text-center p-4">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
