@@ -1,0 +1,54 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="tauri" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFC131"/>
+      <stop offset="100%" style="stop-color:#24C8DB"/>
+    </linearGradient>
+    <linearGradient id="solid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c4f7c"/>
+      <stop offset="100%" style="stop-color:#446b9e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Abstract window frames -->
+  <rect x="100" y="80" width="200" height="150" rx="12" fill="none" stroke="url(#tauri)" stroke-width="3" opacity="0.8"/>
+  <rect x="110" y="90" width="180" height="20" rx="4" fill="url(#tauri)" opacity="0.3"/>
+  <circle cx="125" cy="100" r="5" fill="#ff5f57"/>
+  <circle cx="145" cy="100" r="5" fill="#febc2e"/>
+  <circle cx="165" cy="100" r="5" fill="#28c840"/>
+  
+  <rect x="150" y="160" width="220" height="160" rx="12" fill="none" stroke="url(#solid)" stroke-width="3" opacity="0.6"/>
+  <rect x="160" y="170" width="200" height="20" rx="4" fill="url(#solid)" opacity="0.3"/>
+  
+  <!-- Code lines -->
+  <g opacity="0.5">
+    <rect x="120" y="130" width="80" height="8" rx="2" fill="#FFC131"/>
+    <rect x="120" y="145" width="120" height="8" rx="2" fill="#24C8DB"/>
+    <rect x="170" y="200" width="100" height="8" rx="2" fill="#446b9e"/>
+    <rect x="170" y="215" width="140" height="8" rx="2" fill="#2c4f7c"/>
+    <rect x="170" y="230" width="80" height="8" rx="2" fill="#446b9e"/>
+  </g>
+  
+  <!-- Rust gear -->
+  <g transform="translate(550, 180)" opacity="0.7">
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#FFC131" stroke-width="4"/>
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#FFC131" stroke-width="4"/>
+    <circle cx="0" cy="0" r="20" fill="#FFC131" opacity="0.3"/>
+    <!-- Gear teeth -->
+    <rect x="-8" y="-75" width="16" height="20" rx="3" fill="#FFC131"/>
+    <rect x="-8" y="55" width="16" height="20" rx="3" fill="#FFC131"/>
+    <rect x="-75" y="-8" width="20" height="16" rx="3" fill="#FFC131"/>
+    <rect x="55" y="-8" width="20" height="16" rx="3" fill="#FFC131"/>
+  </g>
+  
+  <!-- Floating particles -->
+  <circle cx="450" cy="100" r="4" fill="#24C8DB" opacity="0.6"/>
+  <circle cx="500" cy="320" r="6" fill="#FFC131" opacity="0.4"/>
+  <circle cx="700" cy="150" r="5" fill="#446b9e" opacity="0.5"/>
+  <circle cx="680" cy="300" r="3" fill="#24C8DB" opacity="0.6"/>
+</svg>

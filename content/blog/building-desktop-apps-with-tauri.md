@@ -10,6 +10,7 @@ tags:
   - Desktop
   - macOS
 featured: true
+coverImage: /blog/tauri-solidjs.svg
 ---
 
 # Building Desktop Apps with Tauri and SolidJS

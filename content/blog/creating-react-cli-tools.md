@@ -8,6 +8,7 @@ tags:
   - CLI
   - NPM
   - Tooling
+coverImage: /blog/cli-tools.svg
 ---
 
 # Creating CLI Tools for React Development

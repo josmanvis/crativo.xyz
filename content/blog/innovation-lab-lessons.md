@@ -8,6 +8,7 @@ tags:
   - Innovation
   - Leadership
   - React
+coverImage: /blog/innovation-lab.svg
 ---
 
 # Lessons from Running an Innovation Lab

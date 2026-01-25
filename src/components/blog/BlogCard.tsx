@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BlogPost } from '@/types/blog';
 import { formatDate, blogCategories } from '@/lib/blog-utils';
 
@@ -12,12 +13,18 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <div className="bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/10 transition-all duration-200 group-hover:scale-[1.03] group-hover:ring-white/30 group-hover:shadow-lg group-hover:shadow-white/5">
-        {/* Gradient header */}
-        <div
-          className={`h-40 bg-gradient-to-br ${gradient} flex items-end p-4`}
-        >
-          <span className="text-xs text-white/60 font-medium">
+      <div className="bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/10 transition-all duration-500 ease-out group-hover:scale-[1.03] group-hover:ring-white/30 group-hover:shadow-lg group-hover:shadow-white/5">
+        {/* Cover image or gradient fallback */}
+        <div className={`h-44 relative overflow-hidden ${!post.coverImage ? `bg-gradient-to-br ${gradient}` : ''}`}>
+          {post.coverImage ? (
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+            />
+          ) : null}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <span className="absolute bottom-3 left-4 text-xs text-white/80 font-medium">
             {formatDate(post.publishedAt)}
           </span>
         </div>

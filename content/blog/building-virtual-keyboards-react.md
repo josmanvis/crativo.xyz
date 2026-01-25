@@ -9,6 +9,7 @@ tags:
   - NPM
   - Kiosk
 featured: true
+coverImage: /blog/virtual-keyboard.svg
 ---
 
 # Building Virtual Keyboards in React

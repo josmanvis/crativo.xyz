@@ -9,6 +9,7 @@ tags:
   - OpenTok
   - Video
 featured: true
+coverImage: /blog/video-conferencing.svg
 ---
 
 # Architecting Video Conferencing Features at Scale

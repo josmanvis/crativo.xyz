@@ -10,6 +10,7 @@ tags:
   - Monorepo
   - Developer Tools
 featured: true
+coverImage: /blog/projax.svg
 ---
 
 # Building Projax: A Developer's Project Dashboard

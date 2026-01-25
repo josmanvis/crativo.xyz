@@ -8,6 +8,7 @@ tags:
   - Video
   - Algorithms
   - WebRTC
+coverImage: /blog/matrix-layouts.svg
 ---
 
 # Matrix-Driven Video Grid Layouts

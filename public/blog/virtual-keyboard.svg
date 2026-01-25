@@ -1,0 +1,111 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0f23"/>
+      <stop offset="100%" style="stop-color:#1a1a3e"/>
+    </linearGradient>
+    <linearGradient id="key" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b3b5c"/>
+      <stop offset="100%" style="stop-color:#2a2a45"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#61dafb"/>
+      <stop offset="100%" style="stop-color:#764abc"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg2)"/>
+  
+  <!-- Keyboard base -->
+  <rect x="150" y="120" width="500" height="200" rx="16" fill="#1e1e32" stroke="#3b3b5c" stroke-width="2"/>
+  
+  <!-- Key rows -->
+  <!-- Row 1 -->
+  <g transform="translate(170, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">Q</text>
+  </g>
+  <g transform="translate(220, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">W</text>
+  </g>
+  <g transform="translate(270, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#glow)" stroke="#61dafb" stroke-width="2"/>
+    <text x="20" y="26" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">E</text>
+  </g>
+  <g transform="translate(320, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">R</text>
+  </g>
+  <g transform="translate(370, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">T</text>
+  </g>
+  <g transform="translate(420, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">Y</text>
+  </g>
+  <g transform="translate(470, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">U</text>
+  </g>
+  <g transform="translate(520, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">I</text>
+  </g>
+  <g transform="translate(570, 140)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">O</text>
+  </g>
+  
+  <!-- Row 2 -->
+  <g transform="translate(185, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">A</text>
+  </g>
+  <g transform="translate(235, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">S</text>
+  </g>
+  <g transform="translate(285, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">D</text>
+  </g>
+  <g transform="translate(335, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">F</text>
+  </g>
+  <g transform="translate(385, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">G</text>
+  </g>
+  <g transform="translate(435, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">H</text>
+  </g>
+  <g transform="translate(485, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">J</text>
+  </g>
+  <g transform="translate(535, 190)">
+    <rect width="40" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+    <text x="20" y="26" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">K</text>
+  </g>
+  
+  <!-- Row 3 - Space bar -->
+  <g transform="translate(250, 240)">
+    <rect width="300" height="40" rx="6" fill="url(#key)" stroke="#4a4a6a" stroke-width="1"/>
+  </g>
+  
+  <!-- Touch indicator -->
+  <circle cx="290" cy="160" r="30" fill="#61dafb" opacity="0.2"/>
+  <circle cx="290" cy="160" r="15" fill="#61dafb" opacity="0.4"/>
+  
+  <!-- React logo hint -->
+  <g transform="translate(680, 80)" opacity="0.3">
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#61dafb" stroke-width="2"/>
+    <ellipse cx="0" cy="0" rx="40" ry="15" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(30)"/>
+    <ellipse cx="0" cy="0" rx="40" ry="15" fill="none" stroke="#61dafb" stroke-width="2" transform="rotate(-30)"/>
+    <ellipse cx="0" cy="0" rx="40" ry="15" fill="none" stroke="#61dafb" stroke-width="2"/>
+    <circle cx="0" cy="0" r="6" fill="#61dafb"/>
+  </g>
+</svg>
