@@ -24,8 +24,8 @@ export default function Timeline({ events, isHRMode = false }: TimelineProps) {
         {isHRMode ? 'Professional Experience' : 'Journey'}
       </h2>
       <div className={`
-        space-y-4 max-w-3xl transition-all duration-500 ease-out
-        ${isHRMode ? 'mx-0 space-y-6' : 'mx-auto'}
+        transition-all duration-500 ease-out
+        ${isHRMode ? 'space-y-6' : 'space-y-4 max-w-3xl mx-auto'}
       `}>
         {events.map((event, index) => (
           <div 

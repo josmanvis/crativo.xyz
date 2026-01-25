@@ -30,8 +30,8 @@ export default function SkillsGrid({ skills, isHRMode = false }: SkillsGridProps
         {isHRMode ? 'Technical Proficiencies' : 'Skills & Expertise'}
       </h2>
       <div className={`
-        space-y-6 max-w-3xl transition-all duration-500 ease-out
-        ${isHRMode ? 'mx-0' : 'mx-auto'}
+        space-y-6 transition-all duration-500 ease-out
+        ${isHRMode ? '' : 'max-w-3xl mx-auto'}
       `}>
         {sortedCategories.map((category, catIndex) => (
           <div 

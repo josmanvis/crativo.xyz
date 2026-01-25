@@ -20,7 +20,7 @@ export default function AboutPage() {
         <ModeToggle isHRMode={isHRMode} onToggle={() => setIsHRMode(!isHRMode)} />
         
         <div 
-          className={`transition-all duration-500 ${isHRMode ? 'max-w-3xl' : ''}`}
+          className={`transition-all duration-500 ${isHRMode ? 'max-w-2xl mx-auto' : ''}`}
         >
           <ProfileCard bio={aboutData.bio} isHRMode={isHRMode} />
           <BioSection description={aboutData.bio.description} isHRMode={isHRMode} />
