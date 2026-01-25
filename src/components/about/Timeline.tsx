@@ -14,8 +14,8 @@ const typeColors = {
 export default function Timeline({ events }: TimelineProps) {
   return (
     <section className="mb-16">
-      <h2 className="text-2xl font-bold mb-6">Journey</h2>
-      <div className="space-y-6 max-w-3xl">
+      <h2 className="text-2xl font-bold mb-8 text-center">Journey</h2>
+      <div className="space-y-6 max-w-3xl mx-auto">
         {events.map((event, index) => (
           <div key={index} className="relative pl-8 border-l-2 border-neutral-800">
             {/* Timeline dot */}

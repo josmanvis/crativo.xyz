@@ -20,12 +20,12 @@ export default function SkillsGrid({ skills }: SkillsGridProps) {
 
   return (
     <section className="mb-16">
-      <h2 className="text-2xl font-bold mb-6">Skills & Expertise</h2>
-      <div className="space-y-8">
+      <h2 className="text-2xl font-bold mb-8 text-center">Skills & Expertise</h2>
+      <div className="space-y-8 max-w-3xl mx-auto">
         {sortedCategories.map((category) => (
-          <div key={category}>
+          <div key={category} className="text-center">
             <h3 className="text-lg font-semibold text-neutral-400 mb-3">{category}</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               {groupedSkills[category].map((skill) => (
                 <span
                   key={skill.name}
