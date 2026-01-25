@@ -12,6 +12,7 @@ export const aboutData: AboutData = {
   },
   skills: [
     // Languages & Core
+    { name: 'TypeScript', category: 'Languages', proficiency: 'expert' },
     { name: 'JavaScript (ES6)', category: 'Languages', proficiency: 'expert' },
     { name: 'HTML5', category: 'Languages', proficiency: 'expert' },
     { name: 'CSS3', category: 'Languages', proficiency: 'expert' },
@@ -19,22 +20,28 @@ export const aboutData: AboutData = {
 
     // Frontend Frameworks
     { name: 'React.js', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Next.js', category: 'Frontend', proficiency: 'expert' },
     { name: 'React Native', category: 'Frontend', proficiency: 'expert' },
-    { name: 'InfernoJS', category: 'Frontend', proficiency: 'advanced' },
+    { name: 'Tailwind CSS', category: 'Frontend', proficiency: 'expert' },
+    { name: 'Remotion', category: 'Frontend', proficiency: 'advanced' },
     { name: 'SASS', category: 'Frontend', proficiency: 'expert' },
-    { name: 'LESS', category: 'Frontend', proficiency: 'expert' },
     { name: 'Styled Components', category: 'Frontend', proficiency: 'expert' },
 
     // Backend & Data
     { name: 'RESTful APIs', category: 'Backend', proficiency: 'expert' },
     { name: 'Node.js', category: 'Backend', proficiency: 'expert' },
     { name: 'Express.js', category: 'Backend', proficiency: 'expert' },
+    { name: 'Ruby on Rails', category: 'Backend', proficiency: 'advanced' },
     { name: 'CouchDB', category: 'Backend', proficiency: 'advanced' },
+    { name: 'SendGrid', category: 'Backend', proficiency: 'advanced' },
 
     // Tools & Platforms
     { name: 'Git', category: 'Tools', proficiency: 'expert' },
-    { name: 'WordPress', category: 'Tools', proficiency: 'expert' },
+    { name: 'Redux', category: 'Tools', proficiency: 'expert' },
     { name: 'OpenTok', category: 'Tools', proficiency: 'advanced' },
+    { name: 'IBM Watson', category: 'Tools', proficiency: 'advanced' },
+    { name: 'Google Dialogflow', category: 'Tools', proficiency: 'advanced' },
+    { name: 'WordPress', category: 'Tools', proficiency: 'expert' },
     { name: 'Project Management', category: 'Tools', proficiency: 'expert' },
 
     // Design
