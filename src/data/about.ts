@@ -7,7 +7,7 @@ export const aboutDataHR: AboutData = {
     tagline: 'Senior Software Engineer specializing in React, video platforms, and innovation',
     description: [
       "I'm a Senior Software Engineer at ON24, where I develop cutting-edge video conferencing solutions using React.js, SASS, OpenTok, and styled-components. I've built features including attendee lists, hand raise, pass-the-mic, virtual backgrounds, and custom user role systems that power video platforms for thousands of users.",
-      'With over a decade of experience spanning video platforms, innovation labs, and rapid application development, I specialize in creating scalable front-end solutions. I led teams at Retail Business Services (Ahold Delhaize) where I developed kiosk software, innovation portals, and authored several NPM packages including too-bored (virtual keyboard), gappa-comments (threaded comments), and ace (React bootstrapping CLI).',
+      'With over two decades of experience — I started coding at 13 and haven\'t stopped — spanning video platforms, innovation labs, and rapid application development, I specialize in creating scalable front-end solutions. I led teams at Retail Business Services (Ahold Delhaize) where I developed kiosk software, innovation portals, and authored several NPM packages including too-bored (virtual keyboard), gappa-comments (threaded comments), and ace (React bootstrapping CLI).',
       "I'm passionate about building tools that empower developers and creating user experiences that blend technical excellence with thoughtful design. From React-Native mobile apps to enterprise web platforms, I bring ideas to life with clean code and modern best practices.",
     ],
   },
@@ -99,7 +99,7 @@ export const aboutDataHuman: AboutData = {
     name: 'Jose Einstein Pants',
     tagline: '"I have 200+ unfinished projects and mass anxiety about all of them. But hey, at least I ship the ones that pay the bills."',
     description: [
-      "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've made the mistakes already. So you don't have to.",
+      "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this since I was 13 — I'm almost 34 now — which means I've had 21 years to make mistakes so you don't have to.",
       "Currently I'm at ON24 making video conferencing not suck — hand raising, virtual backgrounds, the \"who's talking\" indicator, all that stuff. Before that, I was at an Innovation Lab at Retail Business Services building kiosks that help people find tomatoes in grocery stores (real project, I swear). Voice AI that understands \"where are the red things for pasta\" and knows you mean tomatoes. The future is weird.",
       "I've also published npm packages that actual humans use — too-bored (a virtual keyboard with fat-finger-friendly keys), gappa-comments (threaded comments that actually work), and ace (a CLI to stop copy-pasting boilerplate). 8,700+ downloads combined. Not viral, but not zero either.",
       "I build things because I genuinely love it. Not in a LinkedIn \"passionate about synergy\" way — I mean I'll spend my Saturday building a CLI tool because my Developer folder is chaos and I got annoyed. I'll refactor code that works perfectly fine because it offends me aesthetically. I have opinions about semicolons. That's the vibe.",
