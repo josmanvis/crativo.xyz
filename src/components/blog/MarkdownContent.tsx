@@ -1,227 +1,280 @@
 'use client';
 
 import { useMemo } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface MarkdownContentProps {
   content: string;
 }
 
 export default function MarkdownContent({ content }: MarkdownContentProps) {
-  const htmlContent = useMemo(() => parseMarkdown(content), [content]);
+  const elements = useMemo(() => parseMarkdown(content), [content]);
 
   return (
-    <article
-      className="prose prose-invert prose-lg max-w-none
-        prose-headings:text-white prose-headings:font-bold
-        prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4
-        prose-h2:text-2xl prose-h2:mt-6 prose-h2:mb-3
-        prose-h3:text-xl prose-h3:mt-4 prose-h3:mb-2
-        prose-p:text-gray-300 prose-p:leading-relaxed prose-p:my-4
-        prose-a:text-blue-400 prose-a:hover:text-blue-300
-        prose-strong:text-white
-        prose-li:text-gray-300"
-      dangerouslySetInnerHTML={{ __html: htmlContent }}
-    />
+    <article className="prose prose-invert prose-lg max-w-none">
+      {elements}
+    </article>
   );
 }
 
-function parseMarkdown(markdown: string): string {
-  let html = markdown;
+function parseMarkdown(markdown: string): React.ReactNode[] {
+  const elements: React.ReactNode[] = [];
+  const lines = markdown.split('\n');
+  let i = 0;
+  let key = 0;
 
-  // Code blocks with language detection
-  html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (_, lang, code) => {
-    const language = lang || 'text';
-    const highlightedCode = highlightSyntax(code.trim(), language);
-    return `<div class="bg-gray-900 rounded-lg overflow-hidden my-6 ring-1 ring-white/10">
-      <div class="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-gray-800/50">
-        <span class="text-gray-400 text-xs font-mono">${language}</span>
-      </div>
-      <pre class="p-4 overflow-x-auto"><code class="text-sm font-mono text-gray-200 leading-relaxed">${highlightedCode}</code></pre>
-    </div>`;
-  });
+  while (i < lines.length) {
+    const line = lines[i];
 
-  // Inline code
-  html = html.replace(
-    /`([^`]+)`/g,
-    '<code class="text-pink-400 bg-white/10 px-1.5 py-0.5 rounded text-sm">$1</code>'
-  );
-
-  // Headings
-  html = html.replace(
-    /^### (.*$)/gim,
-    '<h3 class="text-xl font-bold text-white mt-6 mb-3">$1</h3>'
-  );
-  html = html.replace(
-    /^## (.*$)/gim,
-    '<h2 class="text-2xl font-bold text-white mt-8 mb-4">$1</h2>'
-  );
-  html = html.replace(
-    /^# (.*$)/gim,
-    '<h1 class="text-3xl font-bold text-white mt-8 mb-4">$1</h1>'
-  );
-
-  // Bold and italic
-  html = html.replace(
-    /\*\*([^*]+)\*\*/g,
-    '<strong class="text-white font-semibold">$1</strong>'
-  );
-  html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-  // Links
-  html = html.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">$1</a>'
-  );
-
-  // Unordered lists
-  html = html.replace(
-    /^- (.*)$/gim,
-    '<li class="text-gray-300 ml-4">$1</li>'
-  );
-  html = html.replace(
-    /(<li[^>]*>.*<\/li>\n?)+/g,
-    '<ul class="list-disc list-inside my-4 space-y-1">$&</ul>'
-  );
-
-  // Numbered lists
-  html = html.replace(
-    /^\d+\. (.*)$/gim,
-    '<li class="text-gray-300 ml-4">$1</li>'
-  );
-
-  // Paragraphs
-  html = html
-    .split('\n\n')
-    .map((block) => {
-      const trimmed = block.trim();
-      if (
-        trimmed &&
-        !trimmed.startsWith('<') &&
-        !trimmed.startsWith('#') &&
-        !trimmed.startsWith('-') &&
-        !trimmed.match(/^\d+\./)
-      ) {
-        return `<p class="text-gray-300 leading-relaxed my-4">${trimmed}</p>`;
+    // Code blocks
+    if (line.startsWith('```')) {
+      const lang = line.slice(3).trim() || 'text';
+      const codeLines: string[] = [];
+      i++;
+      while (i < lines.length && !lines[i].startsWith('```')) {
+        codeLines.push(lines[i]);
+        i++;
       }
-      return block;
-    })
-    .join('\n');
+      i++; // skip closing ```
 
-  return html;
+      elements.push(
+        <div key={key++} className="my-6 rounded-lg overflow-hidden ring-1 ring-white/10">
+          <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-gray-800/50">
+            <span className="text-gray-400 text-xs font-mono">{lang}</span>
+          </div>
+          <SyntaxHighlighter
+            language={lang === 'tsx' ? 'typescript' : lang}
+            style={oneDark}
+            customStyle={{
+              margin: 0,
+              padding: '1rem',
+              background: '#1a1a1a',
+              fontSize: '0.875rem',
+            }}
+            codeTagProps={{
+              style: {
+                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+              }
+            }}
+          >
+            {codeLines.join('\n')}
+          </SyntaxHighlighter>
+        </div>
+      );
+      continue;
+    }
+
+    // Headings
+    if (line.startsWith('### ')) {
+      elements.push(
+        <h3 key={key++} className="text-xl font-bold text-white mt-6 mb-3">
+          {parseInline(line.slice(4))}
+        </h3>
+      );
+      i++;
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      elements.push(
+        <h2 key={key++} className="text-2xl font-bold text-white mt-8 mb-4">
+          {parseInline(line.slice(3))}
+        </h2>
+      );
+      i++;
+      continue;
+    }
+    if (line.startsWith('# ')) {
+      elements.push(
+        <h1 key={key++} className="text-3xl font-bold text-white mt-8 mb-4">
+          {parseInline(line.slice(2))}
+        </h1>
+      );
+      i++;
+      continue;
+    }
+
+    // Unordered lists
+    if (line.startsWith('- ')) {
+      const listItems: string[] = [];
+      while (i < lines.length && lines[i].startsWith('- ')) {
+        listItems.push(lines[i].slice(2));
+        i++;
+      }
+      elements.push(
+        <ul key={key++} className="list-disc list-inside my-4 space-y-1 text-gray-300">
+          {listItems.map((item, idx) => (
+            <li key={idx} className="ml-4">{parseInline(item)}</li>
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // Numbered lists
+    if (/^\d+\. /.test(line)) {
+      const listItems: string[] = [];
+      while (i < lines.length && /^\d+\. /.test(lines[i])) {
+        listItems.push(lines[i].replace(/^\d+\. /, ''));
+        i++;
+      }
+      elements.push(
+        <ol key={key++} className="list-decimal list-inside my-4 space-y-1 text-gray-300">
+          {listItems.map((item, idx) => (
+            <li key={idx} className="ml-4">{parseInline(item)}</li>
+          ))}
+        </ol>
+      );
+      continue;
+    }
+
+    // Tables
+    if (line.includes('|') && line.trim().startsWith('|')) {
+      const tableRows: string[][] = [];
+      while (i < lines.length && lines[i].includes('|')) {
+        const row = lines[i]
+          .split('|')
+          .map(cell => cell.trim())
+          .filter(cell => cell && !cell.match(/^[-:]+$/));
+        if (row.length > 0 && !lines[i].match(/^\|[-:\s|]+\|$/)) {
+          tableRows.push(row);
+        }
+        i++;
+      }
+      if (tableRows.length > 0) {
+        const [header, ...body] = tableRows;
+        elements.push(
+          <div key={key++} className="my-6 overflow-x-auto">
+            <table className="min-w-full border-collapse">
+              <thead>
+                <tr className="border-b border-white/20">
+                  {header.map((cell, idx) => (
+                    <th key={idx} className="px-4 py-2 text-left text-white font-semibold">
+                      {parseInline(cell)}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {body.map((row, rowIdx) => (
+                  <tr key={rowIdx} className="border-b border-white/10">
+                    {row.map((cell, cellIdx) => (
+                      <td key={cellIdx} className="px-4 py-2 text-gray-300">
+                        {parseInline(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+      continue;
+    }
+
+    // Empty lines
+    if (line.trim() === '') {
+      i++;
+      continue;
+    }
+
+    // Regular paragraphs
+    const paragraphLines: string[] = [];
+    while (
+      i < lines.length &&
+      lines[i].trim() !== '' &&
+      !lines[i].startsWith('#') &&
+      !lines[i].startsWith('```') &&
+      !lines[i].startsWith('- ') &&
+      !/^\d+\. /.test(lines[i]) &&
+      !(lines[i].includes('|') && lines[i].trim().startsWith('|'))
+    ) {
+      paragraphLines.push(lines[i]);
+      i++;
+    }
+    if (paragraphLines.length > 0) {
+      elements.push(
+        <p key={key++} className="text-gray-300 leading-relaxed my-4">
+          {parseInline(paragraphLines.join(' '))}
+        </p>
+      );
+    }
+  }
+
+  return elements;
 }
 
-function highlightSyntax(code: string, language: string): string {
-  let highlighted = escapeHtml(code);
+function parseInline(text: string): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  let key = 0;
 
-  const keywords: Record<string, string[]> = {
-    typescript: [
-      'import',
-      'export',
-      'from',
-      'const',
-      'let',
-      'var',
-      'function',
-      'return',
-      'if',
-      'else',
-      'interface',
-      'type',
-      'class',
-      'extends',
-      'implements',
-      'async',
-      'await',
-      'new',
-      'this',
-      'true',
-      'false',
-      'null',
-      'undefined',
-    ],
-    javascript: [
-      'import',
-      'export',
-      'from',
-      'const',
-      'let',
-      'var',
-      'function',
-      'return',
-      'if',
-      'else',
-      'class',
-      'extends',
-      'async',
-      'await',
-      'new',
-      'this',
-      'true',
-      'false',
-      'null',
-      'undefined',
-    ],
-    bash: [
-      'npm',
-      'npx',
-      'yarn',
-      'pnpm',
-      'cd',
-      'mkdir',
-      'rm',
-      'cp',
-      'mv',
-      'echo',
-      'export',
-      'sudo',
-    ],
-  };
+  while (remaining.length > 0) {
+    // Inline code
+    const codeMatch = remaining.match(/^`([^`]+)`/);
+    if (codeMatch) {
+      parts.push(
+        <code key={key++} className="text-pink-400 bg-white/10 px-1.5 py-0.5 rounded text-sm font-mono">
+          {codeMatch[1]}
+        </code>
+      );
+      remaining = remaining.slice(codeMatch[0].length);
+      continue;
+    }
 
-  const langKeywords = keywords[language] || keywords.javascript || [];
+    // Bold
+    const boldMatch = remaining.match(/^\*\*([^*]+)\*\*/);
+    if (boldMatch) {
+      parts.push(
+        <strong key={key++} className="text-white font-semibold">
+          {boldMatch[1]}
+        </strong>
+      );
+      remaining = remaining.slice(boldMatch[0].length);
+      continue;
+    }
 
-  // Highlight strings
-  highlighted = highlighted.replace(
-    /(["'`])(?:(?!\1)[^\\]|\\.)*?\1/g,
-    '<span class="text-green-400">$&</span>'
-  );
+    // Italic
+    const italicMatch = remaining.match(/^\*([^*]+)\*/);
+    if (italicMatch) {
+      parts.push(<em key={key++}>{italicMatch[1]}</em>);
+      remaining = remaining.slice(italicMatch[0].length);
+      continue;
+    }
 
-  // Highlight comments
-  highlighted = highlighted.replace(
-    /(\/\/.*$)/gm,
-    '<span class="text-gray-500">$1</span>'
-  );
-  highlighted = highlighted.replace(
-    /(\/\*[\s\S]*?\*\/)/g,
-    '<span class="text-gray-500">$1</span>'
-  );
+    // Links
+    const linkMatch = remaining.match(/^\[([^\]]+)\]\(([^)]+)\)/);
+    if (linkMatch) {
+      parts.push(
+        <a
+          key={key++}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:text-blue-300 underline"
+        >
+          {linkMatch[1]}
+        </a>
+      );
+      remaining = remaining.slice(linkMatch[0].length);
+      continue;
+    }
 
-  // Highlight keywords
-  langKeywords.forEach((keyword) => {
-    const regex = new RegExp(`\\b(${keyword})\\b`, 'g');
-    highlighted = highlighted.replace(
-      regex,
-      '<span class="text-purple-400">$1</span>'
-    );
-  });
+    // Regular text - find next special character
+    const nextSpecial = remaining.search(/[`*\[]/);
+    if (nextSpecial === -1) {
+      parts.push(remaining);
+      break;
+    } else if (nextSpecial === 0) {
+      // Special char didn't match a pattern, treat as text
+      parts.push(remaining[0]);
+      remaining = remaining.slice(1);
+    } else {
+      parts.push(remaining.slice(0, nextSpecial));
+      remaining = remaining.slice(nextSpecial);
+    }
+  }
 
-  // Highlight types/classes (capitalized words)
-  highlighted = highlighted.replace(
-    /\b([A-Z][a-zA-Z0-9]*)\b/g,
-    '<span class="text-yellow-400">$1</span>'
-  );
-
-  // Highlight numbers
-  highlighted = highlighted.replace(
-    /\b(\d+)\b/g,
-    '<span class="text-orange-400">$1</span>'
-  );
-
-  return highlighted;
-}
-
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  return parts.length === 1 ? parts[0] : parts;
 }
