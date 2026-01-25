@@ -55,47 +55,6 @@ async function bookRoom(roomId: string, slot: TimeSlot) {
     },
   },
   {
-    id: "on24-video",
-    title: "ON24 Video Platform",
-    description:
-      "Enterprise video conferencing platform with attendee management, hand raise, pass-the-mic, and virtual backgrounds.",
-    category: "Apps",
-    techStack: ["React.js", "SASS", "OpenTok", "Styled Components"],
-    imageUrl: "/projects/on24-video.jpg",
-    href: "/projects/on24-video",
-    year: 2024,
-    metrics: [
-      { label: "Product Teams", value: "4" },
-      { label: "Platform", value: "iOS Safari" },
-    ],
-    longDescription:
-      "Built the UI for ON24's video conferencing products using React.js, SASS, OpenTok, and styled-components. Developed and owned features including attendee list, hand raise, pass-the-mic, virtual backgrounds, and a custom user role system that allows interface customization based on subscriber roles with support for live demotion and promotion. Brought existing features to iOS Safari within 2 months and provided technical integration support to 4 other product teams.",
-    links: [
-      { label: "ON24", url: "https://www.on24.com", icon: "external" },
-    ],
-    gallery: [],
-    codeSnippet: {
-      language: "typescript",
-      filename: "VideoRoleSystem.tsx",
-      code: `interface UserRole {
-  canShare: boolean;
-  canRaiseHand: boolean;
-  canChat: boolean;
-  customUI: UIConfig;
-}
-
-export function VideoInterface({ role }: { role: UserRole }) {
-  return (
-    <VideoContainer theme={role.customUI}>
-      {role.canShare && <ScreenShareButton />}
-      {role.canRaiseHand && <HandRaiseButton />}
-      {role.canChat && <ChatPanel />}
-    </VideoContainer>
-  );
-}`,
-    },
-  },
-  {
     id: "snaptask",
     title: "SnapTask",
     description:
@@ -345,7 +304,7 @@ $ ace generate component Button --props variant,size
     title: "TicketCloud",
     description:
       "Powerful support ticket system built as the first app for MiPortal online operating system.",
-    category: "Apps",
+    category: "Kiosks",
     techStack: ["PHP5", "jQuery", "JavaScript", "XML"],
     imageUrl: "/projects/ticketcloud.jpg",
     href: "/projects/ticketcloud",
