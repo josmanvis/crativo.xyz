@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getPostBySlug, getAllSlugs } from '@/lib/blog';
 import BlogHero from '@/components/blog/BlogHero';
 import MarkdownContent from '@/components/blog/MarkdownContent';
+import { DotGrid } from '@/components/DotGrid';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -34,8 +35,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-4xl mx-auto px-6 py-8">
+    <main className="min-h-screen bg-[#0a0a0a] text-white relative">
+      <DotGrid opacity={0.06} spacing={60} dotSize={1.5} />
+      <div className="max-w-4xl mx-auto px-6 py-8 relative z-10">
         {/* Hero */}
         <BlogHero post={post} />
 

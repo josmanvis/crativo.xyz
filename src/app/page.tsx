@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { projects, categories } from "@/data/projects";
 import ProjectGrid from "@/components/ProjectGrid";
 import CategoryFilter from "@/components/CategoryFilter";
+import { DotGrid } from "@/components/DotGrid";
 
 const RemotionIntro = dynamic(() => import("@/components/RemotionIntro"), {
   ssr: false,
@@ -41,7 +42,10 @@ export default function Home() {
           <RemotionIntro onEnded={handleAnimationEnd} />
         </div>
       )}
-      <main className="min-h-screen bg-[#0a0a0a] text-white">
+      <main className="min-h-screen bg-[#0a0a0a] text-white relative">
+        {/* Dot grid background - matches intro animation */}
+        {!showIntro && <DotGrid opacity={0.08} spacing={60} dotSize={1.5} />}
+        
         {/* Header */}
         <div className="text-center py-16">
           <h1 className="text-4xl font-bold tracking-tight">crativo</h1>

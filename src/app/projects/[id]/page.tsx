@@ -4,6 +4,7 @@ import { projects } from "@/data/projects";
 import ProjectHero from "@/components/ProjectHero";
 import ProjectGallery from "@/components/ProjectGallery";
 import CodeSnippet from "@/components/CodeSnippet";
+import { DotGrid } from "@/components/DotGrid";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -34,8 +35,9 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-4xl mx-auto px-6 py-8">
+    <main className="min-h-screen bg-[#0a0a0a] text-white relative">
+      <DotGrid opacity={0.06} spacing={60} dotSize={1.5} />
+      <div className="max-w-4xl mx-auto px-6 py-8 relative z-10">
         {/* Year */}
         <p className="text-gray-500 text-sm mb-4">{project.year}</p>
 
