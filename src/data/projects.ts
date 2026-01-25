@@ -337,4 +337,217 @@ class TicketController {
 }`,
     },
   },
+
+  // PROJAX - Project Management Tool
+  {
+    id: "projax",
+    title: "PROJAX",
+    description:
+      "Cross-platform project management dashboard for managing local development projects across different tech stacks.",
+    category: "Tools",
+    techStack: ["Node.js", "Electron", "Express.js", "CLI"],
+    imageUrl: "/projects/projax.jpg",
+    href: "/projects/projax",
+    year: 2024,
+    metrics: [
+      { label: "Platforms", value: "CLI/Desktop/TUI" },
+      { label: "Languages", value: "Node/Python/Rust/Go" },
+    ],
+    longDescription:
+      "PROJAX is the ultimate cross-platform project management dashboard that provides a unified interface for managing local development projects. Features include CLI tools for project management and workflow automation, an Electron-based desktop app with modern UI, interactive terminal UI with vim bindings, automatic port detection and conflict resolution, background process management with log tracking, automatic test detection for Jest/Vitest/Mocha, REST API for programmatic access, and support for Node.js, Python, Rust, Go, and Makefile projects.",
+    links: [
+      { label: "Website", url: "https://projax.dev", icon: "external" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "bash",
+      filename: "terminal",
+      code: `# Initialize PROJAX in your projects directory
+$ projax init ~/projects
+
+# List all detected projects
+$ projax list --status
+
+# Run a project with port management
+$ projax run my-app --port auto
+
+# Check for port conflicts
+$ projax ports scan
+
+# Output:
+# ✓ Detected 12 projects
+# ✓ Running my-app on port 3001
+# ✓ No port conflicts found`,
+    },
+  },
+
+  // More Libraries - NPM Packages
+  {
+    id: "zeebra",
+    title: "zeebra",
+    description:
+      "Performant z-index management library with virtual z-stack recycling for complex UI layering.",
+    category: "Libraries",
+    techStack: ["TypeScript", "React", "NPM"],
+    imageUrl: "/projects/zeebra.jpg",
+    href: "/projects/zeebra",
+    year: 2024,
+    metrics: [
+      { label: "Focus", value: "Performance" },
+      { label: "Platform", value: "npm" },
+    ],
+    longDescription:
+      "A performant z-index management library with virtual z-stack recycling. Zeebra solves the common problem of z-index management in complex UIs by providing a centralized system that automatically manages layer ordering, prevents z-index conflicts, and recycles unused z-indices for optimal performance. Includes React bindings for seamless integration with React applications.",
+    links: [
+      { label: "npm", url: "https://www.npmjs.com/package/zeebra", icon: "package" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "typescript",
+      filename: "ZIndexManager.tsx",
+      code: `import { useZIndex, ZIndexProvider } from 'zeebra/react';
+
+function Modal({ children }) {
+  const zIndex = useZIndex('modal');
+
+  return (
+    <div style={{ zIndex }}>
+      {children}
+    </div>
+  );
+}
+
+// Automatic z-index recycling when component unmounts
+export function App() {
+  return (
+    <ZIndexProvider>
+      <Modal>Content</Modal>
+      <Dropdown />
+      <Tooltip />
+    </ZIndexProvider>
+  );
+}`,
+    },
+  },
+  {
+    id: "floatnote",
+    title: "floatnote",
+    description:
+      "Transparent always-on-top drawing and note-taking overlay for macOS with annotation tools.",
+    category: "Libraries",
+    techStack: ["Electron", "JavaScript", "macOS"],
+    imageUrl: "/projects/floatnote.jpg",
+    href: "/projects/floatnote",
+    year: 2024,
+    metrics: [
+      { label: "Platform", value: "macOS" },
+      { label: "Type", value: "Desktop App" },
+    ],
+    longDescription:
+      "Floatnote is a transparent always-on-top drawing and note-taking overlay application for macOS. Perfect for screen annotations during presentations, tutorials, or quick visual notes. Features include freehand drawing tools, text annotations, screenshot capabilities, and customizable opacity settings. Built with Electron for native macOS integration.",
+    links: [
+      { label: "npm", url: "https://www.npmjs.com/package/floatnote", icon: "package" },
+      { label: "GitHub", url: "https://github.com/josmanvis/floatnote", icon: "github" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "bash",
+      filename: "terminal",
+      code: `# Install floatnote globally
+$ npm install -g floatnote
+
+# Launch the overlay
+$ floatnote
+
+# Features:
+# - Transparent overlay on any screen
+# - Freehand drawing with color picker
+# - Text annotations
+# - Screenshot and save
+# - Keyboard shortcuts for quick access`,
+    },
+  },
+  {
+    id: "pubsafe",
+    title: "pubsafe",
+    description:
+      "CLI tool to check if sensitive files in your coding projects are properly gitignored.",
+    category: "Tools",
+    techStack: ["Node.js", "TypeScript", "CLI", "Ink"],
+    imageUrl: "/projects/pubsafe.jpg",
+    href: "/projects/pubsafe",
+    year: 2025,
+    metrics: [
+      { label: "Focus", value: "Security" },
+      { label: "Platform", value: "npm" },
+    ],
+    longDescription:
+      "Pubsafe is a security-focused CLI tool that audits your projects to ensure sensitive files are properly gitignored before publishing or pushing to remote repositories. It scans for common sensitive file patterns like .env files, API keys, credentials, and private keys, then verifies they are included in your .gitignore. Built with Ink for a beautiful terminal UI experience.",
+    links: [
+      { label: "npm", url: "https://www.npmjs.com/package/pubsafe", icon: "package" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "bash",
+      filename: "terminal",
+      code: `# Install pubsafe
+$ npm install -g pubsafe
+
+# Scan current project
+$ pubsafe
+
+# Output:
+# Scanning for sensitive files...
+#
+# ⚠ Found 3 sensitive files:
+#   ✗ .env (NOT in .gitignore)
+#   ✓ .env.local (gitignored)
+#   ✗ credentials.json (NOT in .gitignore)
+#
+# Run 'pubsafe --fix' to add missing entries`,
+    },
+  },
+  {
+    id: "toolbench",
+    title: "toolbench",
+    description:
+      "Reusable development tools library for React applications with debugging and console utilities.",
+    category: "Libraries",
+    techStack: ["React", "TypeScript", "SCSS", "Vite"],
+    imageUrl: "/projects/toolbench.jpg",
+    href: "/projects/toolbench",
+    year: 2024,
+    metrics: [
+      { label: "Framework", value: "React 18+" },
+      { label: "Platform", value: "npm" },
+    ],
+    longDescription:
+      "Toolbench is a reusable development tools library for React applications. It provides a suite of debugging utilities, console enhancements, and development-time helpers that can be easily integrated into any React project. Includes state inspectors, performance monitors, and customizable dev panels that can be toggled during development.",
+    links: [
+      { label: "npm", url: "https://www.npmjs.com/package/toolbench", icon: "package" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "typescript",
+      filename: "DevTools.tsx",
+      code: `import { DevTools, useDevPanel } from 'toolbench';
+import 'toolbench/styles';
+
+function App() {
+  const { isOpen, toggle } = useDevPanel();
+
+  return (
+    <div>
+      <YourApp />
+      {process.env.NODE_ENV === 'development' && (
+        <DevTools
+          position="bottom-right"
+          panels={['state', 'network', 'performance']}
+        />
+      )}
+    </div>
+  );
+}`,
+    },
+  },
 ];
