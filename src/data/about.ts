@@ -97,9 +97,9 @@ export const aboutDataHR: AboutData = {
 export const aboutDataHuman: AboutData = {
   bio: {
     name: 'Jose Viscasillas',
-    tagline: 'I make software. Sometimes it even works.',
+    tagline: '"I have 200+ unfinished projects and mass anxiety about all of them. But hey, at least I ship the ones that pay the bills."',
     description: [
-      "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've mass the mistakes already. So you don't have to.",
+      "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've made the mistakes already. So you don't have to.",
       "Currently I'm at ON24 making video conferencing not suck. Before that, I was at an Innovation Lab building kiosks that help people find tomatoes in grocery stores (real project, I swear). I've also published npm packages that actual humans use — 8,700+ downloads on one of them. Not viral, but not nothing either.",
       "I build things because I genuinely love it. Not in a LinkedIn \"passionate about synergy\" way — I mean I'll spend my Saturday building a CLI tool because my Developer folder is chaos and I got annoyed. That's the vibe.",
     ],

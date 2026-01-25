@@ -7,31 +7,63 @@ interface ModeToggleProps {
 
 export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-      <button
-        onClick={onToggle}
-        className="relative flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 transition-colors"
-      >
-        <span className={`text-sm transition-colors duration-200 ${!isHRMode ? 'text-white' : 'text-zinc-500'}`}>
-          🧑‍💻 Normal People
-        </span>
+    <div className="flex flex-col items-center justify-center gap-6 mb-16">
+      {/* Label */}
+      <div className="text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
+          Who's reading this?
+        </p>
+      </div>
+
+      {/* Toggle Container */}
+      <div className="relative">
+        {/* Glow effect */}
+        <div 
+          className={`absolute inset-0 rounded-full blur-xl transition-all duration-500 ${
+            isHRMode 
+              ? 'bg-gradient-to-r from-amber-500/30 to-orange-500/30' 
+              : 'bg-gradient-to-r from-emerald-500/30 to-teal-500/30'
+          }`} 
+        />
         
-        <div className="relative w-12 h-6 bg-zinc-800 rounded-full">
+        {/* Main toggle button */}
+        <button
+          onClick={onToggle}
+          className="relative flex items-center gap-1 p-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/50 backdrop-blur-sm hover:border-zinc-600 transition-all duration-300 shadow-2xl"
+        >
+          {/* Left option - Humans */}
           <div
-            className="absolute top-1 w-4 h-4 bg-white rounded-full transition-all duration-200"
-            style={{ left: isHRMode ? '1.5rem' : '0.25rem' }}
-          />
-        </div>
-        
-        <span className={`text-sm transition-colors duration-200 ${isHRMode ? 'text-white' : 'text-zinc-500'}`}>
-          👔 HR Mode
-        </span>
-      </button>
+            className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
+              !isHRMode 
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25' 
+                : 'text-zinc-500 hover:text-zinc-300'
+            }`}
+          >
+            <span className="text-sm font-medium whitespace-nowrap">
+              👋 Humans
+            </span>
+          </div>
+          
+          {/* Right option - HR Humans */}
+          <div
+            className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
+              isHRMode 
+                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/25' 
+                : 'text-zinc-500 hover:text-zinc-300'
+            }`}
+          >
+            <span className="text-sm font-medium whitespace-nowrap">
+              📋 Humans in HR
+            </span>
+          </div>
+        </button>
+      </div>
       
-      <p className="text-xs text-zinc-600 max-w-[200px] text-center sm:text-left transition-opacity duration-200">
+      {/* Description */}
+      <p className="text-sm text-zinc-500 max-w-sm text-center transition-all duration-300">
         {isHRMode 
-          ? "Optimized for ATS systems and keyword matching" 
-          : "How I'd actually talk to you at a coffee shop"}
+          ? "Keywords ✓ Buzzwords ✓ ATS-optimized ✓ Soul-crushing ✓" 
+          : "The version where I talk like a person, not a LinkedIn post"}
       </p>
     </div>
   );
