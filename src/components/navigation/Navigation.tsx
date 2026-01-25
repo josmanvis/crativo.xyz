@@ -22,6 +22,14 @@ export default function Navigation() {
             </li>
             <li>
               <Link
+                href="/blog"
+                className="text-neutral-400 hover:text-white transition-colors"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/about"
                 className="text-neutral-400 hover:text-white transition-colors"
               >
