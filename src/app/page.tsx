@@ -7,6 +7,7 @@ import ProjectGrid from "@/components/ProjectGrid";
 import CategoryFilter from "@/components/CategoryFilter";
 import { DotGrid } from "@/components/DotGrid";
 import { useSplash } from "@/lib/SplashContext";
+import AppsBanner from "@/components/AppsBanner";
 
 const RemotionIntro = dynamic(() => import("@/components/RemotionIntro"), {
   ssr: false,
@@ -99,6 +100,11 @@ export default function Home() {
           <p className="text-gray-500 mt-4 text-lg max-w-md mx-auto">
             Apps, tools, and libraries that solve real problems.
           </p>
+        </div>
+
+        {/* Apps Banner */}
+        <div className="max-w-4xl mx-auto px-6 mb-8">
+          <AppsBanner />
         </div>
 
         {/* Category Filter */}
