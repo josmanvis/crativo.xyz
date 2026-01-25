@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import twilio from 'twilio';
 
 interface ContactFormData {
   name?: string;
@@ -90,6 +91,29 @@ export async function POST(request: NextRequest) {
       } catch (emailError) {
         console.error('Failed to send email:', emailError);
         // Don't fail the request if email fails
+      }
+    }
+
+    // Try to send SMS notification if Twilio is configured
+    const twilioSid = process.env.TWILIO_ACCOUNT_SID;
+    const twilioAuth = process.env.TWILIO_AUTH_TOKEN;
+    const twilioFrom = process.env.TWILIO_PHONE_NUMBER;
+    const twilioTo = process.env.NOTIFY_PHONE_NUMBER;
+
+    if (twilioSid && twilioAuth && twilioFrom && twilioTo) {
+      try {
+        const client = twilio(twilioSid, twilioAuth);
+        const smsBody = `📬 crativo.xyz\nFrom: ${storedMessage.name}\nEmail: ${storedMessage.email}\n\n${storedMessage.message.slice(0, 300)}${storedMessage.message.length > 300 ? '...' : ''}`;
+        
+        await client.messages.create({
+          body: smsBody,
+          from: twilioFrom,
+          to: twilioTo,
+        });
+        console.log('SMS notification sent');
+      } catch (smsError) {
+        console.error('Failed to send SMS:', smsError);
+        // Don't fail the request if SMS fails
       }
     }
 
