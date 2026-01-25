@@ -11,7 +11,7 @@ export default function Navigation() {
           </Link>
 
           {/* Navigation Links - Horizontal scroll on mobile */}
-          <div className="overflow-x-auto scrollbar-hide -mr-4 pr-4 md:mr-0 md:pr-0">
+          <div className="overflow-x-auto overflow-y-hidden scrollbar-hide -mr-4 pr-4 md:mr-0 md:pr-0">
             <ul className="flex items-center gap-4 md:gap-8">
               <li className="flex-shrink-0">
                 <Link
