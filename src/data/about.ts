@@ -100,8 +100,11 @@ export const aboutDataHuman: AboutData = {
     tagline: '"I have 200+ unfinished projects and mass anxiety about all of them. But hey, at least I ship the ones that pay the bills."',
     description: [
       "Look, software engineering is just problem-solving with extra steps and way too many tabs open. I've been doing this for over a decade now, which means I've made the mistakes already. So you don't have to.",
-      "Currently I'm at ON24 making video conferencing not suck. Before that, I was at an Innovation Lab building kiosks that help people find tomatoes in grocery stores (real project, I swear). I've also published npm packages that actual humans use — 8,700+ downloads on one of them. Not viral, but not nothing either.",
-      "I build things because I genuinely love it. Not in a LinkedIn \"passionate about synergy\" way — I mean I'll spend my Saturday building a CLI tool because my Developer folder is chaos and I got annoyed. That's the vibe.",
+      "Currently I'm at ON24 making video conferencing not suck — hand raising, virtual backgrounds, the \"who's talking\" indicator, all that stuff. Before that, I was at an Innovation Lab at Retail Business Services building kiosks that help people find tomatoes in grocery stores (real project, I swear). Voice AI that understands \"where are the red things for pasta\" and knows you mean tomatoes. The future is weird.",
+      "I've also published npm packages that actual humans use — too-bored (a virtual keyboard with fat-finger-friendly keys), gappa-comments (threaded comments that actually work), and ace (a CLI to stop copy-pasting boilerplate). 8,700+ downloads combined. Not viral, but not zero either.",
+      "I build things because I genuinely love it. Not in a LinkedIn \"passionate about synergy\" way — I mean I'll spend my Saturday building a CLI tool because my Developer folder is chaos and I got annoyed. I'll refactor code that works perfectly fine because it offends me aesthetically. I have opinions about semicolons. That's the vibe.",
+      "My stack is React, TypeScript, Next.js, Node, and whatever else makes sense for the problem. I've done React Native, Tauri, Electron, Remotion for video, OpenTok for WebRTC, IBM Watson for AI that kinda works, and enough CSS to have nightmares about z-index. I believe in shipping, iterating, and not bikeshedding about tabs vs spaces (it's spaces, but I'll use tabs if you're buying lunch).",
+      "When I'm not coding, I'm probably thinking about coding. Or playing with my kids. Or thinking about coding while playing with my kids. The brain doesn't have an off switch, you know?",
     ],
   },
   skills: [

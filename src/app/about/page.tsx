@@ -15,7 +15,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-black text-white py-16 px-6 relative">
-      <DotGrid opacity={0.08} spacing={60} dotSize={1.5} />
+      <DotGrid opacity={0.15} spacing={60} dotSize={1.5} />
       <div className="max-w-5xl mx-auto relative z-10">
         <ModeToggle isHRMode={isHRMode} onToggle={() => setIsHRMode(!isHRMode)} />
         

@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white relative">
-      <DotGrid opacity={0.06} spacing={60} dotSize={1.5} />
+      <DotGrid opacity={0.12} spacing={60} dotSize={1.5} />
       <div className="max-w-4xl mx-auto px-6 py-8 relative z-10">
         {/* Hero */}
         <BlogHero post={post} />

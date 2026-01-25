@@ -44,7 +44,7 @@ export default function Home() {
       )}
       <main className="min-h-screen bg-[#0a0a0a] text-white relative">
         {/* Dot grid background - matches intro animation */}
-        {!showIntro && <DotGrid opacity={0.08} spacing={60} dotSize={1.5} />}
+        {!showIntro && <DotGrid opacity={0.15} spacing={60} dotSize={1.5} />}
         
         {/* Header */}
         <div className="text-center py-16 px-6">

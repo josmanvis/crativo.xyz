@@ -19,24 +19,24 @@ export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
       <div className="relative">
         {/* Glow effect */}
         <div 
-          className={`absolute inset-0 rounded-full blur-xl transition-all duration-500 ${
+          className={`absolute -inset-2 rounded-full blur-xl transition-all duration-500 opacity-40 ${
             isHRMode 
-              ? 'bg-gradient-to-r from-amber-500/30 to-orange-500/30' 
-              : 'bg-gradient-to-r from-emerald-500/30 to-teal-500/30'
+              ? 'bg-gradient-to-r from-amber-500/50 to-orange-500/50' 
+              : 'bg-gradient-to-r from-emerald-500/50 to-teal-500/50'
           }`} 
         />
         
         {/* Main toggle button */}
         <button
           onClick={onToggle}
-          className="relative flex items-center gap-1 p-1.5 rounded-full bg-zinc-900/90 border border-zinc-700/50 backdrop-blur-sm hover:border-zinc-600 transition-all duration-300 shadow-2xl"
+          className="relative flex items-center gap-1 p-1.5 rounded-full bg-zinc-900 border border-zinc-700 backdrop-blur-sm hover:border-zinc-600 transition-all duration-300 shadow-2xl"
         >
           {/* Left option - Humans */}
           <div
             className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
               !isHRMode 
-                ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/25' 
-                : 'text-zinc-500 hover:text-zinc-300'
+                ? 'bg-zinc-700 text-white' 
+                : 'bg-transparent text-zinc-500 hover:text-zinc-300'
             }`}
           >
             <span className="text-sm font-medium whitespace-nowrap">
@@ -48,8 +48,8 @@ export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
           <div
             className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
               isHRMode 
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/25' 
-                : 'text-zinc-500 hover:text-zinc-300'
+                ? 'bg-zinc-700 text-white' 
+                : 'bg-transparent text-zinc-500 hover:text-zinc-300'
             }`}
           >
             <span className="text-sm font-medium whitespace-nowrap">

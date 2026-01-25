@@ -7,7 +7,7 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white relative">
-      <DotGrid opacity={0.08} spacing={60} dotSize={1.5} />
+      <DotGrid opacity={0.15} spacing={60} dotSize={1.5} />
       
       {/* Header */}
       <div className="text-center py-16 relative z-10">
