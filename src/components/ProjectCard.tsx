@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Project } from "@/types/project";
 
 const categoryGradients: Record<Project["category"], string> = {
@@ -15,16 +16,37 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const hasImage = project.imageUrl && !project.imageUrl.includes('placeholder');
+
   return (
     <Link href={project.href} className="group block">
       <div className="bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/10 transition-all duration-200 group-hover:scale-[1.03] group-hover:ring-white/30 group-hover:shadow-lg group-hover:shadow-white/5">
-        {/* Gradient placeholder for project image */}
-        <div
-          className={`h-40 bg-gradient-to-br ${categoryGradients[project.category]} flex items-end p-4`}
-        >
-          <span className="text-xs text-white/60 font-medium">
-            {project.year}
-          </span>
+        {/* Project image or gradient fallback */}
+        <div className="relative h-44 overflow-hidden">
+          {hasImage ? (
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+            />
+          ) : (
+            <div
+              className={`h-full bg-gradient-to-br ${categoryGradients[project.category]} flex items-end p-4`}
+            >
+              <span className="text-xs text-white/60 font-medium">
+                {project.year}
+              </span>
+            </div>
+          )}
+          {/* Year badge overlay when image exists */}
+          {hasImage && (
+            <div className="absolute bottom-2 left-2">
+              <span className="text-xs text-white/80 font-medium bg-black/40 backdrop-blur-sm px-2 py-1 rounded">
+                {project.year}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Card content */}
