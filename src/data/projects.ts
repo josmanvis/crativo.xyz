@@ -11,6 +11,50 @@ export const categories = [
 export const projects: Project[] = [
   // Apps - Real Projects
   {
+    id: "qortr",
+    title: "Qortr",
+    description:
+      "Modern room booking platform for businesses with instant booking, team management, and smart analytics.",
+    category: "Apps",
+    techStack: ["React", "Node.js", "REST API", "OAuth 2.0"],
+    imageUrl: "/projects/qortr.jpg",
+    href: "/projects/qortr",
+    year: 2024,
+    metrics: [
+      { label: "Daily Bookings", value: "1,000+" },
+      { label: "Teams", value: "2,500+" },
+    ],
+    longDescription:
+      "Qortr is the simplest way to manage room bookings for your business. Built to eliminate the friction and complexity of traditional booking systems, it offers instant space reservation with real-time availability, team management with granular permissions, and smart analytics to optimize space utilization. Features a comprehensive REST API with OAuth 2.0 authentication, webhooks for real-time updates, and maintains 99.9% uptime. SOC 2 certified and GDPR compliant.",
+    links: [
+      { label: "Website", url: "https://www.qortr.com", icon: "external" },
+      { label: "API Docs", url: "https://api.qortr.app", icon: "external" },
+    ],
+    gallery: [],
+    codeSnippet: {
+      language: "typescript",
+      filename: "BookingAPI.ts",
+      code: `// Qortr API integration
+const qortr = new QortrClient({
+  apiKey: process.env.QORTR_API_KEY,
+  baseUrl: 'https://api.qortr.app'
+});
+
+async function bookRoom(roomId: string, slot: TimeSlot) {
+  const booking = await qortr.bookings.create({
+    roomId,
+    startTime: slot.start,
+    endTime: slot.end,
+    attendees: slot.invitees
+  });
+
+  // Real-time webhook notification
+  await qortr.webhooks.trigger('booking.created', booking);
+  return booking;
+}`,
+    },
+  },
+  {
     id: "on24-video",
     title: "ON24 Video Platform",
     description:
