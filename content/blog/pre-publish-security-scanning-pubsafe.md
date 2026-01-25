@@ -648,12 +648,48 @@ pubsafe runs in interactive mode by default. It shows you what's happening and a
 # Run on your current project
 npx pubsafe
 
-# With auto-fix
-npx pubsafe --fix
-
 # CI mode (exit code 1 if issues found)
 npx pubsafe --ci
+
+# Force-fix: patch everything with a single confirmation
+npx pubsafe -d ~/Developer --force-fix
+npx pubsafe -d ~/Developer -ff
 ```
+
+### Force-Fix Mode (v1.1.0)
+
+New in v1.1.0: the `--force-fix` (or `-ff`) flag for when you just want to fix everything at once:
+
+```bash
+$ pubsafe -d ~/Developer -ff
+
+🔍 Scanning for exposed patterns...
+
+Found 5 exposed pattern(s) across 3 project(s):
+
+  my-api-wrapper
+    • .env
+    • .env.local
+
+  quick-cli-tool
+    • credentials.json
+
+  test-project
+    • config.local.json
+    • secrets.yaml
+
+Apply all fixes? [y/N] y
+
+⚙️  Applying fixes...
+
+  ✓ my-api-wrapper: added 2 pattern(s)
+  ✓ quick-cli-tool: added 1 pattern(s)
+  ✓ test-project: added 2 pattern(s)
+
+✓ Fixed 5 pattern(s)
+```
+
+No navigating through menus—just scan, confirm once, done. Perfect for cleaning up a bunch of projects at once or running in semi-automated scripts.
 
 Don't be the developer who leaks their API keys to npm. I've been there. It's not fun.
 
