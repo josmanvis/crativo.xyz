@@ -6,6 +6,7 @@ import AppStoreGallery from "@/components/AppStoreGallery";
 import FeatureHighlights from "@/components/FeatureHighlights";
 import ProjectDescription from "@/components/ProjectDescription";
 import CodeSnippet from "@/components/CodeSnippet";
+import DisqusComments from "@/components/DisqusComments";
 import { DotGrid } from "@/components/DotGrid";
 
 interface PageProps {
@@ -148,6 +149,12 @@ export default async function ProjectPage({ params }: PageProps) {
             <CodeSnippet snippet={project.codeSnippet} />
           </section>
         )}
+
+        {/* Comments */}
+        <DisqusComments 
+          identifier={`project-${project.id}`}
+          title={project.title}
+        />
       </div>
     </main>
   );
