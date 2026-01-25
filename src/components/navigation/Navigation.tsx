@@ -31,6 +31,14 @@ export default function Navigation() {
               </li>
               <li className="flex-shrink-0">
                 <Link
+                  href="/videos"
+                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
+                >
+                  Videos
+                </Link>
+              </li>
+              <li className="flex-shrink-0">
+                <Link
                   href="/about"
                   className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
                 >
