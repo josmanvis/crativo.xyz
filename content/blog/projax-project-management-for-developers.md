@@ -14,27 +14,38 @@ featured: true
 
 # Building Projax: A Developer's Project Dashboard
 
-My `~/Developer` folder is a graveyard of good intentions. Twenty-seven projects at last count—side projects, experiments, half-finished ideas, tutorials I followed once, things I was "definitely going to get back to."
+My `~/Developer` folder is a graveyard of good intentions. **213 projects** at last count. Two hundred and thirteen folders accumulated over years of side projects, client work, experiments, hackathons, tutorials, "quick tests," and things I was "definitely going to get back to."
 
-Every few weeks I'd open Terminal, `cd ~/Developer`, and stare at the list:
+The names don't even make sense anymore:
 
 ```
 ace/
+bb-redux-thing/
 crativo.xyz/
 floatnote/
+hmm-test/
 josetunes/
+lolwut/
 on24-hackathon-2023/
+pizzatime/
 projax/
 qortr/
 react-experiments/
+spicy-meatball/
 tauri-test/
+thing2/
+thing3-final/
+thing3-final-ACTUAL/
 too-bored/
 vids-matrix-driven-css/
-work-notes/
+wtf-delete-this/
+xylophone-api/
 ...
 ```
 
-Which ones have uncommitted changes? What was that one running on port 3001? Did I ever push the last update to josetunes? Is that experiment folder safe to delete?
+What the hell is `spicy-meatball`? Why do I have both `thing3-final` and `thing3-final-ACTUAL`? I mass-named projects at 2am and now they're archaeological mysteries.
+
+Which ones have uncommitted changes? What was that one running on port 3001? Did I ever push the last update to josetunes? Is `wtf-delete-this` actually safe to delete, or did past-me name it ironically?
 
 I'd open each project, check `git status`, read through `package.json`, maybe run `lsof -i :3000` to figure out what's using ports. Twenty minutes later, I still wouldn't know the state of my projects.
 
