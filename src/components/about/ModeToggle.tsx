@@ -17,7 +17,7 @@ export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
     window.speechSynthesis.cancel();
     
     const utterance = new SpeechSynthesisUtterance(
-      "DETECTING... POSSIBLE H R HUMAN... BEEP BEEP"
+      "H R Human Detected"
     );
     
     // Try to find a robotic-sounding voice
