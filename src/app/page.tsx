@@ -1,27 +1,42 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { projects, categories } from "@/data/projects";
 import ProjectGrid from "@/components/ProjectGrid";
 import CategoryFilter from "@/components/CategoryFilter";
 import { DotGrid } from "@/components/DotGrid";
+import { useSplash } from "@/lib/SplashContext";
 
 const RemotionIntro = dynamic(() => import("@/components/RemotionIntro"), {
   ssr: false,
 });
 
 export default function Home() {
-  const [showIntro, setShowIntro] = useState(true);
+  const { hasShownSplash, markSplashShown } = useSplash();
+  const [showIntro, setShowIntro] = useState(!hasShownSplash);
   const [fadeOut, setFadeOut] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
 
+  // Lock scrolling when intro is visible
+  useEffect(() => {
+    if (showIntro) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showIntro]);
+
   const handleAnimationEnd = useCallback(() => {
     setFadeOut(true);
+    markSplashShown();
     setTimeout(() => {
       setShowIntro(false);
     }, 800);
-  }, []);
+  }, [markSplashShown]);
 
   const filteredProjects = useMemo(
     () =>
