@@ -20,13 +20,12 @@ export default function AboutPage() {
         <ModeToggle isHRMode={isHRMode} onToggle={() => setIsHRMode(!isHRMode)} />
         
         <div 
-          key={isHRMode ? 'hr' : 'human'}
-          className="transition-opacity duration-300"
+          className={`transition-all duration-500 ${isHRMode ? 'max-w-3xl' : ''}`}
         >
-          <ProfileCard bio={aboutData.bio} />
-          <BioSection description={aboutData.bio.description} />
-          <SkillsGrid skills={aboutData.skills} />
-          <Timeline events={aboutData.timeline} />
+          <ProfileCard bio={aboutData.bio} isHRMode={isHRMode} />
+          <BioSection description={aboutData.bio.description} isHRMode={isHRMode} />
+          <SkillsGrid skills={aboutData.skills} isHRMode={isHRMode} />
+          <Timeline events={aboutData.timeline} isHRMode={isHRMode} />
         </div>
       </div>
     </main>
