@@ -1,0 +1,35 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Playwright side -->
+  <rect x="100" y="100" width="200" height="200" rx="12" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2"/>
+  <text x="200" y="180" fill="#10b981" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Playwright</text>
+  <text x="200" y="220" fill="#10b981" font-family="monospace" font-size="12" text-anchor="middle" opacity="0.7">by Microsoft</text>
+  
+  <!-- VS text -->
+  <text x="400" y="210" fill="#666" font-family="Arial" font-size="32" text-anchor="middle" font-weight="bold">VS</text>
+  
+  <!-- Cypress side -->
+  <rect x="500" y="100" width="200" height="200" rx="12" fill="#10b981" opacity="0.15" stroke="#69d3a7" stroke-width="2"/>
+  <text x="600" y="180" fill="#69d3a7" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Cypress</text>
+  <text x="600" y="220" fill="#69d3a7" font-family="monospace" font-size="12" text-anchor="middle" opacity="0.7">e2e testing</text>
+  
+  <!-- Checkmarks/features -->
+  <g fill="#10b981" font-family="monospace" font-size="10">
+    <text x="120" y="270">✓ Multi-browser</text>
+    <text x="120" y="285">✓ Auto-wait</text>
+  </g>
+  
+  <g fill="#69d3a7" font-family="monospace" font-size="10">
+    <text x="520" y="270">✓ Time travel</text>
+    <text x="520" y="285">✓ Real-time reload</text>
+  </g>
+  
+  <text x="400" y="360" fill="#666" font-family="monospace" font-size="12" text-anchor="middle">2025 comparison</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Crossed out CRA -->
+  <g transform="translate(200, 200)" opacity="0.5">
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#ef4444" stroke-width="3"/>
+    <text x="0" y="8" fill="#ef4444" font-family="monospace" font-size="18" text-anchor="middle">CRA</text>
+    <line x1="-50" y1="-50" x2="50" y2="50" stroke="#ef4444" stroke-width="4"/>
+  </g>
+  
+  <!-- Arrow -->
+  <path d="M300 200 L400 200" stroke="#10b981" stroke-width="3"/>
+  <polygon points="400,195 415,200 400,205" fill="#10b981"/>
+  
+  <!-- Vite logo simplified -->
+  <g transform="translate(550, 200)">
+    <polygon points="0,-60 50,50 -50,50" fill="none" stroke="#fbbf24" stroke-width="3"/>
+    <polygon points="0,-30 25,30 -25,30" fill="#fbbf24" opacity="0.3"/>
+    <text x="0" y="90" fill="#fbbf24" font-family="monospace" font-size="16" text-anchor="middle">Vite</text>
+  </g>
+  
+  <!-- Speed lines -->
+  <line x1="450" y1="150" x2="500" y2="150" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+  <line x1="460" y1="170" x2="520" y2="170" stroke="#10b981" stroke-width="2" opacity="0.4"/>
+  <line x1="450" y1="230" x2="510" y2="230" stroke="#10b981" stroke-width="2" opacity="0.5"/>
+  
+  <circle cx="100" cy="100" r="4" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="700" cy="320" r="5" fill="#10b981" opacity="0.5"/>
+</svg>

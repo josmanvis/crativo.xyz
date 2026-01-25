@@ -1,0 +1,27 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- HTML brackets with htmx -->
+  <text x="400" y="180" fill="#f97316" font-family="monospace" font-size="48" text-anchor="middle" font-weight="bold">&lt;/&gt;</text>
+  <text x="400" y="240" fill="#f97316" font-family="monospace" font-size="32" text-anchor="middle">htmx</text>
+  
+  <!-- Simplicity arrows going back -->
+  <path d="M550 200 C600 150, 650 180, 680 200" stroke="#10b981" stroke-width="2" fill="none"/>
+  <path d="M150 200 C180 220, 220 180, 250 200" stroke="#10b981" stroke-width="2" fill="none"/>
+  
+  <!-- Code blocks -->
+  <rect x="100" y="280" width="150" height="60" rx="6" fill="none" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+  <text x="175" y="315" fill="#f97316" font-family="monospace" font-size="10" text-anchor="middle" opacity="0.7">hx-get="/api"</text>
+  
+  <rect x="550" y="280" width="150" height="60" rx="6" fill="none" stroke="#f97316" stroke-width="1" opacity="0.5"/>
+  <text x="625" y="315" fill="#f97316" font-family="monospace" font-size="10" text-anchor="middle" opacity="0.7">hx-swap="innerHTML"</text>
+  
+  <circle cx="80" cy="100" r="4" fill="#f97316" opacity="0.6"/>
+  <circle cx="720" cy="100" r="5" fill="#10b981" opacity="0.5"/>
+</svg>

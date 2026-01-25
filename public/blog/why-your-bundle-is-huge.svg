@@ -1,0 +1,33 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Large bundle box -->
+  <rect x="150" y="80" width="200" height="240" rx="10" fill="#ef4444" opacity="0.2" stroke="#ef4444" stroke-width="2"/>
+  <text x="250" y="200" fill="#ef4444" font-family="monospace" font-size="48" text-anchor="middle">5MB</text>
+  <text x="250" y="240" fill="#ef4444" font-family="monospace" font-size="14" text-anchor="middle">bundle.js</text>
+  
+  <!-- Arrow -->
+  <path d="M380 200 L450 200" stroke="#10b981" stroke-width="3"/>
+  <polygon points="450,195 465,200 450,205" fill="#10b981"/>
+  
+  <!-- Small bundle boxes -->
+  <rect x="500" y="100" width="80" height="60" rx="6" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="1"/>
+  <text x="540" y="138" fill="#10b981" font-family="monospace" font-size="12" text-anchor="middle">50KB</text>
+  
+  <rect x="600" y="100" width="80" height="60" rx="6" fill="#60a5fa" opacity="0.3" stroke="#60a5fa" stroke-width="1"/>
+  <text x="640" y="138" fill="#60a5fa" font-family="monospace" font-size="12" text-anchor="middle">30KB</text>
+  
+  <rect x="500" y="180" width="80" height="60" rx="6" fill="#fbbf24" opacity="0.3" stroke="#fbbf24" stroke-width="1"/>
+  <text x="540" y="218" fill="#fbbf24" font-family="monospace" font-size="12" text-anchor="middle">25KB</text>
+  
+  <rect x="600" y="180" width="80" height="60" rx="6" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="1"/>
+  <text x="640" y="218" fill="#10b981" font-family="monospace" font-size="12" text-anchor="middle">20KB</text>
+  
+  <text x="580" y="290" fill="#666" font-family="monospace" font-size="12" text-anchor="middle">code splitting</text>
+</svg>

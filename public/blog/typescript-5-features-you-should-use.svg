@@ -1,0 +1,27 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- TS Logo -->
+  <rect x="300" y="100" width="200" height="200" rx="20" fill="#3178c6"/>
+  <text x="400" y="230" fill="white" font-family="Arial" font-size="100" font-weight="bold" text-anchor="middle">TS</text>
+  
+  <!-- Version badge -->
+  <circle cx="520" cy="120" r="35" fill="#0a0a0a" stroke="#3178c6" stroke-width="3"/>
+  <text x="520" y="128" fill="#3178c6" font-family="monospace" font-size="20" text-anchor="middle" font-weight="bold">5.x</text>
+  
+  <!-- Feature sparkles -->
+  <g fill="#fbbf24" opacity="0.7">
+    <polygon points="150,150 155,165 170,165 158,175 163,190 150,180 137,190 142,175 130,165 145,165"/>
+    <polygon points="650,200 653,210 663,210 655,217 658,227 650,220 642,227 645,217 637,210 647,210" transform="scale(1.2)"/>
+    <polygon points="200,300 203,310 213,310 205,317 208,327 200,320 192,327 195,317 187,310 197,310"/>
+  </g>
+  
+  <circle cx="100" cy="100" r="4" fill="#3178c6" opacity="0.5"/>
+  <circle cx="700" cy="350" r="5" fill="#fbbf24" opacity="0.4"/>
+</svg>

@@ -1,0 +1,35 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- SSR -->
+  <rect x="80" y="100" width="180" height="200" rx="10" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="2"/>
+  <text x="170" y="150" fill="#ef4444" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">SSR</text>
+  <text x="170" y="180" fill="#ef4444" font-family="monospace" font-size="10" text-anchor="middle">Server-Side</text>
+  <rect x="100" y="200" width="140" height="8" rx="2" fill="#ef4444" opacity="0.3"/>
+  <rect x="100" y="215" width="100" height="8" rx="2" fill="#ef4444" opacity="0.2"/>
+  <text x="170" y="270" fill="#ef4444" font-family="monospace" font-size="9" text-anchor="middle">every request</text>
+  
+  <!-- SSG -->
+  <rect x="310" y="100" width="180" height="200" rx="10" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2"/>
+  <text x="400" y="150" fill="#10b981" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">SSG</text>
+  <text x="400" y="180" fill="#10b981" font-family="monospace" font-size="10" text-anchor="middle">Static Generation</text>
+  <rect x="330" y="200" width="140" height="8" rx="2" fill="#10b981" opacity="0.3"/>
+  <rect x="330" y="215" width="100" height="8" rx="2" fill="#10b981" opacity="0.2"/>
+  <text x="400" y="270" fill="#10b981" font-family="monospace" font-size="9" text-anchor="middle">build time</text>
+  
+  <!-- ISR -->
+  <rect x="540" y="100" width="180" height="200" rx="10" fill="#60a5fa" opacity="0.15" stroke="#60a5fa" stroke-width="2"/>
+  <text x="630" y="150" fill="#60a5fa" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">ISR</text>
+  <text x="630" y="180" fill="#60a5fa" font-family="monospace" font-size="10" text-anchor="middle">Incremental Static</text>
+  <rect x="560" y="200" width="140" height="8" rx="2" fill="#60a5fa" opacity="0.3"/>
+  <rect x="560" y="215" width="100" height="8" rx="2" fill="#60a5fa" opacity="0.2"/>
+  <text x="630" y="270" fill="#60a5fa" font-family="monospace" font-size="9" text-anchor="middle">revalidate: 60</text>
+  
+  <text x="400" y="360" fill="#666" font-family="monospace" font-size="12" text-anchor="middle">Rendering Strategies</text>
+</svg>

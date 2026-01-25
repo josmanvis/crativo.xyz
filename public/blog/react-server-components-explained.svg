@@ -1,0 +1,41 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="react" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#61DAFB"/>
+      <stop offset="100%" style="stop-color:#21a1c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Server box -->
+  <rect x="80" y="100" width="180" height="200" rx="12" fill="none" stroke="#10b981" stroke-width="3" opacity="0.8"/>
+  <text x="170" y="135" fill="#10b981" font-family="monospace" font-size="14" text-anchor="middle">SERVER</text>
+  <rect x="100" y="160" width="140" height="12" rx="2" fill="#10b981" opacity="0.4"/>
+  <rect x="100" y="180" width="100" height="12" rx="2" fill="#10b981" opacity="0.3"/>
+  <rect x="100" y="200" width="120" height="12" rx="2" fill="#10b981" opacity="0.4"/>
+  
+  <!-- Arrow -->
+  <path d="M280 200 L350 200" stroke="#61DAFB" stroke-width="3" stroke-dasharray="8 4"/>
+  <polygon points="350,195 365,200 350,205" fill="#61DAFB"/>
+  
+  <!-- Client box -->
+  <rect x="380" y="100" width="180" height="200" rx="12" fill="none" stroke="#61DAFB" stroke-width="3" opacity="0.8"/>
+  <text x="470" y="135" fill="#61DAFB" font-family="monospace" font-size="14" text-anchor="middle">CLIENT</text>
+  <rect x="400" y="160" width="140" height="12" rx="2" fill="#61DAFB" opacity="0.4"/>
+  <rect x="400" y="180" width="100" height="12" rx="2" fill="#61DAFB" opacity="0.3"/>
+  
+  <!-- React atom -->
+  <g transform="translate(650, 200)">
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="none" stroke="#61DAFB" stroke-width="2" transform="rotate(0)"/>
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="none" stroke="#61DAFB" stroke-width="2" transform="rotate(60)"/>
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="none" stroke="#61DAFB" stroke-width="2" transform="rotate(-60)"/>
+    <circle cx="0" cy="0" r="10" fill="#61DAFB"/>
+  </g>
+  
+  <circle cx="100" cy="350" r="4" fill="#10b981" opacity="0.6"/>
+  <circle cx="700" cy="80" r="5" fill="#61DAFB" opacity="0.5"/>
+</svg>
