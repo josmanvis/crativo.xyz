@@ -1,0 +1,88 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="toolbench-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#toolbench-bg)"/>
+  
+  <!-- App mockup with dev tools panel -->
+  <g transform="translate(80, 60)">
+    <!-- Main app area -->
+    <rect x="0" y="0" width="450" height="400" rx="8" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="225" y="200" font-family="system-ui" font-size="16" fill="#64748b" text-anchor="middle">Your React App</text>
+    
+    <!-- Dev tools panel (right side) -->
+    <rect x="460" y="0" width="180" height="400" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+    
+    <!-- Panel header -->
+    <rect x="460" y="0" width="180" height="35" rx="8" fill="#1e293b"/>
+    <rect x="460" y="27" width="180" height="8" fill="#1e293b"/>
+    <text x="475" y="23" font-family="system-ui" font-size="12" font-weight="600" fill="#3b82f6">🔧 Toolbench</text>
+    
+    <!-- Panel tabs -->
+    <g transform="translate(465, 45)">
+      <rect x="0" y="0" width="50" height="24" rx="4" fill="#3b82f6"/>
+      <text x="25" y="16" font-family="system-ui" font-size="10" fill="#fff" text-anchor="middle">State</text>
+      
+      <rect x="55" y="0" width="50" height="24" rx="4" fill="#1e293b"/>
+      <text x="80" y="16" font-family="system-ui" font-size="10" fill="#64748b" text-anchor="middle">Network</text>
+      
+      <rect x="110" y="0" width="50" height="24" rx="4" fill="#1e293b"/>
+      <text x="135" y="16" font-family="system-ui" font-size="10" fill="#64748b" text-anchor="middle">Perf</text>
+    </g>
+    
+    <!-- State inspector -->
+    <g transform="translate(470, 80)">
+      <text y="0" font-family="ui-monospace" font-size="11" fill="#94a3b8">Component: App</text>
+      
+      <rect x="0" y="15" width="165" height="1" fill="#334155"/>
+      
+      <text y="35" font-family="ui-monospace" font-size="11" fill="#64748b">useState:</text>
+      
+      <rect x="5" y="45" width="155" height="50" rx="4" fill="#1e293b"/>
+      <text x="15" y="62" font-family="ui-monospace" font-size="10" fill="#22c55e">count:</text>
+      <text x="55" y="62" font-family="ui-monospace" font-size="10" fill="#f59e0b">42</text>
+      <text x="15" y="80" font-family="ui-monospace" font-size="10" fill="#22c55e">loading:</text>
+      <text x="65" y="80" font-family="ui-monospace" font-size="10" fill="#3b82f6">false</text>
+      
+      <text y="115" font-family="ui-monospace" font-size="11" fill="#64748b">Props:</text>
+      <rect x="5" y="125" width="155" height="30" rx="4" fill="#1e293b"/>
+      <text x="15" y="145" font-family="ui-monospace" font-size="10" fill="#22c55e">title:</text>
+      <text x="50" y="145" font-family="ui-monospace" font-size="10" fill="#f9e2af">"Dashboard"</text>
+      
+      <text y="175" font-family="ui-monospace" font-size="11" fill="#64748b">Renders:</text>
+      <text x="55" y="175" font-family="ui-monospace" font-size="11" fill="#f59e0b">23</text>
+      
+      <rect x="0" y="190" width="165" height="1" fill="#334155"/>
+      
+      <!-- Performance metrics -->
+      <text y="210" font-family="ui-monospace" font-size="11" fill="#64748b">Last render:</text>
+      <text x="80" y="210" font-family="ui-monospace" font-size="11" fill="#22c55e">2.3ms</text>
+      
+      <text y="230" font-family="ui-monospace" font-size="11" fill="#64748b">Memory:</text>
+      <text x="60" y="230" font-family="ui-monospace" font-size="11" fill="#94a3b8">12.4 MB</text>
+    </g>
+    
+    <!-- Floating action button -->
+    <circle cx="600" cy="380" r="20" fill="#3b82f6"/>
+    <text x="600" y="386" font-family="system-ui" font-size="16" fill="#fff" text-anchor="middle">🔧</text>
+  </g>
+  
+  <!-- Code snippet -->
+  <g transform="translate(80, 490)">
+    <rect x="0" y="0" width="640" height="70" rx="8" fill="#0f172a"/>
+    <text x="20" y="28" font-family="ui-monospace" font-size="12" fill="#c084fc">import</text>
+    <text x="65" y="28" font-family="ui-monospace" font-size="12" fill="#fff"> { DevTools } </text>
+    <text x="160" y="28" font-family="ui-monospace" font-size="12" fill="#c084fc">from</text>
+    <text x="195" y="28" font-family="ui-monospace" font-size="12" fill="#a5f3fc"> 'toolbench'</text>
+    <text x="280" y="28" font-family="ui-monospace" font-size="12" fill="#fff">;</text>
+    
+    <text x="20" y="52" font-family="ui-monospace" font-size="12" fill="#64748b">// Add to your app, toggle with keyboard shortcut</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="585" font-family="system-ui" font-size="14" fill="#94a3b8" text-anchor="middle">React development tools library with state inspection and performance monitoring</text>
+</svg>

@@ -1,0 +1,111 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kb-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18181b"/>
+      <stop offset="100%" style="stop-color:#27272a"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#kb-bg)"/>
+  
+  <!-- Keyboard visualization -->
+  <g transform="translate(100, 180)">
+    <!-- Keyboard frame -->
+    <rect x="0" y="0" width="600" height="240" rx="16" fill="#3f3f46" stroke="#52525b" stroke-width="2"/>
+    
+    <!-- Row 1 -->
+    <g transform="translate(20, 20)">
+      <rect x="0" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="25" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">1</text>
+      <rect x="56" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="81" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">2</text>
+      <rect x="112" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="137" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">3</text>
+      <rect x="168" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="193" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">4</text>
+      <rect x="224" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="249" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">5</text>
+      <rect x="280" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="305" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">6</text>
+      <rect x="336" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="361" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">7</text>
+      <rect x="392" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="417" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">8</text>
+      <rect x="448" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="473" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">9</text>
+      <rect x="504" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="529" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">0</text>
+    </g>
+    
+    <!-- Row 2 (QWERTY) -->
+    <g transform="translate(20, 76)">
+      <rect x="0" y="0" width="50" height="50" rx="8" fill="#3b82f6"/>
+      <text x="25" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">Q</text>
+      <rect x="56" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="81" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">W</text>
+      <rect x="112" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="137" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">E</text>
+      <rect x="168" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="193" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">R</text>
+      <rect x="224" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="249" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">T</text>
+      <rect x="280" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="305" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">Y</text>
+      <rect x="336" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="361" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">U</text>
+      <rect x="392" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="417" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">I</text>
+      <rect x="448" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="473" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">O</text>
+      <rect x="504" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="529" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">P</text>
+    </g>
+    
+    <!-- Row 3 (ASDF) -->
+    <g transform="translate(35, 132)">
+      <rect x="0" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="25" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">A</text>
+      <rect x="56" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="81" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">S</text>
+      <rect x="112" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="137" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">D</text>
+      <rect x="168" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="193" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">F</text>
+      <rect x="224" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="249" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">G</text>
+      <rect x="280" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="305" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">H</text>
+      <rect x="336" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="361" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">J</text>
+      <rect x="392" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="417" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">K</text>
+      <rect x="448" y="0" width="50" height="50" rx="8" fill="#52525b"/>
+      <text x="473" y="32" font-family="ui-monospace" font-size="16" fill="#fff" text-anchor="middle">L</text>
+    </g>
+    
+    <!-- Spacebar row -->
+    <g transform="translate(90, 188)">
+      <rect x="0" y="0" width="80" height="40" rx="6" fill="#52525b"/>
+      <text x="40" y="26" font-family="ui-monospace" font-size="10" fill="#94a3b8" text-anchor="middle">SHIFT</text>
+      <rect x="90" y="0" width="260" height="40" rx="6" fill="#52525b"/>
+      <rect x="360" y="0" width="80" height="40" rx="6" fill="#22c55e"/>
+      <text x="400" y="26" font-family="ui-monospace" font-size="10" fill="#fff" text-anchor="middle">ENTER</text>
+    </g>
+  </g>
+  
+  <!-- Touch indicator -->
+  <circle cx="120" cy="256" r="30" fill="#3b82f6" opacity="0.3">
+    <animate attributeName="r" values="20;35;20" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Label -->
+  <text x="400" y="80" font-family="system-ui" font-size="32" font-weight="700" fill="#fff" text-anchor="middle">too-bored</text>
+  <text x="400" y="110" font-family="system-ui" font-size="16" fill="#94a3b8" text-anchor="middle">React Virtual Keyboard for Kiosks</text>
+  
+  <!-- npm badge -->
+  <g transform="translate(340, 480)">
+    <rect x="0" y="0" width="120" height="30" rx="4" fill="#cb3837"/>
+    <text x="60" y="20" font-family="ui-monospace" font-size="12" fill="#fff" text-anchor="middle">npm i too-bored</text>
+  </g>
+</svg>

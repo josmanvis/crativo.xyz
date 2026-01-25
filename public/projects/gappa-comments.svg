@@ -1,0 +1,71 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gappa-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#gappa-bg)"/>
+  
+  <!-- Comment thread visualization -->
+  <g transform="translate(150, 80)">
+    <!-- Root comment -->
+    <g>
+      <circle cx="30" cy="30" r="24" fill="#3b82f6"/>
+      <text x="30" y="36" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">JD</text>
+      <rect x="70" y="5" width="380" height="70" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="90" y="30" font-family="system-ui" font-size="14" font-weight="600" fill="#fff">John Doe</text>
+      <text x="170" y="30" font-family="system-ui" font-size="12" fill="#64748b">2 hours ago</text>
+      <text x="90" y="55" font-family="system-ui" font-size="13" fill="#cbd5e1">This is a great feature! Really love the threading.</text>
+    </g>
+    
+    <!-- Reply 1 (indented) -->
+    <g transform="translate(50, 90)">
+      <line x1="0" y1="-15" x2="0" y2="30" stroke="#334155" stroke-width="2"/>
+      <line x1="0" y1="30" x2="20" y2="30" stroke="#334155" stroke-width="2"/>
+      <circle cx="50" cy="30" r="20" fill="#22c55e"/>
+      <text x="50" y="36" font-family="system-ui" font-size="12" fill="#fff" text-anchor="middle">SK</text>
+      <rect x="80" y="5" width="340" height="60" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="95" y="28" font-family="system-ui" font-size="13" font-weight="600" fill="#fff">Sarah Kim</text>
+      <text x="170" y="28" font-family="system-ui" font-size="11" fill="#64748b">1 hour ago</text>
+      <text x="95" y="48" font-family="system-ui" font-size="12" fill="#cbd5e1">Agreed! <tspan fill="#3b82f6">@John</tspan> the tagging works great</text>
+    </g>
+    
+    <!-- Reply 2 (deeper indent) -->
+    <g transform="translate(100, 170)">
+      <line x1="-50" y1="-25" x2="-50" y2="30" stroke="#334155" stroke-width="2"/>
+      <line x1="-50" y1="30" x2="-30" y2="30" stroke="#334155" stroke-width="2"/>
+      <circle cx="0" cy="30" r="18" fill="#f59e0b"/>
+      <text x="0" y="35" font-family="system-ui" font-size="11" fill="#fff" text-anchor="middle">MR</text>
+      <rect x="30" y="8" width="300" height="50" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="45" y="28" font-family="system-ui" font-size="12" font-weight="600" fill="#fff">Mike Ross</text>
+      <text x="110" y="28" font-family="system-ui" font-size="10" fill="#64748b">45 min ago</text>
+      <text x="45" y="45" font-family="system-ui" font-size="11" fill="#cbd5e1">+1, markdown support is 🔥</text>
+    </g>
+    
+    <!-- Reply 1 continued -->
+    <g transform="translate(50, 240)">
+      <line x1="0" y1="-55" x2="0" y2="30" stroke="#334155" stroke-width="2"/>
+      <line x1="0" y1="30" x2="20" y2="30" stroke="#334155" stroke-width="2"/>
+      <circle cx="50" cy="30" r="20" fill="#ef4444"/>
+      <text x="50" y="36" font-family="system-ui" font-size="12" fill="#fff" text-anchor="middle">AL</text>
+      <rect x="80" y="5" width="340" height="60" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <text x="95" y="28" font-family="system-ui" font-size="13" font-weight="600" fill="#fff">Alex Lee</text>
+      <text x="160" y="28" font-family="system-ui" font-size="11" fill="#64748b">30 min ago</text>
+      <text x="95" y="48" font-family="system-ui" font-size="12" fill="#cbd5e1">How deep can the threads go?</text>
+    </g>
+    
+    <!-- New comment box -->
+    <g transform="translate(0, 330)">
+      <rect x="0" y="0" width="450" height="80" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+      <text x="20" y="35" font-family="system-ui" font-size="14" fill="#64748b">Write a reply...</text>
+      <rect x="350" y="45" width="80" height="28" rx="6" fill="#3b82f6"/>
+      <text x="390" y="64" font-family="system-ui" font-size="12" fill="#fff" text-anchor="middle">Reply</text>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="520" font-family="system-ui" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">gappa-comments</text>
+  <text x="400" y="550" font-family="system-ui" font-size="14" fill="#94a3b8" text-anchor="middle">Threaded comments with @mentions and markdown</text>
+</svg>

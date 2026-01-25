@@ -1,0 +1,69 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ace-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#ace-bg)"/>
+  
+  <!-- Terminal window -->
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="600" height="440" rx="12" fill="#1c1c1c" stroke="#333" stroke-width="2"/>
+    
+    <!-- Title bar -->
+    <rect x="0" y="0" width="600" height="36" rx="12" fill="#2d2d2d"/>
+    <rect x="0" y="24" width="600" height="12" fill="#2d2d2d"/>
+    <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+    <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+    <circle cx="60" cy="18" r="6" fill="#28c840"/>
+    <text x="300" y="23" font-family="ui-monospace" font-size="12" fill="#888" text-anchor="middle">ace — zsh</text>
+    
+    <!-- Terminal content -->
+    <g transform="translate(20, 55)">
+      <text y="0" font-family="ui-monospace" font-size="14" fill="#22c55e">❯</text>
+      <text x="20" y="0" font-family="ui-monospace" font-size="14" fill="#fff">ace init my-app --template react</text>
+      
+      <text y="30" font-family="ui-monospace" font-size="13" fill="#3b82f6">
+        <tspan>⠋</tspan>
+        <tspan fill="#94a3b8"> Creating project structure...</tspan>
+      </text>
+      
+      <text y="60" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="60" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/</text>
+      
+      <text y="85" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="85" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/components/</text>
+      
+      <text y="110" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="110" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/views/</text>
+      
+      <text y="135" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="135" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/hooks/</text>
+      
+      <text y="160" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="160" font-family="ui-monospace" font-size="13" fill="#94a3b8">Added package.json</text>
+      
+      <text y="185" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="185" font-family="ui-monospace" font-size="13" fill="#94a3b8">Added tsconfig.json</text>
+      
+      <text y="220" font-family="ui-monospace" font-size="13" fill="#22c55e">✨ Project ready!</text>
+      
+      <text y="260" font-family="ui-monospace" font-size="14" fill="#22c55e">❯</text>
+      <text x="20" y="260" font-family="ui-monospace" font-size="14" fill="#fff">ace generate component Button --props variant,size</text>
+      
+      <text y="290" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="290" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/components/Button/index.tsx</text>
+      
+      <text y="315" font-family="ui-monospace" font-size="13" fill="#22c55e">✓</text>
+      <text x="20" y="315" font-family="ui-monospace" font-size="13" fill="#94a3b8">Created src/components/Button/Button.test.tsx</text>
+      
+      <text y="350" font-family="ui-monospace" font-size="14" fill="#22c55e">❯</text>
+      <text x="20" y="350" font-family="ui-monospace" font-size="14" fill="#64748b">_</text>
+    </g>
+  </g>
+  
+  <!-- Description -->
+  <text x="400" y="560" font-family="system-ui" font-size="14" fill="#94a3b8" text-anchor="middle">React scaffolding CLI • Generate components, views, and hooks</text>
+</svg>

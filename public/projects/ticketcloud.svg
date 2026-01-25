@@ -1,0 +1,89 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ticket-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e"/>
+      <stop offset="100%" style="stop-color:#164e63"/>
+    </linearGradient>
+    <linearGradient id="ticket-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="600" fill="url(#ticket-bg)"/>
+  
+  <!-- Ticket cards -->
+  <g transform="translate(100, 100)">
+    <!-- Ticket 1 - Open -->
+    <g>
+      <rect x="0" y="0" width="280" height="130" rx="12" fill="#0f172a" stroke="#06b6d4" stroke-width="2"/>
+      <rect x="0" y="0" width="8" height="130" rx="4" fill="#ef4444"/>
+      <text x="25" y="30" font-family="ui-monospace" font-size="12" fill="#94a3b8">#1042</text>
+      <text x="200" y="30" font-family="system-ui" font-size="10" fill="#ef4444" text-anchor="end">OPEN</text>
+      <rect x="205" y="18" width="50" height="18" rx="4" fill="#ef4444" opacity="0.2"/>
+      <text x="25" y="55" font-family="system-ui" font-size="14" font-weight="600" fill="#fff">Login button not working</text>
+      <text x="25" y="80" font-family="system-ui" font-size="12" fill="#64748b">Users can't authenticate on...</text>
+      <text x="25" y="110" font-family="system-ui" font-size="11" fill="#94a3b8">👤 Sarah K. • 2h ago</text>
+    </g>
+    
+    <!-- Ticket 2 - In Progress -->
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="280" height="130" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <rect x="0" y="0" width="8" height="130" rx="4" fill="#f59e0b"/>
+      <text x="25" y="30" font-family="ui-monospace" font-size="12" fill="#94a3b8">#1038</text>
+      <text x="175" y="30" font-family="system-ui" font-size="10" fill="#f59e0b" text-anchor="end">IN PROGRESS</text>
+      <rect x="180" y="18" width="75" height="18" rx="4" fill="#f59e0b" opacity="0.2"/>
+      <text x="25" y="55" font-family="system-ui" font-size="14" font-weight="600" fill="#fff">Add export feature</text>
+      <text x="25" y="80" font-family="system-ui" font-size="12" fill="#64748b">Export data to CSV format...</text>
+      <text x="25" y="110" font-family="system-ui" font-size="11" fill="#94a3b8">👤 Mike R. • 1d ago</text>
+    </g>
+    
+    <!-- Ticket 3 - Resolved -->
+    <g transform="translate(0, 150)">
+      <rect x="0" y="0" width="280" height="130" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <rect x="0" y="0" width="8" height="130" rx="4" fill="#22c55e"/>
+      <text x="25" y="30" font-family="ui-monospace" font-size="12" fill="#94a3b8">#1035</text>
+      <text x="190" y="30" font-family="system-ui" font-size="10" fill="#22c55e" text-anchor="end">RESOLVED</text>
+      <rect x="195" y="18" width="60" height="18" rx="4" fill="#22c55e" opacity="0.2"/>
+      <text x="25" y="55" font-family="system-ui" font-size="14" font-weight="600" fill="#fff">Dashboard loading slow</text>
+      <text x="25" y="80" font-family="system-ui" font-size="12" fill="#64748b">Optimized database queries...</text>
+      <text x="25" y="110" font-family="system-ui" font-size="11" fill="#94a3b8">👤 Alex L. • 3d ago</text>
+    </g>
+    
+    <!-- Ticket 4 -->
+    <g transform="translate(300, 150)">
+      <rect x="0" y="0" width="280" height="130" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <rect x="0" y="0" width="8" height="130" rx="4" fill="#06b6d4"/>
+      <text x="25" y="30" font-family="ui-monospace" font-size="12" fill="#94a3b8">#1041</text>
+      <text x="195" y="30" font-family="system-ui" font-size="10" fill="#06b6d4" text-anchor="end">PENDING</text>
+      <rect x="200" y="18" width="55" height="18" rx="4" fill="#06b6d4" opacity="0.2"/>
+      <text x="25" y="55" font-family="system-ui" font-size="14" font-weight="600" fill="#fff">Mobile app crashes</text>
+      <text x="25" y="80" font-family="system-ui" font-size="12" fill="#64748b">Awaiting customer response...</text>
+      <text x="25" y="110" font-family="system-ui" font-size="11" fill="#94a3b8">👤 John D. • 5h ago</text>
+    </g>
+  </g>
+  
+  <!-- Stats bar -->
+  <g transform="translate(100, 420)">
+    <rect x="0" y="0" width="600" height="60" rx="10" fill="#0f172a"/>
+    <g transform="translate(40, 30)">
+      <circle cx="0" cy="0" r="8" fill="#ef4444"/>
+      <text x="20" y="5" font-family="system-ui" font-size="14" fill="#fff">12 Open</text>
+    </g>
+    <g transform="translate(160, 30)">
+      <circle cx="0" cy="0" r="8" fill="#f59e0b"/>
+      <text x="20" y="5" font-family="system-ui" font-size="14" fill="#fff">8 In Progress</text>
+    </g>
+    <g transform="translate(320, 30)">
+      <circle cx="0" cy="0" r="8" fill="#22c55e"/>
+      <text x="20" y="5" font-family="system-ui" font-size="14" fill="#fff">156 Resolved</text>
+    </g>
+    <g transform="translate(480, 30)">
+      <text x="0" y="5" font-family="system-ui" font-size="14" fill="#94a3b8">Avg. Response: 2.4h</text>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="540" font-family="system-ui" font-size="28" font-weight="700" fill="#fff" text-anchor="middle">TicketCloud</text>
+  <text x="400" y="570" font-family="system-ui" font-size="14" fill="#94a3b8" text-anchor="middle">Support ticket management for MiPortal</text>
+</svg>

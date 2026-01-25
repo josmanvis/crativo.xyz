@@ -17,7 +17,7 @@ export const projects: Project[] = [
       "Modern room booking platform for businesses with instant booking, team management, and smart analytics.",
     category: "Apps",
     techStack: ["React", "Node.js", "REST API", "OAuth 2.0"],
-    imageUrl: "/projects/qortr.jpg",
+    imageUrl: "/projects/qortr.svg",
     href: "/projects/qortr",
     year: 2024,
     metrics: [
@@ -61,7 +61,7 @@ async function bookRoom(roomId: string, slot: TimeSlot) {
       "Mobile-first task management platform with real-time messaging, push notifications, and cross-platform support.",
     category: "Apps",
     techStack: ["React Native", "Ruby on Rails", "SendGrid"],
-    imageUrl: "/projects/snaptask.jpg",
+    imageUrl: "/projects/snaptask.svg",
     href: "/projects/snaptask",
     year: 2017,
     metrics: [
@@ -99,7 +99,7 @@ class TaskSync extends Component {
       "Interactive kiosk software for grocery stores with product lookup, voice shopping list, and store navigation.",
     category: "Kiosks",
     techStack: ["React.js", "Express.js", "Node.js", "IBM Watson"],
-    imageUrl: "/projects/stopshop-kiosk.jpg",
+    imageUrl: "/projects/stopshop-kiosk.svg",
     href: "/projects/stopshop-kiosk",
     year: 2021,
     metrics: [
@@ -140,7 +140,7 @@ async function addItemByVoice(transcript) {
       "Internal platform for submitting and tracking innovative ideas from pilot to production at Retail Business Services.",
     category: "Apps",
     techStack: ["React.js", "Node.js", "Express.js"],
-    imageUrl: "/projects/innovation-portal.jpg",
+    imageUrl: "/projects/innovation-portal.svg",
     href: "/projects/innovation-portal",
     year: 2020,
     metrics: [
@@ -184,7 +184,7 @@ function IdeaTracker({ idea }: { idea: Idea }) {
       "Configurable React.js virtual keyboard component used in retail kiosk applications.",
     category: "Libraries",
     techStack: ["React.js", "TypeScript", "NPM"],
-    imageUrl: "/projects/too-bored.jpg",
+    imageUrl: "/projects/too-bored.svg",
     href: "/projects/too-bored",
     year: 2019,
     metrics: [
@@ -226,7 +226,7 @@ export function KioskInput() {
       "Fully-responsive, configurable threaded comment component with user tagging support.",
     category: "Libraries",
     techStack: ["React.js", "TypeScript", "NPM"],
-    imageUrl: "/projects/gappa-comments.jpg",
+    imageUrl: "/projects/gappa-comments.svg",
     href: "/projects/gappa-comments",
     year: 2019,
     metrics: [
@@ -268,7 +268,7 @@ export function Discussion({ postId }: { postId: string }) {
       "Node.js-based CLI for bootstrapping React applications and quickly scaffolding views and components.",
     category: "Tools",
     techStack: ["Node.js", "CLI", "NPM"],
-    imageUrl: "/projects/ace-cli.jpg",
+    imageUrl: "/projects/ace-cli.svg",
     href: "/projects/ace-cli",
     year: 2019,
     metrics: [
@@ -306,7 +306,7 @@ $ ace generate component Button --props variant,size
       "Powerful support ticket system built as the first app for MiPortal online operating system.",
     category: "Kiosks",
     techStack: ["PHP5", "jQuery", "JavaScript", "XML"],
-    imageUrl: "/projects/ticketcloud.jpg",
+    imageUrl: "/projects/ticketcloud.svg",
     href: "/projects/ticketcloud",
     year: 2014,
     metrics: [
@@ -349,7 +349,7 @@ class TicketController {
       "Cross-platform project management dashboard for managing local development projects across different tech stacks.",
     category: "Tools",
     techStack: ["Node.js", "Electron", "Express.js", "CLI"],
-    imageUrl: "/projects/projax.jpg",
+    imageUrl: "/projects/projax.svg",
     href: "/projects/projax",
     year: 2024,
     metrics: [
@@ -392,7 +392,7 @@ $ projax ports scan
       "Performant z-index management library with virtual z-stack recycling for complex UI layering.",
     category: "Libraries",
     techStack: ["TypeScript", "React", "NPM"],
-    imageUrl: "/projects/zeebra.jpg",
+    imageUrl: "/projects/zeebra.svg",
     href: "/projects/zeebra",
     year: 2024,
     metrics: [
@@ -439,7 +439,7 @@ export function App() {
       "Transparent always-on-top drawing and note-taking overlay for macOS with annotation tools.",
     category: "Libraries",
     techStack: ["Electron", "JavaScript", "macOS"],
-    imageUrl: "/projects/floatnote.jpg",
+    imageUrl: "/projects/floatnote.svg",
     href: "/projects/floatnote",
     year: 2024,
     metrics: [
@@ -477,7 +477,7 @@ $ floatnote
       "CLI tool to check if sensitive files in your coding projects are properly gitignored.",
     category: "Tools",
     techStack: ["Node.js", "TypeScript", "CLI", "Ink"],
-    imageUrl: "/projects/pubsafe.jpg",
+    imageUrl: "/projects/pubsafe.svg",
     href: "/projects/pubsafe",
     year: 2025,
     metrics: [
@@ -517,7 +517,7 @@ $ pubsafe
       "Reusable development tools library for React applications with debugging and console utilities.",
     category: "Libraries",
     techStack: ["React", "TypeScript", "SCSS", "Vite"],
-    imageUrl: "/projects/toolbench.jpg",
+    imageUrl: "/projects/toolbench.svg",
     href: "/projects/toolbench",
     year: 2024,
     metrics: [

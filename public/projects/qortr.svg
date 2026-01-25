@@ -1,0 +1,72 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="qortr-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="qortr-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#qortr-bg)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1" stroke="#64748b" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="100" y1="0" x2="100" y2="600"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="500" y1="0" x2="500" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="700" y1="0" x2="700" y2="600"/>
+  </g>
+  
+  <!-- Calendar/booking visualization -->
+  <g transform="translate(150, 120)">
+    <!-- Room cards -->
+    <rect x="0" y="0" width="200" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="20" y="35" font-family="system-ui" font-size="16" font-weight="600" fill="#f1f5f9">Conference A</text>
+    <rect x="20" y="55" width="160" height="24" rx="6" fill="url(#qortr-accent)" opacity="0.9"/>
+    <text x="30" y="72" font-family="system-ui" font-size="12" fill="#fff">9:00 - 10:30 • Team Sync</text>
+    <rect x="20" y="85" width="80" height="20" rx="4" fill="#22c55e" opacity="0.3"/>
+    <text x="30" y="99" font-family="system-ui" font-size="10" fill="#22c55e">Available</text>
+    
+    <rect x="220" y="0" width="200" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="240" y="35" font-family="system-ui" font-size="16" font-weight="600" fill="#f1f5f9">Board Room</text>
+    <rect x="240" y="55" width="120" height="24" rx="6" fill="#f59e0b" opacity="0.8"/>
+    <text x="250" y="72" font-family="system-ui" font-size="12" fill="#fff">10:00 - 11:00</text>
+    <rect x="240" y="85" width="60" height="20" rx="4" fill="#ef4444" opacity="0.3"/>
+    <text x="250" y="99" font-family="system-ui" font-size="10" fill="#ef4444">Busy</text>
+    
+    <rect x="0" y="140" width="200" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="20" y="175" font-family="system-ui" font-size="16" font-weight="600" fill="#f1f5f9">Meeting Pod 1</text>
+    <rect x="20" y="195" width="100" height="20" rx="4" fill="#22c55e" opacity="0.3"/>
+    <text x="30" y="209" font-family="system-ui" font-size="10" fill="#22c55e">Available</text>
+    
+    <rect x="220" y="140" width="200" height="120" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+    <text x="240" y="175" font-family="system-ui" font-size="16" font-weight="600" fill="#f1f5f9">Focus Room</text>
+    <rect x="240" y="195" width="160" height="24" rx="6" fill="url(#qortr-accent)" opacity="0.9"/>
+    <text x="250" y="212" font-family="system-ui" font-size="12" fill="#fff">2:00 - 5:00 • Deep Work</text>
+  </g>
+  
+  <!-- Floating book button -->
+  <g transform="translate(580, 400)">
+    <rect x="0" y="0" width="140" height="50" rx="25" fill="url(#qortr-accent)"/>
+    <text x="70" y="32" font-family="system-ui" font-size="16" font-weight="600" fill="#fff" text-anchor="middle">Book Now</text>
+  </g>
+  
+  <!-- Time indicator -->
+  <g transform="translate(580, 150)">
+    <rect x="0" y="0" width="160" height="80" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    <text x="20" y="30" font-family="system-ui" font-size="12" fill="#94a3b8">Current Time</text>
+    <text x="20" y="55" font-family="ui-monospace" font-size="24" font-weight="600" fill="#f1f5f9">10:42 AM</text>
+  </g>
+</svg>
