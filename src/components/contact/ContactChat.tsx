@@ -129,9 +129,9 @@ export default function ContactChat({ contactInfo }: ContactChatProps) {
   };
 
   return (
-    <div className="bg-zinc-900/50 rounded-3xl border border-zinc-800 overflow-hidden">
+    <div className="bg-zinc-900/50 rounded-3xl border border-zinc-800 overflow-hidden w-full max-w-full">
       {/* Chat messages */}
-      <div className="p-4 md:p-6 space-y-4 min-h-[300px] max-h-[400px] overflow-y-auto">
+      <div className="p-4 md:p-6 space-y-4 min-h-[300px] max-h-[50vh] overflow-y-auto overflow-x-hidden">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -156,20 +156,20 @@ export default function ContactChat({ contactInfo }: ContactChatProps) {
           <p className="text-sm text-zinc-400 mb-3">
             Sweet! Drop your email so I can reply 📬
           </p>
-          <form onSubmit={handleEmailSubmit} className="flex gap-2">
+          <form onSubmit={handleEmailSubmit} className="flex gap-2 w-full max-w-full">
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className="flex-1 px-4 py-2.5 bg-zinc-900 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 text-sm"
+              className="flex-1 min-w-0 px-4 py-2.5 bg-zinc-900 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 text-base"
               disabled={status === 'loading'}
             />
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="px-5 py-2.5 bg-emerald-500 text-white rounded-full font-medium text-sm hover:bg-emerald-600 transition-colors disabled:opacity-50"
+              className="px-5 py-2.5 bg-emerald-500 text-white rounded-full font-medium text-sm hover:bg-emerald-600 transition-colors disabled:opacity-50 shrink-0"
             >
               {status === 'loading' ? '...' : 'Send'}
             </button>
@@ -180,17 +180,17 @@ export default function ContactChat({ contactInfo }: ContactChatProps) {
       {/* Input area */}
       {!showEmailPrompt && (
         <form onSubmit={handleSend} className="p-4 border-t border-zinc-800">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full max-w-full">
             <input
               type="text"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="iMessage... jk, but type here"
-              className="flex-1 px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 text-sm"
+              className="flex-1 min-w-0 px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-600 text-base"
             />
             <button
               type="submit"
-              className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+              className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors shrink-0"
             >
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

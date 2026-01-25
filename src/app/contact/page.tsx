@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-black text-white py-20 px-4 md:px-6 relative">
+    <main className="min-h-screen bg-black text-white py-12 md:py-20 px-4 md:px-6 relative overflow-x-hidden">
       <DotGrid opacity={0.12} spacing={60} dotSize={1.5} />
       
-      <div className="max-w-2xl mx-auto relative z-10">
+      <div className="max-w-2xl mx-auto relative z-10 w-full">
         {/* iMessage-style header */}
         <div className="text-center mb-8">
           <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
