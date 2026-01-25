@@ -1,138 +1,74 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { generateFingerprint } from '@/lib/fingerprint';
 
-interface Message {
-  id: string;
-  text: string;
-  sender: 'user' | 'jose';
-  timestamp: Date;
-}
-
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputText] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [isPhoneSet, setIsPhoneSet] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [fingerprint, setFingerprint] = useState<string | null>(null);
-  const [isBlocked, setIsBlocked] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Generate fingerprint on mount
   useEffect(() => {
     generateFingerprint().then(setFingerprint);
   }, []);
 
-  // Scroll to bottom when new messages arrive
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  // Poll for new messages and check block status
-  useEffect(() => {
-    if (!conversationId || !isOpen || !fingerprint) return;
-
-    const pollMessages = async () => {
-      try {
-        const res = await fetch(`/api/chat/messages?conversationId=${conversationId}&fp=${fingerprint}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (data.blocked) {
-            setIsBlocked(true);
-            return;
-          }
-          setMessages(data.messages);
-        }
-      } catch (error) {
-        console.error('Error polling messages:', error);
-      }
-    };
-
-    const interval = setInterval(pollMessages, 3000);
-    return () => clearInterval(interval);
-  }, [conversationId, isOpen, fingerprint]);
-
-  const formatPhoneNumber = (value: string) => {
-    const numbers = value.replace(/\D/g, '');
-    if (numbers.length <= 3) return numbers;
-    if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
-    return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
-  };
-
-  const handlePhoneSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanPhone = phoneNumber.replace(/\D/g, '');
-    if (cleanPhone.length === 10) {
-      setIsPhoneSet(true);
-      setConversationId(`+1${cleanPhone}`);
-    }
-  };
+    if (!message.trim() || !email.trim() || isLoading) return;
 
-  const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inputText.trim() || isLoading || isBlocked) return;
-
-    const messageText = inputText.trim();
-    setInputText('');
     setIsLoading(true);
-
-    // Add message to UI immediately
-    const tempMessage: Message = {
-      id: Date.now().toString(),
-      text: messageText,
-      sender: 'user',
-      timestamp: new Date(),
-    };
-    setMessages(prev => [...prev, tempMessage]);
+    setError(null);
 
     try {
-      const res = await fetch('/api/chat/send', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: messageText,
-          phoneNumber: `+1${phoneNumber.replace(/\D/g, '')}`,
+          name: name.trim() || 'Anonymous',
+          email: email.trim(),
+          message: message.trim(),
           fingerprint,
         }),
       });
 
       const data = await res.json();
-      
+
       if (data.blocked) {
-        setIsBlocked(true);
+        setError('Unable to send message.');
         return;
       }
 
       if (!res.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(data.error || 'Failed to send');
       }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      // Show error in chat
-      setMessages(prev => [
-        ...prev,
-        {
-          id: Date.now().toString(),
-          text: '⚠️ Message failed to send. Please try again.',
-          sender: 'jose',
-          timestamp: new Date(),
-        },
-      ]);
+
+      setIsSent(true);
+      setName('');
+      setEmail('');
+      setMessage('');
+    } catch (err) {
+      setError('Failed to send. Please try again.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const resetForm = () => {
+    setIsSent(false);
+    setError(null);
   };
 
   return (
     <>
       {/* Chat bubble button */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => { setIsOpen(!isOpen); if (isSent) resetForm(); }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -168,14 +104,14 @@ export default function ChatWidget() {
         </AnimatePresence>
       </motion.button>
 
-      {/* Chat window */}
+      {/* Contact form popup */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 h-[500px] bg-zinc-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-zinc-700"
+            className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-zinc-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-zinc-700"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 flex items-center gap-3">
@@ -183,120 +119,94 @@ export default function ChatWidget() {
                 <span className="text-xl">👋</span>
               </div>
               <div>
-                <h3 className="font-semibold text-white">Chat with Jose</h3>
-                <p className="text-xs text-white/80">Usually replies within minutes</p>
+                <h3 className="font-semibold text-white">Get in touch</h3>
+                <p className="text-xs text-white/80">I&apos;ll get back to you soon</p>
               </div>
             </div>
 
-            {/* Messages area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3">
-              {isBlocked ? (
-                /* Blocked message */
-                <div className="h-full flex flex-col items-center justify-center text-center p-4">
-                  <div className="w-16 h-16 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
-                    <span className="text-3xl">🚫</span>
+            {/* Content */}
+            <div className="p-4">
+              {isSent ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-8"
+                >
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl">✓</span>
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Chat unavailable</h4>
-                  <p className="text-sm text-zinc-400">
-                    This chat has been closed.
+                  <h4 className="text-lg font-semibold text-white mb-2">Message sent!</h4>
+                  <p className="text-sm text-zinc-400 mb-4">
+                    Thanks for reaching out. I&apos;ll get back to you soon.
                   </p>
-                </div>
-              ) : !isPhoneSet ? (
-                /* Phone number form */
-                <div className="h-full flex flex-col items-center justify-center text-center p-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
-                    <span className="text-3xl">💬</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Let&apos;s connect!</h4>
-                  <p className="text-sm text-zinc-400 mb-6">
-                    Enter your phone number and I&apos;ll text you back directly.
-                  </p>
-                  <form onSubmit={handlePhoneSubmit} className="w-full space-y-3">
-                    <input
-                      type="tel"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))}
-                      placeholder="(555) 123-4567"
-                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-center text-lg"
-                      maxLength={14}
-                    />
-                    <button
-                      type="submit"
-                      disabled={phoneNumber.replace(/\D/g, '').length !== 10}
-                      className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-shadow"
-                    >
-                      Start Chatting
-                    </button>
-                  </form>
-                </div>
+                  <button
+                    onClick={resetForm}
+                    className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
               ) : (
-                /* Messages */
-                <>
-                  {/* Welcome message */}
-                  {messages.length === 0 && (
-                    <div className="bg-zinc-800 rounded-2xl rounded-tl-sm p-3 max-w-[80%]">
-                      <p className="text-sm text-white">
-                        Hey! 👋 I&apos;m Jose. Send me a message and I&apos;ll text you back on your phone!
-                      </p>
-                      <span className="text-xs text-zinc-500 mt-1 block">Just now</span>
-                    </div>
-                  )}
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your name (optional)"
+                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your email *"
+                      required
+                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Your message *"
+                      required
+                      rows={4}
+                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm resize-none"
+                    />
+                  </div>
                   
-                  {messages.map((msg) => (
-                    <div
-                      key={msg.id}
-                      className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                    >
-                      <div
-                        className={`max-w-[80%] rounded-2xl p-3 ${
-                          msg.sender === 'user'
-                            ? 'bg-gradient-to-r from-emerald-500 to-teal-500 rounded-tr-sm'
-                            : 'bg-zinc-800 rounded-tl-sm'
-                        }`}
-                      >
-                        <p className="text-sm text-white">{msg.text}</p>
-                        <span className="text-xs text-white/60 mt-1 block">
-                          {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                  <div ref={messagesEndRef} />
-                </>
-              )}
-            </div>
+                  {error && (
+                    <p className="text-red-400 text-sm">{error}</p>
+                  )}
 
-            {/* Input area */}
-            {isPhoneSet && (
-              <form onSubmit={handleSendMessage} className="p-4 border-t border-zinc-700">
-                <div className="flex gap-2">
-                  <input
-                    type="text"
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                    placeholder="Type a message..."
-                    className="flex-1 px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-full text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                    disabled={isLoading}
-                  />
                   <button
                     type="submit"
-                    disabled={!inputText.trim() || isLoading}
-                    className="w-10 h-10 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!email.trim() || !message.trim() || isLoading}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all flex items-center justify-center gap-2"
                   >
                     {isLoading ? (
-                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
+                      <>
+                        <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                        </svg>
+                        Sending...
+                      </>
                     ) : (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
+                      <>
+                        Send message
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                      </>
                     )}
                   </button>
-                </div>
-              </form>
-            )}
+                </form>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
