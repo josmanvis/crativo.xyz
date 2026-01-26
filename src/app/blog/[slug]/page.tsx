@@ -4,6 +4,7 @@ import { getPostBySlug, getAllSlugs } from '@/lib/blog';
 import BlogHero from '@/components/blog/BlogHero';
 import MarkdownContent from '@/components/blog/MarkdownContent';
 import { DotGrid } from '@/components/DotGrid';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import Script from 'next/script';
 
 interface PageProps {
@@ -249,6 +250,11 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
+          </section>
+
+          {/* Newsletter signup */}
+          <section className="py-8">
+            <NewsletterSignup />
           </section>
 
           {/* Footer with navigation */}

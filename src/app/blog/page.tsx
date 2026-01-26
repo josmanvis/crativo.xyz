@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { getAllPosts, categories } from '@/lib/blog';
 import BlogList from '@/components/blog/BlogList';
 import { DotGrid } from '@/components/DotGrid';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export const metadata: Metadata = {
   title: 'Blog | Jose Viscasillas - Software Engineering & Web Development',
@@ -51,9 +52,19 @@ export default function BlogPage() {
         </p>
       </div>
 
+      {/* Newsletter Signup */}
+      <div className="max-w-2xl mx-auto px-6 mb-12 relative z-10">
+        <NewsletterSignup />
+      </div>
+
       {/* Blog List with filtering */}
       <div className="relative z-10">
         <BlogList posts={posts} categories={categories} />
+      </div>
+
+      {/* Bottom Newsletter CTA */}
+      <div className="max-w-2xl mx-auto px-6 py-16 relative z-10">
+        <NewsletterSignup />
       </div>
     </main>
   );
