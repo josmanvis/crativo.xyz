@@ -48,8 +48,9 @@ export default function Navigation() {
                       href={item.href}
                       style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                       className={`
-                        text-sm md:text-base whitespace-nowrap px-2 py-1
-                        transition-all duration-150 active:scale-95
+                        relative text-sm md:text-base whitespace-nowrap px-2 py-1
+                        transition-all duration-150 
+                        active:scale-95 active:opacity-70
                         ${active 
                           ? 'text-yellow-400 font-medium' 
                           : 'text-neutral-400 hover:text-white'
@@ -57,6 +58,9 @@ export default function Navigation() {
                       `}
                     >
                       {item.label}
+                      {active && (
+                        <span className="absolute -bottom-1 left-2 right-2 h-0.5 bg-yellow-400 rounded-full" />
+                      )}
                     </Link>
                   </li>
                 );
