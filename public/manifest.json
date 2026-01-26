@@ -1,0 +1,28 @@
+{
+  "name": "Jose Viscasillas - Senior Software Engineer",
+  "short_name": "crativo.xyz",
+  "description": "Portfolio and blog of Jose Viscasillas, Senior Software Engineer with 21 years of experience",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["technology", "portfolio", "blog"],
+  "lang": "en-US"
+}
