@@ -46,12 +46,13 @@ export default function Navigation() {
                   <li key={item.href} className="flex-shrink-0">
                     <Link
                       href={item.href}
+                      style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                       className={`
-                        text-sm md:text-base whitespace-nowrap px-3 py-1.5 rounded-full
+                        text-sm md:text-base whitespace-nowrap px-2 py-1
                         transition-all duration-150 active:scale-95
                         ${active 
-                          ? 'bg-white text-black font-medium' 
-                          : 'text-neutral-400 hover:text-white hover:bg-white/10'
+                          ? 'text-yellow-400 font-medium' 
+                          : 'text-neutral-400 hover:text-white'
                         }
                       `}
                     >
