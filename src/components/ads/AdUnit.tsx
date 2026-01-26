@@ -3,11 +3,9 @@
 import { useEffect, useState } from 'react';
 
 type AdVariant = 'inline' | 'sidebar' | 'banner';
-type AdProvider = 'carbon' | 'ethical' | 'placeholder';
 
 interface AdUnitProps {
   variant?: AdVariant;
-  provider?: AdProvider;
   className?: string;
 }
 
@@ -45,17 +43,15 @@ const placeholderAds = [
 
 export default function AdUnit({
   variant = 'inline',
-  provider = 'placeholder',
   className = ''
 }: AdUnitProps) {
-  const [ad, setAd] = useState(placeholderAds[0]);
+  // Use lazy initializer to randomly select ad on mount (avoids sync setState in useEffect)
+  const [ad] = useState(() => 
+    placeholderAds[Math.floor(Math.random() * placeholderAds.length)]
+  );
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Randomly select a placeholder ad
-    const randomAd = placeholderAds[Math.floor(Math.random() * placeholderAds.length)];
-    setAd(randomAd);
-
     // Fade in animation
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
