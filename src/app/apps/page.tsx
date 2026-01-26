@@ -82,6 +82,7 @@ const apps: App[] = [
     icon: '📝',
     gradient: 'from-yellow-500 to-orange-500',
     platforms: [
+      { name: 'Website', url: 'https://floatnote.crativo.xyz' },
       { name: 'npm', command: 'npm i -g floatnote' },
       { name: 'GitHub', url: 'https://github.com/josmanvis/floatnote' },
     ],
