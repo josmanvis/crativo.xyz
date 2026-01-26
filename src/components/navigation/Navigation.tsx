@@ -1,6 +1,28 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navItems = [
+  { href: '/', label: 'Projects', matchPaths: ['/', '/projects'] },
+  { href: '/blog', label: 'Blog', matchPaths: ['/blog'] },
+  { href: '/videos', label: 'Videos', matchPaths: ['/videos'] },
+  { href: '/about', label: 'About', matchPaths: ['/about'] },
+  { href: '/contact', label: 'Contact', matchPaths: ['/contact'] },
+];
 
 export default function Navigation() {
+  const pathname = usePathname();
+
+  const isActive = (item: typeof navItems[0]) => {
+    // Exact match for home
+    if (item.href === '/' && pathname === '/') return true;
+    // Check if pathname starts with any match path (for nested routes like /projects/qortr)
+    return item.matchPaths.some(path => 
+      path !== '/' && pathname.startsWith(path)
+    );
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-sm border-b border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
@@ -18,46 +40,26 @@ export default function Navigation() {
           {/* Navigation Links - Horizontal scroll on mobile */}
           <div className="overflow-x-auto overflow-y-hidden scrollbar-hide -mr-4 pr-4 md:mr-0 md:pr-0">
             <ul className="flex items-center gap-4 md:gap-8">
-              <li className="flex-shrink-0">
-                <Link
-                  href="/"
-                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li className="flex-shrink-0">
-                <Link
-                  href="/blog"
-                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li className="flex-shrink-0">
-                <Link
-                  href="/videos"
-                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
-                >
-                  Videos
-                </Link>
-              </li>
-              <li className="flex-shrink-0">
-                <Link
-                  href="/about"
-                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
-                >
-                  About
-                </Link>
-              </li>
-              <li className="flex-shrink-0">
-                <Link
-                  href="/contact"
-                  className="text-sm md:text-base text-neutral-400 hover:text-white transition-colors whitespace-nowrap px-2 py-1"
-                >
-                  Contact
-                </Link>
-              </li>
+              {navItems.map((item) => {
+                const active = isActive(item);
+                return (
+                  <li key={item.href} className="flex-shrink-0">
+                    <Link
+                      href={item.href}
+                      className={`
+                        text-sm md:text-base whitespace-nowrap px-3 py-1.5 rounded-full
+                        transition-all duration-150 active:scale-95
+                        ${active 
+                          ? 'bg-white text-black font-medium' 
+                          : 'text-neutral-400 hover:text-white hover:bg-white/10'
+                        }
+                      `}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
