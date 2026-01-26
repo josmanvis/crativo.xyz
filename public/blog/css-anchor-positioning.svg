@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18181b"/>
+      <stop offset="100%" style="stop-color:#27272a"/>
+    </linearGradient>
+    <linearGradient id="button" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="tooltip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.3"/>
+    </filter>
+    <filter id="glow-blue">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+  
+  <!-- Subtle grid -->
+  <g opacity="0.04">
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Main demonstration area -->
+  <g transform="translate(400, 225)">
+    <!-- Anchor Button -->
+    <g transform="translate(0, 0)">
+      <rect x="-60" y="-20" width="120" height="40" rx="8" fill="url(#button)" filter="url(#shadow)"/>
+      <text y="6" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="white" font-weight="600">Click Me</text>
+      
+      <!-- Anchor indicator -->
+      <circle cx="0" cy="0" r="4" fill="#f97316" filter="url(#glow-blue)">
+        <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      
+      <!-- anchor-name label -->
+      <text y="-35" text-anchor="middle" font-family="SF Mono, Monaco, monospace" font-size="11" fill="#f97316">anchor-name: --trigger</text>
+    </g>
+    
+    <!-- Tooltip Below -->
+    <g transform="translate(0, 70)">
+      <!-- Connection line -->
+      <line x1="0" y1="-40" x2="0" y2="-10" stroke="#f97316" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrowhead)"/>
+      
+      <!-- Tooltip arrow -->
+      <polygon points="-8,-8 8,-8 0,2" fill="#1e293b"/>
+      
+      <!-- Tooltip box -->
+      <rect x="-80" y="0" width="160" height="50" rx="8" fill="url(#tooltip)" filter="url(#shadow)"/>
+      <text y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">I'm anchored to the</text>
+      <text y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#e2e8f0">button above! ✨</text>
+      
+      <!-- position-anchor label -->
+      <text y="68" text-anchor="middle" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#22c55e">top: anchor(bottom)</text>
+    </g>
+    
+    <!-- Tooltip Right (ghost) -->
+    <g transform="translate(160, 0)" opacity="0.4">
+      <line x1="-70" y1="0" x2="-40" y2="0" stroke="#f97316" stroke-width="1" stroke-dasharray="4,4"/>
+      <polygon points="-8,-6 2,0 -8,6" fill="#1e293b"/>
+      <rect x="0" y="-25" width="100" height="50" rx="6" fill="url(#tooltip)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="50" y="5" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">fallback</text>
+    </g>
+    
+    <!-- Tooltip Above (ghost) -->
+    <g transform="translate(0, -100)" opacity="0.4">
+      <line x1="0" y1="55" x2="0" y2="25" stroke="#f97316" stroke-width="1" stroke-dasharray="4,4"/>
+      <polygon points="-6,8 6,8 0,-2" fill="#1e293b"/>
+      <rect x="-70" y="-40" width="140" height="40" rx="6" fill="url(#tooltip)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,4"/>
+      <text y="-15" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">flip-block</text>
+    </g>
+  </g>
+  
+  <!-- Left side: Code preview -->
+  <g transform="translate(40, 80)">
+    <rect width="180" height="200" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    
+    <!-- Window bar -->
+    <rect width="180" height="24" rx="8" fill="#1e293b"/>
+    <rect y="16" width="180" height="8" fill="#1e293b"/>
+    <circle cx="14" cy="12" r="4" fill="#ef4444"/>
+    <circle cx="28" cy="12" r="4" fill="#eab308"/>
+    <circle cx="42" cy="12" r="4" fill="#22c55e"/>
+    
+    <!-- Code -->
+    <g transform="translate(12, 40)">
+      <text font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#c792ea">.tooltip</tspan>
+        <tspan fill="#89ddff"> {</tspan>
+      </text>
+      <text y="16" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  position</tspan>
+        <tspan fill="#89ddff">: </tspan>
+        <tspan fill="#c3e88d">absolute</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="34" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  position-anchor</tspan>
+        <tspan fill="#89ddff">:</tspan>
+      </text>
+      <text y="48" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#f97316">    --trigger</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="66" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  top</tspan>
+        <tspan fill="#89ddff">: </tspan>
+        <tspan fill="#ffcb6b">anchor</tspan>
+        <tspan fill="#89ddff">(</tspan>
+        <tspan fill="#c3e88d">bottom</tspan>
+        <tspan fill="#89ddff">);</tspan>
+      </text>
+      <text y="84" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  left</tspan>
+        <tspan fill="#89ddff">: </tspan>
+        <tspan fill="#ffcb6b">anchor</tspan>
+        <tspan fill="#89ddff">(</tspan>
+        <tspan fill="#c3e88d">center</tspan>
+        <tspan fill="#89ddff">);</tspan>
+      </text>
+      <text y="104" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#89ddff">}</text>
+      <text y="130" font-family="SF Mono, Monaco, monospace" font-size="9" fill="#546e7a">/* No JavaScript! */</text>
+    </g>
+  </g>
+  
+  <!-- Right side: Features -->
+  <g transform="translate(600, 100)">
+    <!-- Feature cards -->
+    <g>
+      <rect width="160" height="44" rx="6" fill="#1e293b"/>
+      <text x="12" y="18" font-family="system-ui, sans-serif" font-size="11" fill="#22c55e" font-weight="600">✓ Auto-positioning</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Follows anchor on resize</text>
+    </g>
+    
+    <g transform="translate(0, 56)">
+      <rect width="160" height="44" rx="6" fill="#1e293b"/>
+      <text x="12" y="18" font-family="system-ui, sans-serif" font-size="11" fill="#22c55e" font-weight="600">✓ Flip fallbacks</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Avoids viewport edges</text>
+    </g>
+    
+    <g transform="translate(0, 112)">
+      <rect width="160" height="44" rx="6" fill="#1e293b"/>
+      <text x="12" y="18" font-family="system-ui, sans-serif" font-size="11" fill="#22c55e" font-weight="600">✓ Works with Popover</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Native dialog positioning</text>
+    </g>
+    
+    <g transform="translate(0, 168)">
+      <rect width="160" height="44" rx="6" fill="#1e293b"/>
+      <text x="12" y="18" font-family="system-ui, sans-serif" font-size="11" fill="#22c55e" font-weight="600">✓ Zero JavaScript</text>
+      <text x="12" y="34" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">Bye Popper.js 👋</text>
+    </g>
+  </g>
+  
+  <!-- Bottom legend -->
+  <g transform="translate(300, 400)">
+    <rect x="0" y="0" width="200" height="30" rx="15" fill="#1e293b"/>
+    <circle cx="25" cy="15" r="6" fill="#f97316"/>
+    <text x="40" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">anchor()</text>
+    <line x1="110" y1="5" x2="110" y2="25" stroke="#3f3f46" stroke-width="1"/>
+    <rect x="120" y="9" width="12" height="12" rx="3" fill="#3b82f6"/>
+    <text x="140" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">anchor</text>
+  </g>
+</svg>

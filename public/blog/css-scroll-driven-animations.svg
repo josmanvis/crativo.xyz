@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#334155"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="viewport-clip">
+      <rect x="250" y="60" width="300" height="330" rx="8"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bg)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" stroke-width="1"/>
+    </pattern>
+    <rect width="800" height="450" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Left side: Code snippet -->
+  <g transform="translate(30, 100)">
+    <rect width="180" height="250" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <rect width="180" height="24" rx="8" fill="#334155"/>
+    <rect y="16" width="180" height="8" fill="#334155"/>
+    
+    <!-- Window dots -->
+    <circle cx="16" cy="12" r="4" fill="#ef4444"/>
+    <circle cx="32" cy="12" r="4" fill="#eab308"/>
+    <circle cx="48" cy="12" r="4" fill="#22c55e"/>
+    
+    <!-- Code -->
+    <g transform="translate(12, 40)">
+      <text font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#c792ea">.reveal</tspan>
+        <tspan fill="#89ddff"> {</tspan>
+      </text>
+      <text y="16" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  animation</tspan>
+        <tspan fill="#89ddff">:</tspan>
+      </text>
+      <text y="30" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#c3e88d">    fade-in</tspan>
+      </text>
+      <text y="44" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#c3e88d">    linear</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="62" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  animation-timeline</tspan>
+        <tspan fill="#89ddff">:</tspan>
+      </text>
+      <text y="76" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#ffcb6b">    view()</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="90" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#89ddff">}</text>
+      
+      <text y="114" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#c792ea">@keyframes</tspan>
+        <tspan fill="#c3e88d"> fade-in</tspan>
+        <tspan fill="#89ddff"> {</tspan>
+      </text>
+      <text y="128" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  from</tspan>
+        <tspan fill="#89ddff"> {</tspan>
+      </text>
+      <text y="142" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">    opacity</tspan>
+        <tspan fill="#89ddff">: </tspan>
+        <tspan fill="#f78c6c">0</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="156" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#89ddff">  }</text>
+      <text y="170" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">  to</tspan>
+        <tspan fill="#89ddff"> {</tspan>
+      </text>
+      <text y="184" font-family="SF Mono, Monaco, monospace" font-size="10">
+        <tspan fill="#82aaff">    opacity</tspan>
+        <tspan fill="#89ddff">: </tspan>
+        <tspan fill="#f78c6c">1</tspan>
+        <tspan fill="#89ddff">;</tspan>
+      </text>
+      <text y="198" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#89ddff">  }</text>
+      <text y="212" font-family="SF Mono, Monaco, monospace" font-size="10" fill="#89ddff">}</text>
+    </g>
+  </g>
+  
+  <!-- Center: Viewport with scrolling content -->
+  <g>
+    <!-- Viewport frame -->
+    <rect x="246" y="56" width="308" height="338" rx="10" fill="none" stroke="#3b82f6" stroke-width="2" filter="url(#glow)"/>
+    <text x="400" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">viewport</text>
+    
+    <!-- Scrolling cards (clipped to viewport) -->
+    <g clip-path="url(#viewport-clip)">
+      <!-- Card 1 - fully visible -->
+      <rect x="270" y="80" width="260" height="70" rx="6" fill="url(#card)" opacity="1"/>
+      <rect x="285" y="95" width="80" height="10" rx="2" fill="#475569"/>
+      <rect x="285" y="115" width="180" height="6" rx="2" fill="#334155"/>
+      <rect x="285" y="127" width="140" height="6" rx="2" fill="#334155"/>
+      
+      <!-- Card 2 - fully visible -->
+      <rect x="270" y="165" width="260" height="70" rx="6" fill="url(#card)" opacity="1"/>
+      <rect x="285" y="180" width="100" height="10" rx="2" fill="#475569"/>
+      <rect x="285" y="200" width="160" height="6" rx="2" fill="#334155"/>
+      <rect x="285" y="212" width="200" height="6" rx="2" fill="#334155"/>
+      
+      <!-- Card 3 - entering (animating) -->
+      <g opacity="0.6" transform="translate(0, 20)">
+        <rect x="270" y="250" width="260" height="70" rx="6" fill="url(#card)"/>
+        <rect x="285" y="265" width="90" height="10" rx="2" fill="#475569"/>
+        <rect x="285" y="285" width="170" height="6" rx="2" fill="#334155"/>
+        <rect x="285" y="297" width="130" height="6" rx="2" fill="#334155"/>
+      </g>
+      
+      <!-- Card 4 - just entering -->
+      <g opacity="0.2" transform="translate(0, 40)">
+        <rect x="270" y="335" width="260" height="70" rx="6" fill="url(#card)"/>
+        <rect x="285" y="350" width="70" height="10" rx="2" fill="#475569"/>
+        <rect x="285" y="370" width="150" height="6" rx="2" fill="#334155"/>
+      </g>
+    </g>
+    
+    <!-- Scroll indicator -->
+    <rect x="542" y="70" width="6" height="310" rx="3" fill="#334155"/>
+    <rect x="542" y="100" width="6" height="80" rx="3" fill="url(#accent)">
+      <animate attributeName="y" values="100;280;100" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Entry zone indicator -->
+    <line x1="240" y1="320" x2="560" y2="320" stroke="#22c55e" stroke-width="1" stroke-dasharray="6,4" opacity="0.5"/>
+    <text x="565" y="324" font-family="system-ui, sans-serif" font-size="10" fill="#22c55e" opacity="0.8">entry</text>
+  </g>
+  
+  <!-- Right side: Timeline visualization -->
+  <g transform="translate(600, 100)">
+    <rect width="170" height="250" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    
+    <text x="85" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b" font-weight="600">View Timeline</text>
+    
+    <!-- Timeline track -->
+    <rect x="30" y="50" width="110" height="180" rx="4" fill="#0f172a"/>
+    
+    <!-- Progress fill -->
+    <rect x="30" y="50" width="110" height="90" rx="4" fill="url(#accent)" opacity="0.3">
+      <animate attributeName="height" values="0;180;0" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Timeline markers -->
+    <g font-family="SF Mono, Monaco, monospace" font-size="9" fill="#94a3b8">
+      <text x="22" y="56" text-anchor="end">0%</text>
+      <text x="22" y="143" text-anchor="end">50%</text>
+      <text x="22" y="232" text-anchor="end">100%</text>
+    </g>
+    
+    <!-- Range labels -->
+    <text x="85" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#22c55e">entry</text>
+    <text x="85" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#3b82f6">contain</text>
+    <text x="85" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#ef4444">exit</text>
+  </g>
+  
+  <!-- Arrow showing connection -->
+  <path d="M 220 225 C 235 225 235 225 245 225" stroke="url(#accent)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 555 225 C 585 225 585 225 595 225" stroke="url(#accent)" stroke-width="2" fill="none"/>
+  
+  <!-- Title at bottom -->
+  <text x="400" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#f1f5f9" font-weight="600">scroll() + view() = No JavaScript Needed</text>
+</svg>
