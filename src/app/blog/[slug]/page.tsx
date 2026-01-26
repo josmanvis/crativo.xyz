@@ -6,6 +6,7 @@ import MarkdownContent from '@/components/blog/MarkdownContent';
 import RecommendedReads from '@/components/blog/RecommendedReads';
 import { DotGrid } from '@/components/DotGrid';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { AdUnit } from '@/components/ads';
 import Script from 'next/script';
 
 interface PageProps {
@@ -206,6 +207,11 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </div>
 
+          {/* Sponsor Ad - Top of content */}
+          <div className="my-8">
+            <AdUnit variant="inline" />
+          </div>
+
           {/* Content */}
           <section className="py-8">
             <MarkdownContent content={post.content} />
@@ -255,6 +261,11 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             </div>
           </section>
+
+          {/* Sponsor Ad - Before recommendations */}
+          <div className="py-8">
+            <AdUnit variant="banner" />
+          </div>
 
           {/* Recommended reads */}
           <RecommendedReads posts={relatedPosts} currentSlug={slug} />

@@ -8,6 +8,7 @@ import ProjectDescription from "@/components/ProjectDescription";
 import CodeSnippet from "@/components/CodeSnippet";
 import DisqusComments from "@/components/DisqusComments";
 import { DotGrid } from "@/components/DotGrid";
+import { AdUnit } from "@/components/ads";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -113,6 +114,11 @@ export default async function ProjectPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {/* Sponsor Ad */}
+        <div className="py-8">
+          <AdUnit variant="inline" />
+        </div>
 
         {/* Metrics */}
         {project.metrics && project.metrics.length > 0 && (
