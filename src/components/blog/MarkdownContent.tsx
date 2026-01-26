@@ -180,6 +180,39 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
       continue;
     }
 
+    // Images: ![alt text](url)
+    const imageMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      const altText = imageMatch[1] || 'Blog image';
+      const src = imageMatch[2];
+
+      // Check if next line is an image caption (starts with *)
+      let caption = '';
+      if (i + 1 < lines.length && lines[i + 1].startsWith('*') && lines[i + 1].endsWith('*')) {
+        caption = lines[i + 1].slice(1, -1);
+        i++; // Skip caption line
+      }
+
+      elements.push(
+        <figure key={key++} className="my-8">
+          <img
+            src={src}
+            alt={altText}
+            loading="lazy"
+            decoding="async"
+            className="rounded-xl w-full h-auto border border-white/10"
+          />
+          {caption && (
+            <figcaption className="text-center text-sm text-zinc-500 mt-3 italic">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+      i++;
+      continue;
+    }
+
     // Empty lines
     if (line.trim() === '') {
       i++;
