@@ -26,7 +26,7 @@ export const projects: Project[] = [
       { label: "Payout Speed", value: "Instant" },
       { label: "DJ Friends Happy", value: "Finally" },
     ],
-    longDescription: \`For years, I've watched my DJ friends get absolutely *wrecked* by ticketing platforms.
+    longDescription: `For years, I've watched my DJ friends get absolutely *wrecked* by ticketing platforms.
 
 You throw a party, promote it for months, pack the venue, and then Eventbrite or whoever takes their cut. 10%. 15%. Sometimes more when you add up all the "service fees" and "processing fees" and whatever other fees they invented that week.
 
@@ -117,7 +117,7 @@ Now it's here.
 
 **afters.xxx** – Ticketing for the underground. 3% fees. Artist profiles. Built by someone who actually goes to these things.
 
-*For my friends who've been asking – you're welcome. Now book me for the afterparty.*\`,
+*For my friends who've been asking – you're welcome. Now book me for the afterparty.*`,
   },
   {
     id: "qortr",

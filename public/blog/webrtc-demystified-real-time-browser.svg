@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#10b981" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="peerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="105" x2="1200" y2="105" stroke="#10b981" stroke-width="1"/>
+    <line x1="0" y1="210" x2="1200" y2="210" stroke="#10b981" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#10b981" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#10b981" stroke-width="1"/>
+    <line x1="0" y1="525" x2="1200" y2="525" stroke="#10b981" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="630" stroke="#10b981" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="630" stroke="#10b981" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#10b981" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="630" stroke="#10b981" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="630" stroke="#10b981" stroke-width="1"/>
+  </g>
+  
+  <!-- Connection line with glow -->
+  <line x1="280" y1="315" x2="920" y2="315" stroke="url(#glowGrad)" stroke-width="8" stroke-linecap="round"/>
+  <line x1="280" y1="315" x2="920" y2="315" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-dasharray="20,10">
+    <animate attributeName="stroke-dashoffset" from="0" to="60" dur="2s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Data packets -->
+  <g>
+    <circle r="6" fill="#06b6d4">
+      <animate attributeName="cx" values="320;880" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="315;315" dur="1.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="6" fill="#f59e0b">
+      <animate attributeName="cx" values="880;320" dur="1.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="315;315" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Peer A (left) -->
+  <g transform="translate(180, 260)">
+    <rect x="0" y="0" width="200" height="110" rx="12" fill="#1a1a1a" stroke="#10b981" stroke-width="2"/>
+    <rect x="15" y="15" width="170" height="60" rx="6" fill="#0d0d0d"/>
+    <!-- Video icon -->
+    <rect x="55" y="30" width="50" height="30" rx="4" fill="#10b981" opacity="0.8"/>
+    <polygon points="115,35 115,55 135,45" fill="#10b981"/>
+    <!-- Label -->
+    <text x="100" y="95" text-anchor="middle" fill="#71717a" font-family="system-ui, sans-serif" font-size="12">PEER A</text>
+  </g>
+  
+  <!-- Peer B (right) -->
+  <g transform="translate(820, 260)">
+    <rect x="0" y="0" width="200" height="110" rx="12" fill="#1a1a1a" stroke="#06b6d4" stroke-width="2"/>
+    <rect x="15" y="15" width="170" height="60" rx="6" fill="#0d0d0d"/>
+    <!-- Video icon -->
+    <rect x="55" y="30" width="50" height="30" rx="4" fill="#06b6d4" opacity="0.8"/>
+    <polygon points="115,35 115,55 135,45" fill="#06b6d4"/>
+    <!-- Label -->
+    <text x="100" y="95" text-anchor="middle" fill="#71717a" font-family="system-ui, sans-serif" font-size="12">PEER B</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="600" y="160" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="48" font-weight="700">WebRTC Demystified</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="210" text-anchor="middle" fill="#a1a1aa" font-family="system-ui, sans-serif" font-size="24">Real-Time Communication in the Browser</text>
+  
+  <!-- Bottom labels -->
+  <g transform="translate(600, 500)">
+    <rect x="-150" y="0" width="90" height="32" rx="6" fill="#10b981" opacity="0.15"/>
+    <text x="-105" y="22" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="14">Video</text>
+    
+    <rect x="-45" y="0" width="90" height="32" rx="6" fill="#06b6d4" opacity="0.15"/>
+    <text x="0" y="22" text-anchor="middle" fill="#06b6d4" font-family="monospace" font-size="14">Audio</text>
+    
+    <rect x="60" y="0" width="90" height="32" rx="6" fill="#f59e0b" opacity="0.15"/>
+    <text x="105" y="22" text-anchor="middle" fill="#f59e0b" font-family="monospace" font-size="14">Data</text>
+  </g>
+  
+  <!-- Branding -->
+  <text x="1160" y="600" text-anchor="end" fill="#404040" font-family="system-ui, sans-serif" font-size="14">crativo.xyz</text>
+</svg>
