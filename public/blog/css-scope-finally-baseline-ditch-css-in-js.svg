@@ -1,0 +1,58 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Decorative grid lines -->
+  <g stroke="#333" stroke-width="0.5" opacity="0.3">
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+  </g>
+  
+  <!-- Outer scope ring (teal/cyan) -->
+  <circle cx="600" cy="315" r="180" fill="none" stroke="url(#scopeGrad)" stroke-width="4" opacity="0.8"/>
+  <circle cx="600" cy="315" r="180" fill="url(#scopeGrad)" opacity="0.08"/>
+  
+  <!-- Donut hole ring (orange/gold) - the limit -->
+  <circle cx="600" cy="315" r="80" fill="#0a0a0a" stroke="url(#innerGrad)" stroke-width="3" opacity="0.9"/>
+  
+  <!-- Scope arrow pointing inward -->
+  <g fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.6">
+    <path d="M420 315 L480 315" stroke-linecap="round"/>
+    <path d="M470 305 L480 315 L470 325"/>
+  </g>
+  <g fill="none" stroke="#06b6d4" stroke-width="2" opacity="0.6">
+    <path d="M780 315 L720 315" stroke-linecap="round"/>
+    <path d="M730 305 L720 315 L730 325"/>
+  </g>
+  
+  <!-- @scope text -->
+  <text x="600" y="325" text-anchor="middle" fill="#fff" font-size="36" font-family="SF Mono, Monaco, monospace" font-weight="600">@scope</text>
+  
+  <!-- Code bracket decorations -->
+  <text x="180" y="340" fill="#10b981" font-size="120" font-family="SF Mono, Monaco, monospace" opacity="0.15">{</text>
+  <text x="960" y="340" fill="#10b981" font-size="120" font-family="SF Mono, Monaco, monospace" opacity="0.15">}</text>
+  
+  <!-- "Baseline" badge -->
+  <rect x="520" y="420" width="160" height="32" rx="16" fill="#10b981" opacity="0.9"/>
+  <text x="600" y="442" text-anchor="middle" fill="#fff" font-size="14" font-family="system-ui, sans-serif" font-weight="600">✓ BASELINE 2026</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="540" text-anchor="middle" fill="#888" font-size="18" font-family="system-ui, sans-serif">Native CSS Scoping • No Runtime • All Browsers</text>
+</svg>
