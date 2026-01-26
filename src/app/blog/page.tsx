@@ -3,6 +3,7 @@ import { getAllPosts, categories } from '@/lib/blog';
 import BlogList from '@/components/blog/BlogList';
 import { DotGrid } from '@/components/DotGrid';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { AdUnit } from '@/components/ads';
 
 export const metadata: Metadata = {
   title: 'Blog | Jose Viscasillas - Software Engineering & Web Development',
@@ -55,6 +56,11 @@ export default function BlogPage() {
       {/* Newsletter Signup */}
       <div className="max-w-2xl mx-auto px-6 mb-12 relative z-10">
         <NewsletterSignup />
+      </div>
+
+      {/* Sponsor Ad */}
+      <div className="max-w-2xl mx-auto px-6 mb-12 relative z-10">
+        <AdUnit variant="banner" />
       </div>
 
       {/* Blog List with filtering */}
