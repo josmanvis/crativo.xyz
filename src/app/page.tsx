@@ -37,6 +37,14 @@ export default function Home() {
     checkMobile();
   }, []);
 
+  // Sync showIntro with context - prevents splash from showing after navigation
+  // This handles race conditions where showIntro state doesn't match context
+  useEffect(() => {
+    if (hasShownSplash && showIntro) {
+      setShowIntro(false);
+    }
+  }, [hasShownSplash, showIntro]);
+
   // Lock scrolling when intro is visible
   useEffect(() => {
     if (showIntro) {

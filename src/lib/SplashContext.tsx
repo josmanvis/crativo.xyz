@@ -10,21 +10,26 @@ interface SplashContextType {
 const SplashContext = createContext<SplashContextType | null>(null);
 
 export function SplashProvider({ children }: { children: ReactNode }) {
-  const [hasShownSplash, setHasShownSplash] = useState(false);
+  // Initialize state by checking sessionStorage immediately (client-side only)
+  const [hasShownSplash, setHasShownSplash] = useState(() => {
+    // On server, default to false (will be corrected on hydration)
+    if (typeof window === "undefined") return false;
+    // On client, check sessionStorage immediately to avoid flicker
+    return sessionStorage.getItem("crativo-splash-shown") === "true";
+  });
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    // Check if this is a fresh page load or client-side navigation
-    // Fresh loads won't have the session marker set yet
+    // Double-check sessionStorage on mount (handles edge cases)
     const sessionMarker = sessionStorage.getItem("crativo-splash-shown");
     
-    // If marker exists, splash was already shown this session
-    if (sessionMarker === "true") {
+    // If marker exists, ensure splash state is true
+    if (sessionMarker === "true" && !hasShownSplash) {
       setHasShownSplash(true);
     }
     
     setIsHydrated(true);
-  }, []);
+  }, [hasShownSplash]);
 
   const markSplashShown = () => {
     setHasShownSplash(true);
