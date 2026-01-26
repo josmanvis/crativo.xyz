@@ -16,56 +16,138 @@ export const projects: Project[] = [
     description:
       "Modern room booking platform for businesses with instant booking, team management, and smart analytics.",
     category: "Apps",
-    techStack: ["React", "Node.js", "REST API", "OAuth 2.0"],
+    techStack: ["Next.js", "PostgreSQL", "Prisma", "WebSockets", "REST API", "OAuth 2.0"],
     imageUrl: "/projects/qortr.svg",
     href: "/projects/qortr",
     year: 2024,
     metrics: [
       { label: "Daily Bookings", value: "1,000+" },
-      { label: "Teams", value: "2,500+" },
+      { label: "Teams", value: "2,400+" },
+      { label: "Uptime SLA", value: "99.9%" },
+      { label: "Price", value: "Free" },
     ],
     longDescription: `You know what's absolutely wild? In 2024, people are still using spreadsheets to book meeting rooms. SPREADSHEETS. Like it's 1997 and we just discovered Excel.
 
 I watched a coworker spend 15 minutes trying to figure out if "Conference Room B" was available at 2pm. She had three browser tabs open, was cross-referencing a Google Sheet, and eventually just walked to the room to check if anyone was in it. That's when I knew something had to change.
 
-**Qortr started as a simple question:** Why is booking a room harder than booking a flight?
+**The Problem That Drove Me Insane**
 
-The answer, it turns out, is that most room booking software is built by enterprise companies who charge per seat, per room, per month, per breath you take in the building. It's designed for Fortune 500 companies with dedicated "space management teams." The rest of us? We get the spreadsheet.
+Every room booking solution I found fell into one of two categories:
 
-**What I Built**
+1. **Enterprise behemoths** that charge per seat, per room, per month, per square foot, per breath you take in the building. Want to add a new meeting room? That's a sales call. Want to integrate with your calendar? That's the premium tier. Want to NOT want to throw your laptop out the window? Sorry, that's the enterprise plan.
 
-Qortr is room booking for humans. Open the app, see what's available, tap to book. Done. No training required. No 47-page admin guide. Your grandma could book a conference room (and honestly, her bridge club probably needs one).
+2. **"Free" solutions** that are actually just Google Sheets with a prettier font. They work until two people book the same room at the same time, and then it's Thunderdome.
 
-The tech stack is intentionally boring: Next.js, Postgres, a sprinkle of Redis for the real-time stuff. I've learned that "boring" technology is just "reliable" technology with bad marketing.
+I wanted something in between. Something that was actually free (not "free trial" free, not "free for up to 3 users" free — actually free), but also didn't suck.
 
-**The Features Nobody Asked For (But Everyone Uses)**
+So I built it.
 
-- **Ghost Mode**: Admins can see the app exactly as any user sees it. Built this after I realized I had no idea what the onboarding looked like for new users. Turns out it was... not great.
+**The Journey: From Frustration to 2,400+ Teams**
 
-- **Smart Conflicts**: The system knows that "Team Standup" happens every day at 9am in Room 3. It won't let you book over it, but it WILL suggest the room next door that's identical but mysteriously always empty.
+The first version of Qortr was embarrassingly simple. A list of rooms. A calendar. A "Book" button. I built it in a weekend using Next.js because I was already neck-deep in React at work and didn't want to context-switch.
 
-- **The "I'm Running Late" Button**: One tap to extend your booking by 15 minutes and notify the next person. Because meetings never end on time. Ever.
+I showed it to exactly three people. All of them said some version of "cool, but can it do X?" where X was something I hadn't thought of.
 
-**The Part That Keeps Me Up At Night**
+*"Can it show me which rooms have a whiteboard?"*
 
-Real-time availability across multiple locations with hundreds of rooms. Websockets are great until they're not. I've seen things. Race conditions that only happen on Tuesdays. Timezone bugs that manifest exclusively for users in Arizona (they don't do daylight saving time, the absolute madmen).
+Amenity filters. Added.
 
-But here's the thing — when it works, and it does work 99.9% of the time, watching the dashboard light up with bookings from teams who used to fight over rooms... that's pretty cool.`,
+*"Can it handle different locations?"*
+
+Multi-location support. Added.
+
+*"Can it stop my coworker from booking the good conference room every single day at 2pm?"*
+
+Fair booking policies. Added. (This one sparked some workplace drama, apparently.)
+
+**What It Actually Does**
+
+**Browse Rooms** — The rooms page shows you everything available with filters for capacity (need a room for 20? we got you), amenities (WiFi, projector, video conferencing, air conditioning, coffee machine, parking, accessibility), and location. Search by name or description. Sort by newest. Real-time availability — if someone books a room while you're looking at it, you'll see it update instantly.
+
+**Instant Booking** — No approval workflows. No "request pending" limbo. You click "Book," you get a confirmation. The room is yours. The whole point is that booking a meeting room should take less time than deciding where to order lunch.
+
+**Team Management** — Invite your whole team. Manage permissions. Share spaces seamlessly. Some people can book anything; some people can only book certain rooms. Admins see everything; regular users see what they need.
+
+**The Developer Experience**
+
+I'm a developer, so I built the developer experience I wished existed.
+
+Full REST API with JSON responses. Every booking, every room, every user — accessible programmatically. Want to build a Slack bot that books rooms? Go for it. Want to integrate with your custom dashboard? Here's the endpoint.
+
+Webhook events for real-time updates. When a booking is created, modified, or cancelled, you get a POST to your URL. Build automations without polling.
+
+OAuth 2.0 authentication because it's 2024 and API keys alone aren't security.
+
+Rate limiting and pagination built-in because I've debugged enough runaway scripts to know that if you don't build guardrails, someone WILL write a loop that calls your API 10,000 times in a minute.
+
+**The Technical Stuff I'm Proud Of**
+
+The real-time availability system was the hardest part. Here's the problem: you have hundreds of rooms across multiple locations, potentially thousands of users, and everyone needs to see the same truth at the same time.
+
+I went with a combination of database-level locking (Postgres row-level locks via Prisma transactions) for writes, and WebSocket broadcasts for reads. When someone books a room:
+
+1. The booking request hits the API
+2. We acquire a lock on that room's time slot
+3. We check for conflicts (is anyone else already booked?)
+4. If clear, we create the booking and release the lock
+5. We broadcast the update to all connected clients
+
+Steps 2-4 happen in a transaction. If anything fails, everything rolls back. No half-booked rooms. No race conditions where two people think they got the room.
+
+The tricky part was handling the edge cases:
+- What if someone's WebSocket connection drops and they miss an update?
+- What if the broadcast fails after the booking succeeds?
+- What if a user is on a slow connection and their view is 30 seconds out of date?
+
+The answer to all of these: optimistic UI with server reconciliation. The client assumes actions succeed, but always verifies with the server before committing. If there's a mismatch, we show a friendly "This room was just booked by someone else" message instead of a cryptic error.
+
+**The Numbers**
+
+- **1,000+ daily bookings** — People are actually using this thing
+- **2,400+ teams** — From small startups to medium-sized companies
+- **99.9% uptime SLA** — I take reliability seriously (and PagerDuty takes my sleep schedule seriously)
+- **100% free** — No premium tiers. No "enterprise" upsells. Just... free.
+
+**Why Free?**
+
+Because room booking software shouldn't cost money. It's a solved problem. The algorithms aren't novel. The infrastructure isn't expensive. The only reason existing solutions charge hundreds of dollars per month is because they can.
+
+I run Qortr on a $20/month server. The database costs another $15. That's it. Those numbers could 10x and I'd still be profitable on zero revenue because I don't have a sales team, I don't have a marketing budget, and I don't have investors demanding growth at all costs.
+
+The business model is: there isn't one. I built this because I was annoyed, I shared it because other people were annoyed too, and I keep it running because it's satisfying to see the booking counter tick up.
+
+**What's Next**
+
+I have a Notion board full of feature requests. Some of them are good:
+- Calendar sync (Google Calendar, Outlook)
+- Mobile app (it's responsive, but a native app would be nicer)
+- Recurring bookings (weekly standups shouldn't require 52 separate bookings)
+- Room displays (a tablet outside the room showing current/upcoming bookings)
+
+Some of them are... creative:
+- *"Can you add a feature where the room automatically unlocks when I arrive?"* (Sir, this is a web app, not a smart lock company)
+- *"Can you integrate with my company's time tracking software?"* (Why?)
+- *"Can the room change color based on who booked it?"* (I... what?)
+
+I'll get to the good ones eventually. For now, the core experience is solid, the API is comprehensive, and 2,400+ teams seem to agree that it doesn't suck.
+
+That's really all I wanted.`,
     links: [
       { label: "Website", url: "https://www.qortr.com", icon: "external" },
-      { label: "API Docs", url: "https://api.qortr.app", icon: "external" },
     ],
     gallery: [],
     features: [
-      { icon: "⚡", title: "Instant Booking", description: "See availability in real-time. Book with one tap. No waiting, no conflicts." },
-      { icon: "👻", title: "Ghost Mode", description: "Admins can view the app exactly as any user sees it. Debug UX issues instantly." },
-      { icon: "🔄", title: "Smart Conflicts", description: "Knows recurring meetings. Suggests alternatives when your first choice is taken." },
-      { icon: "⏰", title: "Running Late", description: "One-tap to extend your booking and notify the next person automatically." },
-      { icon: "📊", title: "Analytics", description: "See which rooms are actually used, peak hours, and no-show rates." },
-      { icon: "🔔", title: "Notifications", description: "Reminders before meetings, alerts when rooms become available." },
+      { icon: "⚡", title: "Instant Booking", description: "See availability in real-time. Book with one tap. No waiting, no approval workflows, no conflicts." },
+      { icon: "🔍", title: "Smart Filters", description: "Filter by capacity, amenities, location. Find the perfect room for your 20-person presentation or 2-person 1:1." },
+      { icon: "👥", title: "Team Management", description: "Invite your team, manage permissions, share spaces seamlessly across your organization." },
+      { icon: "🔐", title: "Verified & Secure", description: "All spaces are verified. SOC 2 compliant. GDPR ready. Your data stays yours." },
+      { icon: "🔌", title: "REST API", description: "Full API with webhooks, OAuth 2.0, rate limiting. Build integrations, automate workflows." },
+      { icon: "💰", title: "100% Free", description: "No premium tiers. No per-seat pricing. No hidden fees. Actually, genuinely free." },
     ],
     previews: [
-      { type: "demo", src: "/previews/qortr-1.svg", alt: "Qortr room list", caption: "Real-time room availability at a glance" },
+      { type: "image", src: "/previews/qortr-landing.jpg", alt: "Qortr landing page", caption: "Book spaces, not headaches — the landing page that started it all" },
+      { type: "image", src: "/previews/qortr-rooms.jpg", alt: "Qortr room browser", caption: "Browse rooms with filters for capacity, amenities, and location" },
+      { type: "image", src: "/previews/qortr-signin.jpg", alt: "Qortr sign-in page", caption: "Clean authentication — 2,400+ teams trust Qortr" },
     ],
     codeSnippet: {
       language: "typescript",
