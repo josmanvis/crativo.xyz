@@ -1,6 +1,6 @@
 import { getAllPosts } from '@/lib/blog';
 
-const SITE_URL = 'https://crativo.xyz';
+const SITE_URL = 'https://www.crativo.xyz';
 const SITE_TITLE = 'crativo.xyz - Jose Viscasillas';
 const SITE_DESCRIPTION = 'Technical articles on React, TypeScript, AI, and developer tools by Jose Viscasillas. 21 years of coding experience shared.';
 
