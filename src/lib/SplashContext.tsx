@@ -31,13 +31,8 @@ export function SplashProvider({ children }: { children: ReactNode }) {
     sessionStorage.setItem("crativo-splash-shown", "true");
   };
 
-  // Don't render children until hydrated to prevent flash
-  if (!isHydrated) {
-    return null;
-  }
-
   return (
-    <SplashContext.Provider value={{ hasShownSplash, markSplashShown }}>
+    <SplashContext.Provider value={{ hasShownSplash: isHydrated ? hasShownSplash : true, markSplashShown }}>
       {children}
     </SplashContext.Provider>
   );

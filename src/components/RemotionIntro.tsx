@@ -13,14 +13,24 @@ const RemotionIntro: React.FC<RemotionIntroProps> = ({ onEnded }) => {
 
   useEffect(() => {
     const player = playerRef.current;
-    if (!player) return;
+    
+    // Safety timeout - if animation doesn't end in 10 seconds, force dismiss
+    const safetyTimeout = setTimeout(() => {
+      onEnded?.();
+    }, 10000);
+
+    if (!player) {
+      return () => clearTimeout(safetyTimeout);
+    }
 
     const handleEnded = () => {
+      clearTimeout(safetyTimeout);
       onEnded?.();
     };
 
     player.addEventListener("ended", handleEnded);
     return () => {
+      clearTimeout(safetyTimeout);
       player.removeEventListener("ended", handleEnded);
     };
   }, [onEnded]);
