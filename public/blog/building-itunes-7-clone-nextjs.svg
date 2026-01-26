@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4d4d4"/>
+      <stop offset="3%" style="stop-color:#c0c0c0"/>
+      <stop offset="50%" style="stop-color:#b8b8b8"/>
+      <stop offset="97%" style="stop-color:#acacac"/>
+      <stop offset="100%" style="stop-color:#a0a0a0"/>
+    </linearGradient>
+    <linearGradient id="lcd" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1c1c1e"/>
+      <stop offset="100%" style="stop-color:#0f0f10"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#metal)"/>
+  
+  <!-- LCD Display -->
+  <rect x="350" y="180" width="500" height="120" rx="6" fill="url(#lcd)" stroke="#000" stroke-width="2"/>
+  
+  <!-- Scanlines -->
+  <pattern id="scanlines" width="2" height="2" patternUnits="userSpaceOnUse">
+    <rect width="2" height="1" fill="transparent"/>
+    <rect y="1" width="2" height="1" fill="rgba(0,0,0,0.1)"/>
+  </pattern>
+  <rect x="350" y="180" width="500" height="120" rx="6" fill="url(#scanlines)"/>
+  
+  <!-- LCD Text -->
+  <text x="600" y="250" text-anchor="middle" fill="#22d962" font-size="32" font-family="'Lucida Grande', system-ui, sans-serif" font-weight="600" filter="url(#glow)">
+    GemTunes
+  </text>
+  <text x="600" y="280" text-anchor="middle" fill="#22d962" font-size="14" font-family="'Lucida Grande', system-ui, sans-serif" opacity="0.8">
+    0:00 ━━━━━━━━━━━━━━━━━━━━ -0:00
+  </text>
+  
+  <!-- Title -->
+  <text x="600" y="400" text-anchor="middle" fill="#1a1a1a" font-size="42" font-family="Georgia, serif" font-weight="700">
+    Building an iTunes 7 Clone
+  </text>
+  <text x="600" y="450" text-anchor="middle" fill="#505050" font-size="24" font-family="Georgia, serif">
+    Brushed Metal in Next.js
+  </text>
+  
+  <!-- Playback buttons hint -->
+  <g transform="translate(540, 500)">
+    <rect x="0" y="0" width="30" height="24" rx="3" fill="#e0e0e0" stroke="#888" stroke-width="1"/>
+    <polygon points="10,6 10,18 20,12" fill="#3a3a3a"/>
+    <rect x="40" y="0" width="30" height="24" rx="3" fill="#e0e0e0" stroke="#888" stroke-width="1"/>
+    <rect x="50" y="6" width="3" height="12" fill="#3a3a3a"/>
+    <rect x="57" y="6" width="3" height="12" fill="#3a3a3a"/>
+    <rect x="80" y="0" width="30" height="24" rx="3" fill="#e0e0e0" stroke="#888" stroke-width="1"/>
+    <polygon points="90,6 90,18 100,12" fill="#3a3a3a"/>
+  </g>
+</svg>
