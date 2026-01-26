@@ -72,8 +72,8 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
         continue;
       }
 
-      // Headers with ** prefix
-      if (line.startsWith('**') && line.includes('**')) {
+      // Headers with ** prefix (must be ONLY **text** on the line)
+      if (line.startsWith('**')) {
         const headerMatch = line.match(/^\*\*(.+?)\*\*$/);
         if (headerMatch) {
           elements.push(
@@ -85,6 +85,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
           i++;
           continue;
         }
+        // Line starts with ** but isn't a header - treat as paragraph (fall through)
       }
 
       // Unordered lists
@@ -137,7 +138,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
         lines[i].trim() !== '' &&
         !lines[i].startsWith('```') &&
         !lines[i].startsWith('- ') &&
-        !lines[i].startsWith('**') &&
+        !/^\*\*(.+?)\*\*$/.test(lines[i]) && // Only skip standalone headers, not inline bold
         !/^\d+\. /.test(lines[i])
       ) {
         paragraphLines.push(lines[i]);
