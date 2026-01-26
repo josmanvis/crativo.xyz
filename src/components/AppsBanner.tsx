@@ -18,10 +18,10 @@ export default function AppsBanner() {
         {/* Animated gradient glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/0 via-yellow-500/5 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
         
-        {/* Floating emojis */}
-        <div className="absolute top-2 right-4 text-2xl animate-bounce" style={{ animationDelay: '0s' }}>🔥</div>
-        <div className="absolute top-3 right-16 text-xl animate-bounce" style={{ animationDelay: '0.2s' }}>⚡</div>
-        <div className="absolute bottom-2 right-10 text-lg animate-bounce" style={{ animationDelay: '0.4s' }}>🚀</div>
+        {/* Floating emojis - pointer-events-none to prevent blocking clicks */}
+        <div className="absolute top-2 right-4 text-2xl animate-bounce pointer-events-none" style={{ animationDelay: '0s' }}>🔥</div>
+        <div className="absolute top-3 right-16 text-xl animate-bounce pointer-events-none" style={{ animationDelay: '0.2s' }}>⚡</div>
+        <div className="absolute bottom-2 right-10 text-lg animate-bounce pointer-events-none" style={{ animationDelay: '0.4s' }}>🚀</div>
         
         <div className="relative flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
