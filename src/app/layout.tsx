@@ -154,10 +154,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Ezoic Privacy Scripts - Must load first */}
-        <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
-        <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
-        {/* Ezoic Header Script */}
+        {/* Ezoic Header Script (consent popup removed) */}
         <script async src="//www.ezojs.com/ezoic/sa.min.js" />
         <Script
           id="ezoic-init"
