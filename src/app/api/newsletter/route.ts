@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-
-// In-memory store (in production, use a database)
-const subscribers = new Set<string>();
+import { addSubscriber, getSubscriberCount, getAllSubscribers } from '@/lib/db';
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,21 +22,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const normalizedEmail = email.toLowerCase().trim();
+    // Add to database
+    const result = await addSubscriber(email);
+    const subscriberCount = await getSubscriberCount();
 
-    // Check if already subscribed
-    if (subscribers.has(normalizedEmail)) {
+    console.log(`📧 Newsletter ${result.status}:`, result.email);
+    console.log('Total active subscribers:', subscriberCount);
+
+    // Already subscribed - return early with success
+    if (result.status === 'already_subscribed') {
       return NextResponse.json(
         { message: 'Already subscribed!' },
         { status: 200 }
       );
     }
-
-    // Add to subscribers
-    subscribers.add(normalizedEmail);
-
-    console.log('📧 New newsletter subscriber:', normalizedEmail);
-    console.log('Total subscribers:', subscribers.size);
 
     // If Resend is configured, add to contacts and send welcome email
     const resendKey = process.env.RESEND_API_KEY;
@@ -51,7 +48,7 @@ export async function POST(request: NextRequest) {
         if (audienceId) {
           await resend.contacts.create({
             audienceId,
-            email: normalizedEmail,
+            email: result.email,
             unsubscribed: false,
           });
         }
@@ -59,7 +56,7 @@ export async function POST(request: NextRequest) {
         // Send welcome email
         await resend.emails.send({
           from: 'Jose @ crativo.xyz <newsletter@crativo.xyz>',
-          to: normalizedEmail,
+          to: result.email,
           subject: 'Welcome to the crativo.xyz newsletter! 🎉',
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
@@ -100,13 +97,13 @@ export async function POST(request: NextRequest) {
               
               <p style="color: #888; font-size: 12px;">
                 You're receiving this because you subscribed at crativo.xyz. 
-                <a href="https://crativo.xyz/unsubscribe?email=${encodeURIComponent(normalizedEmail)}" style="color: #888;">Unsubscribe</a>
+                <a href="https://crativo.xyz/unsubscribe?email=${encodeURIComponent(result.email)}" style="color: #888;">Unsubscribe</a>
               </p>
             </div>
           `,
         });
 
-        console.log('Welcome email sent to:', normalizedEmail);
+        console.log('Welcome email sent to:', result.email);
       } catch (emailError) {
         console.error('Failed to send welcome email:', emailError);
         // Don't fail the subscription if email fails
@@ -120,8 +117,8 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: 'crativo.xyz <noreply@crativo.xyz>',
           to: 'viscasillas@me.com',
-          subject: `New newsletter subscriber: ${normalizedEmail}`,
-          html: `<p>New subscriber: <strong>${normalizedEmail}</strong></p><p>Total subscribers: ${subscribers.size}</p>`,
+          subject: `New newsletter subscriber: ${result.email}`,
+          html: `<p>New subscriber: <strong>${result.email}</strong></p><p>Status: ${result.status}</p><p>Total active subscribers: ${subscriberCount}</p>`,
         });
       } catch {
         // Ignore notification failures
@@ -129,7 +126,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { message: 'Successfully subscribed!' },
+      { message: result.status === 'resubscribed' ? 'Welcome back!' : 'Successfully subscribed!' },
       { status: 200 }
     );
   } catch (error) {
@@ -150,8 +147,23 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  return NextResponse.json({
-    count: subscribers.size,
-    subscribers: Array.from(subscribers),
-  });
+  try {
+    const count = await getSubscriberCount();
+    const subscribers = await getAllSubscribers();
+
+    return NextResponse.json({
+      count,
+      subscribers: subscribers.map(s => ({
+        email: s.email,
+        subscribedAt: s.subscribed_at,
+        source: s.source,
+      })),
+    });
+  } catch (error) {
+    console.error('Failed to fetch subscribers:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch subscribers' },
+      { status: 500 }
+    );
+  }
 }
