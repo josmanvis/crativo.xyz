@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const hasImage = project.imageUrl && !project.imageUrl.includes('placeholder');
 
   return (
-    <Link href={project.href} className="group block">
+    <Link href={project.href} className="group block relative z-10">
       <div className="bg-white/5 rounded-xl overflow-hidden ring-1 ring-white/10 transition-all duration-200 group-hover:scale-[1.03] group-hover:ring-white/30 group-hover:shadow-lg group-hover:shadow-white/5">
         {/* Project image or gradient fallback */}
         <div className="relative h-44 overflow-hidden">
