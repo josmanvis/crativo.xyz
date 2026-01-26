@@ -34,9 +34,9 @@ export interface Project {
   year: number;
   metrics: { label: string; value: string }[];
   longDescription: string;
-  links: ProjectLink[];
-  gallery: string[];
-  codeSnippet: ProjectCodeSnippet;
+  links?: ProjectLink[];
+  gallery?: string[];
+  codeSnippet?: ProjectCodeSnippet;
   features?: ProjectFeature[];
   previews?: ProjectPreview[];
   protected?: boolean;

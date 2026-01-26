@@ -59,7 +59,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
       </div>
 
       {/* Links row */}
-      {project.links.length > 0 && (
+      {project.links && project.links.length > 0 && (
         <div className="flex flex-wrap gap-3 mt-6">
           {project.links.map((link) => {
             const isGitHub = link.label.toLowerCase().includes('github') || link.url.includes('github.com');
