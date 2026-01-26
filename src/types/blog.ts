@@ -16,4 +16,6 @@ export interface BlogPost {
   tags: string[];
   coverImage?: string;
   featured?: boolean;
+  protected?: boolean;
+  password?: string;
 }

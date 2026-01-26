@@ -39,4 +39,6 @@ export interface Project {
   codeSnippet: ProjectCodeSnippet;
   features?: ProjectFeature[];
   previews?: ProjectPreview[];
+  protected?: boolean;
+  password?: string;
 }

@@ -11,6 +11,115 @@ export const categories = [
 export const projects: Project[] = [
   // Apps - Real Projects
   {
+    id: "afters",
+    title: "Afters",
+    description:
+      "Event ticketing platform built for the underground. Low fees, artist profiles, and tools that actually help promoters succeed.",
+    category: "Apps",
+    techStack: ["Next.js", "PostgreSQL", "Prisma", "Stripe Connect", "Clerk Auth", "Tailwind CSS"],
+    imageUrl: "/projects/afters.svg",
+    href: "/projects/afters",
+    year: 2025,
+    metrics: [
+      { label: "Platform Fee", value: "3%" },
+      { label: "Events Listed", value: "222+" },
+      { label: "Payout Speed", value: "Instant" },
+      { label: "DJ Friends Happy", value: "Finally" },
+    ],
+    longDescription: \`For years, I've watched my DJ friends get absolutely *wrecked* by ticketing platforms.
+
+You throw a party, promote it for months, pack the venue, and then Eventbrite or whoever takes their cut. 10%. 15%. Sometimes more when you add up all the "service fees" and "processing fees" and whatever other fees they invented that week.
+
+You do all the work. They take the money. It's been this way forever, and everyone just... accepts it?
+
+**"Bro, you should build something"**
+
+I can't count how many times I've heard this at 3am, standing outside some warehouse, talking to a promoter friend who's doing the math on their phone.
+
+"Sold 400 tickets at $30... that's $12,000... minus their fees... minus the venue... minus the DJ... minus sound... I made $200."
+
+And I'd nod and say "yeah someone should fix that" and then go home and not fix it.
+
+Until now.
+
+**Afters: Built for the Underground**
+
+Afters is the ticketing platform I wish existed when I started throwing parties. Here's what makes it different:
+
+**3% Platform Fee. That's It.**
+
+No "service fees." No "order processing fees." No "facility charges" (what does that even mean?). You sell a $30 ticket, you get $29.10 minus Stripe's processing (which you'd pay anywhere). The math is simple because the business model is simple: we take a tiny cut, you keep the rest.
+
+**Instant Payouts**
+
+Most platforms hold your money hostage until after the event "to prevent fraud." Which sounds reasonable until you realize you need that money *now* to pay the DJ deposit, or the sound company, or the venue's security requirement.
+
+With Stripe Connect, we can verify you're legit and release funds immediately. Your money, your timeline.
+
+**Artist Profiles That Actually Matter**
+
+This is the feature I'm most excited about. Every artist and DJ on Afters gets a profile page where they can:
+
+- Link their Instagram, Twitter/X, SoundCloud, and YouTube
+- Showcase upcoming events they're playing
+- Build a follower base on the platform
+- Get discovered by fans browsing events in their city
+
+The underground scene runs on word of mouth. We're just making that digital.
+
+**The Tech Behind the Vibe**
+
+Built this with Next.js 15 because I'm not a masochist. Postgres + Prisma for the database because I've seen what happens when you try to scale MongoDB for financial data (hint: bad things). Clerk for auth because rolling your own auth in 2025 is like rolling your own crypto – possible, but why.
+
+The real magic is in the Stripe Connect integration. Every organizer gets their own connected account, which means:
+
+1. We never hold their funds
+2. Payouts go directly from Stripe to them
+3. They can see all their transactions in their own Stripe dashboard
+4. We're not on the hook if something goes wrong (sorry, but also not sorry)
+
+**The Design Philosophy: Dark, Pink, Underground**
+
+The aesthetic is intentional. Pure black backgrounds. Hot pink (#ff1493) as the primary accent. Brutalist typography. Zero gradients (okay, maybe a few gradients but they're *tasteful*).
+
+This isn't Eventbrite. We're not trying to sell corporate conference tickets. This is for the 2am crowd, the warehouse parties, the secret raves, the after-hours. The design should feel like walking into a dark club with laser lights.
+
+**222 Events and Counting**
+
+We launched with events across NC – Raleigh, Durham, Charlotte. DJs I've known for years finally have a platform that doesn't treat them like ATMs. Some highlights:
+
+- Charlotte de Witte at The Underground
+- Disclosure at Red Hat Amphitheater  
+- Bear Grillz 360 show
+- Skrillex (yes, really)
+- And about 200 more from local heroes to touring headliners
+
+Every event has real artist artwork pulled from iTunes, or stylish branded placeholders for the more underground acts. No more generic "event image not found" nonsense.
+
+**What's Next**
+
+Right now we're NC-focused, but the platform is built to scale. Stripe Connect works globally. The event model supports any city, any venue, any artist.
+
+Coming soon:
+- Check-in scanner app (QR code scanning for door staff)
+- Organizer analytics dashboard (see who's buying, when, from where)
+- Affiliate/promoter tracking (give your street team their own links)
+- Table/VIP reservations
+- Merch sales integration
+
+**The Point**
+
+The nightlife industry has been getting ripped off by middlemen for decades. The promoters do the work, take all the risk, and platforms take a cut for... what? Hosting a checkout form?
+
+Afters exists because someone needed to build it. My DJ friends have been asking for years. 
+
+Now it's here.
+
+**afters.xxx** – Ticketing for the underground. 3% fees. Artist profiles. Built by someone who actually goes to these things.
+
+*For my friends who've been asking – you're welcome. Now book me for the afterparty.*\`,
+  },
+  {
     id: "qortr",
     title: "Qortr",
     description:

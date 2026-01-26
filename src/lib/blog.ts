@@ -40,6 +40,8 @@ export function getAllPosts(): BlogPost[] {
         tags: data.tags || [],
         coverImage: data.coverImage,
         featured: data.featured || false,
+        protected: data.protected || false,
+        password: data.password,
       } as BlogPost;
     });
 
@@ -71,6 +73,8 @@ export function getPostBySlug(slug: string): BlogPost | null {
     tags: data.tags || [],
     coverImage: data.coverImage,
     featured: data.featured || false,
+    protected: data.protected || false,
+    password: data.password,
   };
 }
 

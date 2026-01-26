@@ -7,8 +7,11 @@ import FeatureHighlights from "@/components/FeatureHighlights";
 import ProjectDescription from "@/components/ProjectDescription";
 import CodeSnippet from "@/components/CodeSnippet";
 import DisqusComments from "@/components/DisqusComments";
+import ProtectedProjectContent from "@/components/ProtectedProjectContent";
 import { DotGrid } from "@/components/DotGrid";
 import { AdUnit } from "@/components/ads";
+
+const DEFAULT_PROTECTED_PASSWORD = process.env.PROTECTED_CONTENT_PASSWORD || 'crativo2026';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -87,80 +90,166 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* App Store Gallery - Previews */}
-        {project.previews && project.previews.length > 0 && (
-          <AppStoreGallery previews={project.previews} title={project.title} />
-        )}
+        {/* Protected content wrapper */}
+        {project.protected ? (
+          <ProtectedProjectContent
+            projectId={project.id}
+            password={project.password || DEFAULT_PROTECTED_PASSWORD}
+            title={project.title}
+          >
+            {/* App Store Gallery - Previews */}
+            {project.previews && project.previews.length > 0 && (
+              <AppStoreGallery previews={project.previews} title={project.title} />
+            )}
 
-        {/* Feature Highlights */}
-        {project.features && project.features.length > 0 && (
-          <FeatureHighlights features={project.features} />
-        )}
+            {/* Feature Highlights */}
+            {project.features && project.features.length > 0 && (
+              <FeatureHighlights features={project.features} />
+            )}
 
-        {/* Long Description with formatting */}
-        <ProjectDescription description={project.longDescription} />
+            {/* Long Description with formatting */}
+            <ProjectDescription description={project.longDescription} />
 
-        {/* Tech Stack */}
-        <section className="py-12 border-t border-white/10">
-          <h2 className="text-2xl font-semibold text-white mb-6">Built With</h2>
-          <div className="flex flex-wrap gap-3">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="text-sm bg-gradient-to-br from-white/10 to-white/5 text-gray-300 rounded-xl px-4 py-2 border border-white/10"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </section>
+            {/* Tech Stack */}
+            <section className="py-12 border-t border-white/10">
+              <h2 className="text-2xl font-semibold text-white mb-6">Built With</h2>
+              <div className="flex flex-wrap gap-3">
+                {project.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-sm bg-gradient-to-br from-white/10 to-white/5 text-gray-300 rounded-xl px-4 py-2 border border-white/10"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
 
-        {/* Sponsor Ad */}
-        <div className="py-8">
-          <AdUnit variant="inline" />
-        </div>
-
-        {/* Metrics */}
-        {project.metrics && project.metrics.length > 0 && (
-          <section className="py-12 border-t border-white/10">
-            <h2 className="text-2xl font-semibold text-white mb-6">Impact</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {project.metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="relative p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden"
-                >
-                  {/* Glow accent */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-orange-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                  
-                  <p className="text-gray-400 text-sm relative z-10">{metric.label}</p>
-                  <p className="text-white text-2xl font-bold mt-1 relative z-10">
-                    {metric.value}
-                  </p>
-                </div>
-              ))}
+            {/* Sponsor Ad */}
+            <div className="py-8">
+              <AdUnit variant="inline" />
             </div>
-          </section>
-        )}
 
-        {/* Code Snippet */}
-        {project.codeSnippet && (
-          <section className="py-12 border-t border-white/10">
-            <h2 className="text-2xl font-semibold text-white mb-6">
-              Under the Hood
-            </h2>
-            <p className="text-gray-400 mb-4 text-sm">
-              A peek at the implementation — the kind of code that powers {project.title}.
-            </p>
-            <CodeSnippet snippet={project.codeSnippet} />
-          </section>
-        )}
+            {/* Metrics */}
+            {project.metrics && project.metrics.length > 0 && (
+              <section className="py-12 border-t border-white/10">
+                <h2 className="text-2xl font-semibold text-white mb-6">Impact</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {project.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="relative p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden"
+                    >
+                      {/* Glow accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-orange-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
 
-        {/* Comments */}
-        <DisqusComments 
-          identifier={`project-${project.id}`}
-          title={project.title}
-        />
+                      <p className="text-gray-400 text-sm relative z-10">{metric.label}</p>
+                      <p className="text-white text-2xl font-bold mt-1 relative z-10">
+                        {metric.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Code Snippet */}
+            {project.codeSnippet && (
+              <section className="py-12 border-t border-white/10">
+                <h2 className="text-2xl font-semibold text-white mb-6">
+                  Under the Hood
+                </h2>
+                <p className="text-gray-400 mb-4 text-sm">
+                  A peek at the implementation — the kind of code that powers {project.title}.
+                </p>
+                <CodeSnippet snippet={project.codeSnippet} />
+              </section>
+            )}
+
+            {/* Comments */}
+            <DisqusComments
+              identifier={`project-${project.id}`}
+              title={project.title}
+            />
+          </ProtectedProjectContent>
+        ) : (
+          <>
+            {/* App Store Gallery - Previews */}
+            {project.previews && project.previews.length > 0 && (
+              <AppStoreGallery previews={project.previews} title={project.title} />
+            )}
+
+            {/* Feature Highlights */}
+            {project.features && project.features.length > 0 && (
+              <FeatureHighlights features={project.features} />
+            )}
+
+            {/* Long Description with formatting */}
+            <ProjectDescription description={project.longDescription} />
+
+            {/* Tech Stack */}
+            <section className="py-12 border-t border-white/10">
+              <h2 className="text-2xl font-semibold text-white mb-6">Built With</h2>
+              <div className="flex flex-wrap gap-3">
+                {project.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-sm bg-gradient-to-br from-white/10 to-white/5 text-gray-300 rounded-xl px-4 py-2 border border-white/10"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* Sponsor Ad */}
+            <div className="py-8">
+              <AdUnit variant="inline" />
+            </div>
+
+            {/* Metrics */}
+            {project.metrics && project.metrics.length > 0 && (
+              <section className="py-12 border-t border-white/10">
+                <h2 className="text-2xl font-semibold text-white mb-6">Impact</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {project.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="relative p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden"
+                    >
+                      {/* Glow accent */}
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-orange-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+
+                      <p className="text-gray-400 text-sm relative z-10">{metric.label}</p>
+                      <p className="text-white text-2xl font-bold mt-1 relative z-10">
+                        {metric.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Code Snippet */}
+            {project.codeSnippet && (
+              <section className="py-12 border-t border-white/10">
+                <h2 className="text-2xl font-semibold text-white mb-6">
+                  Under the Hood
+                </h2>
+                <p className="text-gray-400 mb-4 text-sm">
+                  A peek at the implementation — the kind of code that powers {project.title}.
+                </p>
+                <CodeSnippet snippet={project.codeSnippet} />
+              </section>
+            )}
+
+            {/* Comments */}
+            <DisqusComments
+              identifier={`project-${project.id}`}
+              title={project.title}
+            />
+          </>
+        )}
       </div>
     </main>
   );

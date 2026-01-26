@@ -4,10 +4,13 @@ import { getPostBySlug, getAllSlugs, getRelatedPosts } from '@/lib/blog';
 import BlogHero from '@/components/blog/BlogHero';
 import MarkdownContent from '@/components/blog/MarkdownContent';
 import RecommendedReads from '@/components/blog/RecommendedReads';
+import ProtectedBlogContent from '@/components/blog/ProtectedBlogContent';
 import { DotGrid } from '@/components/DotGrid';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { AdUnit } from '@/components/ads';
 import Script from 'next/script';
+
+const DEFAULT_PROTECTED_PASSWORD = process.env.PROTECTED_CONTENT_PASSWORD || 'crativo2026';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -207,73 +210,152 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Sponsor Ad - Top of content */}
-          <div className="my-8">
-            <AdUnit variant="inline" />
-          </div>
+          {/* Protected content wrapper */}
+          {post.protected ? (
+            <ProtectedBlogContent
+              slug={slug}
+              password={post.password || DEFAULT_PROTECTED_PASSWORD}
+              title={post.title}
+            >
+              {/* Sponsor Ad - Top of content */}
+              <div className="my-8">
+                <AdUnit variant="inline" />
+              </div>
 
-          {/* Content */}
-          <section className="py-8">
-            <MarkdownContent content={post.content} />
-          </section>
+              {/* Content */}
+              <section className="py-8">
+                <MarkdownContent content={post.content} />
+              </section>
 
-          {/* Author bio for SEO */}
-          <section className="py-8 border-t border-white/10">
-            <div className="bg-zinc-900 rounded-2xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                  JV
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">Written by {AUTHOR}</h3>
-                  <p className="text-zinc-400 text-sm mb-3">
-                    Senior Software Engineer building video platforms at ON24. 
-                    21 years of coding experience. I write about React, TypeScript, 
-                    AI, and developer tools.
-                  </p>
-                  <div className="flex gap-3">
-                    <a 
-                      href="https://github.com/josmanvis" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-white transition-colors"
-                    >
-                      GitHub
-                    </a>
-                    <a 
-                      href="https://twitter.com/crativo" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-white transition-colors"
-                    >
-                      Twitter
-                    </a>
-                    <a 
-                      href="https://linkedin.com/in/joseviscasillas" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-white transition-colors"
-                    >
-                      LinkedIn
-                    </a>
+              {/* Author bio for SEO */}
+              <section className="py-8 border-t border-white/10">
+                <div className="bg-zinc-900 rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                      JV
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white mb-1">Written by {AUTHOR}</h3>
+                      <p className="text-zinc-400 text-sm mb-3">
+                        Senior Software Engineer building video platforms at ON24.
+                        21 years of coding experience. I write about React, TypeScript,
+                        AI, and developer tools.
+                      </p>
+                      <div className="flex gap-3">
+                        <a
+                          href="https://github.com/josmanvis"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          GitHub
+                        </a>
+                        <a
+                          href="https://twitter.com/crativo"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          Twitter
+                        </a>
+                        <a
+                          href="https://linkedin.com/in/joseviscasillas"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </section>
+
+              {/* Sponsor Ad - Before recommendations */}
+              <div className="py-8">
+                <AdUnit variant="banner" />
               </div>
-            </div>
-          </section>
 
-          {/* Sponsor Ad - Before recommendations */}
-          <div className="py-8">
-            <AdUnit variant="banner" />
-          </div>
+              {/* Recommended reads */}
+              <RecommendedReads posts={relatedPosts} currentSlug={slug} />
 
-          {/* Recommended reads */}
-          <RecommendedReads posts={relatedPosts} currentSlug={slug} />
+              {/* Newsletter signup */}
+              <section className="py-8">
+                <NewsletterSignup />
+              </section>
+            </ProtectedBlogContent>
+          ) : (
+            <>
+              {/* Sponsor Ad - Top of content */}
+              <div className="my-8">
+                <AdUnit variant="inline" />
+              </div>
 
-          {/* Newsletter signup */}
-          <section className="py-8">
-            <NewsletterSignup />
-          </section>
+              {/* Content */}
+              <section className="py-8">
+                <MarkdownContent content={post.content} />
+              </section>
+
+              {/* Author bio for SEO */}
+              <section className="py-8 border-t border-white/10">
+                <div className="bg-zinc-900 rounded-2xl p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                      JV
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white mb-1">Written by {AUTHOR}</h3>
+                      <p className="text-zinc-400 text-sm mb-3">
+                        Senior Software Engineer building video platforms at ON24.
+                        21 years of coding experience. I write about React, TypeScript,
+                        AI, and developer tools.
+                      </p>
+                      <div className="flex gap-3">
+                        <a
+                          href="https://github.com/josmanvis"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          GitHub
+                        </a>
+                        <a
+                          href="https://twitter.com/crativo"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          Twitter
+                        </a>
+                        <a
+                          href="https://linkedin.com/in/joseviscasillas"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-zinc-500 hover:text-white transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Sponsor Ad - Before recommendations */}
+              <div className="py-8">
+                <AdUnit variant="banner" />
+              </div>
+
+              {/* Recommended reads */}
+              <RecommendedReads posts={relatedPosts} currentSlug={slug} />
+
+              {/* Newsletter signup */}
+              <section className="py-8">
+                <NewsletterSignup />
+              </section>
+            </>
+          )}
 
           {/* Footer with navigation */}
           <section className="py-8 border-t border-white/10">

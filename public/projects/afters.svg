@@ -1,0 +1,211 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Pure black background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#000000"/>
+    </linearGradient>
+    
+    <!-- Hot pink blob -->
+    <radialGradient id="blob1" cx="20%" cy="15%" r="45%">
+      <stop offset="0%" style="stop-color:#ff1493;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#ff1493;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Purple blob -->
+    <radialGradient id="blob2" cx="85%" cy="25%" r="40%">
+      <stop offset="0%" style="stop-color:#9333ea;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Cyan blob bottom -->
+    <radialGradient id="blob3" cx="15%" cy="85%" r="35%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Pink glow bottom right -->
+    <radialGradient id="blob4" cx="90%" cy="90%" r="40%">
+      <stop offset="0%" style="stop-color:#ff1493;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#ff1493;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Card shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#ff1493" flood-opacity="0.2"/>
+    </filter>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- Animated blob effects -->
+  <ellipse cx="100" cy="60" rx="180" ry="160" fill="url(#blob1)"/>
+  <ellipse cx="720" cy="120" rx="200" ry="180" fill="url(#blob2)"/>
+  <ellipse cx="100" cy="520" rx="160" ry="140" fill="url(#blob3)"/>
+  <ellipse cx="720" cy="540" rx="180" ry="160" fill="url(#blob4)"/>
+  
+  <!-- Grid lines for that techno vibe -->
+  <g stroke="#ff1493" stroke-opacity="0.1" stroke-width="1">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+  
+  <!-- AFTERS Logo -->
+  <g transform="translate(50, 35)">
+    <rect width="48" height="48" rx="10" fill="#0a0a0a" stroke="#ff1493" stroke-width="2"/>
+    <text x="24" y="35" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#ff1493" text-anchor="middle">A</text>
+  </g>
+  <text x="110" y="68" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="0.1em">AFTERS</text>
+  <text x="110" y="68" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="0.1em">AFTERS<tspan fill="#ff1493">.</tspan></text>
+  
+  <!-- Main Event Card -->
+  <g filter="url(#shadow)" transform="translate(60, 110)">
+    <rect width="340" height="380" rx="16" fill="#111111" stroke="#222222" stroke-width="1"/>
+    
+    <!-- Event Flyer Image Area -->
+    <rect x="16" y="16" width="308" height="180" rx="12" fill="#1a1a1a"/>
+    <rect x="16" y="16" width="308" height="180" rx="12" fill="url(#blob1)" opacity="0.5"/>
+    
+    <!-- DJ silhouette -->
+    <g transform="translate(120, 60)">
+      <circle cx="50" cy="30" r="25" fill="#ff1493" opacity="0.8"/>
+      <rect x="20" y="60" width="60" height="40" rx="4" fill="#ff1493" opacity="0.6"/>
+      <rect x="0" y="80" width="100" height="50" rx="4" fill="#222"/>
+      <!-- Mixer/decks -->
+      <circle cx="25" cy="100" r="15" fill="#333" stroke="#ff1493" stroke-width="2"/>
+      <circle cx="75" cy="100" r="15" fill="#333" stroke="#ff1493" stroke-width="2"/>
+    </g>
+    
+    <!-- Event Details -->
+    <text x="20" y="220" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#888">LIVE EVENT</text>
+    <text x="20" y="245" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Charlotte de Witte</text>
+    <text x="20" y="270" font-family="system-ui, sans-serif" font-size="13" fill="#888">Sat, Feb 15 • 10:00 PM</text>
+    <text x="20" y="290" font-family="system-ui, sans-serif" font-size="13" fill="#888">The Underground • Raleigh, NC</text>
+    
+    <!-- Price Tag -->
+    <g transform="translate(20, 310)">
+      <rect width="90" height="32" rx="6" fill="#ff1493"/>
+      <text x="45" y="22" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#000" text-anchor="middle">From $35</text>
+    </g>
+    
+    <!-- Get Tickets Button -->
+    <g transform="translate(130, 310)">
+      <rect width="180" height="32" rx="6" fill="none" stroke="#ff1493" stroke-width="2"/>
+      <text x="90" y="22" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#ff1493" text-anchor="middle">GET TICKETS →</text>
+    </g>
+    
+    <!-- Stats row -->
+    <g transform="translate(20, 355)">
+      <circle cx="8" cy="8" r="4" fill="#10b981"/>
+      <text x="18" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#10b981">247 sold</text>
+      <text x="90" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#666">•</text>
+      <text x="105" y="12" font-family="system-ui, sans-serif" font-size="11" fill="#888">53 remaining</text>
+    </g>
+  </g>
+  
+  <!-- Dashboard Stats Panel -->
+  <g filter="url(#shadow)" transform="translate(430, 110)">
+    <rect width="310" height="180" rx="16" fill="#111111" stroke="#222222" stroke-width="1"/>
+    
+    <text x="20" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#888">ORGANIZER DASHBOARD</text>
+    
+    <!-- Stats Grid -->
+    <g transform="translate(20, 55)">
+      <!-- Total Revenue -->
+      <rect width="130" height="50" rx="8" fill="#1a1a1a"/>
+      <text x="10" y="22" font-family="system-ui, sans-serif" font-size="10" fill="#888">TOTAL REVENUE</text>
+      <text x="10" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#10b981">$12,450</text>
+    </g>
+    
+    <g transform="translate(160, 55)">
+      <!-- Tickets Sold -->
+      <rect width="130" height="50" rx="8" fill="#1a1a1a"/>
+      <text x="10" y="22" font-family="system-ui, sans-serif" font-size="10" fill="#888">TICKETS SOLD</text>
+      <text x="10" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ff1493">847</text>
+    </g>
+    
+    <g transform="translate(20, 115)">
+      <!-- Active Events -->
+      <rect width="130" height="50" rx="8" fill="#1a1a1a"/>
+      <text x="10" y="22" font-family="system-ui, sans-serif" font-size="10" fill="#888">ACTIVE EVENTS</text>
+      <text x="10" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">12</text>
+    </g>
+    
+    <g transform="translate(160, 115)">
+      <!-- Platform Fee -->
+      <rect width="130" height="50" rx="8" fill="#1a1a1a"/>
+      <text x="10" y="22" font-family="system-ui, sans-serif" font-size="10" fill="#888">PLATFORM FEE</text>
+      <text x="10" y="42" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#06b6d4">3%</text>
+    </g>
+  </g>
+  
+  <!-- Artist Profile Card -->
+  <g filter="url(#shadow)" transform="translate(430, 310)">
+    <rect width="310" height="180" rx="16" fill="#111111" stroke="#222222" stroke-width="1"/>
+    
+    <text x="20" y="35" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#888">ARTIST PROFILE</text>
+    
+    <!-- Artist Avatar -->
+    <circle cx="55" cy="90" r="30" fill="#1a1a1a" stroke="#ff1493" stroke-width="2"/>
+    <text x="55" y="98" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#ff1493" text-anchor="middle">DJ</text>
+    
+    <!-- Artist Info -->
+    <text x="100" y="75" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff">DJ TECHNO</text>
+    <text x="100" y="95" font-family="system-ui, sans-serif" font-size="12" fill="#888">House / Techno • Raleigh, NC</text>
+    
+    <!-- Social Links -->
+    <g transform="translate(100, 105)">
+      <rect width="28" height="28" rx="6" fill="#1a1a1a"/>
+      <text x="14" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#ff1493" text-anchor="middle">IG</text>
+      
+      <rect x="35" width="28" height="28" rx="6" fill="#1a1a1a"/>
+      <text x="49" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#ff1493" text-anchor="middle">SC</text>
+      
+      <rect x="70" width="28" height="28" rx="6" fill="#1a1a1a"/>
+      <text x="84" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#ff1493" text-anchor="middle">YT</text>
+      
+      <rect x="105" width="28" height="28" rx="6" fill="#1a1a1a"/>
+      <text x="119" y="20" font-family="system-ui, sans-serif" font-size="12" fill="#ff1493" text-anchor="middle">X</text>
+    </g>
+    
+    <!-- Upcoming Events -->
+    <text x="20" y="160" font-family="system-ui, sans-serif" font-size="11" fill="#666">3 upcoming events • 1.2K followers</text>
+  </g>
+  
+  <!-- Ticket QR mockup -->
+  <g transform="translate(60, 500)">
+    <rect width="120" height="70" rx="10" fill="#111111" stroke="#222222"/>
+    <rect x="10" y="10" width="50" height="50" rx="4" fill="#1a1a1a"/>
+    <!-- QR pattern -->
+    <g fill="#ff1493">
+      <rect x="15" y="15" width="8" height="8"/>
+      <rect x="27" y="15" width="8" height="8"/>
+      <rect x="39" y="15" width="8" height="8"/>
+      <rect x="15" y="27" width="8" height="8"/>
+      <rect x="39" y="27" width="8" height="8"/>
+      <rect x="15" y="39" width="8" height="8"/>
+      <rect x="27" y="39" width="8" height="8"/>
+      <rect x="39" y="39" width="8" height="8"/>
+    </g>
+    <text x="70" y="35" font-family="system-ui, sans-serif" font-size="9" fill="#888">TICKET</text>
+    <text x="70" y="50" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#ffffff">#A4F2</text>
+  </g>
+  
+  <!-- "Built for DJs" tagline -->
+  <text x="650" y="565" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ff1493" text-anchor="middle" letter-spacing="0.15em">BUILT FOR DJS</text>
+  <text x="650" y="585" font-family="system-ui, sans-serif" font-size="10" fill="#666" text-anchor="middle">BY A DJ</text>
+</svg>
