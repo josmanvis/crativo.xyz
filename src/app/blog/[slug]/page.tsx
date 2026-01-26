@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getPostBySlug, getAllSlugs } from '@/lib/blog';
+import { getPostBySlug, getAllSlugs, getRelatedPosts } from '@/lib/blog';
 import BlogHero from '@/components/blog/BlogHero';
 import MarkdownContent from '@/components/blog/MarkdownContent';
+import RecommendedReads from '@/components/blog/RecommendedReads';
 import { DotGrid } from '@/components/DotGrid';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import Script from 'next/script';
@@ -102,6 +103,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) {
     notFound();
   }
+
+  // Get related posts for recommendations
+  const relatedPosts = getRelatedPosts(post, 3);
 
   // JSON-LD structured data for SEO
   const jsonLd = {
@@ -251,6 +255,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               </div>
             </div>
           </section>
+
+          {/* Recommended reads */}
+          <RecommendedReads posts={relatedPosts} currentSlug={slug} />
 
           {/* Newsletter signup */}
           <section className="py-8">

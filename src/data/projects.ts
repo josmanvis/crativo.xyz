@@ -145,9 +145,9 @@ That's really all I wanted.`,
       { icon: "💰", title: "100% Free", description: "No premium tiers. No per-seat pricing. No hidden fees. Actually, genuinely free." },
     ],
     previews: [
-      { type: "image", src: "/previews/qortr-landing.jpg", alt: "Qortr landing page", caption: "Book spaces, not headaches — the landing page that started it all" },
-      { type: "image", src: "/previews/qortr-rooms.jpg", alt: "Qortr room browser", caption: "Browse rooms with filters for capacity, amenities, and location" },
-      { type: "image", src: "/previews/qortr-signin.jpg", alt: "Qortr sign-in page", caption: "Clean authentication — 2,400+ teams trust Qortr" },
+      { type: "screenshot", src: "/previews/qortr-landing.jpg", alt: "Qortr landing page", caption: "Book spaces, not headaches — the landing page that started it all" },
+      { type: "screenshot", src: "/previews/qortr-rooms.jpg", alt: "Qortr room browser", caption: "Browse rooms with filters for capacity, amenities, and location" },
+      { type: "screenshot", src: "/previews/qortr-signin.jpg", alt: "Qortr sign-in page", caption: "Clean authentication — 2,400+ teams trust Qortr" },
     ],
     codeSnippet: {
       language: "typescript",

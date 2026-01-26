@@ -84,3 +84,38 @@ export function getAllSlugs(): string[] {
     .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => fileName.replace(/\.md$/, ''));
 }
+
+export function getRelatedPosts(currentPost: BlogPost, limit: number = 3): BlogPost[] {
+  const allPosts = getAllPosts();
+  
+  // Score posts by relevance
+  const scoredPosts = allPosts
+    .filter(post => post.slug !== currentPost.slug)
+    .map(post => {
+      let score = 0;
+      
+      // Same category = highest priority
+      if (post.category === currentPost.category) {
+        score += 10;
+      }
+      
+      // Matching tags
+      const matchingTags = post.tags.filter(tag => 
+        currentPost.tags.includes(tag)
+      ).length;
+      score += matchingTags * 3;
+      
+      // Recency bonus (posts from last 30 days get a small boost)
+      const daysSincePublished = (Date.now() - new Date(post.publishedAt).getTime()) / (1000 * 60 * 60 * 24);
+      if (daysSincePublished < 30) {
+        score += 2;
+      }
+      
+      return { post, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(({ post }) => post);
+
+  return scoredPosts;
+}
