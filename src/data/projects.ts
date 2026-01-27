@@ -418,6 +418,8 @@ class SyncEngine {
       { label: "Brand", value: "Stop & Shop" },
       { label: "AI", value: "Watson/Dialogflow" },
     ],
+    protected: true,
+    password: "blue",
     longDescription: `Picture this: It's 2021, and I'm standing in a Stop & Shop in Massachusetts, watching an elderly woman try to find canned tomatoes. She's been wandering for ten minutes. An employee finally points her to aisle 7. She walks to aisle 7. The tomatoes are in aisle 9. The employee was wrong.
 
 This happens thousands of times a day, in thousands of stores. And that's the problem we were trying to solve.
@@ -532,6 +534,8 @@ class VoiceProcessor {
       { label: "Company", value: "Ahold Delhaize" },
       { label: "Workflow", value: "Pilot to Prod" },
     ],
+    protected: true,
+    password: "blue",
     longDescription: `Big companies have a problem: good ideas die in email threads.
 
 Someone has a brilliant idea. They tell their manager. The manager says "write it up." They write a doc. The doc goes to a committee. The committee meets monthly. By the time anyone approves anything, the person who had the idea has either left the company or forgotten why they cared.
@@ -672,6 +676,8 @@ class IdeaWorkflow {
       { label: "Used in", value: "Beer Kiosk" },
       { label: "Platform", value: "npm" },
     ],
+    protected: true,
+    password: "blue",
     longDescription: `The name is a pun. "Keyboard" → "too-bored." I'm not sorry.
 
 **Why Build Another Virtual Keyboard?**
@@ -814,6 +820,8 @@ export function Keyboard({
       { label: "Features", value: "Threading+Tags" },
       { label: "Platform", value: "npm" },
     ],
+    protected: true,
+    password: "blue",
     longDescription: `"Gappa" is a Hindi/Urdu word that means "chat" or "gossip." It's what my grandmother called it when the aunties would gather and talk for hours. Seemed fitting for a comments component.
 
 **The Problem With Comments**
@@ -957,6 +965,8 @@ function shouldCollapse(
       { label: "Team", value: "Innovation Lab" },
       { label: "Platform", value: "npm" },
     ],
+    protected: true,
+    password: "blue",
     longDescription: `Every team eventually builds their own scaffolding CLI. It's like a rite of passage. "We should have a consistent project structure," someone says, and three weeks later there's a CLI that everyone forgets exists.
 
 Ace was different. People actually used it.
