@@ -19,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://www.crativo.xyz/sitemap.xml',
-    host: 'https://www.crativo.xyz',
+    sitemap: 'https://crativo.xyz/sitemap.xml',
+    host: 'https://crativo.xyz',
   };
 }

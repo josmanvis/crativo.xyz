@@ -200,9 +200,7 @@ export default function RootLayout({
             `,
           }}
         />
-        <link rel="canonical" href="https://crativo.xyz" />
         <meta name="theme-color" content="#0a0a0a" />
-        <meta name="author" content="Jose Viscasillas" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>

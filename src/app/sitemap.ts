@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getAllSlugs } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.crativo.xyz';
+  const baseUrl = 'https://crativo.xyz';
   
   // Static pages
   const staticPages = [
@@ -17,12 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/blog`,
