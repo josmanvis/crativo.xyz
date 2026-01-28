@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getAllSlugs } from '@/lib/blog';
+import { getAllPosts } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://crativo.xyz';
@@ -33,10 +33,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Dynamic blog posts
-  const slugs = getAllSlugs();
-  const blogPosts = slugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
+  const posts = getAllPosts();
+  const blogPosts = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
