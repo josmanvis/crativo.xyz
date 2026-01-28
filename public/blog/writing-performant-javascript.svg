@@ -1,4 +1,56 @@
-<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100%" height="100%" fill="#f7df1e" />
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="70" fill="#000" font-weight="bold">Performant JS</text>
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#171717"/>
+    </linearGradient>
+    <linearGradient id="jsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7df1e"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.1">
+    <line x1="0" y1="105" x2="1200" y2="105" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="0" y1="210" x2="1200" y2="210" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="0" y1="315" x2="1200" y2="315" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="0" y1="525" x2="1200" y2="525" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="630" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="630" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="630" stroke="#f7df1e" stroke-width="1"/>
+    <line x1="1000" y1="0" x2="1000" y2="630" stroke="#f7df1e" stroke-width="1"/>
+  </g>
+  
+  <!-- Central Graphic: Lightning Speed -->
+  <g transform="translate(600, 280)">
+    <!-- Hexagon BG -->
+    <path d="M0 -100 L86.6 -50 L86.6 50 L0 100 L-86.6 50 L-86.6 -50 Z" fill="none" stroke="#f7df1e" stroke-width="4" opacity="0.3"/>
+    
+    <!-- Inner Hexagon -->
+    <path d="M0 -80 L69.28 -40 L69.28 40 L0 80 L-69.28 40 L-69.28 -40 Z" fill="#1a1a1a" stroke="#f7df1e" stroke-width="2"/>
+    
+    <!-- Lightning Bolt -->
+    <path d="M10 -60 L-30 0 L0 0 L-10 60 L40 0 L10 0 Z" fill="url(#jsGrad)" stroke="#fff" stroke-width="2">
+        <animate attributeName="opacity" values="1;0.7;1" dur="0.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Speed Lines -->
+    <path d="M-100 0 L-140 0" stroke="#f7df1e" stroke-width="2" opacity="0.5"/>
+    <path d="M100 0 L140 0" stroke="#f7df1e" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="500" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="48" font-weight="700">Performant JavaScript</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="550" text-anchor="middle" fill="#f7df1e" font-family="system-ui, sans-serif" font-size="24">Optimization Tips & Techniques</text>
+  
+  <!-- Branding -->
+  <text x="1160" y="600" text-anchor="end" fill="#404040" font-family="system-ui, sans-serif" font-size="14">crativo.xyz</text>
 </svg>
