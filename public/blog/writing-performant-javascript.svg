@@ -8,6 +8,10 @@
       <stop offset="0%" stop-color="#f7df1e"/>
       <stop offset="100%" stop-color="#fbbf24"/>
     </linearGradient>
+    <linearGradient id="speedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
   </defs>
   
   <!-- Background -->
@@ -27,29 +31,43 @@
     <line x1="1000" y1="0" x2="1000" y2="630" stroke="#f7df1e" stroke-width="1"/>
   </g>
   
-  <!-- Central Graphic: Lightning Speed -->
-  <g transform="translate(600, 280)">
-    <!-- Hexagon BG -->
-    <path d="M0 -100 L86.6 -50 L86.6 50 L0 100 L-86.6 50 L-86.6 -50 Z" fill="none" stroke="#f7df1e" stroke-width="4" opacity="0.3"/>
+  <!-- Central Graphic: Performance Elements -->
+  <g transform="translate(600, 300)">
+    <!-- Main circle representing performance -->
+    <circle cx="0" cy="0" r="100" fill="#1a1a1a" stroke="#f7df1e" stroke-width="3" opacity="0.8"/>
     
-    <!-- Inner Hexagon -->
-    <path d="M0 -80 L69.28 -40 L69.28 40 L0 80 L-69.28 40 L-69.28 -40 Z" fill="#1a1a1a" stroke="#f7df1e" stroke-width="2"/>
+    <!-- Speedometer-like element -->
+    <path d="M-80 0 A80 80 0 1 1 80 0" fill="none" stroke="#22c55e" stroke-width="4"/>
     
-    <!-- Lightning Bolt -->
-    <path d="M10 -60 L-30 0 L0 0 L-10 60 L40 0 L10 0 Z" fill="url(#jsGrad)" stroke="#fff" stroke-width="2">
-        <animate attributeName="opacity" values="1;0.7;1" dur="0.5s" repeatCount="indefinite"/>
-    </path>
+    <!-- JavaScript logo simplified -->
+    <g transform="scale(0.8) translate(-40, -40)">
+      <path d="M60 10 L100 10 L100 90 L60 90 L60 70 L80 70 L80 50 L60 50 Z" fill="url(#jsGrad)"/>
+      <path d="M40 10 L60 10 L60 30 L40 30 Z M40 30 L60 30 L60 50 L40 50 Z M40 50 L60 50 L60 70 L40 70 Z M40 70 L60 70 L60 90 L40 90 Z" fill="url(#jsGrad)"/>
+    </g>
     
-    <!-- Speed Lines -->
-    <path d="M-100 0 L-140 0" stroke="#f7df1e" stroke-width="2" opacity="0.5"/>
-    <path d="M100 0 L140 0" stroke="#f7df1e" stroke-width="2" opacity="0.5"/>
+    <!-- Performance arrow -->
+    <polygon points="-10 -60 0 -80 10 -60" fill="url(#speedGrad)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="1s" repeatCount="indefinite"/>
+    </polygon>
+    
+    <!-- V8 engine representation -->
+    <g transform="translate(-60, 40)">
+      <circle cx="0" cy="0" r="15" fill="#f7df1e" opacity="0.7"/>
+      <text x="0" y="5" text-anchor="middle" fill="#000" font-family="system-ui, sans-serif" font-size="12" font-weight="bold">V8</text>
+    </g>
+    
+    <!-- Memory optimization icon -->
+    <g transform="translate(60, 40)">
+      <rect x="-15" y="-15" width="30" height="30" fill="#22c55e" opacity="0.7" rx="3"/>
+      <path d="M-10 -5 L-5 -5 L-5 5 L-10 5 M5 -5 L10 -5 L10 5 L5 5" stroke="#000" stroke-width="2" fill="none"/>
+    </g>
   </g>
 
   <!-- Title -->
-  <text x="600" y="500" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="48" font-weight="700">Performant JavaScript</text>
+  <text x="600" y="500" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="48" font-weight="700">Writing Performant JavaScript</text>
   
   <!-- Subtitle -->
-  <text x="600" y="550" text-anchor="middle" fill="#f7df1e" font-family="system-ui, sans-serif" font-size="24">Optimization Tips & Techniques</text>
+  <text x="600" y="550" text-anchor="middle" fill="#f7df1e" font-family="system-ui, sans-serif" font-size="24">Deep Dive into V8, Memory Management &amp; Optimization</text>
   
   <!-- Branding -->
   <text x="1160" y="600" text-anchor="end" fill="#404040" font-family="system-ui, sans-serif" font-size="14">crativo.xyz</text>
