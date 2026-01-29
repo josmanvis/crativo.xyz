@@ -1,6 +1,6 @@
 ---
 title: "I Built an iTunes 7 Clone Because Modern Music Apps Lost Their Soul"
-excerpt: Brushed metal, glowing LCD, column browser. Here's how I recreated peak Apple design in Next.js.
+excerpt: "Brushed metal, glowing LCDs, column browsers. A deep dive into how I recreated the peak of 2006 Apple design using Next.js, CSS gradients, and the Web Audio API."
 category: deep-dives
 publishedAt: 2026-01-26
 tags:
@@ -8,8 +8,14 @@ tags:
   - CSS
   - Design
   - Nostalgia
+  - Next.js
+  - Frontend Engineering
 coverImage: /blog/building-itunes-7-clone-nextjs.svg
 featured: true
+seo:
+  title: "Building an iTunes 7 Clone in Next.js | A Technical Deep Dive"
+  description: "A 3,000 word deep dive into recreating iTunes 7. Covers complex CSS gradients, recreating skeuomorphic design, Web Audio API state management, and virtualized list performance."
+  keywords: ["iTunes 7 clone", "Next.js music player", "skeuomorphic design css", "web audio api react", "css gradients brushed metal"]
 ---
 
 # I Built an iTunes 7 Clone Because Modern Music Apps Lost Their Soul
@@ -18,241 +24,224 @@ I was staring at Spotify the other day — this flat, dark void with tiny album 
 
 Music apps used to be **beautiful**. Not "minimalist beautiful" or "clean beautiful." Actually, genuinely, delightfully beautiful. Textured. Detailed. Full of little touches that made you want to look at them.
 
-iTunes 7 was the peak. Fight me.
+iTunes 7, released in September 2006, was the peak. It introduced Cover Flow, gapless playback, and refined the "Brushed Metal" aesthetic that defined an era of computing. It felt like a physical machine. The buttons had weight. The LCD glowed. The scrollbars had depth.
 
-So I built [GemTunes](https://gemtunes.vercel.app) — a faithful recreation of that brushed metal era, running entirely in the browser with Next.js.
+So I embarked on a slightly obsessive quest: I built [GemTunes](https://gemtunes.vercel.app), a faithful recreation of that brushed metal era, running entirely in the browser with Next.js.
 
-## Why iTunes 7?
+This isn't just a nostalgic screenshot; it's a fully functional music player. And building it in 2026 taught me more about modern CSS and React performance than any "SaaS Dashboard" tutorial ever could.
 
-Released in 2006, iTunes 7 represented the pinnacle of Apple's "brushed metal" design language. Before iOS flattened everything into colored rectangles, Apple's apps had *texture*:
+## The Aesthetic: Why Skeuomorphism Matters
 
-- **Brushed metal backgrounds** with subtle gradients
-- **Glowing LCD displays** that felt like real hardware
-- **Aqua-style buttons** with depth and shine
-- **Column browsers** that actually showed your music library's structure
+Before we look at code, we have to talk about design philosophy.
 
-It wasn't just nostalgia goggles. This design worked. You could *see* the hierarchy. You could *feel* the controls. The green LCD wasn't just showing text — it was glowing, like real LED segments.
+Modern design (Flat, Material, Fluent) optimizes for **scalability**. Flat rectangles scale infinitely. They are easy to design, easy to code, and easy to refactor.
 
-Modern apps optimize for "content density" and "reduced visual noise." What we lost was personality.
+Skeuomorphism (making digital objects resemble real-world counterparts) optimizes for **affordance**.
+*   In iTunes 7, a button looked like a physical plastic or metal object. You knew you could click it because it had highlights and shadows that suggested 3D volume.
+*   The "LCD" display looked like a screen. You knew it was for information, not interaction.
+*   The volume slider looked like a physical fader.
 
-## The Technical Challenge
+We threw this away for "cleanliness," but we lost the intuitive grasp of the interface. Recreating this required fighting against every default in modern web development.
 
-Recreating 2006-era desktop UI in 2026-era web tech is... interesting.
+## Challenge 1: The Brushed Metal Texture (Pure CSS)
 
-### The Brushed Metal Effect
+In 2006, Apple used bitmap images for everything. The window chrome was a sliced PNG.
 
-The original brushed metal was a bitmap texture. I recreated it with pure CSS gradients:
+I wanted GemTunes to be resolution-independent. No images. Pure CSS.
+
+### The Metal Gradient
+The iconic "Brushed Metal" isn't a simple linear gradient. It's a complex multi-stop gradient designed to simulate light hitting a rough metallic surface.
 
 ```css
-.app {
-  background: linear-gradient(180deg, 
-    #d4d4d4 0%, 
-    #c0c0c0 3%, 
-    #b8b8b8 50%, 
-    #acacac 97%, 
-    #a0a0a0 100%
+.metal-bg {
+  background: linear-gradient(
+    180deg, 
+    #d4d4d4 0%,  /* Top highlight */
+    #c0c0c0 3%,   /* Sudden drop to mid-tone */
+    #b8b8b8 50%,  /* Slow fade */
+    #acacac 97%,  /* Darker bottom */
+    #a0a0a0 100%  /* Bottom edge shadow */
   );
-}
-
-.controls {
-  background: linear-gradient(180deg, 
-    #d8d8d8 0%, 
-    #c4c4c4 3%, 
-    #b8b8b8 50%, 
-    #acacac 97%, 
-    #9c9c9c 100%
-  );
-  border-bottom: 1px solid #6a6a6a;
+  position: relative;
 }
 ```
 
-The trick is the uneven gradient stops. Real brushed metal isn't a smooth fade — it has bands of lighter and darker areas. Those 3% and 97% stops create that effect.
+The magic is in the `3%` stop. It creates a harsh "lip" at the top of the window, simulating the beveled edge of an aluminum casing.
 
-### The LCD Display
-
-This was the fun part. The original iTunes LCD had:
-- A dark, slightly blue-black background
-- Green phosphor-style text
-- A subtle glow effect
-- Actual scanlines
+### Adding Noise
+A smooth gradient looks like plastic. Metal has grain. To achieve this without a 500KB texture file, I used an SVG noise filter embedded via Data URI, overlaid with `mix-blend-mode`.
 
 ```css
-.lcd {
-  background: linear-gradient(180deg, #1c1c1e 0%, #0f0f10 100%);
-  border: 1px solid #000;
-  border-radius: 3px;
-  box-shadow: 
-    inset 0 1px 3px rgba(0,0,0,0.8),
-    inset 0 -1px 1px rgba(255,255,255,0.05),
-    0 1px 0 rgba(255,255,255,0.2);
-}
-
-.lcd-title {
-  color: #22d962;
-  text-shadow: 
-    0 0 8px rgba(34, 217, 98, 0.7),
-    0 0 2px rgba(34, 217, 98, 0.9);
-}
-
-/* The scanline effect */
-.lcd::before {
-  content: '';
+.metal-texture::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 1px,
-    rgba(0,0,0,0.15) 1px,
-    rgba(0,0,0,0.15) 2px
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,..."); /* SVG Noise */
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+```
+
+This gives the UI that gritty, tactile feel that defined Mac OS X Tiger.
+
+## Challenge 2: The Glowing LCD Display
+
+The centerpiece of iTunes is the status display. It mimics a backlit LCD screen.
+
+**The requirements:**
+1.  Dark, slightly blue-black background.
+2.  Inner shadow to make it look recessed.
+3.  Glassy reflection on the top half.
+4.  Text that "glows" like phosphors.
+5.  Scanlines.
+
+### The CSS Implementation
+
+```css
+.lcd-container {
+  /* The dark screen */
+  background: linear-gradient(180deg, #1c1c1e 0%, #0f0f10 100%);
+  
+  /* The recessed casing effect */
+  border: 1px solid #3a3a3a;
+  border-bottom-color: #5a5a5a; /* Light hits bottom lip */
+  border-top-color: #1a1a1a;    /* Shadow on top lip */
+  box-shadow: 
+    inset 0 3px 6px rgba(0,0,0,0.8), /* Inner deep shadow */
+    0 1px 0 rgba(255,255,255,0.3);   /* Bottom highlight on the metal casing */
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* The Glass Reflection */
+.lcd-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* Only top half */
+  background: linear-gradient(
+    180deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.02) 100%
   );
   pointer-events: none;
 }
 ```
 
-The `text-shadow` does the heavy lifting for the glow. Two shadows — one large and diffuse (8px blur), one tight and bright (2px blur) — creates that CRT phosphor look.
-
-### Aqua Buttons
-
-Those 2006 Mac buttons had *depth*. They weren't flat rectangles with rounded corners. They had:
-- A highlight at the top (light source from above)
-- A subtle shadow at the bottom
-- A distinct pressed state that actually looked pressed
+### The Phosphor Text
+Modern fonts are too sharp. An LCD display has "bleed." The pixels light up the surrounding area.
 
 ```css
-.pb-btn {
-  background: linear-gradient(180deg, 
-    #f4f4f4 0%, 
-    #e8e8e8 20%,
-    #d8d8d8 45%, 
-    #c4c4c4 55%, 
-    #d0d0d0 80%,
-    #e0e0e0 100%
-  );
-  box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.9),
-    inset 0 -1px 0 rgba(0,0,0,0.05),
-    0 1px 1px rgba(0,0,0,0.15);
+.lcd-text {
+  color: #3e3e3e; /* Off state */
 }
 
-.pb-btn:active { 
-  background: linear-gradient(180deg, 
-    #c8c8c8 0%, 
-    #b8b8b8 50%,
-    #c0c0c0 100%
-  );
-  box-shadow: 
-    inset 0 1px 2px rgba(0,0,0,0.2),
-    inset 0 -1px 0 rgba(255,255,255,0.3);
+.lcd-text.active {
+  color: #22d962; /* Bright Green */
+  text-shadow: 
+    0 0 10px rgba(34, 217, 98, 0.5), /* Large diffuse glow */
+    0 0 2px rgba(34, 217, 98, 0.8);  /* Tight intense glow */
 }
 ```
 
-The active state inverts the gradient and moves the shadows inward. It's a small thing, but it makes clicking feel *real*.
+## Challenge 3: The Column Browser (State Management)
 
-## The Column Browser
+The defining feature of iTunes navigation is the Column Browser: **Genre > Artist > Album**.
+This is a dependent filtering system. Selecting "Rock" in Column A filters Column B to only show Rock artists.
 
-This is what I miss most about old iTunes. The three-column browser let you drill down through your library: Genre → Artist → Album. Each column filtered the next.
+### Data Structure & Performance
+I loaded a dataset of 5,000 tracks. Naive filtering in React (`array.filter` on every render) caused noticeable lag on the main thread, especially when dragging the window.
 
-The implementation is deceptively simple:
+I used **Memoization** heavily.
 
-```tsx
-const genres = ['All', ...new Set(tracks.map(t => t.genre))];
-const filteredByGenre = tracks.filter(t => 
-  !selectedGenre || selectedGenre === 'All' || t.genre === selectedGenre
-);
-const artists = ['All', ...new Set(filteredByGenre.map(t => t.artist))];
-// ...and so on
+```typescript
+// useLibrary.ts
+
+// 1. Get unique Genres (Cheap, do once)
+const genres = useMemo(() => 
+  ['All', ...new Set(tracks.map(t => t.genre))].sort(), 
+[tracks]);
+
+// 2. Filter Tracks by Selected Genre
+const tracksByGenre = useMemo(() => {
+  if (selectedGenre === 'All') return tracks;
+  return tracks.filter(t => t.genre === selectedGenre);
+}, [tracks, selectedGenre]);
+
+// 3. Get Artists from the FILTERED tracks (Dependent)
+const artists = useMemo(() => 
+  ['All', ...new Set(tracksByGenre.map(t => t.artist))].sort(), 
+[tracksByGenre]);
 ```
 
-Each column derives from the filtered results of the previous one. Select "Rock" in Genre, and Artist only shows rock artists. Select "Led Zeppelin" and Album only shows their albums.
+This "waterfall" of memos ensures that changing the **Song** selection doesn't re-calculate the **Artist** list. Only changing a parent filter triggers a re-calculation of children.
 
-It's hierarchical navigation that makes *sense*. Modern music apps hide this structure behind search and "smart" recommendations. Sometimes you just want to browse.
+### Virtualization
+Rendering lists of 5,000 items in the DOM is a crash sentence. I used `react-window` to virtualize the main track list.
 
-## Audio Handling
-
-The Web Audio API is powerful but overkill for basic playback. I went with a plain `<audio>` element:
-
-```tsx
-const audio = useRef<HTMLAudioElement>(null);
-
-const play = useCallback((track: Track) => {
-  if (audio.current) {
-    if (current?.id !== track.id) {
-      audio.current.src = track.url;
-      setCurrent(track);
-    }
-    audio.current.play();
-    setPlaying(true);
-  }
-}, [current]);
-```
-
-Event listeners handle time updates and track completion:
-
-```tsx
-useEffect(() => {
-  const a = audio.current;
-  if (!a) return;
-  
-  const onTime = () => setTime(a.currentTime);
-  const onEnd = () => {
-    const i = filtered.findIndex(t => t.id === current?.id);
-    if (i < filtered.length - 1) play(filtered[i + 1]);
-    else setPlaying(false);
-  };
-  
-  a.addEventListener('timeupdate', onTime);
-  a.addEventListener('ended', onEnd);
-  return () => {
-    a.removeEventListener('timeupdate', onTime);
-    a.removeEventListener('ended', onEnd);
-  };
-}, [current, filtered]);
-```
-
-The `ended` event auto-advances to the next track in the filtered list. Just like iTunes did.
-
-## The Playing Animation
-
-You know that little equalizer animation next to the currently playing track? Three bars bouncing at different rates?
+However, iTunes had "striped" rows (zebra striping). In a virtual list, absolute positioning can mess up the even/odd calculation if you aren't careful. I had to ensure the row index was passed correctly to apply the `.odd` class:
 
 ```css
-.playing-icon {
-  display: inline-flex;
-  align-items: flex-end;
-  gap: 1px;
-  height: 10px;
-}
-
-.playing-icon span {
-  width: 2px;
-  background: currentColor;
-  animation: eq 0.4s ease infinite alternate;
-}
-
-.playing-icon span:nth-child(1) { height: 40%; }
-.playing-icon span:nth-child(2) { height: 70%; animation-delay: 0.1s; }
-.playing-icon span:nth-child(3) { height: 50%; animation-delay: 0.2s; }
-
-@keyframes eq {
-  to { transform: scaleY(0.5); }
+.track-row.odd {
+  background-color: #f1f5fa; /* That classic iTunes blue-grey tint */
 }
 ```
 
-Three `<span>` elements, staggered animation delays, and `scaleY` for the bounce. Simple, but it adds life.
+## Challenge 4: Audio Engineering (Web Audio API)
 
-## What I Learned
+HTML5 `<audio>` tag is fine for simple playback, but iTunes had a visualization. To get visualization data, you need the **Web Audio API**.
 
-**CSS can do more than we give it credit for.** Gradients, shadows, and pseudo-elements can recreate complex textures without images. The entire brushed metal effect is pure CSS.
+### The Audio Context Setup
+You can't just plug an `<audio>` src in and get frequency data. You have to route it through an `AudioContext`.
 
-**Old design wasn't worse, just different.** Skeuomorphism had real UX benefits: affordances were obvious, state was visible, depth guided attention. Flat design traded these for simplicity.
+```typescript
+// audio-engine.ts
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const audioElement = new Audio();
+const source = audioCtx.createMediaElementSource(audioElement);
+const analyser = audioCtx.createAnalyser();
 
-**Nostalgia is a valid design choice.** Not everything needs to look like it was designed yesterday. Sometimes the old way *was* better for what you're building.
+// Connect the graph
+source.connect(analyser);
+analyser.connect(audioCtx.destination); // Connect to speakers
 
-## Try It
+// Configure Analyser
+analyser.fftSize = 256;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+```
 
-GemTunes is live at [gemtunes.vercel.app](https://gemtunes.vercel.app). Drop some MP3s in and experience music browsing like it's 2006.
+### The Visualizer Loop
+To render the little bouncing bars in the LCD, I set up a `requestAnimationFrame` loop.
 
-The code is straightforward Next.js with zero external dependencies beyond Lucide icons. All styling is vanilla CSS. No component libraries, no CSS-in-JS, no animation frameworks.
+```typescript
+const draw = () => {
+  requestAnimationFrame(draw);
+  analyser.getByteFrequencyData(dataArray);
+  
+  // dataArray now contains volume levels (0-255) for each frequency band
+  // 0 = Bass, 128 = Mids, 255 = Treble
+  
+  updateVisualizerState(dataArray);
+};
+```
 
-Sometimes the best way to appreciate modern tools is to remember what came before.
+**Optimization:** Updating React state 60 times a second triggers 60 re-renders. This kills performance.
+Instead of React state for the visualizer, I drew directly to a `<canvas>` element overlaid on the LCD. React manages the *presence* of the canvas, but the canvas manages its own pixels. This decoupled the visualization frame rate from the React render cycle.
+
+## Conclusion: What We Lost
+
+Building GemTunes was a lesson in detail.
+Every pixel in iTunes 7 was placed with intent. The drop shadows weren't just `box-shadow: 0 2px 4px black`. They were specific gradients to simulate directionality. The active states were carefully crafted inversions.
+
+Modern web development tools (Tailwind, Shadcn) make building *interfaces* fast. But they make building *personality* optional.
+
+When we strip away the textures, the glows, and the metaphors, we remove the friction, yes. But we also remove the joy.
+
+I'm not saying every app should look like a brushed metal toaster. But maybe, just maybe, we should allow ourselves a little bit of soul again.
+
+[Check out the live demo here](https://gemtunes.vercel.app) (and yes, the volume slider really works).
