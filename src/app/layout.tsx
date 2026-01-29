@@ -46,12 +46,15 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://crativo.xyz',
+    languages: {
+      'en-US': '/en-US',
+      'en': '/en',
+    },
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://crativo.xyz',
-    siteName: 'crativo.xyz',
     title: 'Jose Viscasillas | Senior Software Engineer | 21 Years Experience',
     description: 'Senior Software Engineer with 21 years of experience. React, TypeScript, video platforms, and developer tools.',
     images: [
@@ -62,6 +65,10 @@ export const metadata: Metadata = {
         alt: 'Jose Viscasillas - Senior Software Engineer',
       },
     ],
+    emails: ['jose@crativo.xyz'],
+    phoneNumbers: [],
+    determiner: 'auto',
+    siteName: 'crativo.xyz',
   },
   twitter: {
     card: 'summary_large_image',
@@ -92,6 +99,9 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
+  other: {
+    'google-site-verification': process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || '',
+  },
 };
 
 // JSON-LD Structured Data
@@ -154,6 +164,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Preconnect to external domains for performance */}
+        <link rel="preconnect" href="https://www.ezojs.com" />
+        <link rel="preconnect" href="https://www.clarity.ms" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+
         {/* Ezoic Header Script (consent popup removed) */}
         <script async src="//www.ezojs.com/ezoic/sa.min.js" />
         <Script
@@ -203,6 +218,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#0a0a0a" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.variable} antialiased bg-[#0a0a0a] text-[#ededed]`}>
         <SplashProvider>

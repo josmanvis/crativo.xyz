@@ -24,11 +24,11 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-sm border-b border-neutral-800">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-sm border-b border-neutral-800" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="group flex items-baseline hover:opacity-80 transition-opacity flex-shrink-0">
+          <Link href="/" className="group flex items-baseline hover:opacity-80 transition-opacity flex-shrink-0" aria-label="Home page">
             <span className="text-xl md:text-2xl font-bold italic text-white" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               crativo
             </span>
@@ -38,24 +38,29 @@ export default function Navigation() {
           </Link>
 
           {/* Navigation Links - Horizontal scroll on mobile */}
-          <div className="overflow-x-auto overflow-y-hidden scrollbar-hide -mr-4 pr-4 md:mr-0 md:pr-0">
+          <div
+            className="overflow-x-auto overflow-y-hidden scrollbar-hide -mr-4 pr-4 md:mr-0 md:pr-0"
+            role="menubar"
+            aria-label="Main menu"
+          >
             <ul className="flex items-center gap-4 md:gap-8">
               {navItems.map((item) => {
                 const active = isActive(item);
                 return (
-                  <li key={item.href} className="flex-shrink-0">
+                  <li key={item.href} className="flex-shrink-0" role="menuitem">
                     <Link
                       href={item.href}
                       style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
                       className={`
                         relative text-sm md:text-base whitespace-nowrap px-2 py-1
-                        transition-all duration-150 
+                        transition-all duration-150
                         active:scale-95 active:opacity-70
-                        ${active 
-                          ? 'text-yellow-400 font-medium' 
+                        ${active
+                          ? 'text-yellow-400 font-medium'
                           : 'text-neutral-400 hover:text-white'
                         }
                       `}
+                      aria-current={active ? 'page' : undefined}
                     >
                       {item.label}
                       {active && (

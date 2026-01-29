@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "audit": "npm run build && npx lighthouse https://crativo.xyz --output html --output-path ./lighthouse-report.html",
+    "audit-local": "npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
