@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="150" cy="500" r="300" fill="#10b981" opacity="0.03"/>
+  <circle cx="1050" cy="120" r="250" fill="#06b6d4" opacity="0.03"/>
+
+  <!-- Tech stack layers -->
+  <g transform="translate(850, 130)">
+    <!-- Layer 1 - Frontend -->
+    <rect x="0" y="0" width="220" height="45" rx="6" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="1.5"/>
+    <text x="110" y="28" text-anchor="middle" font-family="monospace" font-size="13" fill="#10b981">React + Next.js</text>
+    <!-- Layer 2 - Language -->
+    <rect x="10" y="55" width="220" height="45" rx="6" fill="#3178c6" opacity="0.15" stroke="#3178c6" stroke-width="1.5"/>
+    <text x="120" y="83" text-anchor="middle" font-family="monospace" font-size="13" fill="#3178c6">TypeScript</text>
+    <!-- Layer 3 - Backend -->
+    <rect x="20" y="110" width="220" height="45" rx="6" fill="#06b6d4" opacity="0.15" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="130" y="138" text-anchor="middle" font-family="monospace" font-size="13" fill="#06b6d4">Node.js + tRPC</text>
+    <!-- Layer 4 - Database -->
+    <rect x="30" y="165" width="220" height="45" rx="6" fill="#f97316" opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+    <text x="140" y="193" text-anchor="middle" font-family="monospace" font-size="13" fill="#f97316">PostgreSQL</text>
+    <!-- Layer 5 - Hosting -->
+    <rect x="40" y="220" width="220" height="45" rx="6" fill="#8b5cf6" opacity="0.15" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="150" y="248" text-anchor="middle" font-family="monospace" font-size="13" fill="#8b5cf6">Vercel</text>
+  </g>
+
+  <!-- Ship icon -->
+  <g transform="translate(1100, 400)">
+    <polygon points="0,30 15,0 30,30" fill="#10b981" opacity="0.7"/>
+    <rect x="8" y="30" width="14" height="20" rx="2" fill="#10b981" opacity="0.5"/>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="44" font-weight="700" fill="#ffffff">The Stack That Ships</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa">21 Years of Real-World Choices</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>

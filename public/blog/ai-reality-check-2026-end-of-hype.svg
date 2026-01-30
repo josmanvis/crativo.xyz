@@ -1,0 +1,35 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#eab308"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="500" r="300" fill="#f97316" opacity="0.03"/>
+  <circle cx="1000" cy="100" r="250" fill="#eab308" opacity="0.03"/>
+
+  <!-- Hype curve illustration -->
+  <g transform="translate(780, 140)">
+    <!-- Axes -->
+    <line x1="0" y1="280" x2="320" y2="280" stroke="#404040" stroke-width="1.5"/>
+    <line x1="0" y1="0" x2="0" y2="280" stroke="#404040" stroke-width="1.5"/>
+    <!-- Hype curve -->
+    <path d="M0 250 Q40 240 80 60 Q100 0 130 180 Q160 260 200 220 Q260 180 320 160" fill="none" stroke="#f97316" stroke-width="3" opacity="0.8"/>
+    <!-- "You are here" marker -->
+    <circle cx="260" cy="185" r="8" fill="#eab308" opacity="0.9"/>
+    <text x="260" y="170" text-anchor="middle" font-family="monospace" font-size="10" fill="#eab308">2026</text>
+    <!-- Labels -->
+    <text x="80" y="50" text-anchor="middle" font-family="monospace" font-size="9" fill="#f97316" opacity="0.7">peak hype</text>
+    <text x="280" y="155" text-anchor="middle" font-family="monospace" font-size="9" fill="#eab308">pragmatism</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="44" font-weight="700" fill="#ffffff">AI Reality Check</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa">2026: End of Empty Promises</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>

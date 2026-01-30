@@ -1,18 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#0a0a0a"/>
       <stop offset="100%" style="stop-color:#1a1a1a"/>
     </linearGradient>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#10b981"/>
-      <stop offset="100%" style="stop-color:#14b8a6"/>
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#eab308"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="200" cy="500" r="300" fill="#10b981" opacity="0.03"/>
-  <circle cx="1000" cy="130" r="250" fill="#14b8a6" opacity="0.03"/>
-  <rect x="80" y="300" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
-  <text x="80" y="360" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="#ffffff">AI Insights</text>
-  <text x="80" y="420" font-family="system-ui, sans-serif" font-size="24" fill="#a1a1aa">crativo.xyz</text>
+  <circle cx="200" cy="500" r="300" fill="#f97316" opacity="0.03"/>
+  <circle cx="1050" cy="120" r="250" fill="#eab308" opacity="0.03"/>
+
+  <!-- Chat prompt interface -->
+  <g transform="translate(830, 130)">
+    <rect x="0" y="0" width="260" height="200" rx="8" fill="#1f1f1f" stroke="#404040" stroke-width="1.5"/>
+    <rect x="15" y="15" width="160" height="30" rx="6" fill="#f97316" opacity="0.15"/>
+    <text x="25" y="35" font-family="monospace" font-size="10" fill="#f97316">Act as a senior dev...</text>
+    <rect x="80" y="55" width="165" height="30" rx="6" fill="#10b981" opacity="0.1"/>
+    <text x="90" y="75" font-family="monospace" font-size="10" fill="#10b981">Sure, I'll help you...</text>
+    <rect x="15" y="95" width="180" height="30" rx="6" fill="#f97316" opacity="0.15"/>
+    <text x="25" y="115" font-family="monospace" font-size="10" fill="#f97316">Think step by step...</text>
+    <rect x="80" y="135" width="165" height="30" rx="6" fill="#10b981" opacity="0.1"/>
+    <text x="90" y="155" font-family="monospace" font-size="10" fill="#10b981">Step 1: First we...</text>
+    <rect x="10" y="172" width="240" height="22" rx="4" fill="#2a2a2a"/>
+    <text x="20" y="187" font-family="monospace" font-size="9" fill="#404040">Type a prompt...</text>
+  </g>
+
+  <g transform="translate(870, 360)">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="16" fill="#ef4444" opacity="0.6" text-decoration="line-through">Prompt Engineer</text>
+    <text x="170" y="0" font-family="system-ui, sans-serif" font-size="16" fill="#10b981">Real Skill</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="40" font-weight="700" fill="#ffffff">Prompt Engineering</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="26" fill="#a1a1aa">Not a Job, But These Techniques Work</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
 </svg>

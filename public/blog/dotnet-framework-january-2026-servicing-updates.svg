@@ -1,0 +1,43 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#512bd4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="500" r="280" fill="#7c3aed" opacity="0.03"/>
+  <circle cx="1000" cy="120" r="250" fill="#512bd4" opacity="0.03"/>
+
+  <!-- .NET logo representation -->
+  <g transform="translate(860, 160)">
+    <circle cx="80" cy="80" r="80" fill="#512bd4" opacity="0.15" stroke="#512bd4" stroke-width="2"/>
+    <text x="80" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#512bd4">.NET</text>
+    <text x="80" y="105" text-anchor="middle" font-family="monospace" font-size="16" fill="#7c3aed">10</text>
+  </g>
+
+  <!-- Update arrows -->
+  <g transform="translate(1020, 200)">
+    <path d="M0 40 A40 40 0 1 1 40 0" fill="none" stroke="#7c3aed" stroke-width="2.5" opacity="0.7"/>
+    <polygon points="38,-5 45,5 32,5" fill="#7c3aed" opacity="0.7"/>
+  </g>
+
+  <!-- Version badges -->
+  <g transform="translate(820, 360)">
+    <rect x="0" y="0" width="140" height="35" rx="6" fill="#512bd4" opacity="0.2" stroke="#512bd4" stroke-width="1"/>
+    <text x="70" y="24" text-anchor="middle" font-family="monospace" font-size="13" fill="#512bd4">Jan 2026</text>
+  </g>
+  <g transform="translate(980, 360)">
+    <rect x="0" y="0" width="120" height="35" rx="6" fill="#7c3aed" opacity="0.2" stroke="#7c3aed" stroke-width="1"/>
+    <text x="60" y="24" text-anchor="middle" font-family="monospace" font-size="13" fill="#7c3aed">servicing</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#ffffff">.NET Servicing Updates</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="26" fill="#a1a1aa">January 2026 Release</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>

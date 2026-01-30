@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#0078d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="200" cy="500" r="280" fill="#7c3aed" opacity="0.03"/>
+  <circle cx="1000" cy="100" r="250" fill="#0078d4" opacity="0.03"/>
+
+  <!-- VS Code / VS icon hint -->
+  <g transform="translate(860, 140)">
+    <!-- IDE window -->
+    <rect x="0" y="0" width="220" height="160" rx="8" fill="#1f1f1f" stroke="#7c3aed" stroke-width="2"/>
+    <!-- Title bar -->
+    <rect x="0" y="0" width="220" height="28" rx="8" fill="#7c3aed" opacity="0.3"/>
+    <rect x="0" y="14" width="220" height="14" fill="#7c3aed" opacity="0.3"/>
+    <circle cx="18" cy="14" r="5" fill="#ef4444" opacity="0.7"/>
+    <circle cx="36" cy="14" r="5" fill="#eab308" opacity="0.7"/>
+    <circle cx="54" cy="14" r="5" fill="#22c55e" opacity="0.7"/>
+    <text x="130" y="18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#ffffff" opacity="0.8">Visual Studio 2026</text>
+    <!-- Editor content -->
+    <rect x="15" y="40" width="70" height="5" rx="1" fill="#7c3aed" opacity="0.4"/>
+    <rect x="15" y="52" width="120" height="5" rx="1" fill="#0078d4" opacity="0.3"/>
+    <rect x="15" y="64" width="90" height="5" rx="1" fill="#7c3aed" opacity="0.3"/>
+    <rect x="15" y="76" width="140" height="5" rx="1" fill="#0078d4" opacity="0.25"/>
+    <rect x="15" y="88" width="60" height="5" rx="1" fill="#7c3aed" opacity="0.35"/>
+    <!-- MCP badge -->
+    <rect x="130" y="108" width="70" height="30" rx="4" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="1"/>
+    <text x="165" y="128" text-anchor="middle" font-family="monospace" font-size="11" fill="#10b981">MCP</text>
+  </g>
+
+  <!-- Feature tags -->
+  <g transform="translate(850, 330)">
+    <rect x="0" y="0" width="80" height="30" rx="5" fill="#7c3aed" opacity="0.2" stroke="#7c3aed" stroke-width="1"/>
+    <text x="40" y="21" text-anchor="middle" font-family="monospace" font-size="11" fill="#7c3aed">.NET 10</text>
+    <rect x="95" y="0" width="70" height="30" rx="5" fill="#0078d4" opacity="0.2" stroke="#0078d4" stroke-width="1"/>
+    <text x="130" y="21" text-anchor="middle" font-family="monospace" font-size="11" fill="#0078d4">C# 14</text>
+    <rect x="180" y="0" width="60" height="30" rx="5" fill="#3178c6" opacity="0.2" stroke="#3178c6" stroke-width="1"/>
+    <text x="210" y="21" text-anchor="middle" font-family="monospace" font-size="11" fill="#3178c6">TS 7</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="42" font-weight="700" fill="#ffffff">Visual Studio 2026</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="26" fill="#a1a1aa">.NET 10, MCP Servers &amp; More</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>
