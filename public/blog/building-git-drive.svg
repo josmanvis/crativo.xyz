@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="driveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="gitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="successGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- External Drive Icon -->
+  <g transform="translate(340, 60)">
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="#27272a" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="10" y="10" width="100" height="50" rx="4" fill="#1a1a1a"/>
+    <circle cx="90" cy="65" r="6" fill="url(#successGrad)"/>
+    <rect x="15" y="70" width="30" height="4" rx="2" fill="#3b82f6"/>
+    <text x="60" y="40" font-family="monospace" font-size="12" fill="#3b82f6" text-anchor="middle">git-drive</text>
+  </g>
+  
+  <!-- Git Branch Visualization -->
+  <g transform="translate(100, 180)">
+    <!-- Main branch line -->
+    <line x1="0" y1="40" x2="180" y2="40" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    <!-- Feature branch -->
+    <path d="M 60 40 Q 60 10 90 10 Q 120 10 120 40" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <!-- Commits on main -->
+    <circle cx="30" cy="40" r="8" fill="#f97316"/>
+    <circle cx="90" cy="40" r="8" fill="#f97316"/>
+    <circle cx="150" cy="40" r="8" fill="url(#successGrad)"/>
+    <!-- Commits on feature -->
+    <circle cx="90" cy="10" r="6" fill="#3b82f6"/>
+    <!-- Labels -->
+    <text x="30" y="65" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">init</text>
+    <text x="90" y="65" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">link</text>
+    <text x="150" y="65" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">push</text>
+  </g>
+  
+  <!-- Terminal Window -->
+  <g transform="translate(520, 120)">
+    <rect x="0" y="0" width="220" height="130" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+    <!-- Terminal header -->
+    <rect x="0" y="0" width="220" height="24" rx="8" fill="#27272a"/>
+    <rect x="0" y="16" width="220" height="8" fill="#27272a"/>
+    <circle cx="16" cy="12" r="5" fill="#ff5f56"/>
+    <circle cx="32" cy="12" r="5" fill="#ffbd2e"/>
+    <circle cx="48" cy="12" r="5" fill="#27c93f"/>
+    <!-- Terminal content -->
+    <text x="12" y="44" font-family="monospace" font-size="10" fill="#888">$</text>
+    <text x="24" y="44" font-family="monospace" font-size="10" fill="#e5e5e5">git-drive init</text>
+    <text x="12" y="62" font-family="monospace" font-size="10" fill="#22c55e">✓ Initialized!</text>
+    <text x="12" y="80" font-family="monospace" font-size="10" fill="#888">$</text>
+    <text x="24" y="80" font-family="monospace" font-size="10" fill="#e5e5e5">git-drive link</text>
+    <text x="12" y="98" font-family="monospace" font-size="10" fill="#22c55e">✓ Linked!</text>
+    <text x="12" y="116" font-family="monospace" font-size="10" fill="#3b82f6">→ Ready to push</text>
+  </g>
+  
+  <!-- Repository boxes -->
+  <g transform="translate(80, 280)">
+    <rect x="0" y="0" width="120" height="70" rx="6" fill="#27272a" stroke="#3b82f6" stroke-width="1.5"/>
+    <rect x="0" y="0" width="120" height="18" rx="6" fill="#3b82f6"/>
+    <rect x="0" y="12" width="120" height="6" fill="#3b82f6"/>
+    <text x="60" y="13" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle">📁 repo.git</text>
+    <text x="60" y="45" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">my-project</text>
+    <text x="60" y="60" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">↑ pushed</text>
+  </g>
+  
+  <g transform="translate(220, 290)">
+    <rect x="0" y="0" width="120" height="70" rx="6" fill="#27272a" stroke="#f97316" stroke-width="1.5"/>
+    <rect x="0" y="0" width="120" height="18" rx="6" fill="#f97316"/>
+    <rect x="0" y="12" width="120" height="6" fill="#f97316"/>
+    <text x="60" y="13" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle">📁 repo.git</text>
+    <text x="60" y="45" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">another-repo</text>
+    <text x="60" y="60" font-family="monospace" font-size="8" fill="#f97316" text-anchor="middle">↑ pending</text>
+  </g>
+  
+  <g transform="translate(360, 280)">
+    <rect x="0" y="0" width="120" height="70" rx="6" fill="#27272a" stroke="#22c55e" stroke-width="1.5"/>
+    <rect x="0" y="0" width="120" height="18" rx="6" fill="#22c55e"/>
+    <rect x="0" y="12" width="120" height="6" fill="#22c55e"/>
+    <text x="60" y="13" font-family="monospace" font-size="8" fill="#fff" text-anchor="middle">📁 repo.git</text>
+    <text x="60" y="45" font-family="monospace" font-size="10" fill="#888" text-anchor="middle">work-stuff</text>
+    <text x="60" y="60" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">↑ pushed</text>
+  </g>
+  
+  <!-- Connection arrows -->
+  <g opacity="0.4">
+    <path d="M 400 140 L 250 280" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4" fill="none"/>
+    <path d="M 400 140 L 350 290" stroke="#f97316" stroke-width="1" stroke-dasharray="4" fill="none"/>
+    <path d="M 400 140 L 450 280" stroke="#22c55e" stroke-width="1" stroke-dasharray="4" fill="none"/>
+  </g>
+  
+  <!-- npm badge -->
+  <g transform="translate(560, 280)">
+    <rect x="0" y="0" width="160" height="50" rx="6" fill="#27272a" stroke="#cb3837" stroke-width="1.5"/>
+    <text x="12" y="22" font-family="monospace" font-size="9" fill="#888">$ npm i -g git-drive</text>
+    <text x="12" y="40" font-family="monospace" font-size="10" fill="#cb3837">↓ 500+/mo</text>
+    <text x="100" y="40" font-family="monospace" font-size="10" fill="#888">v0.1.3</text>
+  </g>
+  
+  <!-- .git-drive folder indicator -->
+  <g transform="translate(500, 60)">
+    <text font-family="monospace" font-size="11" fill="#555">.git-drive/</text>
+  </g>
+</svg>

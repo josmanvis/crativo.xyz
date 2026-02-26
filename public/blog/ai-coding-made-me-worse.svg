@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Brain shrinking -->
+  <g transform="translate(150, 100)">
+    <circle cx="60" cy="60" r="55" fill="#27272a" stroke="#3b82f6" stroke-width="2"/>
+    <text x="60" y="50" font-family="monospace" font-size="10" fill="#3b82f6" text-anchor="middle">Before</text>
+    <text x="60" y="70" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">Big Brain</text>
+  </g>
+  
+  <!-- Arrow -->
+  <g transform="translate(280, 130)">
+    <line x1="0" y1="30" x2="80" y2="30" stroke="#f97316" stroke-width="2"/>
+    <polygon points="80,20 100,30 80,40" fill="#f97316"/>
+    <text x="50" y="20" font-family="monospace" font-size="8" fill="#f97316" text-anchor="middle">AI use</text>
+  </g>
+  
+  <!-- Smaller brain -->
+  <g transform="translate(400, 120)">
+    <circle cx="50" cy="50" r="40" fill="#27272a" stroke="#ef4444" stroke-width="2"/>
+    <text x="50" y="45" font-family="monospace" font-size="9" fill="#ef4444" text-anchor="middle">After</text>
+    <text x="50" y="60" font-family="monospace" font-size="7" fill="#ef4444" text-anchor="middle">Small Brain</text>
+  </g>
+  
+  <!-- Copilot/ChatGPT icon -->
+  <g transform="translate(540, 80)">
+    <rect x="0" y="0" width="160" height="120" rx="8" fill="#1a1a1a" stroke="#10a37f" stroke-width="2"/>
+    <text x="80" y="30" font-family="monospace" font-size="10" fill="#10a37f" text-anchor="middle">AI Assistant</text>
+    <text x="15" y="55" font-family="monospace" font-size="8" fill="#22c55e">I'll write that for you</text>
+    <text x="15" y="75" font-family="monospace" font-size="8" fill="#22c55e">Here's the solution</text>
+    <text x="15" y="95" font-family="monospace" font-size="8" fill="#22c55e">Just accept this code</text>
+    <text x="15" y="110" font-family="monospace" font-size="8" fill="#f97316">No thinking required</text>
+  </g>
+  
+  <!-- Recovery plan -->
+  <g transform="translate(100, 260)">
+    <rect x="0" y="0" width="250" height="90" rx="6" fill="#1a1a1a" stroke="#22c55e" stroke-width="1"/>
+    <text x="125" y="25" font-family="monospace" font-size="10" fill="#22c55e" text-anchor="middle">Recovery Rules</text>
+    <text x="15" y="45" font-family="monospace" font-size="8" fill="#888">1. Write code first, then AI</text>
+    <text x="15" y="60" font-family="monospace" font-size="8" fill="#888">2. AI for review, not creation</text>
+    <text x="15" y="75" font-family="monospace" font-size="8" fill="#888">3. One AI-free day per week</text>
+  </g>
+  
+  <text x="400" y="385" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">The struggle is where learning happens</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Extension icon in browser -->
+  <g transform="translate(340, 40)">
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="#1a1a1a" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="60" cy="40" r="25" fill="#27272a" stroke="#3b82f6" stroke-width="2"/>
+    <text x="60" y="45" font-family="monospace" font-size="16" fill="#3b82f6" text-anchor="middle">🔧</text>
+  </g>
+  
+  <!-- Capabilities -->
+  <g transform="translate(100, 150)">
+    <rect x="0" y="0" width="140" height="70" rx="6" fill="#27272a" stroke="#22c55e" stroke-width="1"/>
+    <text x="70" y="25" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">Intercept Requests</text>
+    <text x="70" y="50" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">Modify network traffic</text>
+  </g>
+  <g transform="translate(260, 150)">
+    <rect x="0" y="0" width="140" height="70" rx="6" fill="#27272a" stroke="#f97316" stroke-width="1"/>
+    <text x="70" y="25" font-family="monospace" font-size="9" fill="#f97316" text-anchor="middle">Inject Code</text>
+    <text x="70" y="50" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">Any webpage, any time</text>
+  </g>
+  <g transform="translate(420, 150)">
+    <rect x="0" y="0" width="140" height="70" rx="6" fill="#27272a" stroke="#3b82f6" stroke-width="1"/>
+    <text x="70" y="25" font-family="monospace" font-size="9" fill="#3b82f6" text-anchor="middle">Access Tabs</text>
+    <text x="70" y="50" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">Read and manipulate</text>
+  </g>
+  <g transform="translate(580, 150)">
+    <rect x="0" y="0" width="140" height="70" rx="6" fill="#27272a" stroke="#a855f7" stroke-width="1"/>
+    <text x="70" y="25" font-family="monospace" font-size="9" fill="#a855f7" text-anchor="middle">Background Process</text>
+    <text x="70" y="50" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">Always running</text>
+  </g>
+  
+  <!-- Manifest V3 -->
+  <g transform="translate(200, 260)">
+    <rect x="0" y="0" width="400" height="80" rx="6" fill="#1a1a1a" stroke="#f97316" stroke-width="1"/>
+    <text x="200" y="25" font-family="monospace" font-size="10" fill="#f97316" text-anchor="middle">manifest.json (V3)</text>
+    <text x="15" y="50" font-family="monospace" font-size="8" fill="#888">"permissions": ["activeTab", "storage", "scripting"]</text>
+    <text x="15" y="70" font-family="monospace" font-size="8" fill="#22c55e">Zero app store fees • Instant distribution • Real power</text>
+  </g>
+  
+  <text x="400" y="385" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">The hidden platform between web apps and desktop</text>
+</svg>

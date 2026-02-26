@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Framework logos converging -->
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="90" height="70" rx="6" fill="#27272a" stroke="#61dafb" stroke-width="2"/>
+    <text x="45" y="35" font-family="monospace" font-size="10" fill="#61dafb" text-anchor="middle">React</text>
+    <text x="45" y="55" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">use() hook</text>
+  </g>
+  <g transform="translate(210, 80)">
+    <rect x="0" y="0" width="90" height="70" rx="6" fill="#27272a" stroke="#42b883" stroke-width="2"/>
+    <text x="45" y="35" font-family="monospace" font-size="10" fill="#42b883" text-anchor="middle">Vue</text>
+    <text x="45" y="55" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">ref()</text>
+  </g>
+  <g transform="translate(320, 80)">
+    <rect x="0" y="0" width="90" height="70" rx="6" fill="#27272a" stroke="#ff3e00" stroke-width="2"/>
+    <text x="45" y="35" font-family="monospace" font-size="10" fill="#ff3e00" text-anchor="middle">Svelte</text>
+    <text x="45" y="55" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">$state()</text>
+  </g>
+  <g transform="translate(430, 80)">
+    <rect x="0" y="0" width="90" height="70" rx="6" fill="#27272a" stroke="#4f88c6" stroke-width="2"/>
+    <text x="45" y="35" font-family="monospace" font-size="10" fill="#4f88c6" text-anchor="middle">Solid</text>
+    <text x="45" y="55" font-family="monospace" font-size="8" fill="#888" text-anchor="middle">createSignal()</text>
+  </g>
+  
+  <!-- All pointing to signals -->
+  <g transform="translate(550, 60)">
+    <rect x="0" y="0" width="160" height="120" rx="8" fill="#1a1a1a" stroke="#a855f7" stroke-width="2"/>
+    <text x="80" y="35" font-family="monospace" font-size="12" fill="#a855f7" text-anchor="middle" font-weight="bold">SIGNALS</text>
+    <text x="80" y="60" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Fine-grained reactivity</text>
+    <text x="80" y="80" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">No VDOM diffing</text>
+    <text x="80" y="100" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">Everyone agrees</text>
+  </g>
+  
+  <!-- Code comparison -->
+  <g transform="translate(100, 200)">
+    <rect x="0" y="0" width="280" height="100" rx="6" fill="#1a1a1a" stroke="#333"/>
+    <text x="140" y="25" font-family="monospace" font-size="9" fill="#a855f7" text-anchor="middle">// All the same pattern</text>
+    <text x="15" y="45" font-family="monospace" font-size="8" fill="#61dafb">const [val, set] = useState()</text>
+    <text x="15" y="60" font-family="monospace" font-size="8" fill="#42b883">const val = ref()</text>
+    <text x="15" y="75" font-family="monospace" font-size="8" fill="#ff3e00">let val = $state()</text>
+    <text x="15" y="90" font-family="monospace" font-size="8" fill="#4f88c6">const [val, set] = createSignal()</text>
+  </g>
+  
+  <text x="400" y="385" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">The framework wars end in consensus</text>
+</svg>

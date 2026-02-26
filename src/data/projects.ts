@@ -1800,6 +1800,145 @@ async function captureWithAnnotations(): Promise<Buffer> {
     },
   },
   {
+    id: "git-drive",
+    title: "git-drive",
+    description:
+      "Turn any external drive into a git remote backup. CLI + Web UI for local code backups without the cloud.",
+    category: "Tools",
+    techStack: ["Node.js", "TypeScript", "Express", "React", "CLI"],
+    imageUrl: "/blog/building-git-drive.svg",
+    href: "/blog/building-git-drive",
+    year: 2026,
+    metrics: [
+      { label: "npm Downloads", value: "500+" },
+      { label: "Platform", value: "macOS/Win/Linux" },
+    ],
+    longDescription: `I have a lot of code. Some on GitHub, some on private servers, some... nowhere. The "nowhere" category worried me.
+
+The manual approach: plug in external drive, navigate to folder, copy project, hope I didn't miss anything. This is not a backup strategy. This is a recipe for disaster.
+
+**What I Built**
+
+git-drive turns any external drive into a proper git remote. Not a file copy — a real git remote with full history, branches, and everything else you expect.
+
+\`\`\`bash
+npm install -g git-drive
+git-drive init
+git-drive link
+git push git-drive main
+\`\`\`
+
+Your code is now backed up to an external drive, with full git history.
+
+**The Architecture**
+
+A monorepo with three packages:
+- **CLI**: The npm package users install globally
+- **Server**: Express API for the web UI
+- **UI**: React web interface for visual management
+
+Git-drive creates a \`.git-drive\` directory on your external drive containing bare git repositories — just like what GitHub has on their servers, but on a drive you can hold in your hand.
+
+**The Features**
+
+- **Auto-server**: CLI automatically starts the server in the background when needed
+- **Web UI**: Browse drives, repos, commit history with diffs
+- **Push logs**: Track who pushed what, when, from where
+- **Multi-drive support**: Handle multiple external drives gracefully
+- **Cross-platform**: Works on macOS, Windows, Linux
+
+**Why I Built It**
+
+Cloud backups are great. But sometimes you want a local backup. Maybe you're on a plane. Maybe your internet is down. Maybe you're paranoid about someone else's servers.
+
+git-drive exists because I was tired of manually copying folders and hoping for the best. Now I have proper git backups on drives I control.
+
+**Install It**
+
+\`\`\`bash
+npm install -g git-drive
+\`\`\`
+
+Or read the full story: [Building git-drive](/blog/building-git-drive)`,
+    links: [
+      { label: "npm", url: "https://www.npmjs.com/package/git-drive", icon: "package" },
+      { label: "GitHub", url: "https://github.com/josmanvis/git-drive", icon: "github" },
+    ],
+    gallery: [],
+    features: [
+      { icon: "💾", title: "Local Git Backups", description: "Turn any external drive into a git remote. Full history, branches, tags — everything." },
+      { icon: "🖥️", title: "Web UI", description: "Browse repositories, view commits, push changes — all from a beautiful web interface at localhost:4483." },
+      { icon: "⚡", title: "Auto-Server", description: "CLI automatically starts the server when needed. No manual process management." },
+      { icon: "📊", title: "Push Logs", description: "Track every push: who, when, from where. Know exactly when your code was backed up." },
+      { icon: "🔌", title: "Multi-Drive", description: "Multiple external drives? No problem. git-drive handles them all." },
+      { icon: "🌍", title: "Cross-Platform", description: "macOS, Windows, Linux — detect drives everywhere." },
+    ],
+    codeSnippet: {
+      language: "typescript",
+      filename: "git-drive-cli.ts",
+      code: `// The CLI that makes external drives into git remotes
+// npm install -g git-drive
+
+#!/usr/bin/env node
+import { spawn } from 'child_process';
+import { listDrives, initDrive, linkRepo, pushRepo } from './commands.js';
+
+const commands = {
+  init: async (args) => {
+    // Select drive interactively or use provided path
+    const drives = await listDrives();
+    const { selectedDrive } = await prompts({
+      type: 'select',
+      name: 'selectedDrive',
+      message: 'Select a drive to initialize git-drive:',
+      choices: drives.map(d => ({
+        title: \`\${d.filesystem} (\${d.mounted}) - \${Math.round(d.available/d.blocks*100)}% free\`,
+        value: d.mounted,
+      })),
+    });
+    
+    await initDrive(selectedDrive);
+    console.log('✅ Git Drive initialized!');
+  },
+  
+  link: async () => {
+    // Link current repo to drive
+    await ensureServerRunning();
+    await linkRepo(process.cwd());
+    console.log('✅ Repo linked! Add remote: git remote add git-drive <path>');
+  },
+  
+  push: async () => {
+    await ensureServerRunning();
+    await pushRepo(process.cwd());
+    console.log('✅ Pushed to git-drive!');
+  },
+  
+  server: () => {
+    console.log('🚀 Starting Git Drive server at http://localhost:4483');
+    spawn(process.execPath, [require.resolve('./server.js')], {
+      stdio: 'inherit',
+      env: { ...process.env, GIT_DRIVE_PORT: '4483' }
+    });
+  }
+};
+
+// Auto-server for commands that need it
+async function ensureServerRunning() {
+  try {
+    await fetch('http://localhost:4483/api/health');
+  } catch {
+    // Server not running, start it in background
+    spawn(process.execPath, [require.resolve('./server.js')], {
+      detached: true,
+      stdio: 'ignore'
+    });
+    await waitForServer();
+  }
+}`,
+    },
+  },
+  {
     id: "pubsafe",
     title: "pubsafe",
     description:

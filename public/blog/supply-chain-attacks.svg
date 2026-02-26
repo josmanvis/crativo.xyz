@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- node_modules folder -->
+  <g transform="translate(100, 60)">
+    <rect x="0" y="0" width="180" height="140" rx="6" fill="#1a1a1a" stroke="#ef4444" stroke-width="2"/>
+    <text x="90" y="25" font-family="monospace" font-size="10" fill="#ef4444" text-anchor="middle">node_modules/</text>
+    <text x="15" y="50" font-family="monospace" font-size="8" fill="#888">├── react/</text>
+    <text x="15" y="65" font-family="monospace" font-size="8" fill="#888">├── lodash/</text>
+    <text x="15" y="80" font-family="monospace" font-size="8" fill="#ef4444">├── malicious-pkg/ ⚠️</text>
+    <text x="15" y="95" font-family="monospace" font-size="8" fill="#888">├── ... (1,247 more)</text>
+    <text x="15" y="120" font-family="monospace" font-size="8" fill="#ef4444">You reviewed: 0</text>
+  </g>
+  
+  <!-- Attack vectors -->
+  <g transform="translate(350, 60)">
+    <rect x="0" y="0" width="180" height="140" rx="6" fill="#1a1a1a" stroke="#f97316" stroke-width="2"/>
+    <text x="90" y="25" font-family="monospace" font-size="10" fill="#f97316" text-anchor="middle">Attack Vectors</text>
+    <text x="15" y="50" font-family="monospace" font-size="8" fill="#ef4444">• Compromised maintainer</text>
+    <text x="15" y="65" font-family="monospace" font-size="8" fill="#ef4444">• Malicious new maintainer</text>
+    <text x="15" y="80" font-family="monospace" font-size="8" fill="#ef4444">• Typosquatting</text>
+    <text x="15" y="95" font-family="monospace" font-size="8" fill="#ef4444">• Dependency confusion</text>
+    <text x="15" y="110" font-family="monospace" font-size="8" fill="#ef4444">• Install scripts</text>
+  </g>
+  
+  <!-- Real attacks -->
+  <g transform="translate(580, 60)">
+    <rect x="0" y="0" width="140" height="140" rx="6" fill="#1a1a1a" stroke="#333"/>
+    <text x="70" y="25" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">Real Attacks</text>
+    <text x="15" y="50" font-family="monospace" font-size="7" fill="#ef4444">event-stream</text>
+    <text x="15" y="65" font-family="monospace" font-size="7" fill="#ef4444">ua-parser-js</text>
+    <text x="15" y="80" font-family="monospace" font-size="7" fill="#ef4444">colors/faker</text>
+    <text x="15" y="95" font-family="monospace" font-size="7" fill="#ef4444">node-ipc</text>
+    <text x="15" y="120" font-family="monospace" font-size="7" fill="#f97316">All happened.</text>
+  </g>
+  
+  <!-- npm audit -->
+  <g transform="translate(250, 240)">
+    <rect x="0" y="0" width="300" height="80" rx="6" fill="#1a1a1a" stroke="#22c55e" stroke-width="1"/>
+    <text x="150" y="25" font-family="monospace" font-size="9" fill="#22c55e" text-anchor="middle">$ npm audit</text>
+    <text x="20" y="50" font-family="monospace" font-size="8" fill="#888">47 vulnerabilities found</text>
+    <text x="20" y="70" font-family="monospace" font-size="8" fill="#f97316">npm audit fix broke the app 💀</text>
+  </g>
+  
+  <text x="400" y="385" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">You're trusting hundreds of strangers</text>
+</svg>

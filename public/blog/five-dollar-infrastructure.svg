@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- $5 bill -->
+  <g transform="translate(320, 40)">
+    <rect x="0" y="0" width="160" height="80" rx="6" fill="#22c55e" opacity="0.2" stroke="#22c55e" stroke-width="2"/>
+    <text x="80" y="50" font-family="system-ui, sans-serif" font-size="32" fill="#22c55e" text-anchor="middle" font-weight="bold">$5</text>
+    <text x="80" y="70" font-family="monospace" font-size="10" fill="#22c55e" text-anchor="middle">/month</text>
+  </g>
+  
+  <!-- Free tier services -->
+  <g transform="translate(100, 150)">
+    <rect x="0" y="0" width="120" height="60" rx="6" fill="#27272a" stroke="#fff" stroke-width="1"/>
+    <text x="60" y="25" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">Vercel</text>
+    <text x="60" y="45" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">FREE</text>
+  </g>
+  <g transform="translate(240, 150)">
+    <rect x="0" y="0" width="120" height="60" rx="6" fill="#27272a" stroke="#f97316" stroke-width="1"/>
+    <text x="60" y="25" font-family="monospace" font-size="10" fill="#f97316" text-anchor="middle">Turso</text>
+    <text x="60" y="45" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">FREE</text>
+  </g>
+  <g transform="translate(380, 150)">
+    <rect x="0" y="0" width="120" height="60" rx="6" fill="#27272a" stroke="#3b82f6" stroke-width="1"/>
+    <text x="60" y="25" font-family="monospace" font-size="10" fill="#3b82f6" text-anchor="middle">Clerk</text>
+    <text x="60" y="45" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">FREE</text>
+  </g>
+  <g transform="translate(520, 150)">
+    <rect x="0" y="0" width="120" height="60" rx="6" fill="#27272a" stroke="#f97316" stroke-width="1"/>
+    <text x="60" y="25" font-family="monospace" font-size="10" fill="#f97316" text-anchor="middle">R2</text>
+    <text x="60" y="45" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">FREE</text>
+  </g>
+  <g transform="translate(660, 150)">
+    <rect x="0" y="0" width="100" height="60" rx="6" fill="#27272a" stroke="#fff" stroke-width="1"/>
+    <text x="50" y="25" font-family="monospace" font-size="10" fill="#fff" text-anchor="middle">Resend</text>
+    <text x="50" y="45" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">FREE</text>
+  </g>
+  
+  <!-- vs AWS -->
+  <g transform="translate(250, 260)">
+    <rect x="0" y="0" width="300" height="90" rx="8" fill="#1a1a1a" stroke="#ef4444" stroke-width="2"/>
+    <text x="150" y="30" font-family="monospace" font-size="10" fill="#ef4444" text-anchor="middle">Typical AWS Bill</text>
+    <text x="150" y="50" font-family="monospace" font-size="9" fill="#888" text-anchor="middle">EC2 + RDS + ElastiCache + LB...</text>
+    <text x="150" y="75" font-family="monospace" font-size="14" fill="#ef4444" text-anchor="middle">$500+/month</text>
+  </g>
+  
+  <text x="400" y="385" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">Free tiers are generous now</text>
+</svg>

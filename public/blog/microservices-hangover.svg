@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Scattered microservices -->
+  <g transform="translate(100, 80)">
+    <rect x="0" y="0" width="70" height="50" rx="4" fill="#27272a" stroke="#ef4444" stroke-width="1"/>
+    <text x="35" y="30" font-family="monospace" font-size="8" fill="#ef4444" text-anchor="middle">User</text>
+  </g>
+  <g transform="translate(200, 60)">
+    <rect x="0" y="0" width="70" height="50" rx="4" fill="#27272a" stroke="#f97316" stroke-width="1"/>
+    <text x="35" y="30" font-family="monospace" font-size="8" fill="#f97316" text-anchor="middle">Auth</text>
+  </g>
+  <g transform="translate(180, 150)">
+    <rect x="0" y="0" width="70" height="50" rx="4" fill="#27272a" stroke="#eab308" stroke-width="1"/>
+    <text x="35" y="30" font-family="monospace" font-size="8" fill="#eab308" text-anchor="middle">Orders</text>
+  </g>
+  <g transform="translate(280, 100)">
+    <rect x="0" y="0" width="70" height="50" rx="4" fill="#27272a" stroke="#22c55e" stroke-width="1"/>
+    <text x="35" y="30" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">Payment</text>
+  </g>
+  <g transform="translate(120, 200)">
+    <rect x="0" y="0" width="70" height="50" rx="4" fill="#27272a" stroke="#3b82f6" stroke-width="1"/>
+    <text x="35" y="30" font-family="monospace" font-size="8" fill="#3b82f6" text-anchor="middle">Email</text>
+  </g>
+  
+  <!-- Chaos lines between services -->
+  <line x1="170" y1="105" x2="200" y2="85" stroke="#333" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="235" y1="110" x2="250" y2="150" stroke="#333" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="250" y1="175" x2="280" y2="150" stroke="#333" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="155" y1="200" x2="180" y2="175" stroke="#333" stroke-width="1" stroke-dasharray="2"/>
+  
+  <!-- Monolith (coming back) -->
+  <g transform="translate(500, 80)">
+    <rect x="0" y="0" width="200" height="200" rx="8" fill="#1a1a1a" stroke="#22c55e" stroke-width="2"/>
+    <text x="100" y="30" font-family="monospace" font-size="12" fill="#22c55e" text-anchor="middle">Monolith</text>
+    
+    <!-- Modules inside -->
+    <rect x="15" y="50" width="80" height="35" rx="4" fill="#27272a" stroke="#3b82f6"/>
+    <text x="55" y="72" font-family="monospace" font-size="8" fill="#3b82f6" text-anchor="middle">users/</text>
+    
+    <rect x="105" y="50" width="80" height="35" rx="4" fill="#27272a" stroke="#f97316"/>
+    <text x="145" y="72" font-family="monospace" font-size="8" fill="#f97316" text-anchor="middle">orders/</text>
+    
+    <rect x="15" y="95" width="80" height="35" rx="4" fill="#27272a" stroke="#22c55e"/>
+    <text x="55" y="117" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">payments/</text>
+    
+    <rect x="105" y="95" width="80" height="35" rx="4" fill="#27272a" stroke="#a855f7"/>
+    <text x="145" y="117" font-family="monospace" font-size="8" fill="#a855f7" text-anchor="middle">email/</text>
+    
+    <text x="100" y="160" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">Modular Monolith</text>
+    <text x="100" y="180" font-family="monospace" font-size="8" fill="#22c55e" text-anchor="middle">✓ Simple ✓ Fast</text>
+  </g>
+  
+  <text x="400" y="380" font-family="system-ui, sans-serif" font-size="12" fill="#555" text-anchor="middle">The pendulum swings back</text>
+</svg>
