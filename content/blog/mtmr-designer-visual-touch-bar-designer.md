@@ -9,9 +9,7 @@ ogImage: "/blog/mtmr-designer.svg"
 
 # MTMR Designer
 
-<p align="center">
-  <img src="/blog/mtmr-designer.svg" alt="MTMR Designer" width="80" />
-</p>
+![MTMR Designer](/blog/mtmr-designer.svg)
 
 <h1 align="center">MTMR Designer</h1>
 
@@ -30,13 +28,11 @@ ogImage: "/blog/mtmr-designer.svg"
   <a href="#architecture">Architecture</a>
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/react-19-61dafb?style=flat-square&logo=react" alt="React 19" />
-  <img src="https://img.shields.io/badge/vite-7-646cff?style=flat-square&logo=vite" alt="Vite 7" />
-  <img src="https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=nodedotjs" alt="Node >= 18" />
-  <img src="https://img.shields.io/badge/platform-macOS-000?style=flat-square&logo=apple" alt="macOS" />
-  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License" />
-</p>
+![React 19](https://img.shields.io/badge/react-19-61dafb?style=flat-square&logo=react)
+![Vite 7](https://img.shields.io/badge/vite-7-646cff?style=flat-square&logo=vite)
+![Node >= 18](https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=nodedotjs)
+![macOS](https://img.shields.io/badge/platform-macOS-000?style=flat-square&logo=apple)
+![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
 ---
 
