@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
 import { SplashProvider } from "@/lib/SplashContext";
 import ChatWidget from "@/components/ChatWidget";
+import Footer from "@/components/Footer";
 import Script from "next/script";
 
 const inter = Inter({
@@ -226,6 +227,7 @@ export default function RootLayout({
           <div className="pt-16">
             {children}
           </div>
+          <Footer />
           <ChatWidget />
         </SplashProvider>
       </body>
