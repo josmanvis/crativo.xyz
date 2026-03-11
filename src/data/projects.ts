@@ -2132,6 +2132,21 @@ async function getNpmIgnoreRules(projectPath: string): Promise<Ignore> {
     },
   },
   {
+    id: "mtmr-designer",
+    title: "MTMR Designer",
+    description: "A visual drag-and-drop designer for macOS Touch Bar presets that eliminates manual JSON editing. Built with React 19 + Vite, featuring 39 element types, real-time preview, and direct MTMR integration.",
+    category: "Tools",
+    techStack: ["React 19", "Vite", "macOS", "Open Source", "Electron"],
+    imageUrl: "/blog/mtmr-designer.svg",
+    href: "/blog/mtmr-designer-visual-touch-bar-designer",
+    year: 2026,
+    metrics: [
+      { label: "Platform", value: "macOS" },
+      { label: "Type", value: "Designer" },
+    ],
+    longDescription: `MTMR Designer is a visual drag-and-drop interface for creating MTMR Touch Bar presets. Instead of writing JSON by hand, you can build, preview, and export custom MTMR Touch Bar configurations. It supports 39 element types, offers a rich property editor, an action system for tap actions, and direct integration with MTMR.`,
+  },
+  {
     id: "toolbench",
     title: "toolbench",
     description:
