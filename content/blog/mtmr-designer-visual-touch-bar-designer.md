@@ -19,7 +19,7 @@ featured: true
 
 Build, preview, and export custom [MTMR](https://github.com/Toxblh/MTMR) Touch Bar configurations — no JSON by hand.
 
-[Documentation](https://josetwentyfour.github.io/mtmr-designer) · [Quick Start](#quick-start) · [Features](#features) · [Architecture](#architecture)
+[Documentation](https://josmanvis.github.io/mtmr-designer) · [Quick Start](#quick-start) · [Features](#features) · [Architecture](#architecture)
 
 ---
 
@@ -89,7 +89,7 @@ Full history support with keyboard shortcuts. Your work auto-saves to localStora
 
 ```bash
 # Clone the repository
-git clone https://github.com/josetwentyfour/mtmr-designer.git
+git clone https://github.com/josmanvis/mtmr-designer.git
 cd mtmr-designer
 
 # Install dependencies
@@ -161,7 +161,7 @@ Bundled fork of the MTMR Swift macOS app. Build with Xcode from `mtmr-src/MTMR.x
 ### Installation
 
 1. **Install MTMR** from [GitHub](https://github.com/Toxblh/MTMR) if you haven't already
-2. **Clone the repository**: `git clone https://github.com/josetwentyfour/mtmr-designer.git`
+2. **Clone the repository**: `git clone https://github.com/josmanvis/mtmr-designer.git`
 3. **Install dependencies**: `pnpm install`
 4. **Start the server**: `pnpm run dev`
 
@@ -279,8 +279,8 @@ If you've ever been frustrated by editing JSON by hand, if you've ever wanted a 
 
 ## Quick Links
 
-- [Documentation](https://josetwentyfour.github.io/mtmr-designer)
-- [GitHub Repository](https://github.com/josetwentyfour/mtmr-designer)
+- [Documentation](https://josmanvis.github.io/mtmr-designer)
+- [GitHub Repository](https://github.com/josmanvis/mtmr-designer)
 - [Live Demo](https://mtmr-designer.netlify.app)
 - [MTMR App](https://github.com/Toxblh/MTMR)
 
