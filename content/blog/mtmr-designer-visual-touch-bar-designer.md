@@ -1,38 +1,25 @@
 ---
 title: "MTMR Designer: Visual Touch Bar Designer for macOS"
-description: "A visual drag-and-drop designer for macOS Touch Bar presets that eliminates manual JSON editing. Built with React 19 + Vite, featuring 39 element types, real-time preview, and direct MTMR integration."
-date: "2026-03-11"
-tags: ["react", "macos", "touch-bar", "design-tools", "open-source"]
-category: "Projects"
-ogImage: "/blog/mtmr-designer.svg"
+excerpt: "A visual drag-and-drop designer for macOS Touch Bar presets that eliminates manual JSON editing. Built with React 19 + Vite, featuring 39 element types, real-time preview, and direct MTMR integration."
+publishedAt: "2026-03-11"
+tags:
+  - react
+  - macos
+  - touch-bar
+  - design-tools
+  - open-source
+category: tutorials
+coverImage: /blog/mtmr-designer.svg
+featured: true
 ---
 
 # MTMR Designer
 
-![MTMR Designer](/blog/mtmr-designer.svg)
+**A visual drag-and-drop designer for macOS Touch Bar presets**
 
-<h1 align="center">MTMR Designer</h1>
+Build, preview, and export custom [MTMR](https://github.com/Toxblh/MTMR) Touch Bar configurations — no JSON by hand.
 
-<p align="center">
-  <strong>A visual drag-and-drop designer for macOS Touch Bar presets</strong>
-</p>
-
-<p align="center">
-  Build, preview, and export custom <a href="https://github.com/Toxblh/MTMR">MTMR</a> Touch Bar configurations — no JSON by hand.
-</p>
-
-<p align="center">
-  <a href="https://josetwentyfour.github.io/mtmr-designer">Documentation</a> &middot;
-  <a href="#quick-start">Quick Start</a> &middot;
-  <a href="#features">Features</a> &middot;
-  <a href="#architecture">Architecture</a>
-</p>
-
-![React 19](https://img.shields.io/badge/react-19-61dafb?style=flat-square&logo=react)
-![Vite 7](https://img.shields.io/badge/vite-7-646cff?style=flat-square&logo=vite)
-![Node >= 18](https://img.shields.io/badge/node-%E2%89%A518-339933?style=flat-square&logo=nodedotjs)
-![macOS](https://img.shields.io/badge/platform-macOS-000?style=flat-square&logo=apple)
-![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+[Documentation](https://josetwentyfour.github.io/mtmr-designer) · [Quick Start](#quick-start) · [Features](#features) · [Architecture](#architecture)
 
 ---
 
