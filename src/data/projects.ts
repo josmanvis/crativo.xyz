@@ -15,6 +15,7 @@ export const projects: Project[] = [
     description: "A gassy retro boomer shooter where you purify zombified donkeys into rainbow unicorns using the Bio-Gaster.",
     category: "Apps",
     techStack: ["Babylon.js", "WebRTC", "Socket.io", "Vite", "TypeScript", "Node.js"],
+    previews: [ { type: 'demo', src: '/previews/zombie-donkeys.svg', alt: 'Zombie Donkeys Gameplay', caption: 'Multiplayer Fast-paced Action' } ], codeSnippet: { language: 'typescript', filename: 'GameEngine.ts', code: '// Multiplayer Hit Detection Logic\nconst ray = this.camera.getForwardRay(50);\nconst hitPlayer = this.scene.pickWithRay(ray, (m) => !!this.remotePlayers[m.name]);\nif (hitPlayer && hitPlayer.hit && hitPlayer.pickedMesh) {\n    const targetId = hitPlayer.pickedMesh.name;\n    this.onPlayerHit?.(targetId);\n}' },
     imageUrl: "/projects/zombie-donkeys.svg",
     href: "https://zombie-donkeys.vercel.app",
     year: 2069,

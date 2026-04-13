@@ -1,7 +1,7 @@
 ---
 title: "Building Zombie Donkeys 2069: A Gassy Retro Boomer Shooter"
 excerpt: "How I built a multiplayer web FPS with Babylon.js, WebRTC, and a very specific focus on donkey purification and cheek jiggling physics."
-category: showcase
+category: deep-dives
 publishedAt: 2026-04-12
 tags:
   - Game Dev
@@ -10,10 +10,6 @@ tags:
   - TypeScript
 coverImage: /blog/zombie-donkeys-2069.svg
 featured: true
-seo:
-  title: "Building Zombie Donkeys 2069 | Case Study"
-  description: "Explore the development of Zombie Donkeys 2069, a retro-styled web FPS. Learn about P2P networking with WebRTC and 3D rendering with Babylon.js."
-  keywords: ["Game Development", "Babylon.js", "WebRTC", "Multiplayer Game", "Vite", "Retro Shooter"]
 ---
 
 # Building Zombie Donkeys 2069: A Gassy Retro Boomer Shooter
