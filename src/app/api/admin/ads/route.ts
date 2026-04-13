@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getAds, createAd, getCarbonSettings, updateCarbonSettings } from '@/lib/db';
 
