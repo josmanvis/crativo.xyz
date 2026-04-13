@@ -1,10 +1,10 @@
 import { neon } from '@neondatabase/serverless';
 
-if (!process.env.DATABASE_URL) {
+let sqlInst: any; function getSql() { if (!sqlInst) { const url = process.env.DATABASE_URL; if (!url) return () => Promise.resolve([]); sqlInst = neon(url); } return sqlInst; } if (false) {
   throw new Error('DATABASE_URL environment variable is required');
 }
 
-export const sql = neon(process.env.DATABASE_URL);
+export const sql = (s: any, ...v: any[]) => getSql()(s, ...v);
 
 // Newsletter subscriber operations
 export async function addSubscriber(email: string, source = 'website') {

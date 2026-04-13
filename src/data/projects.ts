@@ -9,6 +9,42 @@ export const categories = [
 ] as const;
 
 export const projects: Project[] = [
+  {
+    id: "zombie-donkeys-2069",
+    title: "Zombie Donkeys 2069",
+    description: "A gassy retro boomer shooter where you purify zombified donkeys into rainbow unicorns using the Bio-Gaster.",
+    category: "Apps",
+    techStack: ["Babylon.js", "WebRTC", "Socket.io", "Vite", "TypeScript", "Node.js"],
+    previews: [ { type: 'demo', src: '/previews/zombie-donkeys.svg', alt: 'Zombie Donkeys Gameplay', caption: 'Multiplayer Fast-paced Action' } ], codeSnippet: { language: 'typescript', filename: 'GameEngine.ts', code: '// Multiplayer Hit Detection Logic\nconst ray = this.camera.getForwardRay(50);\nconst hitPlayer = this.scene.pickWithRay(ray, (m) => !!this.remotePlayers[m.name]);\nif (hitPlayer && hitPlayer.hit && hitPlayer.pickedMesh) {\n    const targetId = hitPlayer.pickedMesh.name;\n    this.onPlayerHit?.(targetId);\n}' },
+    imageUrl: "/projects/zombie-donkeys.svg",
+    href: "https://zombie-donkeys.vercel.app",
+    year: 2069,
+    metrics: [
+      { label: "Methane Level", value: "100%" },
+      { label: "Unicorns Created", value: "Infinite" },
+      { label: "Vibe", value: "Toxic" },
+      { label: "Cheek Jiggle", value: "Snappy" },
+    ],
+    longDescription: `The year is 2069. The digital abyss has been corrupted by "Bad Vibes," transforming the once-noble donkey population into mindless, nibbling zombies. 
+
+I built this multiplayer web FPS to explore the limits of P2P networking in the browser and to implement some of the most ridiculous physics I've ever had to code: **Cheek Jiggling.**
+
+**The Bio-Gaster and F-BOMBS**
+
+Instead of bullets, you use the **Bio-Gaster**, a methane-powered purification unit that blasts bad vibes out of donkeys, turning them into flying rainbow unicorns. For crowd control, the **F-BOMB** (Fart Bomb) provides wide-area purification.
+
+**Retro Engineering**
+
+To achieve the "Boomer Shooter" aesthetic, I implemented a custom render pipeline in Babylon.js that drop-scales the hardware resolution by 4x for chunky pixels, combined with procedurally generated noisy textures and 2D billboard sprites for enemies – a direct nod to the software renderers of the 90s.
+
+**Multiplayer Abyss**
+
+The game uses WebRTC for low-latency peer-to-peer state synchronization, meaning players around the world can purify donkeys together in real-time. It features a global scoreboard, multiple difficulty levels (from "Gentle Breeze" to "Gassy Hell"), and a ranking system that tracks your progress from a simple Gasser to a Stench Emperor.`,
+    links: [
+      { label: "Play Game", url: "https://zombie-donkeys.vercel.app", icon: "external-link" },
+    ],
+  },
+
   // Apps - Real Projects
   {
     id: "afters",
