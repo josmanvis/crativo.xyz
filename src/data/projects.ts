@@ -8,7 +8,8 @@ export const categories = [
   "Kiosks",
 ] as const;
 
-export const projects: Project[] = [\n  {
+export const projects: Project[] = [
+  {
     id: "zombie-donkeys-2069",
     title: "Zombie Donkeys 2069",
     description: "A gassy retro boomer shooter where you purify zombified donkeys into rainbow unicorns using the Bio-Gaster.",
