@@ -19,11 +19,11 @@ Daily posting strategy for crativo.xyz blog.
 ## 📝 Ready to Write (Backlog)
 
 ### Week of Jan 27
-- [ ] **Why I Use pnpm Over npm** — workspace support, speed, disk efficiency
-- [ ] **From React to SolidJS: A Practical Comparison** — signals vs hooks, performance
+- [x] **Why I Use pnpm Over npm** — workspace support, speed, disk efficiency
+- [x] **From React to SolidJS: A Practical Comparison** — signals vs hooks, performance
 - [ ] **Git Bare Repositories on External Drives** — git-drive concept
 - [ ] **Testing Tauri Apps** — unit tests, e2e, platform-specific quirks
-- [ ] **Designing Developer Tools UX** — CLI ergonomics, TUI patterns
+- [x] **Designing Developer Tools UX** — CLI ergonomics, TUI patterns
 
 ### Week of Feb 3
 - [ ] **Homebrew Tap for Your Apps** — how I set up homebrew-josetunes
@@ -31,6 +31,18 @@ Daily posting strategy for crativo.xyz blog.
 - [ ] **Audio Processing in Rust** — josetunes/setch internals
 - [ ] **Building VS Code Extensions** — projax extension breakdown
 - [ ] **CSS Grid for Dynamic Layouts** — beyond the basics
+
+### Modern CSS & Web Series (Drafted)
+- [x] **The `:has()` Selector: Why It Changes Everything**
+- [x] **Stop Re-Inventing the Wheel: Native HTML Dialogs**
+- [x] **Container Queries: Viewport Width is Dead**
+- [x] **Color in CSS: The OKLCH Revolution**
+- [x] **CSS Subgrid: The Missing Layout Feature**
+- [x] **Aspect-Ratio: No More Padding Hacks**
+- [x] **CSS Logical Properties: Stop Using Margin-Left**
+- [x] **View Transitions API: SPA Feel Without the Framework**
+- [x] **Modern CSS Reset: What I Actually Use**
+- [x] **CSS Custom Properties Beyond Themes**
 
 ### Evergreen Ideas
 - [ ] My Mac Dev Setup 2025

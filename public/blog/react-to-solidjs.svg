@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#61dafb"/> <!-- React blue -->
+      <stop offset="100%" style="stop-color:#4d70ba"/> <!-- SolidJS blue -->
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <circle cx="150" cy="500" r="300" fill="#61dafb" opacity="0.03"/>
+  <circle cx="1050" cy="130" r="250" fill="#4d70ba" opacity="0.03"/>
+
+  <!-- React/Solid illustration -->
+  <g transform="translate(900, 250)">
+    <!-- Solid JS abstract representation (fine-grained) -->
+    <circle cx="50" cy="0" r="10" fill="#4d70ba"/>
+    <circle cx="10" cy="50" r="10" fill="#4d70ba"/>
+    <circle cx="90" cy="50" r="10" fill="#4d70ba"/>
+    <line x1="50" y1="10" x2="15" y2="45" stroke="#4d70ba" stroke-width="3"/>
+    <line x1="50" y1="10" x2="85" y2="45" stroke="#4d70ba" stroke-width="3"/>
+    
+    <!-- React abstract representation (VDOM) -->
+    <path d="M -50 0 Q -30 -30 0 0 T 50 0" fill="none" stroke="#61dafb" stroke-width="3" opacity="0.5"/>
+    <circle cx="-50" cy="0" r="10" fill="#61dafb"/>
+  </g>
+
+  <!-- Badges -->
+  <g transform="translate(1020, 380)">
+    <rect x="0" y="0" width="100" height="35" rx="6" fill="#4d70ba" opacity="0.2" stroke="#4d70ba" stroke-width="1"/>
+    <text x="50" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#4d70ba">Signals</text>
+  </g>
+
+  <g transform="translate(850, 380)">
+    <rect x="0" y="0" width="150" height="35" rx="6" fill="#61dafb" opacity="0.2" stroke="#61dafb" stroke-width="1"/>
+    <text x="75" y="24" text-anchor="middle" font-family="monospace" font-size="12" font-weight="600" fill="#61dafb">Virtual DOM</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="44" font-weight="700" fill="#ffffff">React to SolidJS</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa">A Practical Comparison</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>

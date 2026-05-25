@@ -21,7 +21,7 @@ export default function ContactPage() {
           </div>
           <h1 className="text-2xl font-semibold mb-1">Jose Einstein Pants</h1>
           <p className="text-zinc-500 text-sm">Usually responds within a day</p>
-          <p className="text-zinc-600 text-xs mt-1">Unless he's debugging Safari. Then who knows.</p>
+          <p className="text-zinc-600 text-xs mt-1">Unless he&apos;s debugging Safari. Then who knows.</p>
         </div>
 
         {/* Chat interface */}

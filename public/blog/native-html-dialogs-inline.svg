@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#111111" rx="16" />
+  <rect x="100" y="50" width="600" height="300" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1" />
+  <rect x="100" y="50" width="600" height="300" rx="8" fill="#000" opacity="0.6" /> <!-- Backdrop -->
+  
+  <rect x="250" y="100" width="300" height="200" rx="12" fill="#222" stroke="#444" stroke-width="2" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.8))" />
+  <text x="400" y="140" text-anchor="middle" font-family="monospace" fill="#fff" font-size="18" font-weight="bold">&lt;dialog&gt;</text>
+  <text x="400" y="180" text-anchor="middle" font-family="sans-serif" fill="#aaa" font-size="14">Top Layer Rendered</text>
+  <text x="400" y="210" text-anchor="middle" font-family="sans-serif" fill="#aaa" font-size="14">Native Focus Trap</text>
+  <text x="400" y="240" text-anchor="middle" font-family="sans-serif" fill="#aaa" font-size="14">Esc to Close</text>
+  
+  <rect x="440" y="260" width="80" height="24" rx="4" fill="#333" />
+  <text x="480" y="277" text-anchor="middle" font-family="sans-serif" fill="#fff" font-size="12">Close</text>
+</svg>

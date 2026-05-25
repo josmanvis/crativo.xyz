@@ -153,7 +153,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({
       count,
-      subscribers: subscribers.map(s => ({
+      subscribers: subscribers.map((s: any) => ({
         email: s.email,
         subscribedAt: s.subscribed_at,
         source: s.source,

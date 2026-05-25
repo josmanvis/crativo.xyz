@@ -8,7 +8,6 @@ interface ModeToggleProps {
 }
 
 export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
-  const hasSpoken = useRef(false);
 
   const speakRobot = () => {
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
@@ -66,7 +65,7 @@ export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
       {/* Label */}
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
-          Who's reading this?
+          Who&apos;s reading this?
         </p>
       </div>
 

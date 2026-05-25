@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="auto">
+  <rect width="800" height="300" fill="#111" rx="16"/>
+  
+  <g transform="translate(100, 50)">
+    <text x="150" y="0" font-family="system-ui" font-size="18" fill="#fff" font-weight="bold" text-anchor="middle">Component API</text>
+    <rect x="0" y="30" width="300" height="200" fill="#222" rx="8" stroke="#444"/>
+    <text x="20" y="70" font-family="system-ui" font-size="16" fill="#8b5cf6">.avatar {</text>
+    <text x="40" y="100" font-family="system-ui" font-size="16" fill="#a78bfa">--size: 48px;</text>
+    <text x="40" y="130" font-family="system-ui" font-size="16" fill="#a78bfa">--radius: 50%;</text>
+    <text x="20" y="160" font-family="system-ui" font-size="16" fill="#8b5cf6">}</text>
+  </g>
+  
+  <g transform="translate(450, 100)">
+    <line x1="-30" y1="50" x2="20" y2="50" stroke="#555" stroke-width="4"/>
+    <polygon points="20,40 35,50 20,60" fill="#555"/>
+    
+    <rect x="50" y="20" width="200" height="60" fill="#333" rx="4" stroke="#ec4899"/>
+    <text x="60" y="45" font-family="system-ui" font-size="14" fill="#fff">data-size="small"</text>
+    <text x="60" y="65" font-family="system-ui" font-size="14" fill="#ec4899">--size: 32px;</text>
+    
+    <rect x="50" y="100" width="200" height="60" fill="#333" rx="4" stroke="#14b8a6"/>
+    <text x="60" y="125" font-family="system-ui" font-size="14" fill="#fff">data-shape="square"</text>
+    <text x="60" y="145" font-family="system-ui" font-size="14" fill="#14b8a6">--radius: 8px;</text>
+  </g>
+</svg>

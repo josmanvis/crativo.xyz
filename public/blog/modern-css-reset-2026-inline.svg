@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="auto">
+  <rect width="800" height="300" fill="#111" rx="16"/>
+  
+  <!-- Without Reset -->
+  <g transform="translate(50, 50)">
+    <text x="0" y="0" font-family="system-ui" font-size="18" fill="#ff4757" font-weight="bold">Without Reset (content-box)</text>
+    <rect x="0" y="30" width="200" height="150" fill="#222" rx="4" stroke="#ff4757" stroke-width="4"/>
+    <!-- Simulated overflowing border/padding -->
+    <rect x="10" y="40" width="220" height="170" fill="none" stroke="#555" stroke-dasharray="4 4"/>
+    <text x="100" y="110" font-family="system-ui" font-size="14" fill="#888" text-anchor="middle">Width: 100% + Padding</text>
+    <text x="100" y="130" font-family="system-ui" font-size="12" fill="#ff4757" text-anchor="middle">Overflows Container!</text>
+  </g>
+  
+  <!-- With Reset -->
+  <g transform="translate(450, 50)">
+    <text x="0" y="0" font-family="system-ui" font-size="18" fill="#2ed573" font-weight="bold">With Reset (border-box)</text>
+    <rect x="0" y="30" width="250" height="180" fill="none" stroke="#555" stroke-dasharray="4 4"/>
+    <rect x="0" y="30" width="250" height="180" fill="#222" rx="4" stroke="#2ed573" stroke-width="10"/>
+    <rect x="20" y="50" width="210" height="140" fill="#333" rx="2"/>
+    <text x="125" y="125" font-family="system-ui" font-size="14" fill="#fff" text-anchor="middle">Padding</text>
+    <text x="125" y="145" font-family="system-ui" font-size="12" fill="#2ed573" text-anchor="middle">Contained neatly.</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0a" />
+  <rect x="750" y="150" width="350" height="250" rx="16" fill="#151515" stroke="#333" stroke-width="2" />
+  <rect x="750" y="150" width="350" height="250" rx="16" fill="url(#glow)" opacity="0.3" />
+  <rect x="800" y="200" width="150" height="20" rx="4" fill="#444" />
+  <rect x="800" y="240" width="250" height="10" rx="4" fill="#333" />
+  <rect x="800" y="260" width="200" height="10" rx="4" fill="#333" />
+  <rect x="980" y="320" width="80" height="30" rx="6" fill="#ff4d4d" />
+  
+  <text x="100" y="250" font-family="Inter, sans-serif" font-size="80" font-weight="bold" fill="#ffffff">Native HTML Dialogs</text>
+  <text x="100" y="340" font-family="Inter, sans-serif" font-size="50" font-weight="600" fill="#a0a0a0">Stop Re-Inventing the Wheel</text>
+  <text x="100" y="450" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="#555555" letter-spacing="2">CRATIVO.XYZ / ENGINEERING</text>
+  
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

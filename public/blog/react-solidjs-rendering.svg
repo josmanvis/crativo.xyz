@@ -1,0 +1,57 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="12"/>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#ffffff">Rendering Models: React vs SolidJS</text>
+
+  <!-- React VDOM Flow -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="300" height="320" rx="8" fill="#61dafb" opacity="0.1" stroke="#61dafb" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#61dafb">React: Virtual DOM</text>
+    
+    <rect x="50" y="60" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#61dafb" stroke-width="1"/>
+    <text x="150" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">State Changes (setState)</text>
+
+    <!-- Arrow -->
+    <path d="M 150 100 L 150 130" stroke="#61dafb" stroke-width="2" marker-end="url(#arrow-react)"/>
+    
+    <rect x="50" y="130" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#61dafb" stroke-width="1"/>
+    <text x="150" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Re-render Entire Component</text>
+
+    <!-- Arrow -->
+    <path d="M 150 170 L 150 200" stroke="#61dafb" stroke-width="2"/>
+
+    <rect x="50" y="200" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#61dafb" stroke-width="1"/>
+    <text x="150" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Diff Old vs New VDOM</text>
+
+    <!-- Arrow -->
+    <path d="M 150 240 L 150 270" stroke="#61dafb" stroke-width="2"/>
+
+    <rect x="50" y="270" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#61dafb" stroke-width="1"/>
+    <text x="150" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Patch Real DOM</text>
+  </g>
+
+  <!-- SolidJS Signals Flow -->
+  <g transform="translate(450, 100)">
+    <rect x="0" y="0" width="300" height="320" rx="8" fill="#4d70ba" opacity="0.1" stroke="#4d70ba" stroke-width="2"/>
+    <text x="150" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#4d70ba">SolidJS: Signals</text>
+    
+    <rect x="50" y="60" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#4d70ba" stroke-width="1"/>
+    <text x="150" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">State Changes (setSignal)</text>
+
+    <!-- Arrow straight to DOM update -->
+    <path d="M 150 100 L 150 270" stroke="#4d70ba" stroke-width="2" stroke-dasharray="4 4"/>
+    
+    <rect x="50" y="270" width="200" height="40" rx="6" fill="#1e1e1e" stroke="#4d70ba" stroke-width="1"/>
+    <text x="150" y="295" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#ffffff">Update Specific DOM Node</text>
+
+    <text x="150" y="170" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Direct Subscription</text>
+    <text x="150" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">(No Component Re-render)</text>
+    <text x="150" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">(No VDOM Diffing)</text>
+  </g>
+</svg>
