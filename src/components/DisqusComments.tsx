@@ -2,6 +2,23 @@
 
 import { useEffect } from 'react';
 
+interface DisqusPage {
+  identifier: string;
+  title: string;
+  url: string;
+}
+
+interface DisqusInstance {
+  reset: (options: { reload: boolean; config: (this: { page: DisqusPage }) => void }) => void;
+}
+
+declare global {
+  interface Window {
+    DISQUS?: DisqusInstance;
+    disqus_config?: (this: { page: DisqusPage }) => void;
+  }
+}
+
 interface DisqusCommentsProps {
   identifier: string;
   title: string;
@@ -11,23 +28,23 @@ interface DisqusCommentsProps {
 export default function DisqusComments({ identifier, title, url }: DisqusCommentsProps) {
   useEffect(() => {
     // Reset Disqus if it's already loaded
-    if (typeof window !== 'undefined' && (window as any).DISQUS) {
-      (window as any).DISQUS.reset({
+    if (typeof window !== 'undefined' && window.DISQUS) {
+      window.DISQUS.reset({
         reload: true,
         config: function() {
-          (this as any).page.identifier = identifier;
-          (this as any).page.title = title;
-          (this as any).page.url = url || window.location.href;
+          this.page.identifier = identifier;
+          this.page.title = title;
+          this.page.url = url || window.location.href;
         }
       });
       return;
     }
 
     // Configure Disqus
-    (window as any).disqus_config = function() {
-      (this as any).page.url = url || window.location.href;
-      (this as any).page.identifier = identifier;
-      (this as any).page.title = title;
+    window.disqus_config = function() {
+      this.page.url = url || window.location.href;
+      this.page.identifier = identifier;
+      this.page.title = title;
     };
 
     // Load Disqus script
@@ -55,7 +72,7 @@ export default function DisqusComments({ identifier, title, url }: DisqusComment
       <div id="disqus_thread" className="disqus-comments" />
       <noscript>
         <p className="text-zinc-500">
-          Please enable JavaScript to view the comments. Or don't. I'm not your mom.
+          Please enable JavaScript to view the comments. Or don&apos;t. I&apos;m not your mom.
         </p>
       </noscript>
       
