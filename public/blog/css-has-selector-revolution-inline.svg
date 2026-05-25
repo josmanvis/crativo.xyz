@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#111111" rx="16" />
+  <g transform="translate(100, 50)">
+    <rect width="250" height="300" rx="12" fill="#1a1a1a" stroke="#333" stroke-width="2" />
+    <text x="125" y="50" text-anchor="middle" font-family="monospace" fill="#888" font-size="16">Before :has()</text>
+    <rect x="40" y="220" width="170" height="40" rx="6" fill="#333" />
+    <text x="125" y="245" text-anchor="middle" font-family="sans-serif" fill="#fff" font-size="14">Hover Me</text>
+  </g>
+  <path d="M 380 200 L 420 200 L 410 190 M 420 200 L 410 210" stroke="#00ff80" stroke-width="3" fill="none" />
+  <g transform="translate(450, 50)">
+    <rect width="250" height="300" rx="12" fill="#1a1a1a" stroke="#00ff80" stroke-width="4" filter="drop-shadow(0 0 20px rgba(0,255,128,0.2))" />
+    <text x="125" y="50" text-anchor="middle" font-family="monospace" fill="#00ff80" font-size="16">With :has()</text>
+    <rect x="40" y="220" width="170" height="40" rx="6" fill="#00ff80" />
+    <text x="125" y="245" text-anchor="middle" font-family="sans-serif" fill="#000" font-weight="bold" font-size="14">Hovered!</text>
+  </g>
+</svg>

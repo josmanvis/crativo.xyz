@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#111111" rx="16" />
+  
+  <!-- Media Query Side -->
+  <g transform="translate(50, 50)">
+    <text x="150" y="20" text-anchor="middle" font-family="sans-serif" fill="#fff" font-size="16" font-weight="bold">Media Queries (Global)</text>
+    <rect x="0" y="40" width="300" height="240" rx="8" fill="none" stroke="#555" stroke-width="2" />
+    <text x="150" y="60" text-anchor="middle" font-family="monospace" fill="#aaa" font-size="12">Viewport: 1024px</text>
+    
+    <rect x="20" y="80" width="100" height="180" rx="6" fill="#222" stroke="#333" />
+    <text x="70" y="100" text-anchor="middle" font-family="sans-serif" fill="#666" font-size="10">Sidebar</text>
+    
+    <!-- Broken Component -->
+    <rect x="30" y="120" width="80" height="40" rx="4" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" />
+    <text x="70" y="145" text-anchor="middle" font-family="sans-serif" fill="#3b82f6" font-size="10">Expanded</text>
+    
+    <rect x="130" y="80" width="150" height="180" rx="6" fill="#222" stroke="#333" />
+    <text x="205" y="100" text-anchor="middle" font-family="sans-serif" fill="#666" font-size="10">Main Content</text>
+    
+    <rect x="140" y="120" width="130" height="40" rx="4" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" />
+    <text x="205" y="145" text-anchor="middle" font-family="sans-serif" fill="#3b82f6" font-size="10">Expanded</text>
+  </g>
+  
+  <!-- Divider -->
+  <line x1="400" y1="50" x2="400" y2="350" stroke="#333" stroke-width="2" stroke-dasharray="5 5" />
+  
+  <!-- Container Query Side -->
+  <g transform="translate(450, 50)">
+    <text x="150" y="20" text-anchor="middle" font-family="sans-serif" fill="#fff" font-size="16" font-weight="bold">Container Queries (Local)</text>
+    <rect x="0" y="40" width="300" height="240" rx="8" fill="none" stroke="#555" stroke-width="2" />
+    <text x="150" y="60" text-anchor="middle" font-family="monospace" fill="#aaa" font-size="12">Viewport: 1024px</text>
+    
+    <rect x="20" y="80" width="100" height="180" rx="6" fill="#222" stroke="#8b5cf6" stroke-dasharray="4 4" />
+    <text x="70" y="100" text-anchor="middle" font-family="sans-serif" fill="#666" font-size="10">Sidebar Container</text>
+    
+    <!-- Adaptive Component -->
+    <rect x="30" y="120" width="80" height="80" rx="4" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" />
+    <text x="70" y="165" text-anchor="middle" font-family="sans-serif" fill="#8b5cf6" font-size="10">Stacked</text>
+    
+    <rect x="130" y="80" width="150" height="180" rx="6" fill="#222" stroke="#8b5cf6" stroke-dasharray="4 4" />
+    <text x="205" y="100" text-anchor="middle" font-family="sans-serif" fill="#666" font-size="10">Main Container</text>
+    
+    <rect x="140" y="120" width="130" height="40" rx="4" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" />
+    <text x="205" y="145" text-anchor="middle" font-family="sans-serif" fill="#8b5cf6" font-size="10">Expanded</text>
+  </g>
+</svg>

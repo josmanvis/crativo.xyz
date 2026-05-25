@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="auto">
+  <rect width="800" height="400" fill="#111" rx="16"/>
+  <!-- Physical Box -->
+  <g transform="translate(50, 50)">
+    <text x="0" y="0" font-family="system-ui" font-size="20" fill="#fff" font-weight="bold">Physical Model</text>
+    <rect x="0" y="30" width="300" height="200" fill="#222" rx="8" stroke="#444"/>
+    <text x="150" y="60" font-family="system-ui" font-size="16" fill="#ff4757" text-anchor="middle">top</text>
+    <text x="150" y="210" font-family="system-ui" font-size="16" fill="#ff4757" text-anchor="middle">bottom</text>
+    <text x="30" y="135" font-family="system-ui" font-size="16" fill="#ff4757" text-anchor="middle" transform="rotate(-90 30 135)">left</text>
+    <text x="270" y="135" font-family="system-ui" font-size="16" fill="#ff4757" text-anchor="middle" transform="rotate(90 270 135)">right</text>
+    <rect x="80" y="90" width="140" height="80" fill="#333" rx="4"/>
+  </g>
+  <!-- Logical Box -->
+  <g transform="translate(450, 50)">
+    <text x="0" y="0" font-family="system-ui" font-size="20" fill="#fff" font-weight="bold">Logical Model</text>
+    <rect x="0" y="30" width="300" height="200" fill="#222" rx="8" stroke="#444"/>
+    <text x="150" y="60" font-family="system-ui" font-size="16" fill="#2ed573" text-anchor="middle">block-start</text>
+    <text x="150" y="210" font-family="system-ui" font-size="16" fill="#2ed573" text-anchor="middle">block-end</text>
+    <text x="30" y="135" font-family="system-ui" font-size="16" fill="#2ed573" text-anchor="middle" transform="rotate(-90 30 135)">inline-start</text>
+    <text x="270" y="135" font-family="system-ui" font-size="16" fill="#2ed573" text-anchor="middle" transform="rotate(90 270 135)">inline-end</text>
+    <rect x="80" y="90" width="140" height="80" fill="#333" rx="4"/>
+  </g>
+</svg>
