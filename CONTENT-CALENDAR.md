@@ -19,11 +19,11 @@ Daily posting strategy for crativo.xyz blog.
 ## 📝 Ready to Write (Backlog)
 
 ### Week of Jan 27
-- [ ] **Why I Use pnpm Over npm** — workspace support, speed, disk efficiency
-- [ ] **From React to SolidJS: A Practical Comparison** — signals vs hooks, performance
+- [x] **Why I Use pnpm Over npm** — workspace support, speed, disk efficiency
+- [x] **From React to SolidJS: A Practical Comparison** — signals vs hooks, performance
 - [ ] **Git Bare Repositories on External Drives** — git-drive concept
 - [ ] **Testing Tauri Apps** — unit tests, e2e, platform-specific quirks
-- [ ] **Designing Developer Tools UX** — CLI ergonomics, TUI patterns
+- [x] **Designing Developer Tools UX** — CLI ergonomics, TUI patterns
 
 ### Week of Feb 3
 - [ ] **Homebrew Tap for Your Apps** — how I set up homebrew-josetunes

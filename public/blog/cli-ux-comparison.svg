@@ -1,0 +1,50 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)" rx="12"/>
+  
+  <text x="400" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="600" fill="#ffffff">Bad UX vs Good UX in Developer Tools</text>
+
+  <!-- Bad UX -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="330" height="300" rx="8" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="2"/>
+    <text x="165" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#ef4444">The "RTFM" Approach (Bad)</text>
+    
+    <rect x="20" y="50" width="290" height="230" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1"/>
+    
+    <text x="30" y="80" font-family="monospace" font-size="14" fill="#a1a1aa">$ deploy-tool --prod</text>
+    
+    <text x="30" y="110" font-family="monospace" font-size="14" fill="#ef4444">Error: Missing config file.</text>
+    
+    <text x="30" y="140" font-family="monospace" font-size="14" fill="#a1a1aa">$ deploy-tool init</text>
+    
+    <text x="30" y="170" font-family="monospace" font-size="14" fill="#ef4444">Error: Must provide --region flag.</text>
+    
+    <text x="30" y="200" font-family="monospace" font-size="14" fill="#a1a1aa">$ deploy-tool init --region us-east</text>
+    
+    <text x="30" y="230" font-family="monospace" font-size="14" fill="#ef4444">Error: AWS_PROFILE not set.</text>
+  </g>
+
+  <!-- Good UX -->
+  <g transform="translate(420, 100)">
+    <rect x="0" y="0" width="330" height="300" rx="8" fill="#10b981" opacity="0.1" stroke="#10b981" stroke-width="2"/>
+    <text x="165" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#10b981">The Interactive Approach (Good)</text>
+    
+    <rect x="20" y="50" width="290" height="230" rx="4" fill="#18181b" stroke="#3f3f46" stroke-width="1"/>
+    
+    <text x="30" y="80" font-family="monospace" font-size="14" fill="#a1a1aa">$ deploy-tool --prod</text>
+    
+    <text x="30" y="110" font-family="monospace" font-size="14" fill="#facc15">⚠ No config found. Let's create one.</text>
+    
+    <text x="30" y="140" font-family="monospace" font-size="14" fill="#60a5fa">? Select a region:</text>
+    <text x="45" y="165" font-family="monospace" font-size="14" fill="#a1a1aa">  eu-west-1</text>
+    <text x="45" y="190" font-family="monospace" font-size="14" fill="#10b981">❯ us-east-1</text>
+    <text x="45" y="215" font-family="monospace" font-size="14" fill="#a1a1aa">  ap-south-1</text>
+    
+    <text x="30" y="250" font-family="monospace" font-size="14" fill="#10b981">✔ Configuration saved to .deployrc</text>
+  </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f69220"/> <!-- pnpm orange-ish/yellow -->
+      <stop offset="100%" style="stop-color:#cb3837"/> <!-- npm red -->
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <circle cx="150" cy="500" r="300" fill="#f69220" opacity="0.03"/>
+  <circle cx="1050" cy="130" r="250" fill="#cb3837" opacity="0.03"/>
+
+  <!-- pnpm/npm abstract illustration -->
+  <g transform="translate(850, 250)">
+    <!-- Central node -->
+    <circle cx="100" cy="50" r="40" fill="#f69220" opacity="0.8"/>
+    
+    <!-- Hard links radiating out -->
+    <line x1="100" y1="50" x2="30" y2="-20" stroke="#f69220" stroke-width="4" stroke-dasharray="8 4"/>
+    <line x1="100" y1="50" x2="170" y2="-20" stroke="#f69220" stroke-width="4" stroke-dasharray="8 4"/>
+    <line x1="100" y1="50" x2="30" y2="120" stroke="#f69220" stroke-width="4" stroke-dasharray="8 4"/>
+    <line x1="100" y1="50" x2="170" y2="120" stroke="#f69220" stroke-width="4" stroke-dasharray="8 4"/>
+
+    <circle cx="30" cy="-20" r="15" fill="#e5e5e5"/>
+    <circle cx="170" cy="-20" r="15" fill="#e5e5e5"/>
+    <circle cx="30" cy="120" r="15" fill="#e5e5e5"/>
+    <circle cx="170" cy="120" r="15" fill="#e5e5e5"/>
+  </g>
+
+  <!-- Badges -->
+  <g transform="translate(1020, 380)">
+    <rect x="0" y="0" width="100" height="35" rx="6" fill="#f69220" opacity="0.2" stroke="#f69220" stroke-width="1"/>
+    <text x="50" y="24" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#f69220">Workspaces</text>
+  </g>
+
+  <g transform="translate(850, 380)">
+    <rect x="0" y="0" width="150" height="35" rx="6" fill="#cb3837" opacity="0.2" stroke="#cb3837" stroke-width="1"/>
+    <text x="75" y="24" text-anchor="middle" font-family="monospace" font-size="12" font-weight="600" fill="#cb3837">node_modules</text>
+  </g>
+
+  <rect x="80" y="280" width="120" height="4" rx="2" fill="url(#accent)" opacity="0.8"/>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="44" font-weight="700" fill="#ffffff">Why I Use pnpm Over npm</text>
+  <text x="80" y="400" font-family="system-ui, sans-serif" font-size="28" fill="#a1a1aa">Workspace support, speed, disk efficiency</text>
+  <text x="80" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#71717a">crativo.xyz</text>
+</svg>
