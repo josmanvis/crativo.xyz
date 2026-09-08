@@ -2215,6 +2215,59 @@ async function getNpmIgnoreRules(projectPath: string): Promise<Ignore> {
     },
   },
   {
+    id: "flx2-status-overlay",
+    title: "FLX2 Status Overlay",
+    description: "An always-on-top macOS overlay that shows the AlphaTheta DDJ-FLX2's active pad mode per deck, with a live legend of what all eight pads currently trigger. Reads raw MIDI and djay Pro's own mapping file.",
+    category: "Tools",
+    techStack: ["Swift", "AppKit", "CoreMIDI", "macOS", "Open Source"],
+    imageUrl: "/projects/flx2-status-overlay.svg",
+    href: "https://github.com/josmanvis/FLX2-STATUS-OVERLAY",
+    year: 2026,
+    metrics: [
+      { label: "Platform", value: "macOS 11+" },
+      { label: "Binary", value: "Universal" },
+      { label: "Source", value: "1 Swift file" },
+      { label: "Overhead", value: "Click-through" },
+    ],
+    longDescription: `The DDJ-FLX2 has eight performance pads per deck, and those eight pads mean four completely different things depending on which mode the deck is in — Hot Cue, Beat Loop, Sampler, Pad FX. They cannot be labelled, because their meaning changes every time you press a mode button. The information exists in djay's UI, but that is a panel on a laptop, and while you are mixing your eyes are on the controller.
+
+I built a small always-on-top overlay that just says it. Black rounded box, orange monospace, bottom of the screen, click-through so it never steals a mouse event. Both decks sit side by side the way they sit on the controller, each column showing the deck's pad mode, its stem state, and a live legend of all eight pads. The pad you just hit flashes white.
+
+**It reads the mapping, it doesn't guess**
+
+The labels are not hard-coded. The overlay parses djay Pro's own \`.djayMidiMapping\` plist — the same file djay uses to decide what a pad does — and re-reads it whenever it changes on disk. Edit your mapping and the overlay follows without a restart. Pad FX pads even get their real effect names, pulled from djay's preferences, so you see \`ECHO OUT LONG\` instead of \`FX 2\`.
+
+**The controller never announces its mode**
+
+There is no "current mode" message to query. The FLX2 sends a note-on when a pad-mode button is pressed, and that is the only signal there is. Each mode's eight pads occupy their own block of MIDI note numbers, so any pad press identifies the mode retroactively. Until the first press the mode is drawn dimmed, meaning "best guess, not confirmed."
+
+**One honest limitation**
+
+The stem row is inferred. Nothing can ask djay what its Neural Mix state is, and one app cannot see the LED feedback another app sends to the controller. So the overlay tracks stem pads as toggles and resets a deck when a track loads. That is accurate as long as stems are driven from the pads; a menu-bar "Resync stem state" item fixes it when they are not. It is documented as a guess, because shipping a guess without labelling it is how a heads-up display starts lying to you.
+
+Built as a single Swift file with a 50-line build script instead of an Xcode project. GitHub Actions builds it on every push and refuses to release anything that is not a universal arm64 + x86_64 binary.`,
+    links: [
+      { label: "GitHub", url: "https://github.com/josmanvis/FLX2-STATUS-OVERLAY", icon: "github" },
+      { label: "Download", url: "https://github.com/josmanvis/FLX2-STATUS-OVERLAY/releases", icon: "external-link" },
+      { label: "Read the write-up", url: "/blog/flx2-status-overlay", icon: "external-link" },
+    ],
+    codeSnippet: {
+      language: "swift",
+      filename: "main.swift",
+      code: `/// Each pad mode owns its own block of MIDI notes, so any pad
+/// press identifies the deck's mode retroactively.
+static func forNote(_ n: UInt8) -> (PadMode, Int)? {
+    switch n {
+    case 0...7:    return (.hotCue, Int(n))
+    case 16...23:  return (.padFX, Int(n - 16))
+    case 48...55:  return (.sampler, Int(n - 48))
+    case 96...103: return (.beatLoop, Int(n - 96))
+    default:       return nil
+    }
+}`,
+    },
+  },
+  {
     id: "mtmr-designer",
     title: "MTMR Designer",
     description: "A visual drag-and-drop designer for macOS Touch Bar presets that eliminates manual JSON editing. Built with React 19 + Vite, featuring 39 element types, real-time preview, and direct MTMR integration.",

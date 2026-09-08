@@ -1,0 +1,120 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flx-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="flx-chip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="flx-midi" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#flx-bg)"/>
+
+  <!-- Title -->
+  <text x="60" y="62" font-family="monospace" font-size="24" font-weight="bold" fill="#ededed">FLX2 STATUS OVERLAY</text>
+  <text x="60" y="86" font-family="monospace" font-size="12" fill="#f97316" fill-opacity="0.8">a heads-up display for a controller that won't say what its pads do</text>
+
+  <!-- The overlay panel -->
+  <g transform="translate(60, 120)">
+    <rect x="0" y="0" width="680" height="188" rx="8" fill="#000000" fill-opacity="0.95" stroke="#f97316" stroke-opacity="0.22" stroke-width="1.5"/>
+
+    <!-- deck 1 -->
+    <text x="34" y="46" font-family="monospace" font-size="17" font-weight="bold" fill="#f97316" fill-opacity="0.38">1</text>
+    <text x="62" y="46" font-family="monospace" font-size="17" font-weight="bold" fill="#f97316">BEAT LOOP</text>
+    <g font-family="monospace" font-size="10" font-weight="bold">
+      <rect x="206" y="33" width="40" height="16" fill="#f97316" fill-opacity="0.38"/>
+      <text x="226" y="45" fill="#0a0a0a" text-anchor="middle">DRUMS</text>
+      <line x1="208" y1="41" x2="244" y2="41" stroke="#0a0a0a" stroke-width="1.2"/>
+      <rect x="252" y="33" width="40" height="16" fill="url(#flx-chip)"/>
+      <text x="272" y="45" fill="#0a0a0a" text-anchor="middle">INSTR</text>
+      <rect x="298" y="33" width="40" height="16" fill="url(#flx-chip)"/>
+      <text x="318" y="45" fill="#0a0a0a" text-anchor="middle">VOCAL</text>
+    </g>
+
+    <!-- deck 2 -->
+    <text x="378" y="46" font-family="monospace" font-size="17" font-weight="bold" fill="#f97316" fill-opacity="0.38">2</text>
+    <text x="406" y="46" font-family="monospace" font-size="17" font-weight="bold" fill="#f97316">HOT CUE</text>
+    <g font-family="monospace" font-size="10" font-weight="bold">
+      <rect x="552" y="33" width="40" height="16" fill="url(#flx-chip)"/>
+      <text x="572" y="45" fill="#0a0a0a" text-anchor="middle">DRUMS</text>
+      <rect x="598" y="33" width="40" height="16" fill="#f97316" fill-opacity="0.38"/>
+      <text x="618" y="45" fill="#0a0a0a" text-anchor="middle">INSTR</text>
+      <line x1="600" y1="41" x2="636" y2="41" stroke="#0a0a0a" stroke-width="1.2"/>
+      <rect x="644" y="33" width="40" height="16" fill="url(#flx-chip)"/>
+      <text x="664" y="45" fill="#0a0a0a" text-anchor="middle">VOCAL</text>
+    </g>
+
+    <!-- deck 1 pad grid -->
+    <g font-family="monospace" font-size="13" font-weight="bold" fill="#f97316" fill-opacity="0.8">
+      <text x="34" y="102">LOOP 1</text>
+      <text x="118" y="102">LOOP 4</text>
+      <text x="286" y="102">LOOP 16</text>
+      <text x="34" y="130">-1 BT</text>
+      <text x="118" y="130">-4 BT</text>
+      <text x="202" y="130">+1 BT</text>
+      <text x="286" y="130">+4 BT</text>
+    </g>
+    <text x="202" y="102" font-family="monospace" font-size="13" font-weight="bold" fill="#fff2d9">LOOP 8</text>
+
+    <!-- deck 2 pad grid -->
+    <g font-family="monospace" font-size="13" font-weight="bold" fill="#f97316" fill-opacity="0.8">
+      <text x="378" y="102">CUE 1</text>
+      <text x="462" y="102">CUE 2</text>
+      <text x="546" y="102">CUE 3</text>
+      <text x="630" y="102">CUE 4</text>
+      <text x="378" y="130">CUE 5</text>
+      <text x="462" y="130">CUE 6</text>
+      <text x="546" y="130">CUE 7</text>
+      <text x="630" y="130">CUE 8</text>
+    </g>
+
+    <line x1="34" y1="152" x2="646" y2="152" stroke="#f97316" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="34" y="172" font-family="monospace" font-size="10" fill="#555">always on top  ·  click-through  ·  labels read from djay's own mapping</text>
+  </g>
+
+  <!-- Controller with unlabelled pads -->
+  <g transform="translate(60, 372)">
+    <rect x="0" y="0" width="230" height="146" rx="10" fill="#141414" stroke="#2a2a2a" stroke-width="1.5"/>
+    <text x="16" y="24" font-family="monospace" font-size="10" fill="#555">DDJ-FLX2</text>
+    <g fill="#232323" stroke="#333" stroke-width="1">
+      <rect x="16" y="36" width="46" height="32" rx="5"/>
+      <rect x="68" y="36" width="46" height="32" rx="5"/>
+      <rect x="120" y="36" width="46" height="32" rx="5"/>
+      <rect x="172" y="36" width="46" height="32" rx="5"/>
+      <rect x="16" y="74" width="46" height="32" rx="5"/>
+      <rect x="68" y="74" width="46" height="32" rx="5"/>
+      <rect x="120" y="74" width="46" height="32" rx="5"/>
+      <rect x="172" y="74" width="46" height="32" rx="5"/>
+    </g>
+    <rect x="120" y="36" width="46" height="32" rx="5" fill="#f97316" fill-opacity="0.18" stroke="#f97316" stroke-width="2"/>
+  </g>
+
+  <text x="60" y="546" font-family="monospace" font-size="10" fill="#555">eight pads  ·  four meanings  ·  no labels</text>
+
+  <!-- MIDI in flight -->
+  <g transform="translate(310, 430)">
+    <line x1="0" y1="14" x2="86" y2="14" stroke="url(#flx-midi)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 86 7 L 98 14 L 86 21 Z" fill="#3b82f6"/>
+    <text x="44" y="4" font-family="monospace" font-size="11" fill="#3b82f6" text-anchor="middle">90 61 7F</text>
+    <text x="44" y="34" font-family="monospace" font-size="9" fill="#555" text-anchor="middle">ch 7 · note 97</text>
+  </g>
+
+  <!-- What it does with it -->
+  <g transform="translate(430, 378)" font-family="monospace" font-size="11">
+    <text x="0" y="14" fill="#3b82f6">note 96...103</text>
+    <text x="112" y="14" fill="#525252">-&gt;  BEAT LOOP</text>
+    <text x="0" y="36" fill="#3b82f6">note 0...7</text>
+    <text x="112" y="36" fill="#525252">-&gt;  HOT CUE</text>
+    <text x="0" y="58" fill="#3b82f6">note 48...55</text>
+    <text x="112" y="58" fill="#525252">-&gt;  SAMPLER</text>
+    <text x="0" y="80" fill="#3b82f6">note 16...23</text>
+    <text x="112" y="80" fill="#525252">-&gt;  PAD FX</text>
+    <text x="0" y="118" fill="#3f3f3f">723 lines of Swift · universal binary</text>
+  </g>
+</svg>
