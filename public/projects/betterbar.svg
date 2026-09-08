@@ -1,0 +1,88 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bb-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="bb-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="bb-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#0891b2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bb-bg)"/>
+
+  <!-- Desktop: a maximized window that stops at the reserved inset -->
+  <g transform="translate(80, 70)">
+    <rect x="0" y="0" width="640" height="300" rx="6" fill="#141414" stroke="#2a2a2a" stroke-width="2"/>
+    <rect x="0" y="0" width="640" height="28" rx="6" fill="#1e1e1e"/>
+    <rect x="0" y="20" width="640" height="8" fill="#1e1e1e"/>
+    <circle cx="18" cy="14" r="5" fill="#ff5f56"/>
+    <circle cx="34" cy="14" r="5" fill="#ffbd2e"/>
+    <circle cx="50" cy="14" r="5" fill="#27c93f"/>
+    <text x="320" y="18" font-family="monospace" font-size="10" fill="#555" text-anchor="middle">maximized window</text>
+    <text x="320" y="170" font-family="monospace" font-size="13" fill="#3f3f3f" text-anchor="middle">CGSSetScreenInsets reserves this edge</text>
+
+    <!-- inset marker -->
+    <line x1="0" y1="312" x2="640" y2="312" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- The bar itself: sharp corners, monospace, brutalist -->
+  <g transform="translate(80, 402)">
+    <rect x="0" y="0" width="640" height="46" fill="#0d0d0d" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="2"/>
+
+    <!-- workspace switcher -->
+    <g font-family="monospace" font-size="11" font-weight="bold">
+      <rect x="12" y="11" width="24" height="24" fill="url(#bb-accent)"/>
+      <text x="24" y="27" fill="#0a0a0a" text-anchor="middle">1</text>
+      <rect x="40" y="11" width="24" height="24" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+      <text x="52" y="27" fill="#6b6b6b" text-anchor="middle">2</text>
+      <rect x="68" y="11" width="24" height="24" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+      <text x="80" y="27" fill="#6b6b6b" text-anchor="middle">3</text>
+    </g>
+
+    <line x1="104" y1="10" x2="104" y2="36" stroke="#2a2a2a" stroke-width="1"/>
+
+    <!-- running apps -->
+    <g font-family="monospace" font-size="11" fill="#a3a3a3">
+      <text x="118" y="27">CODE</text>
+      <text x="172" y="27">TERM</text>
+      <text x="226" y="27">FIGMA</text>
+      <rect x="118" y="32" width="34" height="2" fill="url(#bb-accent)"/>
+    </g>
+
+    <line x1="292" y1="10" x2="292" y2="36" stroke="#2a2a2a" stroke-width="1"/>
+
+    <!-- extension slot -->
+    <g font-family="monospace" font-size="11">
+      <rect x="306" y="13" width="40" height="20" fill="none" stroke="#22d3ee" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="326" y="27" fill="#22d3ee" text-anchor="middle">EXT</text>
+    </g>
+
+    <!-- music, battery, clock -->
+    <g font-family="monospace" font-size="11">
+      <text x="380" y="27" fill="#22d3ee">♪</text>
+      <text x="396" y="27" fill="#737373">BOARDS OF CANADA</text>
+      <rect x="520" y="17" width="22" height="12" fill="none" stroke="#525252" stroke-width="1"/>
+      <rect x="522" y="19" width="14" height="8" fill="url(#bb-accent)"/>
+      <text x="550" y="27" fill="#737373">64%</text>
+      <text x="628" y="27" fill="#ededed" font-weight="bold">23:41</text>
+    </g>
+  </g>
+
+  <!-- extension source, the thing the dock can't do -->
+  <g transform="translate(80, 470)">
+    <text x="0" y="14" font-family="monospace" font-size="10" fill="#525252">~/.betterbar/extensions/my-ext/main.tsx</text>
+    <text x="0" y="34" font-family="monospace" font-size="10" fill="#22d3ee">export default</text>
+    <text x="104" y="34" font-family="monospace" font-size="10" fill="#737373">function MyExtension() { ... }</text>
+    <text x="0" y="52" font-family="monospace" font-size="10" fill="#3f3f3f">no build step · hot loaded</text>
+  </g>
+
+  <!-- title -->
+  <text x="80" y="44" font-family="monospace" font-size="24" font-weight="bold" fill="#ededed">BETTERBAR</text>
+  <text x="720" y="44" font-family="monospace" font-size="11" fill="#f59e0b" text-anchor="end">a dock that does exactly what you need</text>
+</svg>

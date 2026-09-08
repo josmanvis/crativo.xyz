@@ -47,6 +47,53 @@ The game uses WebRTC for low-latency peer-to-peer state synchronization, meaning
 
   // Apps - Real Projects
   {
+    id: "betterbar",
+    title: "BetterBar",
+    description: "A customizable macOS dock alternative. Brutalist terminal aesthetic, native performance.",
+    category: "Apps",
+    techStack: ["React", "TypeScript", "Rust", "Tauri", "macOS Private APIs"],
+    imageUrl: "/projects/betterbar.svg",
+    href: "https://github.com/josmanvis/betterbar",
+    year: 2026,
+    metrics: [
+      { label: "Platform", value: "macOS" },
+      { label: "Performance", value: "Native" },
+      { label: "Aesthetic", value: "Brutalist" },
+    ],
+    longDescription: `The macOS Dock has been basically the same since Mac OS X 10.0. It's fine. It works. But what if you don't want "fine"? What if you want a minimal, monospace, hyper-customizable bar that respects your screen real estate and looks like it was designed by a terminal-obsessed hacker?
+
+**Enter BetterBar.**
+
+I wanted a dock that did exactly what I needed and nothing I didn't. So I built one using Tauri v2, React, and Rust. 
+
+**The Technical Deep Dive**
+
+BetterBar isn't just a floating Electron window. It hooks into the same private CoreGraphics (CGS) APIs that the native macOS Dock uses:
+- \`CGSSetScreenInsets\`: Reserves screen space so maximized windows don't overlap the bar.
+- \`CGSCopyManagedDisplaySpaces\`: Enumerates macOS Spaces to build a native workspace switcher.
+- Window management through Accessibility APIs for focusing, hiding, and quitting apps.
+
+**Features That Actually Matter**
+- **Free-floating mode:** Detach from the edge and put it anywhere.
+- **Section toggles:** Don't want the world clock? Hide it. Want extensions? Write a React component in \`~/.betterbar/extensions\` and it loads instantly with no build step.
+- **Music & Battery:** Built-in indicators that don't look out of place.
+
+It's fast, it's native where it counts, and it's built for people who care about their workflow.`,
+    links: [
+      { label: "GitHub", url: "https://github.com/josmanvis/betterbar", icon: "github" }
+    ],
+    codeSnippet: {
+      language: "typescript",
+      filename: "ExtensionAPI.tsx",
+      code: `// BetterBar supports third-party React components as bar sections.
+// Drop a .tsx file in ~/.betterbar/extensions/my-ext/main.tsx
+export const name = "My Ext";
+export default function MyExtension() {
+  return <span style={{ color: "var(--bb-accent)" }}>EXT</span>;
+}`
+    }
+  },
+  {
     id: "afters",
     title: "Afters",
     description:
