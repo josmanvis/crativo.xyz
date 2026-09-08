@@ -45,10 +45,14 @@ export function getAllPosts(): BlogPost[] {
       } as BlogPost;
     });
 
-  return allPosts.sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
+  // Newest first. Several batches of posts share a publishedAt date, and
+  // readdirSync order is not guaranteed across platforms, so ties fall back to
+  // the slug to keep the listing, the feed and the sitemap in one stable order.
+  return allPosts.sort((a, b) => {
+    const byDate =
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    return byDate !== 0 ? byDate : a.slug.localeCompare(b.slug);
+  });
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {

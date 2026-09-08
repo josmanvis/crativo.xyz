@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <linearGradient id="midiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <g transform="translate(0, 55) scale(1.5)">
+
+  <!-- Headline -->
+  <text x="48" y="56" font-family="monospace" font-size="22" font-weight="bold" fill="#ededed">FLX2 STATUS OVERLAY</text>
+  <text x="48" y="78" font-family="monospace" font-size="11" fill="#f97316" fill-opacity="0.8">a heads-up display for a controller that won't say what its pads do</text>
+
+  <!-- Controller: two decks of 4x2 pads, unlabelled -->
+  <g transform="translate(48, 108)">
+    <rect x="0" y="0" width="196" height="122" rx="10" fill="#141414" stroke="#2a2a2a" stroke-width="1"/>
+    <text x="12" y="20" font-family="monospace" font-size="9" fill="#555">DDJ-FLX2</text>
+    <g fill="#232323" stroke="#333" stroke-width="1">
+      <rect x="12" y="30" width="38" height="26" rx="4"/>
+      <rect x="56" y="30" width="38" height="26" rx="4"/>
+      <rect x="100" y="30" width="38" height="26" rx="4"/>
+      <rect x="144" y="30" width="38" height="26" rx="4"/>
+      <rect x="12" y="62" width="38" height="26" rx="4"/>
+      <rect x="56" y="62" width="38" height="26" rx="4"/>
+      <rect x="100" y="62" width="38" height="26" rx="4"/>
+      <rect x="144" y="62" width="38" height="26" rx="4"/>
+    </g>
+    <!-- the pad that was just hit -->
+    <rect x="56" y="30" width="38" height="26" rx="4" fill="#f97316" fill-opacity="0.18" stroke="#f97316" stroke-width="1.5"/>
+    <text x="97" y="106" font-family="monospace" font-size="9" fill="#555" text-anchor="middle">eight pads, no labels</text>
+  </g>
+
+  <!-- MIDI note in flight -->
+  <g transform="translate(252, 158)">
+    <line x1="0" y1="12" x2="72" y2="12" stroke="url(#midiGrad)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 72 6 L 82 12 L 72 18 Z" fill="#3b82f6"/>
+    <text x="36" y="4" font-family="monospace" font-size="9" fill="#3b82f6" text-anchor="middle">90 61 7F</text>
+    <text x="36" y="30" font-family="monospace" font-size="8" fill="#555" text-anchor="middle">ch 7 · note 97</text>
+  </g>
+
+  <!-- The overlay itself -->
+  <g transform="translate(352, 96)">
+    <rect x="0" y="0" width="400" height="146" rx="7" fill="#000000" fill-opacity="0.95" stroke="#f97316" stroke-opacity="0.22" stroke-width="1"/>
+
+    <!-- deck 1 title + stem chips -->
+    <text x="26" y="34" font-family="monospace" font-size="13" font-weight="bold" fill="#f97316" fill-opacity="0.38">1</text>
+    <text x="48" y="34" font-family="monospace" font-size="13" font-weight="bold" fill="#f97316">BEAT LOOP</text>
+    <g font-family="monospace" font-size="8" font-weight="bold">
+      <rect x="132" y="24" width="30" height="12" fill="#f97316" fill-opacity="0.38"/>
+      <text x="147" y="33" fill="#0a0a0a" text-anchor="middle">DRUM</text>
+      <line x1="133" y1="30" x2="161" y2="30" stroke="#0a0a0a" stroke-width="1"/>
+      <rect x="166" y="24" width="30" height="12" fill="url(#chipGrad)"/>
+      <text x="181" y="33" fill="#0a0a0a" text-anchor="middle">INST</text>
+    </g>
+
+    <!-- deck 2 title + stem chips -->
+    <text x="222" y="34" font-family="monospace" font-size="13" font-weight="bold" fill="#f97316" fill-opacity="0.38">2</text>
+    <text x="244" y="34" font-family="monospace" font-size="13" font-weight="bold" fill="#f97316">HOT CUE</text>
+    <g font-family="monospace" font-size="8" font-weight="bold">
+      <rect x="322" y="24" width="30" height="12" fill="url(#chipGrad)"/>
+      <text x="337" y="33" fill="#0a0a0a" text-anchor="middle">DRUM</text>
+      <rect x="356" y="24" width="30" height="12" fill="url(#chipGrad)"/>
+      <text x="371" y="33" fill="#0a0a0a" text-anchor="middle">VOCL</text>
+    </g>
+
+    <!-- deck 1 pad grid -->
+    <g font-family="monospace" font-size="11" font-weight="bold" fill="#f97316" fill-opacity="0.8">
+      <text x="26" y="76">LOOP 1</text>
+      <text x="96" y="76">LOOP 4</text>
+      <text x="26" y="98">-1 BT</text>
+      <text x="96" y="98">-4 BT</text>
+      <text x="166" y="98">+1 BT</text>
+    </g>
+    <!-- the pad that just fired, flashed white -->
+    <text x="166" y="76" font-family="monospace" font-size="11" font-weight="bold" fill="#fff2d9">LOOP 8</text>
+
+    <!-- deck 2 pad grid -->
+    <g font-family="monospace" font-size="11" font-weight="bold" fill="#f97316" fill-opacity="0.8">
+      <text x="222" y="76">CUE 1</text>
+      <text x="292" y="76">CUE 2</text>
+      <text x="362" y="76">CUE 3</text>
+      <text x="222" y="98">CUE 5</text>
+      <text x="292" y="98">CUE 6</text>
+      <text x="362" y="98">CUE 7</text>
+    </g>
+
+    <line x1="26" y1="118" x2="374" y2="118" stroke="#f97316" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="26" y="134" font-family="monospace" font-size="9" fill="#555">always on top · click-through · 723 lines of Swift</text>
+  </g>
+
+  <text x="400" y="290" font-family="monospace" font-size="10" fill="#666" text-anchor="middle">the controller knows. the screen does not. so the overlay asks the MIDI.</text>
+  </g>
+</svg>
