@@ -123,11 +123,17 @@ export default function AdminLayout({
           </div>
 
           <nav className="flex items-center gap-6">
-            <Link 
+            <Link
               href="/admin/carbon"
               className="text-zinc-400 hover:text-white text-sm transition-colors"
             >
               Carbon Ads
+            </Link>
+            <Link
+              href="/admin/comments"
+              className="text-zinc-400 hover:text-white text-sm transition-colors"
+            >
+              Comments
             </Link>
             <button
               onClick={handleLogout}
