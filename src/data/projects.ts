@@ -52,7 +52,7 @@ The game uses WebRTC for low-latency peer-to-peer state synchronization, meaning
     description: "A customizable macOS dock alternative. Brutalist terminal aesthetic, native performance.",
     category: "Apps",
     techStack: ["React", "TypeScript", "Rust", "Tauri", "macOS Private APIs"],
-    imageUrl: "/projects/betterbar.png",
+    imageUrl: "/projects/betterbar.svg",
     href: "https://github.com/josmanvis/betterbar",
     year: 2026,
     metrics: [
