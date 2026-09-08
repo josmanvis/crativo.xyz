@@ -69,6 +69,28 @@ featured: true
 
 The `src/lib/blog.ts` file handles parsing with `gray-matter`. Reading time is auto-calculated.
 
+### Comments
+
+Self-hosted threaded comments backed by Neon Postgres (`blog_comments` table).
+
+- `src/lib/comments.ts` - queries, sanitising, and flat-list-to-tree building
+- `src/components/blog/Comments.tsx` - section wrapper, fetches the thread
+- `src/components/blog/CommentThread.tsx` - recursive reply renderer
+- `src/components/blog/CommentForm.tsx` - shared top-level and reply form
+- `GET|POST /api/comments` - public read and write
+- `/api/admin/comments` + `/admin/comments` - moderation, gated by `ADMIN_KEY`
+
+Comments post immediately (`status: 'approved'`) and are moderated after the
+fact. Abuse guards are a honeypot field, a 3-per-minute per-IP rate limit, and
+duplicate detection. Replies nest to `MAX_THREAD_DEPTH` (6) before indentation
+stops. Removing a comment that has replies leaves a tombstone so the thread
+below it survives.
+
+Create the table with:
+```bash
+DATABASE_URL="postgresql://..." node scripts/setup-comments-db.mjs
+```
+
 ### Project Data
 
 Projects are defined in `src/data/projects.ts` as a typed array. Each project has:
@@ -104,6 +126,15 @@ TWILIO_AUTH_TOKEN
 TWILIO_PHONE_NUMBER
 NOTIFY_PHONE_NUMBER
 RESEND_API_KEY
+
+# Neon Postgres - newsletter, carbon ads, blog comments
+DATABASE_URL
+
+# Guards /admin and /api/admin/* (defaults to 'crativo-admin')
+ADMIN_KEY
+
+# Salt for hashing commenter IPs (falls back to ADMIN_KEY)
+COMMENTS_SALT
 ```
 
 ## Path Alias

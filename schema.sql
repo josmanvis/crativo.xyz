@@ -30,3 +30,35 @@ ON CONFLICT (id) DO NOTHING;
 
 -- Index for active ads lookup
 CREATE INDEX IF NOT EXISTS idx_carbon_ads_active ON carbon_ads(active) WHERE active = true;
+
+-- =====================================
+-- Blog Comments (threaded)
+-- =====================================
+
+CREATE TABLE IF NOT EXISTS blog_comments (
+  id SERIAL PRIMARY KEY,
+  post_slug VARCHAR(255) NOT NULL,
+  parent_id INTEGER REFERENCES blog_comments(id) ON DELETE CASCADE,
+  depth INTEGER NOT NULL DEFAULT 0,
+  author_name VARCHAR(60) NOT NULL,
+  author_email VARCHAR(255),
+  body TEXT NOT NULL,
+  is_author BOOLEAN NOT NULL DEFAULT false,
+  status VARCHAR(16) NOT NULL DEFAULT 'approved'
+    CHECK (status IN ('approved', 'pending', 'spam', 'deleted')),
+  ip_hash VARCHAR(64) NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Public thread lookup: every post page hits this.
+CREATE INDEX IF NOT EXISTS idx_blog_comments_post
+  ON blog_comments(post_slug, created_at);
+
+-- Reply resolution when building the tree.
+CREATE INDEX IF NOT EXISTS idx_blog_comments_parent
+  ON blog_comments(parent_id);
+
+-- Rate limiting looks up recent comments by IP hash.
+CREATE INDEX IF NOT EXISTS idx_blog_comments_rate_limit
+  ON blog_comments(ip_hash, created_at);

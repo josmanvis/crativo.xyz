@@ -7,6 +7,7 @@ import RecommendedReads from '@/components/blog/RecommendedReads';
 import ProtectedBlogContent from '@/components/blog/ProtectedBlogContent';
 import { DotGrid } from '@/components/DotGrid';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import Comments from '@/components/blog/Comments';
 import { AdUnit } from '@/components/ads';
 import Script from 'next/script';
 
@@ -284,6 +285,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <section className="py-8">
                 <NewsletterSignup />
               </section>
+
+              {/* Threaded discussion */}
+              <Comments slug={slug} />
             </ProtectedBlogContent>
           ) : (
             <>
@@ -354,6 +358,9 @@ export default async function BlogPostPage({ params }: PageProps) {
               <section className="py-8">
                 <NewsletterSignup />
               </section>
+
+              {/* Threaded discussion */}
+              <Comments slug={slug} />
             </>
           )}
 

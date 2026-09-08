@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
     config.externals = [...(config.externals as string[] || []), { canvas: "canvas" }];
     return config;
   },
+  images: {
+    remotePatterns: [
+      // Commenter avatars
+      {
+        protocol: 'https',
+        hostname: 'www.gravatar.com',
+        pathname: '/avatar/**',
+      },
+    ],
+  },
   async redirects() {
     return [
       {
