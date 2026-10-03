@@ -230,6 +230,12 @@ export default function RootLayout({
           <Footer />
           <ChatWidget />
         </SplashProvider>
+        <Script
+          src="https://pulse.axxes.app/pulse.v1.js"
+          data-site="app_addc24cbd73749c09a4689f90872f834"
+          data-environment="production"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
