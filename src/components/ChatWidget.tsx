@@ -1,10 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { MessageSquare, X, ArrowRight } from 'lucide-react';
 import { generateFingerprint } from '@/lib/fingerprint';
+import { ensureGsap, gsap, EASE } from '@/lib/gsap';
+import { hud, prefersReducedMotion } from '@/lib/hud';
 
+/** Floating quick-message panel. Sits above the HUD; hidden on /contact. */
 export default function ChatWidget() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,10 +18,20 @@ export default function ChatWidget() {
   const [isSent, setIsSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [fingerprint, setFingerprint] = useState<string | null>(null);
+  const panel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     generateFingerprint().then(setFingerprint);
   }, []);
+
+  useEffect(() => {
+    const node = panel.current;
+    if (!node) return;
+    ensureGsap();
+    const to = isOpen ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)';
+    if (prefersReducedMotion()) gsap.set(node, { clipPath: to });
+    else gsap.to(node, { clipPath: to, duration: isOpen ? 0.4 : 0.25, ease: EASE.transition });
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +39,7 @@ export default function ChatWidget() {
 
     setIsLoading(true);
     setError(null);
+    hud.flash('TX … sending message');
 
     try {
       const res = await fetch('/api/contact', {
@@ -36,180 +52,116 @@ export default function ChatWidget() {
           fingerprint,
         }),
       });
-
       const data = await res.json();
-
       if (data.blocked) {
         setError('Unable to send message.');
         return;
       }
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to send');
-      }
+      if (!res.ok) throw new Error(data.error || 'Failed to send');
 
       setIsSent(true);
       setName('');
       setEmail('');
       setMessage('');
-    } catch (err) {
+      hud.flash('TX … sent · reply within a day');
+    } catch {
       setError('Failed to send. Please try again.');
+      hud.flash('TX … failed');
     } finally {
       setIsLoading(false);
     }
   };
 
-  const resetForm = () => {
-    setIsSent(false);
-    setError(null);
-  };
+  if (pathname.startsWith('/contact') || pathname.startsWith('/admin')) return null;
 
   return (
     <>
-      {/* Chat bubble button */}
-      <motion.button
-        onClick={() => { setIsOpen(!isOpen); if (isSent) resetForm(); }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <button
+        type="button"
+        onClick={() => {
+          setIsOpen((v) => !v);
+          if (isSent) {
+            setIsSent(false);
+            setError(null);
+          }
+        }}
+        aria-expanded={isOpen}
+        aria-controls="quick-message"
+        data-hud={isOpen ? 'Close message panel' : 'Quick message · lands on Jose’s phone'}
+        className="fixed right-[var(--gutter)] bottom-[calc(var(--hud-h)+16px)] z-[55] t-label hidden md:flex items-center gap-2 h-11 px-4 bg-ink text-paper border border-paper/40 hover:bg-signal hover:text-[#111110] active:scale-[0.97] transition-[background-color,color,transform] duration-150 ease-[var(--ease-primary)]"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.svg
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </motion.svg>
-          ) : (
-            <motion.svg
-              key="chat"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </motion.svg>
-          )}
-        </AnimatePresence>
-      </motion.button>
+        {isOpen ? <X size={16} strokeWidth={1.5} /> : <MessageSquare size={16} strokeWidth={1.5} />}
+        {isOpen ? 'Close' : 'Message'}
+      </button>
 
-      {/* Contact form popup */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-zinc-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-zinc-700"
-          >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <span className="text-xl">👋</span>
-              </div>
-              <div>
-                <h3 className="font-semibold text-white">Get in touch</h3>
-                <p className="text-xs text-white/80">I&apos;ll get back to you soon</p>
-              </div>
-            </div>
+      <div
+        id="quick-message"
+        ref={panel}
+        role="dialog"
+        aria-label="Send a quick message"
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+        style={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+        className="fixed right-[var(--gutter)] bottom-[calc(var(--hud-h)+72px)] z-[55] w-[calc(100vw-2*var(--gutter))] max-w-[380px] bg-paper border border-ink"
+      >
+        <div className="flex items-center justify-between px-4 h-10 border-b border-rule-strong t-label">
+          <span className="flex items-center gap-2">
+            <span className="led" data-on="true" />
+            Direct line
+          </span>
+          <span className="text-graphite">Reply ≈ 24h</span>
+        </div>
 
-            {/* Content */}
-            <div className="p-4">
-              {isSent ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-8"
-                >
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">✓</span>
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Message sent!</h4>
-                  <p className="text-sm text-zinc-400 mb-4">
-                    Thanks for reaching out. I&apos;ll get back to you soon.
-                  </p>
-                  <button
-                    onClick={resetForm}
-                    className="text-emerald-400 hover:text-emerald-300 text-sm font-medium"
-                  >
-                    Send another message
-                  </button>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div>
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your name (optional)"
-                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your email *"
-                      required
-                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Your message *"
-                      required
-                      rows={4}
-                      className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm resize-none"
-                    />
-                  </div>
-                  
-                  {error && (
-                    <p className="text-red-400 text-sm">{error}</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={!email.trim() || !message.trim() || isLoading}
-                    className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all flex items-center justify-center gap-2"
-                  >
-                    {isLoading ? (
-                      <>
-                        <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                        </svg>
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        Send message
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                        </svg>
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
-            </div>
-          </motion.div>
+        {isSent ? (
+          <div className="p-5">
+            <p className="t-label text-signal-ink mb-2">Transmission received</p>
+            <p className="text-graphite">Thanks. I&apos;ll get back to you soon — check spam, email is chaos.</p>
+            <button type="button" onClick={() => setIsSent(false)} className="btn mt-5">
+              Send another
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="p-5 space-y-4">
+            <label className="block">
+              <span className="t-label text-graphite">Name (optional)</span>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="field"
+                autoComplete="name"
+              />
+            </label>
+            <label className="block">
+              <span className="t-label text-graphite">Email *</span>
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="field"
+                autoComplete="email"
+              />
+            </label>
+            <label className="block">
+              <span className="t-label text-graphite">Message *</span>
+              <textarea
+                required
+                rows={3}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="field resize-none"
+                data-lenis-prevent
+              />
+            </label>
+            {error && <p className="text-sm text-signal-ink">{error}</p>}
+            <button type="submit" disabled={isLoading} className="btn w-full justify-between" data-variant="solid">
+              {isLoading ? 'Transmitting…' : 'Transmit'}
+              <ArrowRight size={16} strokeWidth={1.5} />
+            </button>
+          </form>
         )}
-      </AnimatePresence>
+      </div>
     </>
   );
 }

@@ -112,29 +112,31 @@ export default function CommentForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       {replyingTo && (
-        <p className="text-sm text-zinc-500">
-          Replying to <span className="text-zinc-300">{replyingTo}</span>
+        <p className="t-label text-graphite">
+          Replying to <span className="text-ink">{replyingTo}</span>
         </p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
         <input
           ref={nameRef}
           type="text"
           name="author"
           placeholder="Your name"
+          aria-label="Your name"
           required
           maxLength={MAX_NAME_LENGTH}
           autoComplete="name"
-          className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+          className="field"
         />
         <input
           ref={emailRef}
           type="email"
           name="email"
           placeholder="Email (optional, for your avatar)"
+          aria-label="Email (optional, for your avatar)"
           autoComplete="email"
-          className="px-4 py-2.5 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+          className="field"
         />
       </div>
 
@@ -156,13 +158,15 @@ export default function CommentForm({
         required
         rows={parentId ? 3 : 4}
         autoFocus={autoFocus}
-        className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-y"
+        aria-label={parentId ? 'Reply' : 'Comment'}
+        data-lenis-prevent
+        className="w-full p-4 bg-paper border border-rule-strong text-ink placeholder:text-graphite focus:outline-none focus:border-ink resize-y"
       />
 
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && <p className="text-signal-ink text-sm">{error}</p>}
 
       <div className="flex items-center justify-between gap-3">
-        <span className={`text-xs ${remaining < 100 ? 'text-amber-400' : 'text-zinc-600'}`}>
+        <span className={`t-label ${remaining < 100 ? 'text-signal-ink' : 'text-graphite'}`}>
           {remaining < 100
             ? `${remaining} characters left`
             : 'Plain text only, no markdown'}
@@ -173,7 +177,7 @@ export default function CommentForm({
             <button
               type="button"
               onClick={onCancel}
-              className="px-4 py-2 text-zinc-400 hover:text-white text-sm transition-colors"
+              className="t-label px-3 h-11 text-graphite hover:text-ink"
             >
               Cancel
             </button>
@@ -181,7 +185,8 @@ export default function CommentForm({
           <button
             type="submit"
             disabled={status === 'loading' || !content.trim()}
-            className="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            className="btn"
+            data-variant="solid"
           >
             {status === 'loading' ? 'Posting...' : parentId ? 'Reply' : 'Post comment'}
           </button>

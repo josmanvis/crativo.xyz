@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -46,9 +47,9 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
         i++; // skip closing ```
 
         elements.push(
-          <div key={key++} className="my-6 rounded-lg overflow-hidden ring-1 ring-white/10">
-            <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-gray-800/50">
-              <span className="text-gray-400 text-xs font-mono">{lang}</span>
+          <div key={key++} className="my-8 bezel overflow-hidden">
+            <div className="flex items-center justify-between px-3 h-8 border-b border-white/10">
+              <span className="t-label text-screen-ink/70">{lang}</span>
             </div>
             <SyntaxHighlighter
               language={getLanguage(lang)}
@@ -56,12 +57,12 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
               customStyle={{
                 margin: 0,
                 padding: '1rem',
-                background: '#1a1a1a',
+                background: 'var(--screen)',
                 fontSize: '0.875rem',
               }}
               codeTagProps={{
                 style: {
-                  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                  fontFamily: 'var(--font-mono)',
                 }
               }}
             >
@@ -77,8 +78,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
         const headerMatch = line.match(/^\*\*(.+?)\*\*$/);
         if (headerMatch) {
           elements.push(
-            <h3 key={key++} className="text-xl font-semibold text-white mt-8 mb-4 flex items-center gap-2">
-              <span className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-600 rounded-full" />
+            <h3 key={key++} className="text-xl font-bold tracking-[-0.015em] [font-stretch:108%] mt-12 mb-4 pt-4 border-t border-rule-strong">
               {headerMatch[1]}
             </h3>
           );
@@ -98,8 +98,8 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
         elements.push(
           <ul key={key++} className="mb-6 space-y-2">
             {listItems.map((item, idx) => (
-              <li key={idx} className="flex items-start gap-3 text-gray-300">
-                <span className="text-emerald-500 mt-1">•</span>
+              <li key={idx} className="flex items-start gap-3">
+                <span aria-hidden="true" className="mt-[0.7em] w-2 h-px bg-ink shrink-0" />
                 <span>{formatInline(item)}</span>
               </li>
             ))}
@@ -116,9 +116,9 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
           i++;
         }
         elements.push(
-          <ol key={key++} className="mb-6 space-y-2 list-decimal list-inside">
+          <ol key={key++} className="mb-6 space-y-2 list-decimal pl-6 marker:font-mono marker:text-graphite">
             {listItems.map((item, idx) => (
-              <li key={idx} className="text-gray-300 ml-4">{formatInline(item)}</li>
+              <li key={idx} className="pl-1">{formatInline(item)}</li>
             ))}
           </ol>
         );
@@ -146,7 +146,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
       }
       if (paragraphLines.length > 0) {
         elements.push(
-          <p key={key++} className="text-gray-300 leading-relaxed mb-4">
+          <p key={key++} className="leading-relaxed mb-5 text-[18px]">
             {formatInline(paragraphLines.join(' '))}
           </p>
         );
@@ -166,7 +166,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
       const codeMatch = remaining.match(/^`([^`]+)`/);
       if (codeMatch) {
         parts.push(
-          <code key={key++} className="text-pink-400 bg-white/10 px-1.5 py-0.5 rounded text-sm font-mono">
+          <code key={key++} className="bg-paper-2 border border-rule px-1.5 py-0.5 text-[0.85em] font-mono [overflow-wrap:anywhere]">
             {codeMatch[1]}
           </code>
         );
@@ -178,7 +178,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
       const boldMatch = remaining.match(/^\*\*([^*]+)\*\*/);
       if (boldMatch) {
         parts.push(
-          <strong key={key++} className="text-white font-semibold">
+          <strong key={key++} className="font-semibold">
             {boldMatch[1]}
           </strong>
         );
@@ -189,7 +189,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
       // Italic
       const italicMatch = remaining.match(/^\*([^*]+)\*/);
       if (italicMatch) {
-        parts.push(<em key={key++} className="text-gray-200">{italicMatch[1]}</em>);
+        parts.push(<em key={key++}>{italicMatch[1]}</em>);
         remaining = remaining.slice(italicMatch[0].length);
         continue;
       }
@@ -203,7 +203,7 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
             href={linkMatch[2]}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-400 hover:text-emerald-300 underline"
+            className="link-ink"
           >
             {linkMatch[1]}
           </a>
@@ -236,29 +236,25 @@ export default function ProjectDescription({ description }: ProjectDescriptionPr
     : description;
 
   return (
-    <section className="py-12">
-      <div className="prose prose-invert max-w-none">
+    <section>
+      <div className="max-w-[68ch]">
         {formatText(displayText)}
       </div>
       
       {isLong && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-4 text-emerald-500 hover:text-emerald-400 transition-colors flex items-center gap-2"
+          className="btn mt-4"
         >
           {expanded ? (
             <>
               Show less
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-              </svg>
+              <ChevronUp size={16} strokeWidth={1.5} />
             </>
           ) : (
             <>
               Read more
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              <ChevronDown size={16} strokeWidth={1.5} />
             </>
           )}
         </button>

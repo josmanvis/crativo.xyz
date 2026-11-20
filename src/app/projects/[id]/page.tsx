@@ -1,15 +1,18 @@
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { projects } from "@/data/projects";
-import ProjectHero from "@/components/ProjectHero";
-import AppStoreGallery from "@/components/AppStoreGallery";
-import FeatureHighlights from "@/components/FeatureHighlights";
-import ProjectDescription from "@/components/ProjectDescription";
-import CodeSnippet from "@/components/CodeSnippet";
-import DisqusComments from "@/components/DisqusComments";
-import ProtectedProjectContent from "@/components/ProtectedProjectContent";
-import { DotGrid } from "@/components/DotGrid";
-import { AdUnit } from "@/components/ads";
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowLeft, ArrowRight, ArrowUpRight, GitBranch, Package, Globe } from 'lucide-react';
+import { projects } from '@/data/projects';
+import { partNumberFor } from '@/lib/catalogue';
+import type { Project, ProjectLink } from '@/types/project';
+import AppStoreGallery from '@/components/AppStoreGallery';
+import ProjectDescription from '@/components/ProjectDescription';
+import CodeSnippet from '@/components/CodeSnippet';
+import DisqusComments from '@/components/DisqusComments';
+import ProtectedProjectContent from '@/components/ProtectedProjectContent';
+import SectionHeader from '@/components/ui/SectionHeader';
+import { AdUnit } from '@/components/ads';
 
 const DEFAULT_PROTECTED_PASSWORD = process.env.PROTECTED_CONTENT_PASSWORD || 'crativo2026';
 
@@ -18,239 +21,254 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    id: project.id,
-  }));
+  return projects.map((project) => ({ id: project.id }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const project = projects.find((p) => p.id === id);
-  if (!project) return { title: "Project Not Found" };
+  if (!project) return { title: 'Project Not Found' };
   return {
-    title: `${project.title} | crativo`,
+    title: project.title,
     description: project.description,
+    alternates: { canonical: `https://crativo.xyz/projects/${project.id}` },
   };
+}
+
+function LinkIcon({ link }: { link: ProjectLink }) {
+  const label = link.label.toLowerCase();
+  if (label.includes('github') || link.url.includes('github.com')) return <GitBranch size={16} strokeWidth={1.5} />;
+  if (label.includes('npm') || link.url.includes('npmjs.com')) return <Package size={16} strokeWidth={1.5} />;
+  return <Globe size={16} strokeWidth={1.5} />;
+}
+
+/** "8,700+" → 8700 with suffix "+", so the reading can tick up. */
+function parseReading(value: string): { n: number; prefix: string; suffix: string } | null {
+  const m = value.match(/^([^\d]*)([\d,]+)(.*)$/);
+  if (!m) return null;
+  const n = Number(m[2].replace(/,/g, ''));
+  if (!Number.isFinite(n) || m[2].includes('.') || n > 100000) return null;
+  return { n, prefix: m[1], suffix: m[3] };
+}
+
+function ProjectBody({ project }: { project: Project }) {
+  let section = 1;
+  const next = () => String(++section).padStart(2, '0');
+
+  return (
+    <>
+      {project.previews && project.previews.length > 0 && (
+        <AppStoreGallery previews={project.previews} title={project.title} />
+      )}
+
+      {project.features && project.features.length > 0 && (
+        <section className="pt-24 md:pt-32">
+          <SectionHeader number={next()} label="Features" title="What it does." className="mb-10" />
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6">
+            {project.features.map((feature, i) => (
+              <li
+                key={feature.title}
+                data-reveal="up"
+                data-hud={`F-${String(i + 1).padStart(2, '0')} · ${feature.title}`}
+                className="border-t border-ink pt-4 pb-10"
+              >
+                <p className="t-label text-graphite mb-3">F-{String(i + 1).padStart(2, '0')}</p>
+                <h3 className="text-xl font-bold tracking-[-0.015em] [font-stretch:108%] mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-graphite leading-relaxed">{feature.description}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      <section className="pt-24 md:pt-32">
+        <SectionHeader number={next()} label="Notes" title="How it works." className="mb-10" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6">
+          <div className="lg:col-span-8 lg:col-start-3">
+            <ProjectDescription description={project.longDescription} />
+          </div>
+        </div>
+      </section>
+
+      <div className="py-8">
+        <AdUnit variant="inline" />
+      </div>
+
+      {project.metrics.length > 0 && (
+        <section className="pt-16 md:pt-24">
+          <SectionHeader number={next()} label="Readings" title="By the numbers." className="mb-10" />
+          <dl className="grid grid-cols-2 md:grid-cols-3 gap-x-6">
+            {project.metrics.map((metric) => {
+              const reading = parseReading(metric.value);
+              return (
+                <div key={metric.label} className="border-t border-ink pt-4 pb-10" data-hud={`${metric.label} · ${metric.value}`}>
+                  <dt className="t-label text-graphite mb-3">{metric.label}</dt>
+                  <dd className="text-[clamp(2rem,5vw,4rem)] font-extrabold leading-none tracking-[-0.04em] [font-stretch:125%] pb-[0.18em] tabular-nums">
+                    {reading ? (
+                      <>
+                        {reading.prefix}
+                        <span data-reveal="count" data-count={reading.n}>
+                          {reading.n.toLocaleString('en-US')}
+                        </span>
+                        {reading.suffix}
+                      </>
+                    ) : (
+                      metric.value
+                    )}
+                  </dd>
+                </div>
+              );
+            })}
+          </dl>
+        </section>
+      )}
+
+      {project.codeSnippet && (
+        <section className="pt-16 md:pt-24">
+          <SectionHeader number={next()} label="Under the hood" title="A piece of the source." className="mb-10" />
+          <div data-reveal="screen">
+            <CodeSnippet snippet={project.codeSnippet} />
+          </div>
+        </section>
+      )}
+
+      <section className="pt-24">
+        <DisqusComments identifier={`project-${project.id}`} title={project.title} />
+      </section>
+    </>
+  );
 }
 
 export default async function ProjectPage({ params }: PageProps) {
   const { id } = await params;
-  const project = projects.find((p) => p.id === id);
-
-  if (!project) {
-    notFound();
-  }
+  const index = projects.findIndex((p) => p.id === id);
+  if (index === -1) notFound();
+  const project = projects[index];
+  const pn = partNumberFor(project.id);
+  const nextProject = projects[(index + 1) % projects.length];
+  const hasImage = project.imageUrl && !project.imageUrl.includes('placeholder');
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white relative">
-      <DotGrid opacity={0.12} spacing={60} dotSize={1.5} />
-      
-      <div className="max-w-5xl mx-auto px-6 py-8 relative z-10">
-        {/* Year badge */}
-        <div className="flex items-center gap-3 mb-6">
-          <span className="text-sm text-gray-500">{project.year}</span>
-          <span className="text-gray-700">•</span>
-          <span className="text-sm px-2 py-0.5 rounded-full bg-white/5 text-gray-400 border border-white/10">
-            {project.category}
-          </span>
+    <main className="shell pt-6 md:pt-10">
+      {/* Header row */}
+      <div className="relative flex items-center justify-between gap-4 pb-3 t-label text-graphite">
+        <Link href="/#index" className="group flex items-center gap-2 hover:text-ink" data-hud="Back to the index">
+          <ArrowLeft size={14} strokeWidth={1.5} /> Index
+        </Link>
+        <span className="flex items-center gap-2">
+          <span className="led" data-on="true" />
+          {pn} · {project.category} · {project.year}
+        </span>
+        <span aria-hidden="true" data-reveal="rule" className="absolute inset-x-0 bottom-0 h-px bg-ink" />
+      </div>
+
+      <h1
+        data-reveal="mask"
+        data-reveal-load
+        data-hud-section={`${pn} — ${project.title}`}
+        className="t-display mt-8 md:mt-12 break-words"
+      >
+        {project.title}
+      </h1>
+
+      <div className="mt-8 md:mt-12 grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-10">
+        <div className="lg:col-span-7" data-reveal="up" data-reveal-load data-delay="0.1">
+          <p className="t-lede max-w-[46ch]">{project.description}</p>
+          {project.links && project.links.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {project.links.map((link, i) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  data-variant={i === 0 ? 'solid' : undefined}
+                  data-hud={`External · ${link.url.replace(/^https?:\/\//, '')}`}
+                >
+                  <LinkIcon link={link} />
+                  {link.label}
+                  <ArrowUpRight size={14} strokeWidth={1.5} />
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Hero */}
-        <ProjectHero project={project} />
-
-        {/* Links */}
-        {project.links && project.links.length > 0 && (
-          <div className="flex flex-wrap gap-3 mt-6">
-            {project.links.map((link) => (
-              <a
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-medium text-sm hover:bg-gray-200 transition-colors"
-              >
-                {link.icon === 'github' && (
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                  </svg>
-                )}
-                {link.icon === 'external' && (
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                )}
-                {link.icon === 'package' && (
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                  </svg>
-                )}
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
-
-        {/* Protected content wrapper */}
-        {project.protected ? (
-          <ProtectedProjectContent
-            projectId={project.id}
-            password={project.password || DEFAULT_PROTECTED_PASSWORD}
-            title={project.title}
-          >
-            {/* App Store Gallery - Previews */}
-            {project.previews && project.previews.length > 0 && (
-              <AppStoreGallery previews={project.previews} title={project.title} />
-            )}
-
-            {/* Feature Highlights */}
-            {project.features && project.features.length > 0 && (
-              <FeatureHighlights features={project.features} />
-            )}
-
-            {/* Long Description with formatting */}
-            <ProjectDescription description={project.longDescription} />
-
-            {/* Tech Stack */}
-            <section className="py-12 border-t border-white/10">
-              <h2 className="text-2xl font-semibold text-white mb-6">Built With</h2>
-              <div className="flex flex-wrap gap-3">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-sm bg-gradient-to-br from-white/10 to-white/5 text-gray-300 rounded-xl px-4 py-2 border border-white/10"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </section>
-
-            {/* Sponsor Ad */}
-            <div className="py-8">
-              <AdUnit variant="inline" />
+        <dl
+          data-reveal="up"
+          data-reveal-load
+          data-delay="0.2"
+          className="lg:col-span-4 lg:col-start-9 border-t border-ink self-start"
+        >
+          {[
+            ['Part', pn],
+            ['Class', project.category],
+            ['Year', String(project.year)],
+            ['Stack', project.techStack.join(', ')],
+          ].map(([label, value]) => (
+            <div key={label} className="grid grid-cols-[6rem_1fr] gap-4 py-2.5 border-b border-rule-strong">
+              <dt className="t-label text-graphite pt-[3px]">{label}</dt>
+              <dd>{value}</dd>
             </div>
-
-            {/* Metrics */}
-            {project.metrics && project.metrics.length > 0 && (
-              <section className="py-12 border-t border-white/10">
-                <h2 className="text-2xl font-semibold text-white mb-6">Impact</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {project.metrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="relative p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden"
-                    >
-                      {/* Glow accent */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-orange-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-
-                      <p className="text-gray-400 text-sm relative z-10">{metric.label}</p>
-                      <p className="text-white text-2xl font-bold mt-1 relative z-10">
-                        {metric.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Code Snippet */}
-            {project.codeSnippet && (
-              <section className="py-12 border-t border-white/10">
-                <h2 className="text-2xl font-semibold text-white mb-6">
-                  Under the Hood
-                </h2>
-                <p className="text-gray-400 mb-4 text-sm">
-                  A peek at the implementation — the kind of code that powers {project.title}.
-                </p>
-                <CodeSnippet snippet={project.codeSnippet} />
-              </section>
-            )}
-
-            {/* Comments */}
-            <DisqusComments
-              identifier={`project-${project.id}`}
-              title={project.title}
-            />
-          </ProtectedProjectContent>
-        ) : (
-          <>
-            {/* App Store Gallery - Previews */}
-            {project.previews && project.previews.length > 0 && (
-              <AppStoreGallery previews={project.previews} title={project.title} />
-            )}
-
-            {/* Feature Highlights */}
-            {project.features && project.features.length > 0 && (
-              <FeatureHighlights features={project.features} />
-            )}
-
-            {/* Long Description with formatting */}
-            <ProjectDescription description={project.longDescription} />
-
-            {/* Tech Stack */}
-            <section className="py-12 border-t border-white/10">
-              <h2 className="text-2xl font-semibold text-white mb-6">Built With</h2>
-              <div className="flex flex-wrap gap-3">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-sm bg-gradient-to-br from-white/10 to-white/5 text-gray-300 rounded-xl px-4 py-2 border border-white/10"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </section>
-
-            {/* Sponsor Ad */}
-            <div className="py-8">
-              <AdUnit variant="inline" />
-            </div>
-
-            {/* Metrics */}
-            {project.metrics && project.metrics.length > 0 && (
-              <section className="py-12 border-t border-white/10">
-                <h2 className="text-2xl font-semibold text-white mb-6">Impact</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {project.metrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="relative p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 overflow-hidden"
-                    >
-                      {/* Glow accent */}
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-orange-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-
-                      <p className="text-gray-400 text-sm relative z-10">{metric.label}</p>
-                      <p className="text-white text-2xl font-bold mt-1 relative z-10">
-                        {metric.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* Code Snippet */}
-            {project.codeSnippet && (
-              <section className="py-12 border-t border-white/10">
-                <h2 className="text-2xl font-semibold text-white mb-6">
-                  Under the Hood
-                </h2>
-                <p className="text-gray-400 mb-4 text-sm">
-                  A peek at the implementation — the kind of code that powers {project.title}.
-                </p>
-                <CodeSnippet snippet={project.codeSnippet} />
-              </section>
-            )}
-
-            {/* Comments */}
-            <DisqusComments
-              identifier={`project-${project.id}`}
-              title={project.title}
-            />
-          </>
-        )}
+          ))}
+        </dl>
       </div>
+
+      {hasImage && (
+        <figure className="mt-14 md:mt-20">
+          <div data-reveal="screen" data-reveal-load data-delay="0.15" className="bezel">
+            <div className="flex items-center justify-between px-3 h-8 border-b border-white/10 t-label text-screen-ink/70">
+              <span className="flex items-center gap-2">
+                <span className="led" data-on="true" />
+                Fig. 1
+              </span>
+              <span>{project.title}</span>
+            </div>
+            <div className="relative aspect-[4/3] md:aspect-[16/8]">
+              <Image
+                src={project.imageUrl}
+                alt={`${project.title} cover illustration`}
+                fill
+                sizes="(min-width: 1440px) 1376px, 100vw"
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+        </figure>
+      )}
+
+      {project.protected ? (
+        <ProtectedProjectContent
+          projectId={project.id}
+          password={project.password || DEFAULT_PROTECTED_PASSWORD}
+          title={project.title}
+        >
+          <ProjectBody project={project} />
+        </ProtectedProjectContent>
+      ) : (
+        <ProjectBody project={project} />
+      )}
+
+      {/* Next instrument */}
+      <nav aria-label="Next project" className="mt-24 border-t border-ink">
+        <Link
+          href={nextProject.href.startsWith('/') ? nextProject.href : `/projects/${nextProject.id}`}
+          className="group flex items-end justify-between gap-6 pt-4 pb-2"
+          data-hud={`Next · ${partNumberFor(nextProject.id)} · ${nextProject.title}`}
+        >
+          <span>
+            <span className="t-label text-graphite block mb-4">
+              Next instrument — {partNumberFor(nextProject.id)}
+            </span>
+            <span className="block t-title">{nextProject.title}</span>
+          </span>
+          <ArrowRight size={36} strokeWidth={1.25} className="arrow-nudge mb-[0.5em] shrink-0" />
+        </Link>
+      </nav>
     </main>
   );
 }

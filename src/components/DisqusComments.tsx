@@ -64,26 +64,18 @@ export default function DisqusComments({ identifier, title, url }: DisqusComment
   }, [identifier, title, url]);
 
   return (
-    <section className="py-12 border-t border-white/10">
-      <div className="flex items-center gap-3 mb-6">
-        <h2 className="text-2xl font-semibold text-white">Discussion</h2>
-        <span className="text-sm text-zinc-500">💬 Be nice, or be funny. Preferably both.</span>
+    <section data-hud-section="Discussion">
+      <div className="relative flex items-center justify-between gap-4 pb-3 mb-8 t-label text-graphite">
+        <span>Discussion</span>
+        <span>Be nice, or be funny. Preferably both.</span>
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-ink" />
       </div>
       <div id="disqus_thread" className="disqus-comments" />
       <noscript>
-        <p className="text-zinc-500">
+        <p className="text-graphite">
           Please enable JavaScript to view the comments. Or don&apos;t. I&apos;m not your mom.
         </p>
       </noscript>
-      
-      <style jsx global>{`
-        #disqus_thread {
-          color-scheme: dark;
-        }
-        #disqus_thread a {
-          color: #22c55e !important;
-        }
-      `}</style>
     </section>
   );
 }

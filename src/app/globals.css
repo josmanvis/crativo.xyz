@@ -1,115 +1,374 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
-  --font-sans: var(--font-inter);
+/* ==========================================================================
+   Tokens — see DESIGN.md
+   ========================================================================== */
+
+:root {
+  --paper: #f1efe8;
+  --paper-2: #e7e4da;
+  --ink: #111110;
+  --graphite: #55544e;
+  --rule: rgb(17 17 16 / 0.14);
+  --rule-strong: rgb(17 17 16 / 0.32);
+  --signal: #ff4a1c;
+  --signal-ink: #c2340b;
+  --screen: #141412;
+  --screen-ink: #ecebe4;
+
+  --ease-primary: cubic-bezier(0.2, 0, 0, 1);
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-transition: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --nav-h: 56px;
+  --hud-h: 32px;
+  --gutter: 16px;
+  --descender-clearance: 0.18em;
+
+  color-scheme: light;
 }
 
-html, body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  overflow-x: hidden;
-  max-width: 100vw;
+:root[data-theme="night"] {
+  --paper: #0e0e0d;
+  --paper-2: #171715;
+  --ink: #eceae3;
+  --graphite: #a3a198;
+  --rule: rgb(236 234 227 / 0.16);
+  --rule-strong: rgb(236 234 227 / 0.34);
+  --signal: #ff5a2e;
+  --signal-ink: #ff7a55;
+  --screen: #050505;
+  --screen-ink: #eceae3;
+
+  color-scheme: dark;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-screen: var(--screen);
+  --color-screen-ink: var(--screen-ink);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-primary: var(--ease-primary);
+  --ease-reveal: var(--ease-reveal);
+  --ease-transition: var(--ease-transition);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  font-stretch: 100%;
+  overflow-x: clip;
+  padding-bottom: var(--hud-h);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--signal);
+  color: #111110;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
 }
 
 /* Prevent iOS zoom on input focus */
 @supports (-webkit-touch-callout: none) {
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     font-size: 16px !important;
   }
 }
 
-/* Hide scrollbar but allow scrolling */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Mobile call splash animations */
-@keyframes ping-slow {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.shell {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Faint 12-column guides behind everything, like ruled datasheet paper. */
+.guides {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .guides {
+    display: block;
   }
-  100% {
-    transform: scale(2.2);
-    opacity: 0;
+  .guides > div {
+    height: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
+  }
+  .guides span {
+    border-inline: 1px solid var(--rule);
+    opacity: 0.35;
   }
 }
 
-@keyframes ping-slower {
-  0% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  100% {
-    transform: scale(2.5);
-    opacity: 0;
-  }
+/* ==========================================================================
+   Type scale (DESIGN.md §3). Display text carries descender clearance.
+   ========================================================================== */
+
+.t-wordmark,
+.t-display,
+.t-title,
+.t-h2 {
+  overflow: visible;
+  padding-bottom: var(--descender-clearance);
+  text-wrap: balance;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+/* Sized so "crativo" spans exactly the container width (advance ≈ 3.92em). */
+.t-wordmark {
+  font-size: min(
+    calc((100vw - 2 * var(--gutter)) / 3.92),
+    calc((1440px - 2 * var(--gutter)) / 3.92)
+  );
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: -0.055em;
+  line-height: 0.82;
+  /* Letters are flex items so inline-block struts can't inflate the line box. */
+  display: flex;
+}
+
+.t-display {
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+
+.t-title {
+  font-size: clamp(2.25rem, 5.5vw, 5rem);
+  font-weight: 800;
+  font-stretch: 118%;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.t-h2 {
+  font-size: clamp(1.75rem, 3.6vw, 3rem);
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.t-lede {
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Primitives
+   ========================================================================== */
+
+.led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--rule-strong);
+  transition: background-color 120ms steps(2, end);
+}
+.led[data-on="true"] {
+  background: var(--signal);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: transparent;
+  transition:
+    background-color 160ms var(--ease-primary),
+    color 160ms var(--ease-primary),
+    transform 120ms var(--ease-primary);
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn[data-variant="solid"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn[data-variant="solid"]:hover {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: #111110;
+}
+.btn:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 10px 0 12px;
+  color: var(--ink);
+  font-size: 17px;
+  border-radius: 0;
+  transition: border-color 160ms var(--ease-primary);
+}
+.field::placeholder {
+  color: var(--graphite);
+  opacity: 0.8;
+}
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+  box-shadow: 0 1px 0 0 var(--ink);
+}
+
+.arrow-nudge {
+  transition: transform 220ms var(--ease-primary);
+}
+.group:hover .arrow-nudge,
+.group:focus-visible .arrow-nudge {
+  transform: translateX(4px);
+}
+
+.link-ink {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 160ms var(--ease-primary);
+}
+.link-ink:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* Display bezel: images and code sit inside a dark "screen". */
+.bezel {
+  background: var(--screen);
+  color: var(--screen-ink);
+  border: 1px solid var(--rule-strong);
+}
+
+/* ==========================================================================
+   Motion bootstrapping
+   html.motion-ready is set by an inline script only when the user has not
+   asked for reduced motion. Above-the-fold elements are pre-hidden so they
+   don't flash before GSAP takes over; a fail-safe reveals them if JS never
+   runs.
+   ========================================================================== */
+
+@keyframes motion-failsafe {
   to {
     opacity: 1;
-    transform: translateY(0);
+    clip-path: none;
+    transform: none;
   }
 }
 
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-ping-slow {
-  animation: ping-slow 1.5s ease-out infinite;
-}
-
-.animate-ping-slower {
-  animation: ping-slower 1.5s ease-out infinite 0.5s;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-.animate-fade-in-delayed {
-  animation: fade-in 0.5s ease-out 0.2s forwards;
+.motion-ready [data-reveal-load] {
   opacity: 0;
+  animation: motion-failsafe 0s linear 2.5s forwards;
+}
+.motion-ready [data-reveal-load][data-armed] {
+  animation: none;
 }
 
-.animate-slide-up {
-  animation: slide-up 0.5s ease-out 0.3s forwards;
-  opacity: 0;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.animate-scale-in {
-  animation: scale-in 0.3s ease-out 0.5s forwards;
-  opacity: 0;
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
