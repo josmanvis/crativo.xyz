@@ -1,6 +1,6 @@
 ---
 title: "The Microservices Hangover: Why Monoliths Are Cool Again"
-excerpt: "We spent a decade breaking things apart. Now we're gluing them back together. The industry pendulum swings back, and I'm not mad about it."
+excerpt: "We spent a decade smashing our apps into 47 tiny services. Now we're gluing them back together and pretending that was the plan all along."
 category: thoughts
 publishedAt: 2026-02-26
 tags:
@@ -17,29 +17,29 @@ seo:
 
 # The Microservices Hangover: Why Monoliths Are Cool Again
 
-Remember 2015? Every blog post was about microservices. Every conference talk showed that Netflix diagram—the one with dozens of tiny services all communicating via REST. If you weren't breaking your monolith into microservices, you were Doing It Wrong™.
+It's 2015. Every conference talk opens with the Netflix diagram: a beautiful spiderweb of tiny services, all chatting over REST like a group project where nobody trusts each other. The message is clear. If your app is one deployable, you are a dinosaur, and the meteor is a Kubernetes cluster.
 
-So we did it. We broke everything apart. And now, ten years later, we're gluing it back together.
+So we did what any reasonable industry would do. We took perfectly working apps and smashed them into pieces.
 
-The hangover is real.
+Ten years later, we're on the floor looking for the superglue. The hangover is real, and it has a pager.
 
 ## What We Were Promised
 
-Microservices were supposed to give us:
+The microservices brochure was incredible:
 
-- **Independent deployment**: Ship one service without touching others
-- **Technology flexibility**: Use the best language for each service
-- **Team autonomy**: Different teams own different services
-- **Scalability**: Scale only the services that need it
-- **Resilience**: One service fails, others keep running
+- **Independent deployment**: ship one service without touching the others
+- **Technology flexibility**: Go here, Rust there, a little Elixir for flavor
+- **Team autonomy**: every team gets its own little kingdom
+- **Scalability**: scale only the part that's on fire
+- **Resilience**: one service dies, the rest keep partying
 
-Netflix did it. Amazon did it. Google did it. Surely we could too.
+Netflix did it. Amazon did it. Google did it. And our 12-person startup with 400 daily users looked at that list and said: same energy.
 
 ## What We Got
 
-**Distributed system problems**
+**Distributed system problems, free of charge**
 
-Network calls that used to be function calls. Latency that appeared from nowhere. Services that were "available" but slow. The fallacies of distributed computing became our daily reality.
+Every function call became a network call. Network calls have opinions. They have latency. They time out on Tuesdays for no reason. The fallacies of distributed computing went from a fun list on Wikipedia to our entire personality.
 
 ```javascript
 // Before: function call
@@ -52,29 +52,29 @@ const user = await fetchWithRetry(
 );
 ```
 
-Every service boundary became a potential failure point.
+One line became a small ceremony. And every service boundary is now a brand new place for things to break.
 
 **The deployment myth**
 
-Independent deployment sounds great until you realize your services are coupled by data. Change the user schema? That's four services to update, in order, with backwards compatibility at each step.
+"Independent deployment" is true right up until your services share data, which is always. Change the user schema and congratulations, you now get to update four services, in a specific order, staying backwards compatible at every step, like defusing a bomb where the wires are owned by different teams.
 
-We traded "deploy everything together" for "carefully choreograph deployments across teams and pray."
+We traded "deploy everything together" for "coordinate a release across three Slack channels and pray."
 
 **The complexity tax**
 
-Service discovery. Load balancing. Circuit breakers. Distributed tracing. Centralized logging. API gateways. Service meshes. Kubernetes.
+Service discovery. Load balancers. Circuit breakers. Distributed tracing. Centralized logging. API gateways. A service mesh. Kubernetes, obviously, because how else would you run a to-do app.
 
-We replaced a monolith with a monolith's worth of infrastructure.
+We removed the monolith and replaced it with a monolith's worth of infrastructure. Instant classic.
 
 **The debugging nightmare**
 
-When a request fails, it goes through Service A → Service B → Service C → Service D. The error could be anywhere. The logs are scattered across four different systems. Good luck.
+A request goes Service A → Service B → Service C → Service D and then fails. Where? Somewhere. The logs are spread across four systems, the trace ID got dropped in Service B, and the person who wrote Service C left in 2021. Good luck, detective.
 
 ## The Monolith Renaissance
 
-The pendulum is swinging back. Smart teams are rediscovering that monoliths aren't evil—they're just an architecture choice with tradeoffs.
+Plot twist: the pendulum is swinging back. Smart teams are figuring out that monoliths were never evil. They were just an architecture with tradeoffs, which, it turns out, is what every architecture is.
 
-**Modular monoliths**: Keep the code in one deployable unit, but organize it into strict modules with clear boundaries. You get the simplicity of a monolith with the organizational benefits of services.
+**Modular monoliths**: one deployable unit, but organized into strict modules with real boundaries. You get the simplicity of a monolith and the tidy org chart of services, minus the 3 a.m. network partitions.
 
 ```python
 # Modular structure
@@ -90,43 +90,45 @@ app/
 └── shared/         # Shared utilities
 ```
 
-Each module has a public API. Other modules call that API, not internal functions. When you need to extract a service later, the boundary already exists.
+Each module exposes a public API, and other modules only talk to that API, never the internals. So if one module ever genuinely needs to become its own service, the boundary is already drawn. You just cut along the dotted line.
 
 **When microservices still make sense**
 
-They're not wrong for everyone. Netflix and Amazon had specific problems: thousands of engineers, massive scale, genuine need for independent deployment. If you have those problems, microservices still make sense.
+To be fair, they're not a scam. Netflix and Amazon had real problems: thousands of engineers, absurd scale, and a genuine need to deploy independently. If that's you, microservices are great. Go wild.
 
-But most companies aren't Netflix. Most have 10-50 engineers, moderate scale, and could benefit from simpler architecture.
+But most companies are not Netflix. Most have 10 to 50 engineers, moderate traffic, and a burning desire to never open a service mesh config file again.
 
 ## The New Pragmatism
 
-The industry is learning nuance. We're moving from "microservices always" to "start simple, extract when needed."
+The industry has discovered nuance, which is a fancy way of saying we got burned. The new rule is "start simple, extract when it hurts."
 
-**Start as a monolith**: One deployable, organized into modules. Simple to develop, simple to debug, simple to deploy.
+**Start as a monolith**: one deployable, split into modules. Easy to build, easy to debug, easy to deploy.
 
-**Extract when painful**: When a module needs independent scaling, different technology, or separate team ownership, extract it.
+**Extract when painful**: when a module needs its own scaling, its own tech, or its own team, then and only then pull it out.
 
-**Extract carefully**: Use the strangler fig pattern. Route traffic gradually. Don't rewrite everything at once.
+**Extract carefully**: use the strangler fig pattern. Shift traffic gradually. Do not, under any circumstances, announce The Big Rewrite.
 
 ## What's Different Now
 
-The tools have improved. We're not going back to 2010 architecture:
+This isn't a return to 2010 with jQuery and FTP. The tooling grew up:
 
-- **Containerization**: Monoliths run in containers now. Same deployment experience.
-- **Modular frameworks**: Rails engines, NestJS modules, Django apps—frameworks support modularity.
-- **Better observability**: Even monoliths get OpenTelemetry these days.
-- **Serverless**: Functions as a unit of scale, not services.
+- **Containerization**: monoliths ship in containers now. Same deployment experience, fewer moving parts.
+- **Modular frameworks**: Rails engines, NestJS modules and Django apps all support real modularity out of the box.
+- **Better observability**: even a monolith gets OpenTelemetry these days.
+- **Serverless**: functions became the unit of scale, not services.
 
-We're not abandoning distributed systems. We're being selective about which problems deserve distributed solutions.
+We're not abandoning distributed systems. We're just being picky about which problems actually deserve one.
 
 ## The Boring Truth
 
-Architecture is about tradeoffs. Monoliths trade flexibility for simplicity. Microservices trade simplicity for scalability and team autonomy.
+Architecture is tradeoffs all the way down. Monoliths trade flexibility for simplicity. Microservices trade simplicity for scalability and team autonomy.
 
-Neither is wrong. Both have costs. The mistake was treating microservices as the default choice instead of a deliberate decision based on actual needs.
+Neither one is wrong. Both cost something. The mistake was treating microservices as the default instead of a decision you make on purpose, with actual needs, and ideally while sober.
 
-If you're starting a new project, start simple. If you're in microservices hell, it's okay to consolidate. The cool kids aren't judging anymore—we've all been there.
+Starting a new project? Start simple. Already deep in microservices hell? It's okay to consolidate. Nobody's judging. We were all there, staring at the Netflix diagram, wondering if our side project needed eleven services.
+
+It did not.
 
 ---
 
-*Still running microservices? If they're working, great. If not, monoliths are waiting with open arms.*
+*Still running microservices? If they're working, genuinely great. If not, the monolith is right there, arms open, saying it told you so.*
