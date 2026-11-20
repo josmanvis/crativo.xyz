@@ -8,7 +8,6 @@ tags:
   - npm
   - supply-chain
   - vulnerabilities
-coverImage: /blog/supply-chain-attacks.svg
 featured: false
 seo:
   title: "npm Supply Chain Attacks: Protecting Your node_modules"

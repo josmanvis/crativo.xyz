@@ -9,7 +9,6 @@ tags:
   - coremidi
   - dj-hardware
   - open-source
-coverImage: /blog/flx2-status-overlay.svg
 featured: true
 seo:
   title: "FLX2 Status Overlay: Reading DJ Controller Pad Modes Over CoreMIDI"

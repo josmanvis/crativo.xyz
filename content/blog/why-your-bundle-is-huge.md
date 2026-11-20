@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Webpack
   - Bundling
-coverImage: /blog/why-your-bundle-is-huge.svg
 featured: false
 ---
 

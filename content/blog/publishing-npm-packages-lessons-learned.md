@@ -3,7 +3,6 @@ title: "Publishing npm Packages: Hard Lessons from too-bored, ace, and Beyond"
 publishedAt: 2024-04-05
 description: "Everything I learned publishing npm packages at work and in the open—versioning, documentation, monorepos, and the mistakes that taught me the most."
 tags: ["npm", "javascript", "typescript", "open-source", "publishing"]
-coverImage: /blog/npm-packages.svg
 featured: true
 readingTime: "16 min"
 ---

@@ -8,7 +8,6 @@ tags:
   - Automation
   - CLI Tools
   - Node.js
-coverImage: /blog/clawdbot-ai-assistant-in-your-pocket.svg
 featured: false
 ---
 

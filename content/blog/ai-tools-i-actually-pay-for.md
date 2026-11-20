@@ -8,7 +8,6 @@ tags:
   - Tools
   - Productivity
   - Recommendations
-coverImage: /blog/ai-tools-i-actually-pay-for.svg
 featured: false
 ---
 

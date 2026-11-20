@@ -7,7 +7,6 @@ tags:
   - AI
   - Developer Tools
   - Productivity
-coverImage: /blog/ai-coding-assistants-honest-review.svg
 featured: false
 ---
 

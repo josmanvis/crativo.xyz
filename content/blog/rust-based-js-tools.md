@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Build Tools
   - Performance
-coverImage: /blog/rust-based-js-tools.svg
 featured: false
 ---
 

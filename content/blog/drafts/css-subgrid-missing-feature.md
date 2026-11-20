@@ -2,7 +2,6 @@
 title: "CSS Subgrid: The Missing Layout Feature"
 date: "2026-05-25"
 description: "CSS Grid changed layout forever, but it had a fatal flaw: nested elements couldn't talk to the parent grid. Subgrid fixes everything."
-coverImage: "/blog/css-subgrid-missing-feature.svg"
 ---
 
 # CSS Subgrid: The Missing Layout Feature
@@ -100,8 +99,6 @@ Here is the elegant "new way":
   gap: 0; /* Inherits the parent's row gap naturally if we want */
 }
 ```
-
-![Subgrid Alignment](/blog/css-subgrid-missing-feature-inline.svg)
 
 Let's break down why this is pure magic:
 

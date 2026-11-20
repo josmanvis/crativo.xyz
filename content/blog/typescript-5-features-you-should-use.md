@@ -7,7 +7,6 @@ tags:
   - TypeScript
   - JavaScript
   - Developer Experience
-coverImage: /blog/typescript-5-features-you-should-use.svg
 featured: false
 ---
 

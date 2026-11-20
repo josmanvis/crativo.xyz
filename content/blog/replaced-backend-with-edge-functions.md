@@ -8,7 +8,6 @@ tags:
   - edge-computing
   - cloudflare-workers
   - architecture
-coverImage: /blog/edge-functions-mistakes.svg
 featured: false
 seo:
   title: "Replacing My Backend with Edge Functions: Lessons Learned"

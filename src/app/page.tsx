@@ -86,9 +86,8 @@ export default function Home() {
 
         <div className="mt-auto grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-10 pt-10">
           <div className="lg:col-span-7">
-            <h1 data-reveal="mask" data-reveal-load data-delay="0.35" className="t-title !text-[clamp(2.25rem,4.4vw,4.25rem)] max-w-[19ch]">
-              I build instruments that make hidden state{' '}
-              <span className="text-signal-ink">visible.</span>
+            <h1 data-reveal="mask" data-reveal-load data-delay="0.35" className="t-title max-w-[19ch]">
+              I build <span className="text-signal-ink">instruments.</span>
               <span className="sr-only"> — Jose Viscasillas, senior software engineer.</span>
             </h1>
             <div data-reveal="up" data-reveal-load data-delay="0.45" className="mt-8 flex flex-wrap gap-3">

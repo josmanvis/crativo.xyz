@@ -10,7 +10,6 @@ tags:
   - Nostalgia
   - Next.js
   - Frontend Engineering
-coverImage: /blog/building-itunes-7-clone-nextjs.svg
 featured: true
 seo:
   title: "Building an iTunes 7 Clone in Next.js | A Technical Deep Dive"

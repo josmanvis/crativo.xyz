@@ -8,7 +8,6 @@ tags:
   - api
   - product
   - mistakes
-coverImage: /blog/api-first-trap.svg
 featured: false
 seo:
   title: "The API-First Trap: Why You Should Build UI Before APIs"

@@ -8,7 +8,6 @@ tags:
   - Architecture
   - LLMs
   - RAG
-coverImage: /blog/i-built-a-rag-system.svg
 featured: false
 ---
 

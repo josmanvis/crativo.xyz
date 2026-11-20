@@ -8,7 +8,6 @@ tags:
   - React
   - Frameworks
   - Web Development
-coverImage: /blog/why-nextjs-2025.svg
 featured: false
 seo:
   title: "Why Next.js in 2025 | Framework Comparison from a Senior Developer"

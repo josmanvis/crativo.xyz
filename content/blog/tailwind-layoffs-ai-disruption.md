@@ -9,7 +9,6 @@ tags:
   - Tailwind
   - Industry News
   - Developer Tools
-coverImage: /blog/tailwind-layoffs-ai-disruption.svg
 featured: false
 ---
 

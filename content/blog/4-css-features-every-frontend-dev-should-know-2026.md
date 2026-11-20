@@ -9,7 +9,6 @@ tags:
   - Frontend
   - Browser APIs
   - Styling
-coverImage: /blog/4-css-features-every-frontend-dev-should-know-2026.svg
 featured: false
 seo:
   title: "4 CSS Features for 2026 | Scroll State, Sibling-Index, Type-Safe Attr"

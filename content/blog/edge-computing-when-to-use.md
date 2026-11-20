@@ -8,7 +8,6 @@ tags:
   - Infrastructure
   - Performance
   - Architecture
-coverImage: /blog/edge-computing-when-to-use.svg
 featured: false
 ---
 

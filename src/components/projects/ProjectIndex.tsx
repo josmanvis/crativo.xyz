@@ -166,7 +166,22 @@ export default function ProjectIndex({ projects, categories }: ProjectIndexProps
                         className="object-cover"
                         priority
                       />
-                    ) : null}
+                    ) : (
+                      // No artwork: a typographic plate, like a datasheet's part diagram.
+                      <div className="absolute inset-0 p-5 flex flex-col justify-between text-screen-ink">
+                        <span className="text-[clamp(3rem,6vw,5.5rem)] font-extrabold leading-none tracking-[-0.05em] [font-stretch:125%] pb-[0.18em] tabular-nums">
+                          {active.pn}
+                        </span>
+                        <span>
+                          <span className="block text-2xl font-bold leading-tight tracking-[-0.02em] [font-stretch:112%] pb-[0.1em]">
+                            {active.title}
+                          </span>
+                          <span className="mt-3 block t-label opacity-70">
+                            {active.techStack.slice(0, 3).join(' · ')}
+                          </span>
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -8,7 +8,6 @@ tags:
   - Engineering
   - Teams
   - Best Practices
-coverImage: /blog/art-of-code-review.svg
 featured: false
 seo:
   title: "Code Review Best Practices | 20 Years of Software Engineering Experience"

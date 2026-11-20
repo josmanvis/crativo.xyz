@@ -8,7 +8,6 @@ tags:
   - Code Review
   - Developer Tools
   - Automation
-coverImage: /blog/ai-code-review-reality-check.svg
 featured: false
 ---
 

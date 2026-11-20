@@ -2,7 +2,6 @@
 title: "Color in CSS: The OKLCH Revolution"
 date: "2026-05-25"
 description: "Why you should abandon HEX, RGB, and HSL for OKLCH, the perceptually uniform color space built for the modern web."
-coverImage: "/blog/oklch-color-revolution.svg"
 ---
 
 # Color in CSS: The OKLCH Revolution
@@ -40,8 +39,6 @@ HSL (Hue, Saturation, Lightness) was supposed to be the human-friendly alternati
 If lightness is 50% for both, they should appear equally bright to the human eye, right? 
 
 Wrong. The blue looks incredibly dark, almost illegible with black text. The yellow is blindingly bright. 
-
-![HSL vs OKLCH](/blog/oklch-color-revolution-inline.svg)
 
 This happens because HSL is not *perceptually uniform*. It calculates lightness mathematically based on the RGB color wheel, completely ignoring how human eyes actually perceive light. Our eyes are much more sensitive to green and yellow light than to blue light. HSL doesn't care.
 

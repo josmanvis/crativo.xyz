@@ -8,7 +8,6 @@ tags:
   - Engineering
   - Startups
   - Leadership
-coverImage: /blog/senior-engineer-startup-survival.svg
 featured: false
 seo:
   title: "Senior Engineer Startup Survival Guide | 21 Years of Experience"

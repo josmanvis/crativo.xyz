@@ -10,7 +10,6 @@ tags:
   - Analytics
   - Big Data
   - Architecture
-coverImage: /blog/duckdb-growing-popularity.svg
 featured: true
 seo:
   title: "DuckDB's Growing Popularity | The SQLite for Analytics Deep Dive"

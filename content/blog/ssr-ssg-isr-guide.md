@@ -8,7 +8,6 @@ tags:
   - Next.js
   - Performance
   - Architecture
-coverImage: /blog/ssr-ssg-isr-guide.svg
 featured: false
 ---
 

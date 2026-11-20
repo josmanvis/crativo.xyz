@@ -8,7 +8,6 @@ tags:
   - productivity
   - skills
   - career
-coverImage: /blog/ai-coding-made-me-worse.svg
 featured: false
 seo:
   title: "AI Coding Assistants Made Me a Worse Developer (And How I Recovered)"

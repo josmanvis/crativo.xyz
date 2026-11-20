@@ -8,7 +8,6 @@ tags:
   - UI
   - Tooltips
   - Web Development
-coverImage: /blog/css-anchor-positioning.svg
 featured: false
 ---
 

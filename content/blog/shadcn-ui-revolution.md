@@ -8,7 +8,6 @@ tags:
   - UI
   - Design Systems
   - Tailwind
-coverImage: /blog/shadcn-ui-revolution.svg
 featured: false
 ---
 

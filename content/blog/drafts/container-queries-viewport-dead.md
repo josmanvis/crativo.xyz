@@ -2,7 +2,6 @@
 title: "Container Queries: Viewport Width is Dead"
 date: "2026-05-25"
 description: "Media queries are obsolete for component design. It's time to build truly modular, self-aware UI components using Container Queries."
-coverImage: "/blog/container-queries-viewport-dead.svg"
 ---
 
 ## The Great Lie of Responsive Design
@@ -75,8 +74,6 @@ Now, instead of using `@media`, you use `@container` inside your component's CSS
 That's it. Drop this `.profile-card` into a 300px sidebar, and it stacks vertically. Drop the exact same component into an 800px main content area, and it sits horizontally. 
 
 Zero JavaScript. Zero modifier classes. Perfect modularity.
-
-![Container Queries vs Media Queries](/blog/container-queries-viewport-dead-inline.svg)
 
 ## Container Query Units (cqi)
 

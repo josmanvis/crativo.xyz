@@ -10,7 +10,6 @@ tags:
   - Developer Tools
   - Go
   - JavaScript
-coverImage: /blog/typescript-7-native-go-compiler-10x-faster.svg
 featured: true
 seo:
   title: "TypeScript 7 Native Compiler | 10x Faster Builds with Go Rewrite"

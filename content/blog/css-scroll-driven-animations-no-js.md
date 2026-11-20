@@ -8,7 +8,6 @@ tags:
   - Animation
   - Performance
   - Web Development
-coverImage: /blog/css-scroll-driven-animations.svg
 featured: true
 ---
 

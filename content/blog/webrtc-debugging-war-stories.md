@@ -3,7 +3,6 @@ title: "WebRTC Debugging War Stories: Hard-Won Lessons from Production Video Con
 publishedAt: 2024-08-22
 description: "Real debugging techniques and war stories from building enterprise video conferencing features. ICE failures, codec negotiations, and the dark arts of WebRTC troubleshooting."
 tags: ["webrtc", "debugging", "video", "real-time", "production"]
-coverImage: /blog/webrtc-debugging.svg
 featured: true
 readingTime: "18 min"
 ---

@@ -2,7 +2,6 @@
 title: "Stop Re-Inventing the Wheel: Native HTML Dialogs"
 date: "2026-05-25"
 description: "Why are you still downloading 50kb of JavaScript just to show a popup? The native HTML <dialog> element is here, and it's time to use it."
-coverImage: "/blog/native-html-dialogs.svg"
 ---
 
 ## The Modal Madness
@@ -82,8 +81,6 @@ Here is how you create a modal with `<dialog>`:
 ```
 
 That's it. That's the markup.
-
-![Native Dialog diagram](/blog/native-html-dialogs-inline.svg)
 
 ## The Magic of `showModal()`
 

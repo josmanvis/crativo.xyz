@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Architecture
   - Hot Takes
-coverImage: /blog/htmx-honest-review.svg
 featured: false
 ---
 

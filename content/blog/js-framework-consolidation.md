@@ -9,7 +9,6 @@ tags:
   - vue
   - svelte
   - frameworks
-coverImage: /blog/js-framework-consolidation.svg
 featured: false
 seo:
   title: "JavaScript Framework Consolidation: Everyone's Converging on Signals"

@@ -3,7 +3,6 @@ title: "Modern CSS Reset: What I Actually Use"
 date: "2026-05-25"
 description: "Eric Meyer's reset was great for 2007. In 2026, we need a smarter, minimal reset that leverages modern CSS defaults."
 tags: ["CSS", "Best Practices", "Architecture"]
-image: "/blog/modern-css-reset-2026.svg"
 ---
 
 The goal of a CSS reset isn't to obliterate every browser default. It's to create a sane, predictable baseline. 
@@ -106,8 +105,6 @@ Stacking contexts in CSS can be a nightmare. `z-index` wars are fought and lost 
   isolation: isolate;
 }
 ```
-
-![CSS Reset Box Model Impact](/blog/modern-css-reset-2026-inline.svg)
 
 ## The Complete Reset
 

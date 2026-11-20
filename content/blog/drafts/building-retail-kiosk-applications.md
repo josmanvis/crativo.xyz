@@ -8,7 +8,6 @@ tags:
   - React
   - Retail Tech
   - UX
-coverImage: /blog/building-retail-kiosk-applications.svg
 featured: false
 seo:
   title: "Building Retail Kiosk Applications | React Kiosk Development Guide"

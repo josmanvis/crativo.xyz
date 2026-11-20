@@ -10,7 +10,6 @@ tags:
   - Microsoft
   - Performance
   - Bug Fixes
-coverImage: /blog/dotnet-framework-january-2026-servicing-updates.svg
 featured: false
 seo:
   title: ".NET Framework January 2026 Updates | Servicing Release Notes"

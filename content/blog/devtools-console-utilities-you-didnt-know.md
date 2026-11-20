@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Debugging
   - Chrome
-coverImage: /blog/devtools-console-utilities.svg
 featured: true
 ---
 

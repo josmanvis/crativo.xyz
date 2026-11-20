@@ -8,7 +8,6 @@ tags:
   - DevOps
   - JavaScript
   - Tooling
-coverImage: /blog/monorepo-decision-guide.svg
 featured: false
 ---
 

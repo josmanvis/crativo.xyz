@@ -9,7 +9,6 @@ tags:
   - postgres
   - turso
   - edge-computing
-coverImage: /blog/sqlite-eating-the-world.svg
 featured: true
 seo:
   title: "SQLite is Eating the World: Why Everyone's Using It Everywhere"

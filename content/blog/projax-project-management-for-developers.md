@@ -9,7 +9,6 @@ tags:
   - VS Code
   - Monorepo
   - Developer Tools
-coverImage: /blog/projax.svg
 featured: true
 ---
 

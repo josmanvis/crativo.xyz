@@ -8,7 +8,6 @@ tags:
   - Design
   - Image Generation
   - Tools
-coverImage: /blog/ai-image-generation-is-broken.svg
 featured: false
 ---
 

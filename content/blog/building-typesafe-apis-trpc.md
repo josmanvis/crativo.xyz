@@ -8,7 +8,6 @@ tags:
   - tRPC
   - API
   - Full-Stack
-coverImage: /blog/building-typesafe-apis-trpc.svg
 featured: false
 ---
 

@@ -8,7 +8,6 @@ tags:
   - Web Development
   - HTML
   - React
-coverImage: /blog/accessible-web-apps-not-hard.svg
 featured: false
 seo:
   title: "Web Accessibility Guide | Accessible React Applications"

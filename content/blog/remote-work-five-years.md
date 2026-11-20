@@ -8,7 +8,6 @@ tags:
   - Productivity
   - Career
   - Work-Life Balance
-coverImage: /blog/remote-work-five-years.svg
 featured: false
 seo:
   title: "Remote Work Tips | 5 Years of Working from Home Experience"
