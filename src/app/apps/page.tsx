@@ -20,6 +20,18 @@ interface App {
 
 const apps: App[] = [
   {
+    name: 'foar',
+    tagline: 'State-machine UI language',
+    description: 'A language for user interfaces where every component is an explicit state machine. One binary ships the Rust compiler, the 23 KB runtime and a dev server; types, exhaustive matches and accessibility are checked at compile time.',
+    platforms: [
+      { name: 'macOS / Linux', command: 'curl -fsSL https://josmanvis.github.io/FOAR/install.sh | sh' },
+      { name: 'GitHub', url: 'https://github.com/josmanvis/FOAR' },
+      { name: 'Playground', url: 'https://josmanvis.github.io/FOAR/playground/' },
+    ],
+    tags: ['language', 'rust', 'compiler'],
+    featured: true,
+  },
+  {
     name: 'pubsafe',
     tagline: 'Pre-publish security scanner',
     description: 'CLI tool to check if sensitive files in your coding projects are properly gitignored. Scans your package for secrets, API keys, and sensitive data before you accidentally publish them to npm.',
