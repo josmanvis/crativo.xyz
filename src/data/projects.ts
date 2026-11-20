@@ -2435,7 +2435,7 @@ export function devLog(label: string, ...args: unknown[]) {
       "A programming language for user interfaces where every component is an explicit state machine. One Rust compiler (native + WebAssembly) checks types, exhaustive matches and accessibility, then targets a 23 KB retained-DOM runtime with no virtual DOM.",
     category: "Tools",
     techStack: ["Rust", "WebAssembly", "JavaScript", "LSP", "Open Source"],
-    imageUrl: "/projects/foar.svg",
+    imageUrl: "",
     href: "/projects/foar",
     year: 2026,
     metrics: [
