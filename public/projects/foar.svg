@@ -1,0 +1,81 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="foar-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#151a17"/>
+    </linearGradient>
+    <marker id="foar-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#F2B33D"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#foar-bg)"/>
+
+  <!-- Logo: railway turnout -->
+  <g transform="translate(48 44)">
+    <rect width="40" height="40" rx="8" fill="#2C3B34"/>
+    <path d="M13.75 35.6V5.6" stroke="#F3F4F1" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M13.75 27.5c0-6.9 12.5-8.1 12.5-16.25" stroke="#F3F4F1" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="26.25" cy="8.1" r="4.7" fill="#F2B33D"/>
+    <text x="56" y="27" font-family="ui-sans-serif, system-ui" font-size="22" font-weight="800" fill="#F3F4F1" letter-spacing="1">FOAR</text>
+    <text x="134" y="27" font-family="ui-monospace, monospace" font-size="12" fill="#7d8a83">v0.4.1 · state-machine UI language</text>
+  </g>
+
+  <!-- Editor pane -->
+  <g transform="translate(48 116)">
+    <rect width="404" height="436" rx="10" fill="#141816" stroke="#2C3B34" stroke-width="1.5"/>
+    <rect width="404" height="32" rx="10" fill="#1b211e"/>
+    <rect y="22" width="404" height="10" fill="#1b211e"/>
+    <text x="16" y="21" font-family="ui-monospace, monospace" font-size="12" fill="#7d8a83">article.foar</text>
+    <g font-family="ui-monospace, monospace" font-size="13.5" fill="#d7dcd8">
+      <text x="18" y="66"><tspan fill="#F2B33D">view</tspan> Article {</text>
+      <text x="34" y="90"><tspan fill="#8fb8a3">store</tspan> title: String = <tspan fill="#c9d48a">"Untitled"</tspan>;</text>
+      <text x="34" y="126"><tspan fill="#F2B33D">state</tspan> <tspan font-weight="700" fill="#ffffff">Viewing</tspan> {</text>
+      <text x="50" y="150"><tspan fill="#8fb8a3">render</tspan> {</text>
+      <text x="67" y="174">Text(title)</text>
+      <text x="67" y="198">Button(<tspan fill="#c9d48a">"Rename"</tspan>)</text>
+      <text x="83" y="222">-&gt; on_click(Rename)</text>
+      <text x="50" y="246">}</text>
+      <text x="50" y="270"><tspan fill="#8fb8a3">effect</tspan> Rename() {</text>
+      <text x="67" y="294"><tspan fill="#F2B33D">transition</tspan> Editing;</text>
+      <text x="50" y="318">}</text>
+      <text x="34" y="342">}</text>
+      <text x="34" y="378"><tspan fill="#F2B33D">state</tspan> <tspan font-weight="700" fill="#ffffff">Editing</tspan> { … }</text>
+      <text x="18" y="402">}</text>
+    </g>
+    <!-- current-line marker -->
+    <rect x="0" y="279" width="3" height="20" fill="#F2B33D"/>
+  </g>
+
+  <!-- State diagram -->
+  <g transform="translate(500 140)" font-family="ui-monospace, monospace">
+    <text x="0" y="0" font-size="12" fill="#7d8a83" letter-spacing="1.5">STATES</text>
+    <line x1="0" y1="12" x2="252" y2="12" stroke="#2C3B34" stroke-width="1.5"/>
+
+    <!-- Viewing (active) -->
+    <rect x="0" y="44" width="252" height="74" rx="8" fill="#2C3B34" stroke="#F2B33D" stroke-width="2"/>
+    <circle cx="24" cy="81" r="6" fill="#F2B33D"/>
+    <text x="42" y="78" font-size="18" font-weight="700" fill="#F3F4F1">Viewing</text>
+    <text x="42" y="99" font-size="11" fill="#b9c4be">render · Rename</text>
+
+    <!-- transitions -->
+    <path d="M96 122 V 196" stroke="#F2B33D" stroke-width="2" fill="none" marker-end="url(#foar-arrow)"/>
+    <text x="106" y="164" font-size="11" fill="#F2B33D">Rename</text>
+    <path d="M168 196 V 122" stroke="#5c6b63" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#foar-arrow)"/>
+    <text x="178" y="164" font-size="11" fill="#7d8a83">Done</text>
+
+    <!-- Editing -->
+    <rect x="0" y="200" width="252" height="74" rx="8" fill="#141816" stroke="#2C3B34" stroke-width="2"/>
+    <circle cx="24" cy="237" r="6" fill="#3c4a43"/>
+    <text x="42" y="234" font-size="18" font-weight="700" fill="#d7dcd8">Editing</text>
+    <text x="42" y="255" font-size="11" fill="#7d8a83">Type · Done</text>
+
+    <!-- facts -->
+    <g font-size="12" fill="#b9c4be">
+      <line x1="0" y1="318" x2="252" y2="318" stroke="#2C3B34" stroke-width="1.5"/>
+      <text x="0" y="344" fill="#7d8a83">compiler</text><text x="252" y="344" text-anchor="end">Rust · native + WASM</text>
+      <text x="0" y="370" fill="#7d8a83">runtime</text><text x="252" y="370" text-anchor="end">23 KB · no virtual DOM</text>
+      <text x="0" y="396" fill="#7d8a83">checks</text><text x="252" y="396" text-anchor="end">types · match · a11y</text>
+    </g>
+  </g>
+</svg>

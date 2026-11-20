@@ -2428,4 +2428,120 @@ export function devLog(label: string, ...args: unknown[]) {
 }`,
     },
   },
+  {
+    id: "foar",
+    title: "FOAR",
+    description:
+      "A programming language for user interfaces where every component is an explicit state machine. One Rust compiler (native + WebAssembly) checks types, exhaustive matches and accessibility, then targets a 23 KB retained-DOM runtime with no virtual DOM.",
+    category: "Tools",
+    techStack: ["Rust", "WebAssembly", "JavaScript", "LSP", "Open Source"],
+    imageUrl: "/projects/foar.svg",
+    href: "/projects/foar",
+    year: 2026,
+    metrics: [
+      { label: "Runtime", value: "23 KB" },
+      { label: "Compiler", value: "Rust + WASM" },
+      { label: "DOM events", value: "89 typed" },
+      { label: "License", value: "MIT" },
+    ],
+    longDescription: `Every interface I have ever debugged was a state machine pretending not to be one. A modal is open or closed. A form is editing, submitting or failed. A row is viewing or renaming. Frameworks let you express that with a pile of booleans, and the bugs live in the combinations nobody drew: submitting and editing at the same time, a spinner that never stops, a button that works in a state where it shouldn't exist.
+
+FOAR makes the state machine the syntax. A view declares its states, what each state renders, and which effects it handles. A view is in exactly one state at a time, effects belong to states, and \`transition Editing;\` swaps only that view's subtree. The thing you used to keep in your head is now the thing the compiler reads.
+
+**The compiler refuses what it can prove is wrong**
+
+FOAR ships a static type checker over stores, derived values, pure functions, contexts, view props and typed host calls, with errors reported as file:line:col. Enums are tagged unions with payloads, and \`match\` must be exhaustive: add a fourth status and every match that doesn't handle it stops compiling until you decide what it means. Misspell an event name and you get a compile error with a suggestion instead of a listener that silently never fires.
+
+**Accessible by default, enforced at build time**
+
+An image without alt text, a form control without a label, an icon-only button with no name, an invalid ARIA role or a positive tab index are compile errors, not lint warnings. A modal Dialog, focus ring, announcements and reduced-motion handling are built in, and the examples pass axe-core in CI.
+
+**Compiled, retained DOM**
+
+There is no virtual DOM to diff. The compiler knows which values each binding depends on, so updates write only what changed, keyed lists reuse rows, and inputs keep focus. Static CSS, including state-scoped styles, is generated at build time. The runtime is 23 KB gzipped.
+
+**A whole toolchain in one binary**
+
+The same Rust compiler runs natively and as a 278 KB WebAssembly module, which is what powers the in-browser playground. Around it: a router, streaming SSR with zero-recreation hydration and partial islands, packages with a SHA-256 lockfile, a formatter, a Rust language server, a Vite HMR plugin and a VS Code extension. One install script puts a single binary on your PATH: compiler, runtime and dev server.`,
+    links: [
+      { label: "GitHub", url: "https://github.com/josmanvis/FOAR", icon: "github" },
+      { label: "Website", url: "https://josmanvis.github.io/FOAR/", icon: "external-link" },
+      { label: "Playground", url: "https://josmanvis.github.io/FOAR/playground/", icon: "external-link" },
+    ],
+    features: [
+      {
+        icon: "",
+        title: "States, not booleans",
+        description:
+          "Each view is in exactly one state. Effects belong to states, and transition swaps only that view's subtree. Async transitions get on_exit(res) and on_error(err).",
+      },
+      {
+        icon: "",
+        title: "Exhaustive match",
+        description:
+          "Tagged-union enums with payloads and generics. Add a variant and every unhandled match becomes a compile error.",
+      },
+      {
+        icon: "",
+        title: "Accessibility as compile errors",
+        description:
+          "Missing alt text, unlabeled controls, nameless icon buttons and invalid ARIA fail the build, against WCAG 2.2 AA and WAI-ARIA 1.2.",
+      },
+      {
+        icon: "",
+        title: "No virtual DOM",
+        description:
+          "Bindings write only the values that changed, keyed lists reuse rows, inputs keep focus. 23 KB runtime, CSS generated at build time.",
+      },
+      {
+        icon: "",
+        title: "SSR and islands",
+        description:
+          "Built-in router, streaming server rendering, zero-recreation hydration and partial islands that hydrate when visible, idle or on load.",
+      },
+      {
+        icon: "",
+        title: "Real tooling",
+        description:
+          "Rust language server, formatter, packages with a SHA-256 lockfile, Vite HMR plugin, VS Code extension and a browser playground.",
+      },
+    ],
+    codeSnippet: {
+      language: "rust",
+      filename: "article.foar",
+      code: `enum Status { Draft, Review, Published }
+
+view Article {
+    store status: Status = Status.Draft;
+    store title: String = "Untitled";
+
+    state Viewing {
+        render {
+            Text(title)
+            Match(status) {
+                Draft => Button("Send for review") -> on_click(Advance),
+                Review => Button("Publish") -> on_click(Advance),
+                Published => Text("Live ✓"),
+            }
+            Button("Rename") -> on_click(Rename)
+        }
+        effect Advance() {
+            status = match status {
+                Status.Draft => Status.Review,
+                Status.Review | Status.Published => Status.Published,
+            };
+        }
+        effect Rename() { transition Editing; }
+    }
+
+    state Editing {
+        render {
+            Input(value: title, autofocus: true) -> on_input(Type) -> on_enter(Done)
+        }
+        effect Type(text: String) { title = text; }
+        effect Done() { transition Viewing; }
+    }
+}`,
+    },
+  },
 ];
