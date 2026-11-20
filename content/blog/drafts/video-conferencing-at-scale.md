@@ -8,7 +8,6 @@ tags:
   - WebRTC
   - Performance
   - Enterprise
-coverImage: /blog/video-conferencing-at-scale.svg
 featured: false
 seo:
   title: "Video Conferencing at Scale | Enterprise WebRTC Development"

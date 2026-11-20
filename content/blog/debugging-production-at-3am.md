@@ -8,7 +8,6 @@ tags:
   - Production
   - DevOps
   - War Stories
-coverImage: /blog/debugging-production-at-3am.svg
 featured: false
 seo:
   title: "Production Debugging War Stories | Lessons from 3 AM Incidents"

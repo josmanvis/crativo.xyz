@@ -3,7 +3,6 @@ title: "CSS Logical Properties: Stop Using Margin-Left"
 date: "2026-05-25"
 description: "Physical CSS properties are holding your layouts back. It's time to think logically about space, text direction, and component design."
 tags: ["CSS", "Web Development", "Layout"]
-image: "/blog/css-logical-properties.svg"
 ---
 
 Physical CSS properties are holding your layouts back. If you're still writing `margin-left` or `padding-top`, you're building fragile interfaces that break the moment your content translates to a right-to-left (RTL) language or switches writing modes. 
@@ -53,8 +52,6 @@ Instead of `margin-right`, we use `margin-inline-end`.
 ```
 
 That's it. No `[dir="rtl"]` hacks. If the user's system or the HTML `dir` attribute switches to RTL, the browser automatically applies the margin to the left side of the icon, because the "end" of the inline direction has swapped.
-
-![Logical vs Physical Box Model](/blog/css-logical-properties-inline.svg)
 
 ## Replacing the Physical Box Model
 

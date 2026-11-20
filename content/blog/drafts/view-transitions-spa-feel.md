@@ -3,7 +3,6 @@ title: "View Transitions API: SPA Feel Without the Framework"
 date: "2026-05-25"
 description: "Stop building massive single-page applications just for page transitions. The View Transitions API brings native, buttery-smooth routing to multi-page apps."
 tags: ["CSS", "Web APIs", "Performance"]
-image: "/blog/view-transitions-spa-feel.svg"
 ---
 
 For years, developers have reached for heavy JavaScript frameworks (React, Vue, Svelte) to build Single Page Applications (SPAs). Why? Often, it wasn't for complex state management. It was simply to avoid the jarring "white flash" of a full page reload. We wanted smooth, animated transitions between pages.
@@ -36,8 +35,6 @@ Here's how simple it is to use the API for a cross-document navigation (MPA):
 ```
 
 That's literally it for a basic fade transition. The browser will fade the old page out and fade the new page in. 
-
-![View Transition Snapshot Process](/blog/view-transitions-spa-feel-inline.svg)
 
 ## Customizing the Magic
 

@@ -8,7 +8,6 @@ tags:
   - React
   - TypeScript
   - Architecture
-coverImage: /blog/stack-that-ships.svg
 featured: false
 seo:
   title: "Best Tech Stack 2025 | What Actually Ships in Production"

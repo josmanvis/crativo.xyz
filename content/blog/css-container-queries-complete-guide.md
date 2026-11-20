@@ -4,7 +4,6 @@ excerpt: "Everything you need to know about container queries - syntax, use case
 category: tutorials
 publishedAt: 2025-01-24
 tags: ["css", "container-queries", "responsive-design", "web-development", "frontend"]
-coverImage: /blog/css-container-queries.svg
 featured: true
 readingTime: "22 min"
 ---

@@ -8,7 +8,6 @@ tags:
   - microservices
   - monolith
   - backend
-coverImage: /blog/microservices-hangover.svg
 featured: false
 seo:
   title: "The Microservices Hangover: Monoliths Are Cool Again"

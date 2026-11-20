@@ -8,7 +8,6 @@ tags:
   - LLMs
   - Fine-tuning
   - Machine Learning
-coverImage: /blog/fine-tuning-is-a-waste-of-time.svg
 featured: false
 ---
 

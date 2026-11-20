@@ -10,7 +10,6 @@ tags:
   - Web Development
   - Optimization
   - Tooling
-coverImage: /blog/removing-unused-css-purgecss.svg
 featured: true
 seo:
   title: "Removing Unused CSS with PurgeCSS | The Ultimate Guide"

@@ -9,7 +9,6 @@ tags:
   - SolidJS
   - Desktop
   - macOS
-coverImage: /blog/tauri-solidjs.svg
 featured: true
 ---
 

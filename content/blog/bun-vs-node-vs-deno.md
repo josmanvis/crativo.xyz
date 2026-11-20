@@ -9,7 +9,6 @@ tags:
   - Bun
   - Deno
   - Runtime
-coverImage: /blog/bun-vs-node-vs-deno.svg
 featured: false
 ---
 

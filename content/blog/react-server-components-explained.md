@@ -8,7 +8,6 @@ tags:
   - RSC
   - Next.js
   - Architecture
-coverImage: /blog/react-server-components-explained.svg
 featured: false
 ---
 

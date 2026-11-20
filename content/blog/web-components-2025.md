@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Architecture
   - Standards
-coverImage: /blog/web-components-2025.svg
 featured: false
 ---
 

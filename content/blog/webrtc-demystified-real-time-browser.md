@@ -8,7 +8,6 @@ tags:
   - Real-time
   - Video
   - JavaScript
-coverImage: /blog/webrtc-demystified-real-time-browser.svg
 featured: false
 ---
 

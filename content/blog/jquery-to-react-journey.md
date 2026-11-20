@@ -8,7 +8,6 @@ tags:
   - React
   - Career
   - History
-coverImage: /blog/jquery-to-react-journey.svg
 featured: false
 seo:
   title: "JavaScript Evolution: From jQuery to React | 20 Year Retrospective"

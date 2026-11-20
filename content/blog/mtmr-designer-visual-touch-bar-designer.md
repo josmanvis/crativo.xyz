@@ -9,7 +9,6 @@ tags:
   - design-tools
   - open-source
 category: tutorials
-coverImage: /blog/mtmr-designer.svg
 featured: true
 ---
 

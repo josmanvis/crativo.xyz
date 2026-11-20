@@ -7,7 +7,6 @@ tags:
   - React
   - JavaScript
   - Frontend
-coverImage: /blog/react-19-what-actually-matters.svg
 featured: false
 ---
 

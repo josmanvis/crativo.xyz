@@ -8,7 +8,6 @@ tags:
   - pnpm
   - npm
   - Node.js
-coverImage: /blog/why-pnpm-over-npm.svg
 featured: false
 seo:
   title: "Why I Use pnpm Over npm | Package Manager Comparison"
@@ -45,8 +44,6 @@ The space savings are astronomical. I saved over 30GB of disk space the day I mi
 Because `pnpm` links from a global store rather than copying files, installing dependencies is blazingly fast.
 
 If you create a new project and install packages you've already used in other projects, the installation time is near-zero. It just creates links. This completely changes the way you prototype. I used to dread spinning up a new project because `npx create-react-app` or `npm install` would take two minutes. Now, `pnpm install` takes literally seconds.
-
-![npm vs pnpm node_modules structure](/blog/pnpm-node-modules-structure.svg)
 
 In CI/CD environments, this is a massive win. While `npm` and `yarn` have improved their caching over the years, `pnpm`'s architecture is fundamentally built for speed. Less time waiting for `npm install` means faster feedback loops and lower CI bills. You can cache the global store across your GitHub Actions runs, making subsequent builds finish in record time.
 

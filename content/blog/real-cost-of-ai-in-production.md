@@ -8,7 +8,6 @@ tags:
   - Production
   - Costs
   - Architecture
-coverImage: /blog/real-cost-of-ai-in-production.svg
 featured: false
 ---
 

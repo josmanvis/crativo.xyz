@@ -3,7 +3,6 @@ title: "CSS Custom Properties Beyond Themes"
 date: "2026-05-25"
 description: "You're probably using CSS variables for dark mode and primary colors. But they are capable of so much more: logic, component APIs, and dynamic layouts."
 tags: ["CSS", "Advanced", "Architecture"]
-image: "/blog/css-custom-properties-beyond-themes.svg"
 ---
 
 Most developers look at CSS Custom Properties (often called CSS variables) and think: "Great, I can finally stop using Sass for my color hex codes." They define `--primary: #ff0000`, build a dark mode toggle, and call it a day.
@@ -56,8 +55,6 @@ Now, creating variations is trivial. You don't rewrite the CSS rules; you just c
 ```
 
 Because variables cascade, the `.avatar[data-shape="square"]` doesn't care about the size. It just overrides the radius. The logic remains sound.
-
-![CSS Variables as Component APIs](/blog/css-custom-properties-beyond-themes-inline.svg)
 
 ## The Space Toggle Hack
 

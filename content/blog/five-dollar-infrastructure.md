@@ -8,7 +8,6 @@ tags:
   - cost-optimization
   - hosting
   - startup
-coverImage: /blog/five-dollar-infrastructure.svg
 featured: true
 seo:
   title: "Run Production Apps for $5/Month: Infrastructure on a Budget"

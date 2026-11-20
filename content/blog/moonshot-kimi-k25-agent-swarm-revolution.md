@@ -10,7 +10,6 @@ tags:
   - LLM
   - Developer Tools
   - Performance
-coverImage: /blog/moonshot-kimi-k25-agent-swarm-revolution.svg
 featured: true
 seo:
   title: "Moonshot AI Kimi K2.5: Agent Swarm Architecture Deep Dive"

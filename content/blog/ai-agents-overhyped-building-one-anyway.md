@@ -8,7 +8,6 @@ tags:
   - Agents
   - LLMs
   - Automation
-coverImage: /blog/ai-agents-overhyped-building-one-anyway.svg
 featured: false
 ---
 

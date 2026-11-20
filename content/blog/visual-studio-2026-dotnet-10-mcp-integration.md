@@ -10,7 +10,6 @@ tags:
   - Developer Tools
   - IDE
   - Microsoft
-coverImage: /blog/visual-studio-2026-dotnet-10-mcp-integration.svg
 featured: false
 seo:
   title: "Visual Studio 2026 Release: .NET 10, C# 14, MCP Server Integration"

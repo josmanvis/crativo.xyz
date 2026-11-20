@@ -10,7 +10,6 @@ tags:
   - Computer Vision
   - Machine Learning
   - Hardware
-coverImage: /blog/nvidia-physical-ai-models-robotics.svg
 featured: true
 seo:
   title: "NVIDIA Physical AI Models for Robotics | Deep Technical Overview"

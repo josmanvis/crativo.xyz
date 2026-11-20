@@ -8,7 +8,6 @@ tags:
   - Performance
   - Web Development
   - Chrome
-coverImage: /blog/css-scroll-state-queries.svg
 featured: false
 ---
 

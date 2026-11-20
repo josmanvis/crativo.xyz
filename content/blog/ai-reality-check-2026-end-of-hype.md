@@ -9,7 +9,6 @@ tags:
   - Developer Experience
   - Production Systems
   - Engineering
-coverImage: /blog/ai-reality-check-2026-end-of-hype.svg
 featured: false
 seo:
   title: "AI Reality Check 2026: Moving from Hype to Pragmatism"

@@ -8,7 +8,6 @@ tags:
   - SolidJS
   - JavaScript
   - Frontend
-coverImage: /blog/react-to-solidjs.svg
 featured: false
 seo:
   title: "React vs SolidJS: A Practical Developer Comparison"
@@ -83,8 +82,6 @@ When you click this button, the console log **does not run again**. The componen
 So how does the UI update?
 
 In SolidJS, the JSX is compiled into direct DOM manipulations. The `count()` call inside the JSX creates a direct reactive subscription to that specific text node in the DOM. When the signal updates, Solid precisely updates *only that text node*. There is no Virtual DOM, no diffing, and no component re-evaluation.
-
-![React vs SolidJS Rendering Models](/blog/react-solidjs-rendering.svg)
 
 This makes SolidJS incredibly fast. It's essentially vanilla JavaScript DOM manipulation with a great developer experience.
 

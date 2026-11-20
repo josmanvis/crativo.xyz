@@ -8,7 +8,6 @@ tags:
   - React
   - Performance
   - Next.js
-coverImage: /blog/css-scope-finally-baseline-ditch-css-in-js.svg
 featured: false
 ---
 

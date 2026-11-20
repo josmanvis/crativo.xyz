@@ -8,7 +8,6 @@ tags:
   - Playwright
   - Cypress
   - DevOps
-coverImage: /blog/playwright-vs-cypress-2025.svg
 featured: false
 ---
 

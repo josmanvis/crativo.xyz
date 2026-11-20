@@ -9,7 +9,6 @@ tags:
   - leetcode
   - ai
   - career
-coverImage: /blog/leetcode-is-dead.svg
 featured: true
 seo:
   title: "LeetCode is Dead: AI Killed the Coding Interview"

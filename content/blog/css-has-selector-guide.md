@@ -7,7 +7,6 @@ tags:
   - CSS
   - Frontend
   - Web Development
-coverImage: /blog/css-has-selector-guide.svg
 featured: false
 ---
 

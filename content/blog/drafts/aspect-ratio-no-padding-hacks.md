@@ -2,7 +2,6 @@
 title: "Aspect-Ratio: No More Padding Hacks"
 date: "2026-05-25"
 description: "For over a decade, we maintained element proportions using a bizarre quirk of CSS padding. The aspect-ratio property finally puts an end to the madness."
-coverImage: "/blog/aspect-ratio-no-padding-hacks.svg"
 ---
 
 # Aspect-Ratio: No More Padding Hacks
@@ -55,8 +54,6 @@ Some genius realized that if you create a wrapper element with zero height, but 
 This is absurd. 
 
 We are literally defining the structure of our page by exploiting a side effect of how padding is calculated. We are forcing elements to have zero height. We are introducing useless wrapper `div`s. We are violently ripping the actual content (the iframe) out of the document flow with absolute positioning, just to force it to stretch across the invisible padded box.
-
-![Padding Hack vs Aspect Ratio](/blog/aspect-ratio-no-padding-hacks-inline.svg)
 
 And heaven help you if you needed a 4:3 ratio. You had to whip out a calculator to figure out `75%`. Square? `100%`. Cinematic 21:9? Hope you remember `42.857%`.
 

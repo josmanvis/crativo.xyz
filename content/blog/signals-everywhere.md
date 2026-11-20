@@ -8,7 +8,6 @@ tags:
   - Reactivity
   - Architecture
   - Frontend
-coverImage: /blog/signals-everywhere.svg
 featured: false
 ---
 

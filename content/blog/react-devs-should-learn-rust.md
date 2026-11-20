@@ -8,7 +8,6 @@ tags:
   - React
   - JavaScript
   - Career
-coverImage: /blog/react-devs-should-learn-rust.svg
 featured: false
 ---
 

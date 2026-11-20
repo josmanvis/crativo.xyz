@@ -9,7 +9,6 @@ tags:
   - nodejs
   - typescript
   - open-source
-coverImage: /blog/building-git-drive.svg
 featured: true
 seo:
   title: "git-drive: Turn Any External Drive Into a Git Remote Backup"

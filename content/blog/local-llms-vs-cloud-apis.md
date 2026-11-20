@@ -8,7 +8,6 @@ tags:
   - Privacy
   - LLMs
   - Ollama
-coverImage: /blog/local-llms-vs-cloud-apis.svg
 featured: false
 ---
 

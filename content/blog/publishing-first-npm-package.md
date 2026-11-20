@@ -8,7 +8,6 @@ tags:
   - Open Source
   - JavaScript
   - TypeScript
-coverImage: /blog/publishing-first-npm-package.svg
 featured: false
 seo:
   title: "How to Publish npm Package | Complete Guide for Beginners"

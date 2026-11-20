@@ -8,7 +8,6 @@ tags:
   - Tools
   - Developer Experience
   - Review
-coverImage: /blog/t3-chat-when-devs-build-ai-interfaces.svg
 featured: false
 ---
 

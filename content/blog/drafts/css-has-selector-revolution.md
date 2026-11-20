@@ -2,7 +2,6 @@
 title: "The :has() Selector: Why It Changes Everything"
 date: "2026-05-25"
 description: "CSS finally gave us a parent selector. Here's why you need to stop writing JavaScript for DOM state and start using :has()."
-coverImage: "/blog/css-has-selector-revolution.svg"
 ---
 
 ## The Parent Selector We Begged For
@@ -64,8 +63,6 @@ Now, let's solve the exact same problem using `:has()`.
 That's it. No JavaScript. No state management. No event listeners. The browser handles the relationship natively, asynchronously, and with perfect performance. 
 
 You tell the browser what you want. The browser figures it out.
-
-![How :has() works](/blog/css-has-selector-revolution-inline.svg)
 
 ## Real World Magic: Form Validation
 

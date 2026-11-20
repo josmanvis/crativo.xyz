@@ -4,7 +4,6 @@ excerpt: "Master Framer Motion from basics to advanced techniques - useAnimate, 
 category: tutorials
 publishedAt: 2025-01-24
 tags: ["react", "framer-motion", "animation", "performance", "typescript", "ui"]
-coverImage: /blog/framer-motion-animations.svg
 featured: true
 readingTime: "25 min"
 ---

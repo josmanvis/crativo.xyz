@@ -8,7 +8,6 @@ tags:
   - JavaScript
   - Animation
   - UX
-coverImage: /blog/view-transitions-api-guide.svg
 featured: false
 ---
 

@@ -8,7 +8,6 @@ tags:
   - Vite
   - Next.js
   - Build Tools
-coverImage: /blog/why-i-stopped-using-create-react-app.svg
 featured: false
 ---
 

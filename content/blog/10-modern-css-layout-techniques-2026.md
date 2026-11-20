@@ -9,7 +9,6 @@ tags:
   - Frontend
   - Layout
   - Responsive Design
-coverImage: /blog/10-modern-css-layout-techniques-2026.svg
 featured: false
 seo:
   title: "10 Modern CSS Layout Techniques for 2026 | Practical Guide"

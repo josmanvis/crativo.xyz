@@ -10,7 +10,6 @@ tags:
   - Optimization
   - V8
   - Engineering
-coverImage: /blog/writing-performant-javascript.svg
 featured: true
 seo:
   title: "Writing High-Performance JavaScript | Optimization Deep Dive"

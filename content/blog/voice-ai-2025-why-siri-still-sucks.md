@@ -8,7 +8,6 @@ tags:
   - Voice
   - Whisper
   - ElevenLabs
-coverImage: /blog/voice-ai-2025-why-siri-still-sucks.svg
 featured: false
 ---
 

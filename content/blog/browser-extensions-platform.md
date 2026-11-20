@@ -8,7 +8,6 @@ tags:
   - chrome
   - firefox
   - web
-coverImage: /blog/browser-extensions.svg
 featured: false
 seo:
   title: "Browser Extensions: The Underrated Platform for Developers"

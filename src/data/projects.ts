@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description: "A customizable macOS dock alternative. Brutalist terminal aesthetic, native performance.",
     category: "Apps",
     techStack: ["React", "TypeScript", "Rust", "Tauri", "macOS Private APIs"],
-    imageUrl: "/projects/betterbar.svg",
+    imageUrl: "",
     href: "https://github.com/josmanvis/betterbar",
     year: 2026,
     metrics: [
@@ -64,7 +64,7 @@ export default function MyExtension() {
       "Event ticketing platform built for the underground. Low fees, artist profiles, and tools that actually help promoters succeed.",
     category: "Apps",
     techStack: ["Next.js", "PostgreSQL", "Prisma", "Stripe Connect", "Clerk Auth", "Tailwind CSS"],
-    imageUrl: "/projects/afters.svg",
+    imageUrl: "",
     href: "/projects/afters",
     year: 2025,
     metrics: [
@@ -173,7 +173,7 @@ Now it's here.
       "Modern room booking platform for businesses with instant booking, team management, and smart analytics.",
     category: "Apps",
     techStack: ["Next.js", "PostgreSQL", "Prisma", "WebSockets", "REST API", "OAuth 2.0"],
-    imageUrl: "/projects/qortr.svg",
+    imageUrl: "",
     href: "/projects/qortr",
     year: 2024,
     metrics: [
@@ -353,7 +353,7 @@ async function createBooking(req: BookingRequest): Promise<Booking> {
       "Mobile-first task management platform with real-time messaging, push notifications, and cross-platform support.",
     category: "Apps",
     techStack: ["React Native", "Ruby on Rails", "SendGrid"],
-    imageUrl: "/projects/snaptask.svg",
+    imageUrl: "",
     href: "/projects/snaptask",
     year: 2017,
     metrics: [
@@ -458,7 +458,7 @@ class SyncEngine {
       "Interactive kiosk software for grocery stores with product lookup, voice shopping list, and store navigation.",
     category: "Kiosks",
     techStack: ["React.js", "Express.js", "Node.js", "IBM Watson"],
-    imageUrl: "/projects/stopshop-kiosk.svg",
+    imageUrl: "",
     href: "/projects/stopshop-kiosk",
     year: 2021,
     metrics: [
@@ -574,7 +574,7 @@ class VoiceProcessor {
       "Internal platform for submitting and tracking innovative ideas from pilot to production at Retail Business Services.",
     category: "Apps",
     techStack: ["React.js", "Node.js", "Express.js"],
-    imageUrl: "/projects/innovation-portal.svg",
+    imageUrl: "",
     href: "/projects/innovation-portal",
     year: 2020,
     metrics: [
@@ -716,7 +716,7 @@ class IdeaWorkflow {
       "Configurable React.js virtual keyboard component used in retail kiosk applications.",
     category: "Libraries",
     techStack: ["React.js", "TypeScript", "NPM"],
-    imageUrl: "/projects/too-bored.svg",
+    imageUrl: "",
     href: "/projects/too-bored",
     year: 2019,
     metrics: [
@@ -860,7 +860,7 @@ export function Keyboard({
       "Fully-responsive, configurable threaded comment component with user tagging support.",
     category: "Libraries",
     techStack: ["React.js", "TypeScript", "NPM"],
-    imageUrl: "/projects/gappa-comments.svg",
+    imageUrl: "",
     href: "/projects/gappa-comments",
     year: 2019,
     metrics: [
@@ -1005,7 +1005,7 @@ function shouldCollapse(
       "Node.js-based CLI for bootstrapping React applications and quickly scaffolding views and components.",
     category: "Tools",
     techStack: ["Node.js", "CLI", "NPM"],
-    imageUrl: "/projects/ace-cli.svg",
+    imageUrl: "",
     href: "/projects/ace-cli",
     year: 2019,
     metrics: [
@@ -1181,7 +1181,7 @@ async function generate(generatorName: string, name: string, options: Record<str
       "Powerful support ticket system built as the first app for MiPortal online operating system.",
     category: "Kiosks",
     techStack: ["PHP5", "jQuery", "JavaScript", "XML"],
-    imageUrl: "/projects/ticketcloud.svg",
+    imageUrl: "",
     href: "/projects/ticketcloud",
     year: 2014,
     metrics: [
@@ -1315,7 +1315,7 @@ class TicketHandler {
       "Cross-platform project management dashboard for managing local development projects across different tech stacks.",
     category: "Tools",
     techStack: ["Node.js", "Electron", "Express.js", "CLI"],
-    imageUrl: "/projects/projax.svg",
+    imageUrl: "",
     href: "/projects/projax",
     year: 2024,
     metrics: [
@@ -1415,9 +1415,6 @@ Sometimes the best tool is the one that solves YOUR problem, exactly the way YOU
       { icon: "🖥️", title: "Multiple Interfaces", description: "CLI for quick queries, TUI for browsing, desktop app for always-on monitoring, VS Code extension for IDE integration." },
       { icon: "⚡", title: "Zero Config", description: "Point it at your Developer folder and it figures everything out. No setup required." },
       { icon: "🧹", title: "Cleanup Tools", description: "Find and delete old node_modules to reclaim disk space." },
-    ],
-    previews: [
-      { type: "demo", src: "/previews/projax-1.svg", alt: "Projax CLI demo", caption: "Your entire Developer folder at a glance" },
     ],
     codeSnippet: {
       language: "typescript",
@@ -1522,7 +1519,7 @@ async function checkRunningPorts(ports: number[], projectPath: string): Promise<
       "Performant z-index management library with virtual z-stack recycling for complex UI layering.",
     category: "Libraries",
     techStack: ["TypeScript", "React", "NPM"],
-    imageUrl: "/projects/zeebra.svg",
+    imageUrl: "",
     href: "/projects/zeebra",
     year: 2024,
     metrics: [
@@ -1686,7 +1683,7 @@ export function useZIndex(priority: LayerPriority): number {
       "Transparent always-on-top drawing and note-taking overlay for macOS with annotation tools.",
     category: "Libraries",
     techStack: ["Electron", "JavaScript", "macOS"],
-    imageUrl: "/projects/floatnote.svg",
+    imageUrl: "",
     href: "/projects/floatnote",
     year: 2024,
     metrics: [
@@ -1758,10 +1755,6 @@ It's become one of those tools I don't think about until I'm on a computer that 
       { icon: "🎯", title: "Precision Tools", description: "Straight lines with Shift, shapes for highlighting, text for callouts." },
       { icon: "🌈", title: "Color Picker", description: "Quick color palette appears when you need it, disappears when you don't." },
       { icon: "🖥️", title: "macOS Native", description: "Built with Electron, feels like a native app. Lives in your menu bar." },
-    ],
-    previews: [
-      { type: "demo", src: "/previews/floatnote-1.svg", alt: "floatnote annotation demo", caption: "Point at exactly what you mean" },
-      { type: "demo", src: "/previews/floatnote-2.svg", alt: "Code review with floatnote", caption: "Perfect for code reviews and debugging" },
     ],
     codeSnippet: {
       language: "typescript",
@@ -1853,7 +1846,7 @@ async function captureWithAnnotations(): Promise<Buffer> {
       "Turn any external drive into a git remote backup. CLI + Web UI for local code backups without the cloud.",
     category: "Tools",
     techStack: ["Node.js", "TypeScript", "Express", "React", "CLI"],
-    imageUrl: "/blog/building-git-drive.svg",
+    imageUrl: "",
     href: "/blog/building-git-drive",
     year: 2026,
     metrics: [
@@ -1992,7 +1985,7 @@ async function ensureServerRunning() {
       "CLI tool to check if sensitive files in your coding projects are properly gitignored.",
     category: "Tools",
     techStack: ["Node.js", "TypeScript", "CLI", "Ink"],
-    imageUrl: "/projects/pubsafe.svg",
+    imageUrl: "",
     href: "/projects/pubsafe",
     year: 2025,
     metrics: [
@@ -2093,9 +2086,6 @@ Don't publish your secrets. Run pubsafe first.
       { icon: "🤖", title: "CI/CD Ready", description: "pubsafe --ci for automated pipelines. Non-zero exit on critical issues." },
       { icon: "📋", title: "Clear Reports", description: "Shows exactly what's exposed, what's safe, and what to do about it." },
     ],
-    previews: [
-      { type: "demo", src: "/previews/pubsafe-1.svg", alt: "pubsafe scan results", caption: "Catch exposed secrets before npm publish" },
-    ],
     codeSnippet: {
       language: "typescript",
       filename: "scanner.ts",
@@ -2184,7 +2174,7 @@ async function getNpmIgnoreRules(projectPath: string): Promise<Ignore> {
     description: "An always-on-top macOS overlay that shows the AlphaTheta DDJ-FLX2's active pad mode per deck, with a live legend of what all eight pads currently trigger. Reads raw MIDI and djay Pro's own mapping file.",
     category: "Tools",
     techStack: ["Swift", "AppKit", "CoreMIDI", "macOS", "Open Source"],
-    imageUrl: "/projects/flx2-status-overlay.svg",
+    imageUrl: "",
     href: "https://github.com/josmanvis/FLX2-STATUS-OVERLAY",
     year: 2026,
     metrics: [
@@ -2237,7 +2227,7 @@ static func forNote(_ n: UInt8) -> (PadMode, Int)? {
     description: "A visual drag-and-drop designer for macOS Touch Bar presets that eliminates manual JSON editing. Built with React 19 + Vite, featuring 39 element types, real-time preview, and direct MTMR integration.",
     category: "Tools",
     techStack: ["React 19", "Vite", "macOS", "Open Source", "Electron"],
-    imageUrl: "/blog/mtmr-designer.svg",
+    imageUrl: "",
     href: "/blog/mtmr-designer-visual-touch-bar-designer",
     year: 2026,
     metrics: [
@@ -2253,7 +2243,7 @@ static func forNote(_ n: UInt8) -> (PadMode, Int)? {
       "Reusable development tools library for React applications with debugging and console utilities.",
     category: "Libraries",
     techStack: ["React", "TypeScript", "SCSS", "Vite"],
-    imageUrl: "/projects/toolbench.svg",
+    imageUrl: "",
     href: "/projects/toolbench",
     year: 2024,
     metrics: [

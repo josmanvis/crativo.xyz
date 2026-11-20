@@ -9,7 +9,6 @@ tags:
   - Room Booking
   - Next.js
   - Product Launch
-coverImage: /blog/introducing-qortr.svg
 featured: true
 seo:
   title: "Qortr - Modern Room Booking Platform | Built by Jose Viscasillas"

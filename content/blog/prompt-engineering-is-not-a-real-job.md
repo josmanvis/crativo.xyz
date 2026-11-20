@@ -8,7 +8,6 @@ tags:
   - Productivity
   - LLMs
   - Tips
-coverImage: /blog/prompt-engineering-is-not-a-real-job.svg
 featured: false
 ---
 

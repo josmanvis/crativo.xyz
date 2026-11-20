@@ -8,7 +8,6 @@ tags:
   - Developer Tools
   - CLI
   - Design
-coverImage: /blog/designing-dev-tools-ux.svg
 featured: false
 seo:
   title: "Designing UX for Developer Tools | CLI and TUI Ergonomics"
@@ -33,8 +32,6 @@ The most critical moment for your tool is the first 60 seconds after a developer
 If they have to read three pages of documentation, generate a boilerplate configuration file, and set five environment variables just to see it output "Hello World", you have already lost them. They will close the terminal and find an alternative.
 
 A great dev tool should work out of the box with sensible defaults.
-
-![CLI UX Comparison](/blog/cli-ux-comparison.svg)
 
 If your tool *can* infer a configuration, it *should*. For example, if you are building a bundler, don't demand an entry point if `src/index.js` exists. Just use it and print a helpful log message telling the user what you assumed.
 

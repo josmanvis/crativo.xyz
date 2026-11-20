@@ -10,7 +10,6 @@ tags:
   - Vulnerabilities
   - Patch Management
   - CVE
-coverImage: /blog/microsoft-patch-tuesday-january-2026-zero-day.svg
 featured: true
 seo:
   title: "Microsoft January 2026 Patch Tuesday: Zero-Day CVE-2026-20805"
