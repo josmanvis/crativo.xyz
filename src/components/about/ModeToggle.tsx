@@ -1,124 +1,86 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 interface ModeToggleProps {
   isHRMode: boolean;
   onToggle: () => void;
 }
 
+function speakRobot() {
+  if (typeof window === 'undefined' || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance('H R Human Detected');
+  const voices = window.speechSynthesis.getVoices();
+  const robotVoice =
+    voices.find(
+      (v) =>
+        v.name.toLowerCase().includes('robot') ||
+        v.name.toLowerCase().includes('zarvox') ||
+        v.name.toLowerCase().includes('trinoids') ||
+        v.name.toLowerCase().includes('cellos') ||
+        v.name.includes('Google UK English Male') ||
+        v.name.includes('Daniel')
+    ) || voices.find((v) => v.lang.startsWith('en'));
+  if (robotVoice) utterance.voice = robotVoice;
+  utterance.rate = 0.8;
+  utterance.pitch = 0.3;
+  window.speechSynthesis.speak(utterance);
+}
+
+/**
+ * Two-position reader switch: HUMANS / HUMANS IN HR. A detented thumb slides
+ * between equal segments. Switching to HR mode announces itself — only ever
+ * on an explicit click.
+ */
 export default function ModeToggle({ isHRMode, onToggle }: ModeToggleProps) {
-
-  const speakRobot = () => {
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
-    
-    // Cancel any ongoing speech
-    window.speechSynthesis.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(
-      "H R Human Detected"
-    );
-    
-    // Try to find a robotic-sounding voice
-    const voices = window.speechSynthesis.getVoices();
-    const robotVoice = voices.find(v => 
-      v.name.toLowerCase().includes('robot') ||
-      v.name.toLowerCase().includes('zarvox') ||
-      v.name.toLowerCase().includes('trinoids') ||
-      v.name.toLowerCase().includes('cellos') ||
-      v.name.includes('Google UK English Male') ||
-      v.name.includes('Daniel')
-    ) || voices.find(v => v.lang.startsWith('en'));
-    
-    if (robotVoice) {
-      utterance.voice = robotVoice;
-    }
-    
-    utterance.rate = 0.8;
-    utterance.pitch = 0.3;
-    
-    window.speechSynthesis.speak(utterance);
-  };
-
-  const handleToggle = () => {
-    const wasHRMode = isHRMode;
-    onToggle();
-    
-    // Speak when switching TO HR mode
-    if (!wasHRMode) {
-      // Small delay to let voices load if needed
-      setTimeout(() => {
-        speakRobot();
-      }, 100);
-    }
-  };
-
-  // Preload voices
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.getVoices();
-    }
+    window.speechSynthesis?.getVoices();
   }, []);
 
-  return (
-    <div className="flex flex-col items-center justify-center gap-6 mb-16">
-      {/* Label */}
-      <div className="text-center">
-        <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 mb-2">
-          Who&apos;s reading this?
-        </p>
-      </div>
+  const handleToggle = () => {
+    const wasHR = isHRMode;
+    onToggle();
+    if (!wasHR) setTimeout(speakRobot, 100);
+  };
 
-      {/* Toggle Container */}
-      <div className="relative">
-        {/* Glow effect */}
-        <div 
-          className={`absolute -inset-2 rounded-full blur-xl transition-all duration-500 opacity-40 ${
-            isHRMode 
-              ? 'bg-gradient-to-r from-amber-500/50 to-orange-500/50' 
-              : 'bg-gradient-to-r from-emerald-500/50 to-teal-500/50'
-          }`} 
+  return (
+    <div className="flex flex-col items-start gap-2">
+      <span className="t-label text-graphite">Who&apos;s reading?</span>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={isHRMode}
+        aria-label="HR mode"
+        onClick={handleToggle}
+        data-hud={isHRMode ? 'Reader: HR · keywords ✓ buzzwords ✓ soul ✗' : 'Reader: human · talks like a person'}
+        className="relative grid grid-cols-2 border border-ink t-label w-[280px] max-w-full h-11 active:scale-[0.98] transition-transform duration-100"
+      >
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 h-full w-1/2 bg-ink transition-transform duration-300 ease-[var(--ease-primary)]"
+          style={{ transform: isHRMode ? 'translateX(100%)' : 'translateX(0)' }}
         />
-        
-        {/* Main toggle button */}
-        <button
-          onClick={handleToggle}
-          className="relative flex items-center gap-1 p-1.5 rounded-full bg-zinc-900 border border-zinc-700 backdrop-blur-sm hover:border-zinc-600 transition-all duration-300 shadow-2xl"
+        <span
+          className={`relative z-10 flex items-center justify-center gap-2 transition-colors duration-150 ${
+            isHRMode ? 'text-ink' : 'text-paper'
+          }`}
         >
-          {/* Left option - Humans */}
-          <div
-            className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
-              !isHRMode 
-                ? 'bg-zinc-700 text-white' 
-                : 'bg-transparent text-zinc-500 hover:text-zinc-300'
-            }`}
-          >
-            <span className="text-sm font-medium whitespace-nowrap">
-              👋 Humans
-            </span>
-          </div>
-          
-          {/* Right option - HR Humans */}
-          <div
-            className={`relative z-10 px-5 py-3 rounded-full transition-all duration-300 ${
-              isHRMode 
-                ? 'bg-zinc-700 text-white' 
-                : 'bg-transparent text-zinc-500 hover:text-zinc-300'
-            }`}
-          >
-            <span className="text-sm font-medium whitespace-nowrap">
-              📋 Humans in HR
-            </span>
-          </div>
-        </button>
-      </div>
-      
-      {/* Description */}
-      <p className="text-sm text-zinc-500 max-w-sm text-center transition-all duration-300">
-        {isHRMode 
-          ? "Keywords ✓ Buzzwords ✓ ATS-optimized ✓ Soul-crushing ✓" 
-          : "The version where I talk like a person, not a LinkedIn post"}
-      </p>
+          <span className="led" data-on={!isHRMode ? 'true' : 'false'} /> Humans
+        </span>
+        <span
+          className={`relative z-10 flex items-center justify-center gap-2 transition-colors duration-150 ${
+            isHRMode ? 'text-paper' : 'text-ink'
+          }`}
+        >
+          <span className="led" data-on={isHRMode ? 'true' : 'false'} /> Humans in HR
+        </span>
+      </button>
+      <span className="text-sm text-graphite">
+        {isHRMode
+          ? 'Keywords ✓ Buzzwords ✓ ATS-optimised ✓ Soul-crushing ✓'
+          : 'The version where I talk like a person, not a LinkedIn post.'}
+      </span>
     </div>
   );
 }

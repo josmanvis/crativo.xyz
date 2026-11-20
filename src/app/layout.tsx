@@ -1,16 +1,32 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/navigation/Navigation";
-import { SplashProvider } from "@/lib/SplashContext";
 import ChatWidget from "@/components/ChatWidget";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/system/SmoothScroll";
+import PageTransition from "@/components/system/PageTransition";
+import MotionDirector from "@/components/system/MotionDirector";
+import Hud from "@/components/system/Hud";
 import Script from "next/script";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Variable width axis drives the condensed → expanded display type.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
+  axes: ["wdth"],
+  display: "swap",
 });
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Runs before first paint: restores the theme and arms motion (only when the
+// visitor hasn't asked for reduced motion) so nothing flashes.
+const bootScript = `(function(){try{var d=document.documentElement;if(localStorage.getItem('crativo-theme')==='night')d.dataset.theme='night';if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('motion-ready');}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://crativo.xyz'),
@@ -163,8 +179,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning className={`${archivo.variable} ${jetbrains.variable}`}>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://www.ezojs.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
@@ -216,20 +233,36 @@ export default function RootLayout({
             `,
           }}
         />
-        <meta name="theme-color" content="#0a0a0a" />
+        <meta name="theme-color" content="#f1efe8" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${inter.variable} antialiased bg-[#0a0a0a] text-[#ededed]`}>
-        <SplashProvider>
+      <body id="top" className="antialiased">
+        <SmoothScroll>
+          <div className="guides" aria-hidden="true">
+            <div>
+              {Array.from({ length: 12 }, (_, i) => (
+                <span key={i} />
+              ))}
+            </div>
+          </div>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 t-label"
+          >
+            Skip to content
+          </a>
           <Navigation />
-          <div className="pt-16">
+          <div id="main" className="relative z-10 pt-[var(--nav-h)]">
             {children}
           </div>
           <Footer />
           <ChatWidget />
-        </SplashProvider>
+          <Hud />
+          <PageTransition />
+          <MotionDirector />
+        </SmoothScroll>
         <Script
           src="https://pulse.axxes.app/pulse.v1.js"
           data-site="app_addc24cbd73749c09a4689f90872f834"

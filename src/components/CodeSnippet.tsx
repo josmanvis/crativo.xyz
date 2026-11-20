@@ -23,13 +23,13 @@ export default function CodeSnippet({ snippet }: CodeSnippetProps) {
   };
 
   return (
-    <div className="rounded-lg overflow-hidden ring-1 ring-white/10">
+    <div className="bezel overflow-hidden">
       {/* Header bar */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-gray-800/50">
-        <span className="text-gray-400 text-xs font-mono">
+      <div className="flex items-center justify-between px-3 h-8 border-b border-white/10 t-label text-screen-ink/70">
+        <span className="flex items-center gap-2"><span className="led" data-on="true" />
           {snippet.filename}
         </span>
-        <span className="text-xs bg-white/10 text-gray-300 rounded px-2 py-0.5">
+        <span>
           {snippet.language}
         </span>
       </div>
@@ -41,12 +41,12 @@ export default function CodeSnippet({ snippet }: CodeSnippetProps) {
         customStyle={{
           margin: 0,
           padding: '1rem',
-          background: '#1a1a1a',
+          background: 'var(--screen)',
           fontSize: '0.875rem',
         }}
         codeTagProps={{
           style: {
-            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+            fontFamily: 'var(--font-mono)',
           }
         }}
         showLineNumbers={snippet.code.split('\n').length > 5}

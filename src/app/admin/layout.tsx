@@ -56,7 +56,7 @@ export default function AdminLayout({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] flex items-center justify-center">
         <div className="text-zinc-400">Loading...</div>
       </div>
     );
@@ -64,7 +64,7 @@ export default function AdminLayout({
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] flex items-center justify-center p-4">
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-8 w-full max-w-md">
           <h1 className="text-2xl font-bold text-white mb-2">Admin Access</h1>
           <p className="text-zinc-400 mb-6">Enter your admin key to continue</p>
@@ -107,7 +107,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed]">
       {/* Admin Header */}
       <header className="border-b border-zinc-800 bg-zinc-900/50">
         <div className="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">

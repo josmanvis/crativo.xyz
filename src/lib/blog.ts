@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { BlogPost } from '@/types/blog';
+import { BlogPost, BlogPostSummary } from '@/types/blog';
 
 // Re-export client-safe utilities
-export { blogCategories, categories, formatDate, getCategoryGradient, filterPostsByCategory } from './blog-utils';
+export { blogCategories, categories, categoryName, formatDate, formatDateCompact, filterPostsByCategory, extractHeadings, headingId } from './blog-utils';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -126,4 +126,19 @@ export function getRelatedPosts(currentPost: BlogPost, limit: number = 3): BlogP
     .map(({ post }) => post);
 
   return scoredPosts;
+}
+
+/** Numbered, body-free summaries for list views (No. 001 is the oldest post). */
+export function getPostSummaries(): BlogPostSummary[] {
+  const posts = getAllPosts();
+  return posts.map((p, i) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    category: p.category,
+    publishedAt: p.publishedAt,
+    readingTime: p.readingTime,
+    tags: p.tags,
+    number: posts.length - i,
+  }));
 }

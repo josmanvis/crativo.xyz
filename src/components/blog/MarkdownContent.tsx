@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { extractHeadings, headingId, plainHeading } from '@/lib/blog-utils';
 
 interface MarkdownContentProps {
   content: string;
@@ -11,15 +12,13 @@ interface MarkdownContentProps {
 export default function MarkdownContent({ content }: MarkdownContentProps) {
   const elements = useMemo(() => parseMarkdown(content), [content]);
 
-  return (
-    <article className="prose prose-invert prose-lg max-w-none">
-      {elements}
-    </article>
-  );
+  return <div className="article-body text-[18px] leading-[1.7]">{elements}</div>;
 }
 
 function parseMarkdown(markdown: string): React.ReactNode[] {
   const elements: React.ReactNode[] = [];
+  const totalSections = extractHeadings(markdown).length;
+  let section = 0;
   const lines = markdown.split('\n');
   let i = 0;
   let key = 0;
@@ -39,9 +38,9 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
       i++; // skip closing ```
 
       elements.push(
-        <div key={key++} className="my-6 rounded-lg overflow-hidden ring-1 ring-white/10">
-          <div className="flex items-center justify-between px-4 py-2 border-b border-white/10 bg-gray-800/50">
-            <span className="text-gray-400 text-xs font-mono">{lang}</span>
+        <div key={key++} className="my-10 bezel overflow-hidden">
+          <div className="flex items-center justify-between px-3 h-8 border-b border-white/10">
+            <span className="t-label text-screen-ink/70">{lang}</span>
           </div>
           <SyntaxHighlighter
             language={lang === 'tsx' ? 'typescript' : lang}
@@ -49,12 +48,12 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
             customStyle={{
               margin: 0,
               padding: '1rem',
-              background: '#1a1a1a',
+              background: 'var(--screen)',
               fontSize: '0.875rem',
             }}
             codeTagProps={{
               style: {
-                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                fontFamily: 'var(--font-mono)',
               }
             }}
           >
@@ -68,34 +67,43 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
     // Headings
     if (line.startsWith('### ')) {
       elements.push(
-        <h3 key={key++} className="group flex items-center gap-3 text-xl font-bold text-white mt-14 mb-6">
-          <span className="w-1 h-5 rounded-full bg-gradient-to-b from-teal-400 to-emerald-500 opacity-60 group-hover:opacity-100 transition-opacity" />
-          <span>{parseInline(line.slice(4))}</span>
+        <h3 key={key++} className="text-[1.3rem] font-bold tracking-[-0.015em] [font-stretch:108%] leading-snug mt-12 mb-4">
+          {parseInline(line.slice(4))}
         </h3>
       );
       i++;
       continue;
     }
     if (line.startsWith('## ')) {
+      section++;
+      const text = line.slice(3);
+      const n = String(section).padStart(2, '0');
       elements.push(
-        <h2 key={key++} className="group relative mt-16 mb-8 pt-4">
-          <div className="absolute -left-4 top-4 bottom-0 w-1 rounded-full bg-gradient-to-b from-emerald-400 via-teal-500 to-cyan-500 opacity-70 group-hover:opacity-100 transition-opacity" />
-          <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">
-            {parseInline(line.slice(3))}
+        <h2
+          key={key++}
+          id={headingId(text)}
+          data-hud-section={`§ ${n}/${String(totalSections).padStart(2, '0')} — ${plainHeading(text)}`}
+          className="mt-20 mb-6 pt-4 border-t border-ink scroll-mt-[calc(var(--nav-h)+24px)]"
+        >
+          <span className="t-label text-graphite block mb-4">§ {n}</span>
+          <span className="block text-[clamp(1.6rem,2.6vw,2.25rem)] font-bold leading-[1.1] tracking-[-0.025em] [font-stretch:112%] pb-[0.1em]">
+            {parseInline(text)}
           </span>
         </h2>
       );
       i++;
       continue;
     }
+    // The page header already shows the title; drop a leading "# Title".
+    if (line.startsWith('# ') && elements.length === 0) {
+      i++;
+      continue;
+    }
     if (line.startsWith('# ')) {
       elements.push(
-        <h1 key={key++} className="relative mt-16 mb-10">
-          <span className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-            {parseInline(line.slice(2))}
-          </span>
-          <div className="mt-4 h-px w-24 bg-gradient-to-r from-emerald-500/50 to-transparent" />
-        </h1>
+        <p key={key++} role="heading" aria-level={2} className="mt-16 mb-8 text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold leading-[1.05] tracking-[-0.03em] [font-stretch:118%] pb-[0.12em]">
+          {parseInline(line.slice(2))}
+        </p>
       );
       i++;
       continue;
@@ -109,9 +117,12 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
         i++;
       }
       elements.push(
-        <ul key={key++} className="list-disc list-inside my-4 space-y-1 text-gray-300">
+        <ul key={key++} className="my-6 space-y-2">
           {listItems.map((item, idx) => (
-            <li key={idx} className="ml-4">{parseInline(item)}</li>
+            <li key={idx} className="flex gap-3">
+              <span aria-hidden="true" className="mt-[0.8em] w-2.5 h-px bg-ink shrink-0" />
+              <span>{parseInline(item)}</span>
+            </li>
           ))}
         </ul>
       );
@@ -126,9 +137,9 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
         i++;
       }
       elements.push(
-        <ol key={key++} className="list-decimal list-inside my-4 space-y-1 text-gray-300">
+        <ol key={key++} className="list-decimal pl-7 my-6 space-y-2 marker:font-mono marker:text-[0.8em] marker:text-graphite">
           {listItems.map((item, idx) => (
-            <li key={idx} className="ml-4">{parseInline(item)}</li>
+            <li key={idx} className="pl-1">{parseInline(item)}</li>
           ))}
         </ol>
       );
@@ -151,12 +162,12 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
       if (tableRows.length > 0) {
         const [header, ...body] = tableRows;
         elements.push(
-          <div key={key++} className="my-6 overflow-x-auto">
-            <table className="min-w-full border-collapse">
+          <div key={key++} className="my-10 overflow-x-auto border-t border-ink" data-lenis-prevent>
+            <table className="min-w-full border-collapse text-[15px]">
               <thead>
-                <tr className="border-b border-white/20">
+                <tr className="border-b border-ink">
                   {header.map((cell, idx) => (
-                    <th key={idx} className="px-4 py-2 text-left text-white font-semibold">
+                    <th key={idx} className="px-3 py-2.5 text-left t-label text-graphite font-normal">
                       {parseInline(cell)}
                     </th>
                   ))}
@@ -164,9 +175,9 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
               </thead>
               <tbody>
                 {body.map((row, rowIdx) => (
-                  <tr key={rowIdx} className="border-b border-white/10">
+                  <tr key={rowIdx} className="border-b border-rule-strong">
                     {row.map((cell, cellIdx) => (
-                      <td key={cellIdx} className="px-4 py-2 text-gray-300">
+                      <td key={cellIdx} className="px-3 py-2.5 align-top">
                         {parseInline(cell)}
                       </td>
                     ))}
@@ -194,16 +205,16 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
       }
 
       elements.push(
-        <figure key={key++} className="my-8">
+        <figure key={key++} className="my-10">
           <img
             src={src}
             alt={altText}
             loading="lazy"
             decoding="async"
-            className="rounded-xl w-full h-auto border border-white/10"
+            className="w-full h-auto border border-rule-strong"
           />
           {caption && (
-            <figcaption className="text-center text-sm text-zinc-500 mt-3 italic">
+            <figcaption className="text-sm text-graphite mt-3 flex gap-3"><span className="t-label text-ink pt-[3px]">Fig.</span>
               {caption}
             </figcaption>
           )}
@@ -235,7 +246,7 @@ function parseMarkdown(markdown: string): React.ReactNode[] {
     }
     if (paragraphLines.length > 0) {
       elements.push(
-        <p key={key++} className="text-gray-300 leading-relaxed my-4">
+        <p key={key++} className="my-5">
           {parseInline(paragraphLines.join(' '))}
         </p>
       );
@@ -255,7 +266,7 @@ function parseInline(text: string): React.ReactNode {
     const codeMatch = remaining.match(/^`([^`]+)`/);
     if (codeMatch) {
       parts.push(
-        <code key={key++} className="text-pink-400 bg-white/10 px-1.5 py-0.5 rounded text-sm font-mono">
+        <code key={key++} className="bg-paper-2 border border-rule px-1.5 py-0.5 text-[0.85em] font-mono [overflow-wrap:anywhere]">
           {codeMatch[1]}
         </code>
       );
@@ -267,7 +278,7 @@ function parseInline(text: string): React.ReactNode {
     const boldMatch = remaining.match(/^\*\*([^*]+)\*\*/);
     if (boldMatch) {
       parts.push(
-        <strong key={key++} className="text-white font-semibold">
+        <strong key={key++} className="font-semibold">
           {boldMatch[1]}
         </strong>
       );
@@ -292,7 +303,7 @@ function parseInline(text: string): React.ReactNode {
           href={linkMatch[2]}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-300 underline"
+          className="link-ink"
         >
           {linkMatch[1]}
         </a>

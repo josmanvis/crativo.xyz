@@ -42,14 +42,7 @@ function initials(name: string): string {
 
 /** Deterministic avatar tint so the same commenter looks the same every time. */
 function avatarGradient(name: string): string {
-  const gradients = [
-    'from-emerald-500 to-teal-600',
-    'from-blue-500 to-indigo-600',
-    'from-purple-500 to-fuchsia-600',
-    'from-amber-500 to-orange-600',
-    'from-rose-500 to-pink-600',
-    'from-cyan-500 to-sky-600',
-  ];
+  const gradients = ['bg-ink text-paper', 'bg-paper-2 text-ink', 'bg-signal text-[#111110]'];
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
     hash = (hash * 31 + name.charCodeAt(i)) | 0;
@@ -66,7 +59,7 @@ function Avatar({ name, avatarHash }: { name: string; avatarHash: string }) {
         width={36}
         height={36}
         unoptimized
-        className={`w-9 h-9 rounded-full flex-shrink-0 bg-gradient-to-br ${avatarGradient(name)}`}
+        className={`w-9 h-9 flex-shrink-0 ${avatarGradient(name)}`}
       />
     );
   }
@@ -74,9 +67,9 @@ function Avatar({ name, avatarHash }: { name: string; avatarHash: string }) {
   return (
     <div
       aria-hidden="true"
-      className={`w-9 h-9 rounded-full flex-shrink-0 bg-gradient-to-br ${avatarGradient(
+      className={`w-9 h-9 flex-shrink-0 border border-ink ${avatarGradient(
         name
-      )} flex items-center justify-center text-white text-xs font-bold`}
+      )} flex items-center justify-center font-mono text-xs font-bold`}
     >
       {initials(name)}
     </div>
@@ -111,7 +104,7 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
         {isTombstone ? (
           <div
             aria-hidden="true"
-            className="w-9 h-9 rounded-full flex-shrink-0 bg-zinc-800 flex items-center justify-center text-zinc-600 text-xs"
+            className="w-9 h-9 flex-shrink-0 border border-rule-strong flex items-center justify-center text-graphite text-xs"
           >
             ×
           </div>
@@ -122,12 +115,12 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             {isTombstone ? (
-              <span className="text-zinc-600 text-sm italic">Comment removed</span>
+              <span className="t-label text-graphite">Comment removed</span>
             ) : (
               <>
-                <span className="text-white text-sm font-medium">{node.authorName}</span>
+                <span className="font-semibold">{node.authorName}</span>
                 {node.isAuthor && (
-                  <span className="px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide bg-emerald-500/15 text-emerald-400 border border-emerald-500/20">
+                  <span className="t-label px-1.5 py-0.5 bg-ink text-paper flex items-center gap-1.5">
                     Author
                   </span>
                 )}
@@ -136,14 +129,14 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
             <time
               dateTime={node.createdAt}
               title={new Date(node.createdAt).toLocaleString()}
-              className="text-zinc-600 text-xs"
+              className="t-label text-graphite"
             >
               {relativeTime(node.createdAt)}
             </time>
           </div>
 
           {!isTombstone && (
-            <p className="mt-1.5 text-zinc-300 text-sm leading-relaxed whitespace-pre-wrap break-words">
+            <p className="mt-1.5 leading-relaxed whitespace-pre-wrap break-words">
               {node.body}
             </p>
           )}
@@ -152,7 +145,7 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
             {!isTombstone && (
               <button
                 onClick={() => setIsReplying((v) => !v)}
-                className="text-zinc-500 hover:text-emerald-400 text-xs font-medium transition-colors"
+                className="t-label text-graphite hover:text-ink py-2"
               >
                 {isReplying ? 'Cancel' : 'Reply'}
               </button>
@@ -160,7 +153,7 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
             {replyCount > 0 && (
               <button
                 onClick={() => setIsCollapsed((v) => !v)}
-                className="text-zinc-600 hover:text-zinc-300 text-xs transition-colors"
+                className="t-label text-graphite hover:text-ink py-2"
               >
                 {isCollapsed
                   ? `Show ${replyCount} ${replyCount === 1 ? 'reply' : 'replies'}`
@@ -186,7 +179,7 @@ export default function CommentThread({ node, slug, onPosted }: CommentThreadPro
 
       {node.replies.length > 0 && !isCollapsed && (
         <div
-          className={`mt-5 space-y-5 border-l border-white/10 ${
+          className={`mt-5 space-y-5 border-l border-rule-strong ${
             // Past the depth cap we stop indenting so deep threads stay readable on mobile.
             node.depth >= MAX_THREAD_DEPTH - 1 ? 'pl-3 ml-1' : 'pl-4 ml-4'
           }`}

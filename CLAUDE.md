@@ -31,12 +31,12 @@ crativo.xyz is a personal portfolio and blog site for Jose Viscasillas, built wi
 - `src/lib/` - Utility functions and context providers
 - `src/data/` - Static data (projects configuration)
 - `src/types/` - TypeScript type definitions
-- `src/remotion/` - Remotion video compositions for intro animation
+- `src/remotion/` - Remotion video compositions (not rendered on the site)
 - `content/blog/` - Markdown blog posts with gray-matter frontmatter
 
 ### Page Structure
 
-- `/` - Homepage with project grid, category filtering, and animated intro splash
+- `/` - Homepage: masthead, project index with monitor panel, latest writing
 - `/blog` - Blog listing with category filtering
 - `/blog/[slug]` - Individual blog post pages
 - `/projects/[id]` - Individual project detail pages
@@ -44,13 +44,24 @@ crativo.xyz is a personal portfolio and blog site for Jose Viscasillas, built wi
 - `/api/contact` - Contact form submission (Twilio SMS + Resend email)
 - `/api/newsletter` - Newsletter subscription endpoint
 
-### Splash Animation System
+### Design & Motion System
 
-The homepage uses a splash screen system with two variants:
-- **Desktop**: Remotion-powered video animation (`RemotionIntro.tsx` → `IntroAnimation.tsx`)
-- **Mobile**: iOS call-style splash (`MobileCallSplash.tsx`)
+The visual system is documented in `DESIGN.md` (tokens, type, components) and
+the motion system in `docs/animation-map.md`. Read both before changing UI.
 
-`SplashContext` in `src/lib/SplashContext.tsx` tracks whether the splash has been shown this session using sessionStorage.
+- Tokens are CSS variables in `src/app/globals.css`, exposed to Tailwind as
+  `bg-paper`, `text-ink`, `text-graphite`, `border-rule`, `bg-signal`, etc.
+  Paper is the default theme; `data-theme="night"` on `<html>` is opt-in.
+- `src/components/system/` holds the site-wide layer mounted in `layout.tsx`:
+  `SmoothScroll` (Lenis, wheel only), `PageTransition` (ink shutter),
+  `MotionDirector` (builds every reveal from `data-reveal="…"` attributes in
+  one `gsap.context` per route) and `Hud` (the signature status strip).
+- Opt elements into the HUD with `data-hud="…"` (pointer/focus readout) or
+  `data-hud-section="…"` (scroll readout). Push messages with `hud.flash()`
+  from `src/lib/hud.ts`.
+- Only animate `transform`, `opacity` or `clip-path`. Never `transition-all`.
+  Everything must work with `prefers-reduced-motion: reduce`.
+- Icons are `lucide-react` only.
 
 ### Blog System
 
@@ -104,18 +115,17 @@ Categories: `"Apps" | "Libraries" | "Tools" | "Kiosks"`
 
 ### Styling
 
-- Tailwind CSS 4 with PostCSS
-- Dark theme (bg-[#0a0a0a], text-[#ededed])
-- Inter font via next/font
-- CSS Modules available but not heavily used
+- Tailwind CSS 4 with PostCSS; design tokens in `globals.css` (see `DESIGN.md`)
+- Archivo (variable `wdth` axis) + JetBrains Mono via `next/font`, set on `<html>`
+- Type classes: `t-wordmark`, `t-display`, `t-title`, `t-h2`, `t-lede`, `t-label`
 
 ### Third-Party Integrations
 
-- **Remotion**: Video intro animation with @remotion/player
+- **GSAP + Lenis**: Scroll reveals, page transitions, wheel smoothing
+- **Remotion**: Composition kept in `src/remotion/` (no longer rendered on the site)
 - **Twilio**: SMS notifications for contact form
 - **Resend**: Email notifications for contact form
 - **Microsoft Clarity**: Analytics (script in layout.tsx)
-- **Framer Motion**: Animations
 
 ### Environment Variables
 
@@ -147,9 +157,10 @@ import { getAllPosts } from "@/lib/blog";
 
 ## Remotion Integration
 
-The project uses Remotion for programmatic video generation. The intro animation is embedded using `@remotion/player` (not rendered server-side). Key files:
+The project keeps a Remotion composition for programmatic video generation. It
+is no longer embedded on the site (the homepage masthead replaced the intro
+splash). Key files:
 - `src/remotion/IntroAnimation.tsx` - Animation composition
 - `src/remotion/Root.tsx` - Remotion root
-- `src/components/RemotionIntro.tsx` - Player wrapper component
 
 The `.agents/skills/remotion-best-practices/` directory contains Remotion documentation and patterns - invoke `/remotion-best-practices` when working on video features.

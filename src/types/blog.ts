@@ -1,7 +1,6 @@
 export interface BlogCategory {
   slug: string;
   name: string;
-  gradient: string;
 }
 
 export interface BlogPost {
@@ -19,3 +18,9 @@ export interface BlogPost {
   protected?: boolean;
   password?: string;
 }
+
+/** What list views need — no markdown body. */
+export type BlogPostSummary = Pick<
+  BlogPost,
+  'slug' | 'title' | 'excerpt' | 'category' | 'publishedAt' | 'readingTime' | 'tags'
+> & { number: number };

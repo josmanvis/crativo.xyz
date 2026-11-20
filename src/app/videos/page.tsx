@@ -1,54 +1,40 @@
-import { Metadata } from 'next';
-import { DotGrid } from '@/components/DotGrid';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Videos | crativo',
-  description: 'Video tutorials, walkthroughs, and dev content.',
+  title: 'Videos',
+  description: 'Video tutorials, walkthroughs, and dev content. Coming soon.',
 };
 
 export default function VideosPage() {
   return (
-    <main className="min-h-screen bg-black text-white py-24 px-6 relative">
-      <DotGrid opacity={0.15} spacing={60} dotSize={1.5} />
-      
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Videos</h1>
-          <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-            Tutorials, deep dives, and dev content. Coming soon.
-          </p>
-        </div>
-
-        {/* Coming Soon State */}
-        <div className="flex flex-col items-center justify-center py-20">
-          <div className="w-24 h-24 mb-8 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center">
-            <span className="text-5xl">🎬</span>
-          </div>
-          
-          <h2 className="text-2xl font-semibold mb-4">Filming in Progress</h2>
-          <p className="text-zinc-500 text-center max-w-md mb-8">
-            Video content is on the way. Expect tutorials, project walkthroughs, 
-            and the occasional rant about CSS.
-          </p>
-          
-          {/* Placeholder video grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mt-8 opacity-30">
-            {[1, 2, 3, 4].map((i) => (
-              <div 
-                key={i}
-                className="aspect-video bg-zinc-900 rounded-xl border border-zinc-800 flex items-center justify-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-zinc-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <main className="shell pt-10 md:pt-16">
+      <div className="relative flex items-center justify-between gap-4 pb-3 t-label text-graphite">
+        <span>§ 06 — Broadcast</span>
+        <span className="flex items-center gap-2">
+          <span className="led" data-on="false" /> Off air
+        </span>
+        <span aria-hidden="true" data-reveal="rule" className="absolute inset-x-0 bottom-0 h-px bg-ink" />
       </div>
+      <h1 data-reveal="mask" data-reveal-load className="t-display mt-8 md:mt-12 max-w-[10ch]">
+        Filming in progress.
+      </h1>
+      <p data-reveal="up" data-reveal-load data-delay="0.1" className="t-lede text-graphite mt-8 max-w-[46ch]">
+        Tutorials, project walkthroughs and the occasional rant about CSS. Until then, the writing
+        log is where the work lives.
+      </p>
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6" aria-hidden="true">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="bezel aspect-video flex items-end justify-between p-3 t-label text-screen-ink/50">
+            <span>CH-{String(i).padStart(2, '0')}</span>
+            <span>No signal</span>
+          </div>
+        ))}
+      </div>
+      <Link href="/blog" className="btn mt-12" data-variant="solid">
+        Read the log instead <ArrowRight size={16} strokeWidth={1.5} />
+      </Link>
     </main>
   );
 }

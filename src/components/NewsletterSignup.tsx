@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { hud } from '@/lib/hud';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
@@ -25,6 +27,7 @@ export default function NewsletterSignup() {
       
       if (res.ok) {
         setStatus('success');
+        hud.flash('Subscribed · next issue on its way');
         setMessage('You\'re in! Check your inbox for a confirmation.');
         setEmail('');
       } else {
@@ -38,50 +41,49 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-neutral-900 to-neutral-800 border border-neutral-700 rounded-2xl p-6 md:p-8">
-      <div className="flex items-start gap-4 mb-4">
-        <div className="text-3xl">📬</div>
-        <div>
-          <h3 className="text-xl font-bold text-white mb-1">
-            Subscribe to the Newsletter
-          </h3>
-          <p className="text-neutral-400 text-sm">
-            New articles delivered to your inbox. No spam, unsubscribe anytime.
-          </p>
-        </div>
+    <section
+      className="border border-ink grid grid-cols-1 lg:grid-cols-12"
+      data-hud-section="Newsletter"
+      aria-labelledby="newsletter-title"
+    >
+      <div className="lg:col-span-5 p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-ink">
+        <p className="t-label text-graphite mb-4 flex items-center gap-2">
+          <span className="led" data-on="true" /> Dispatch
+        </p>
+        <h3 id="newsletter-title" className="t-h2 max-w-[12ch]">
+          New entries, in your inbox.
+        </h3>
       </div>
-
-      {status === 'success' ? (
-        <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4 text-emerald-400">
-          ✓ {message}
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
-            required
-            className="flex-1 px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-yellow-400 transition-all"
-          />
-          <button
-            type="submit"
-            disabled={status === 'loading'}
-            className="px-6 py-3 bg-yellow-400 hover:bg-yellow-300 text-black font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-          >
-            {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
-          </button>
-        </form>
-      )}
-
-      {status === 'error' && (
-        <p className="mt-3 text-red-400 text-sm">{message}</p>
-      )}
-
-      <p className="mt-4 text-neutral-500 text-xs">
-        Join 500+ developers getting weekly insights on React, TypeScript, and building products.
-      </p>
-    </div>
+      <div className="lg:col-span-7 p-6 md:p-8 flex flex-col justify-end">
+        <p className="text-graphite mb-6 max-w-[48ch]">
+          One email when something new ships. No spam, unsubscribe in one click.
+        </p>
+        {status === 'success' ? (
+          <p className="t-label text-signal-ink flex items-center gap-2" role="status">
+            <span className="led" data-on="true" /> {message}
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 sm:items-end">
+            <label className="flex-1">
+              <span className="t-label text-graphite">Email address</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                required
+                autoComplete="email"
+                className="field"
+              />
+            </label>
+            <button type="submit" disabled={status === 'loading'} className="btn" data-variant="solid">
+              {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
+              <ArrowRight size={16} strokeWidth={1.5} />
+            </button>
+          </form>
+        )}
+        {status === 'error' && <p className="mt-3 text-signal-ink text-sm">{message}</p>}
+      </div>
+    </section>
   );
 }

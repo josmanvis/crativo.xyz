@@ -42,16 +42,17 @@ export default function Comments({ slug }: CommentsProps) {
   const total = countAll(comments);
 
   return (
-    <section id="comments" className="py-12 border-t border-white/10 scroll-mt-20">
-      <div className="flex items-baseline gap-3 mb-6 flex-wrap">
-        <h2 className="text-2xl font-semibold text-white">
-          Discussion
-          {total > 0 && <span className="text-zinc-600 font-normal ml-2">{total}</span>}
-        </h2>
-        <span className="text-sm text-zinc-500">
-          💬 Be nice, or be funny. Preferably both.
-        </span>
+    <section
+      id="comments"
+      className="scroll-mt-[calc(var(--nav-h)+24px)]"
+      data-hud-section={`Discussion · ${total} ${total === 1 ? 'comment' : 'comments'}`}
+    >
+      <div className="relative flex items-center justify-between gap-4 pb-3 t-label text-graphite">
+        <span>Discussion · {total}</span>
+        <span className="hidden sm:inline">Be nice, or be funny. Preferably both.</span>
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-ink" />
       </div>
+      <h2 className="t-h2 mt-6 mb-8">Talk back.</h2>
 
       <div className="mb-10">
         <CommentForm slug={slug} onPosted={load} />
@@ -61,11 +62,11 @@ export default function Comments({ slug }: CommentsProps) {
         <div className="space-y-5" aria-hidden="true">
           {[0, 1].map((i) => (
             <div key={i} className="flex gap-3 animate-pulse">
-              <div className="w-9 h-9 rounded-full bg-zinc-900 flex-shrink-0" />
+              <div className="w-9 h-9 bg-paper-2 flex-shrink-0" />
               <div className="flex-1 space-y-2 pt-1">
-                <div className="h-3 bg-zinc-900 rounded w-32" />
-                <div className="h-3 bg-zinc-900 rounded w-full" />
-                <div className="h-3 bg-zinc-900 rounded w-4/5" />
+                <div className="h-3 bg-paper-2 w-32" />
+                <div className="h-3 bg-paper-2 w-full" />
+                <div className="h-3 bg-paper-2 w-4/5" />
               </div>
             </div>
           ))}
@@ -74,13 +75,13 @@ export default function Comments({ slug }: CommentsProps) {
 
       {state === 'error' && (
         <div className="text-center py-8">
-          <p className="text-zinc-500 text-sm mb-3">Could not load the discussion.</p>
+          <p className="text-graphite text-sm mb-3">Could not load the discussion.</p>
           <button
             onClick={() => {
               setState('loading');
               load();
             }}
-            className="text-emerald-400 hover:text-emerald-300 text-sm transition-colors"
+            className="btn"
           >
             Try again
           </button>
@@ -88,7 +89,7 @@ export default function Comments({ slug }: CommentsProps) {
       )}
 
       {state === 'ready' && comments.length === 0 && (
-        <p className="text-zinc-600 text-sm py-4">
+        <p className="text-graphite py-4">
           No comments yet. Be the first to say something.
         </p>
       )}

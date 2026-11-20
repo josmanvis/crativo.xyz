@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { ProjectPreview } from '@/types/project';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 
 interface AppStoreGalleryProps {
   previews: ProjectPreview[];
@@ -68,152 +69,121 @@ export default function AppStoreGallery({ previews, title }: AppStoreGalleryProp
 
   if (!previews || previews.length === 0) return null;
 
+  const pad = (n: number) => String(n).padStart(2, '0');
+
   return (
-    <section className="py-12 border-t border-white/10">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-semibold text-white">Preview</h2>
-        
+    <section className="pt-20 md:pt-28" data-hud-section={`Plates — ${title}`}>
+      <div className="relative flex items-center justify-between gap-4 pb-3 mb-8 t-label text-graphite">
+        <span>Plates — {previews.length} figures</span>
         {previews.length > 1 && (
-          <div className="flex gap-2">
+          <div className="flex gap-px bg-ink border border-ink">
             <button
+              type="button"
               onClick={() => scroll('left')}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-30"
+              aria-label="Previous figure"
+              className="w-10 h-9 grid place-items-center bg-paper text-ink hover:bg-paper-2 disabled:opacity-40"
               disabled={activeIndex === 0}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <ChevronLeft size={16} strokeWidth={1.5} />
             </button>
             <button
+              type="button"
               onClick={() => scroll('right')}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-30"
+              aria-label="Next figure"
+              className="w-10 h-9 grid place-items-center bg-paper text-ink hover:bg-paper-2 disabled:opacity-40"
               disabled={activeIndex >= previews.length - 1}
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <ChevronRight size={16} strokeWidth={1.5} />
             </button>
           </div>
         )}
+        <span aria-hidden="true" data-reveal="rule" className="absolute inset-x-0 bottom-0 h-px bg-ink" />
       </div>
 
-      {/* Scrollable gallery */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex gap-5 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide"
       >
         {previews.map((preview, index) => (
-          <div
-            key={index}
-            className="flex-shrink-0 snap-center"
-            style={{ width: '360px' }}
-          >
+          <figure key={index} className="shrink-0 snap-start w-[85vw] sm:w-[360px]">
             <button
+              type="button"
               onClick={() => openLightbox(index)}
-              className="relative aspect-[9/16] sm:aspect-video rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl w-full cursor-zoom-in group"
+              data-hud={`Fig. ${pad(index + 1)} · ${preview.caption || preview.alt} · click to enlarge`}
+              className="group bezel relative block w-full aspect-video overflow-hidden cursor-zoom-in"
             >
-              {preview.type === 'screenshot' && (
-                <Image
-                  src={preview.src}
-                  alt={preview.alt}
-                  fill
-                  className="object-cover transition-transform group-hover:scale-105"
-                />
-              )}
-              {preview.type === 'demo' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
-                  <Image
-                    src={preview.src}
-                    alt={preview.alt}
-                    fill
-                    className="object-contain p-4 transition-transform group-hover:scale-105"
-                  />
-                </div>
-              )}
-              
-              {/* Reflection effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
-              {/* Hover zoom icon */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                <svg className="w-10 h-10 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </div>
+              <Image
+                src={preview.src}
+                alt={preview.alt}
+                fill
+                sizes="(min-width: 640px) 360px, 85vw"
+                className={`${preview.type === 'demo' ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 ease-[var(--ease-reveal)] group-hover:scale-[1.03]`}
+              />
+              <span className="absolute right-2 bottom-2 w-8 h-8 grid place-items-center bg-paper text-ink opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                <ZoomIn size={16} strokeWidth={1.5} />
+              </span>
             </button>
-            
-            {preview.caption && (
-              <p className="mt-3 text-sm text-gray-400 text-center px-2">
-                {preview.caption}
-              </p>
-            )}
-          </div>
+            <figcaption className="mt-3 flex gap-3 text-sm text-graphite">
+              <span className="t-label pt-[3px] text-ink">Fig. {pad(index + 1)}</span>
+              <span>{preview.caption || preview.alt}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
 
-      {/* Dots indicator */}
-      {previews.length > 1 && (
-        <div className="flex justify-center gap-2 mt-4">
-          {previews.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                if (!scrollRef.current) return;
-                scrollRef.current.scrollTo({ left: index * 380, behavior: 'smooth' });
-              }}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === activeIndex 
-                  ? 'bg-white w-6' 
-                  : 'bg-white/30 hover:bg-white/50'
-              }`}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Lightbox Modal */}
       {lightboxIndex !== null && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${title} — figure ${lightboxIndex + 1} of ${previews.length}`}
+          className="fixed inset-0 z-[120] bg-screen/95 text-screen-ink flex items-center justify-center"
           onClick={closeLightbox}
+          data-lenis-prevent
         >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div className="absolute top-0 inset-x-0 h-12 flex items-center justify-between px-[var(--gutter)] t-label border-b border-white/10">
+            <span>
+              Fig. {pad(lightboxIndex + 1)} / {pad(previews.length)}
+            </span>
+            <button
+              type="button"
+              onClick={closeLightbox}
+              aria-label="Close"
+              className="flex items-center gap-2 h-9 px-3 border border-white/30 hover:bg-white hover:text-black"
+            >
+              <X size={16} strokeWidth={1.5} /> Close
+            </button>
+          </div>
 
-          {/* Navigation arrows */}
           {lightboxIndex > 0 && (
             <button
-              onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-              className="absolute left-4 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrev();
+              }}
+              aria-label="Previous figure"
+              className="absolute left-[var(--gutter)] z-10 w-11 h-11 grid place-items-center border border-white/30 hover:bg-white hover:text-black"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
+              <ChevronLeft size={20} strokeWidth={1.5} />
             </button>
           )}
           {lightboxIndex < previews.length - 1 && (
             <button
-              onClick={(e) => { e.stopPropagation(); goToNext(); }}
-              className="absolute right-4 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNext();
+              }}
+              aria-label="Next figure"
+              className="absolute right-[var(--gutter)] z-10 w-11 h-11 grid place-items-center border border-white/30 hover:bg-white hover:text-black"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+              <ChevronRight size={20} strokeWidth={1.5} />
             </button>
           )}
 
-          {/* Image */}
-          <div 
-            className="relative max-w-[90vw] max-h-[90vh] w-full h-full flex items-center justify-center"
+          <div
+            className="relative w-[84vw] h-[76dvh]"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -221,24 +191,16 @@ export default function AppStoreGallery({ previews, title }: AppStoreGalleryProp
               alt={previews[lightboxIndex].alt}
               fill
               className="object-contain"
-              sizes="90vw"
+              sizes="84vw"
               priority
             />
           </div>
 
-          {/* Caption */}
           {previews[lightboxIndex].caption && (
-            <div className="absolute bottom-8 left-0 right-0 text-center">
-              <p className="text-white/80 text-sm bg-black/50 inline-block px-4 py-2 rounded-full">
-                {previews[lightboxIndex].caption}
-              </p>
-            </div>
+            <p className="absolute bottom-[calc(var(--hud-h)+16px)] inset-x-0 text-center t-label opacity-80">
+              {previews[lightboxIndex].caption}
+            </p>
           )}
-
-          {/* Counter */}
-          <div className="absolute top-4 left-4 text-white/60 text-sm">
-            {lightboxIndex + 1} / {previews.length}
-          </div>
         </div>
       )}
     </section>

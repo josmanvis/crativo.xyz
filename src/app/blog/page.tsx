@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
-import { getAllPosts, categories } from '@/lib/blog';
+import { Rss } from 'lucide-react';
+import { getPostSummaries, categories } from '@/lib/blog';
 import BlogList from '@/components/blog/BlogList';
-import { DotGrid } from '@/components/DotGrid';
+import SectionHeader from '@/components/ui/SectionHeader';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { AdUnit } from '@/components/ads';
 
@@ -42,49 +43,46 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getPostSummaries();
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white relative">
-      <DotGrid opacity={0.15} spacing={60} dotSize={1.5} />
-      
-      {/* Header */}
-      <div className="text-center py-16 relative z-10">
-        <h1 className="text-4xl font-bold tracking-tight">Blog</h1>
-        <p className="text-gray-400 mt-2">
-          Thoughts on code, tools, and engineering
+    <main className="shell pt-10 md:pt-16">
+      <SectionHeader
+        as="h1"
+        load
+        number="02"
+        label="Writing"
+        title="The log."
+        meta={`${posts.length} entries`}
+        className="mb-6"
+      />
+      <div
+        data-reveal="up"
+        data-reveal-load
+        className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16"
+      >
+        <p className="t-lede text-graphite max-w-[52ch]">
+          Deep dives, tutorials and the occasional hot take on React, TypeScript, AI tooling and
+          the craft of shipping software.
         </p>
         <a
           href="/feed.xml"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 mt-4 px-4 py-2 text-sm text-zinc-400 hover:text-orange-400 transition-colors"
-          title="Subscribe via RSS"
+          className="btn shrink-0 self-start md:self-auto"
+          data-hud="Subscribe via RSS · /feed.xml"
         >
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"/>
-          </svg>
-          RSS Feed
+          <Rss size={16} strokeWidth={1.5} /> RSS feed
         </a>
       </div>
 
-      {/* Newsletter Signup */}
-      <div className="max-w-2xl mx-auto px-6 mb-12 relative z-10">
-        <NewsletterSignup />
-      </div>
+      <BlogList posts={posts} categories={categories} />
 
-      {/* Sponsor Ad */}
-      <div className="max-w-2xl mx-auto px-6 mb-12 relative z-10">
+      <div className="py-12">
         <AdUnit variant="banner" />
       </div>
 
-      {/* Blog List with filtering */}
-      <div className="relative z-10">
-        <BlogList posts={posts} categories={categories} />
-      </div>
-
-      {/* Bottom Newsletter CTA */}
-      <div className="max-w-2xl mx-auto px-6 py-16 relative z-10">
+      <div className="pt-12">
         <NewsletterSignup />
       </div>
     </main>
