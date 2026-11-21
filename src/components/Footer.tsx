@@ -26,11 +26,11 @@ export default function Footer() {
           <p className="t-label text-graphite mb-4">§ End of document</p>
           <p className="t-h2 max-w-[14ch]">Built by hand, documented in public.</p>
           <a
-            href="mailto:jose@crativo.xyz"
+            href="mailto:viscasillas@me.com"
             className="group mt-8 inline-flex items-center gap-2 text-lg link-ink"
-            data-hud="mailto · jose@crativo.xyz"
+            data-hud="mailto · viscasillas@me.com"
           >
-            jose@crativo.xyz
+            viscasillas@me.com
             <ArrowUpRight size={18} strokeWidth={1.5} className="arrow-nudge" />
           </a>
         </div>
