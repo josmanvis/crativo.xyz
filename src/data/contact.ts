@@ -1,11 +1,11 @@
 import { ContactInfo } from '@/types/contact';
 
 export const contactInfo: ContactInfo = {
-  email: 'jose@crativo.xyz',
+  email: 'viscasillas@me.com',
   socialLinks: [
     {
       platform: 'GitHub',
-      url: 'https://github.com/vivalavisca',
+      url: 'https://github.com/josmanvis',
       icon: 'github',
     },
     {

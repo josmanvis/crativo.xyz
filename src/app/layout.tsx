@@ -82,7 +82,7 @@ export const metadata: Metadata = {
         alt: 'Jose Viscasillas - Senior Software Engineer',
       },
     ],
-    emails: ['jose@crativo.xyz'],
+    emails: ['viscasillas@me.com'],
     phoneNumbers: [],
     determiner: 'auto',
     siteName: 'crativo.xyz',
